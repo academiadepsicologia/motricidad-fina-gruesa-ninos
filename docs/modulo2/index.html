@@ -5,48 +5,32 @@
   <title>Módulo 2: Motricidad Fina</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0;}
-    .navbar {
-      background: #006699;
-      padding: 16px 0;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    }
-    .navbar a {
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      margin: 0 16px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      background: #33b5e5;
-      transition: background 0.3s;
-      display: inline-block;
-    }
-    .navbar a:hover {
-      background: #ffd700;
-      color: #006699;
-    }
+    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
+    .navbar { background: #006699; padding: 16px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
+    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 16px; padding: 12px 24px; border-radius: 8px; background: #33b5e5; transition: background 0.3s; display: inline-block;}
+    .navbar a:hover { background: #ffd700; color: #006699;}
     .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 32px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);}
     h1 { color: #33b5e5; font-size: 2em;}
     h2 { color: #006699; margin-top:30px;}
     ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
-    .actividad { background:#e6f7ff; border-radius:12px; padding:18px; margin:22px 0;}
-    .btn-act {
-      display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none;
-      border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;
-    }
+    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none; border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;}
     .btn-act:hover { background:#ffec8b; color:#006699;}
-    .respuesta { display:none; background:#fffbe6; border-radius:10px; padding:16px; margin-top:12px;}
     .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
+    .actividad { background:#e6f7ff; border-radius:12px; padding:18px; margin:22px 0;}
+    .respuesta { display:none; background:#fffbe6; border-radius:10px; padding:16px; margin-top:12px;}
+    body.oscuro { background: #222 !important; color: #fff !important;}
+    .oscuro .container { background: #333 !important; }
+    .oscuro .navbar { background: #444 !important; }
+    .oscuro .navbar a { background: #555 !important; color: #ffd700 !important;}
+    .oscuro .navbar a:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .btn-act { background: #444 !important; color: #ffd700 !important;}
+    .oscuro .btn-act:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .actividad { background: #444 !important;}
+    .oscuro .respuesta { background: #222 !important;}
   </style>
-  <script>
-    function mostrarRespuesta() {
-      document.getElementById('resp').style.display = 'block';
-    }
-  </script>
 </head>
 <body>
+  <button id="modo" class="btn-act" style="float:right; margin:10px 25px;">🌙 Modo oscuro</button>
   <div class="navbar">
     <a href="../index.html">Inicio</a>
     <a href="../modulo1/index.html">Módulo 1</a>
@@ -77,5 +61,30 @@
     <a class="btn-act" href="../index.html">Ir al inicio</a>
     <div class="footer">Academia de Psicología &copy; 2025</div>
   </div>
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s';
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.style.opacity = '1';
+    });
+    document.querySelectorAll('.btn-act, .navbar a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (link.getAttribute('target') !== '_blank') {
+          e.preventDefault();
+          document.body.style.opacity = '0.2';
+          setTimeout(function() {
+            window.location.href = link.href;
+          }, 350);
+        }
+      });
+    });
+    function mostrarRespuesta() {
+      document.getElementById('resp').style.display = 'block';
+    }
+    document.getElementById('modo').onclick = function() {
+      document.body.classList.toggle('oscuro');
+      this.textContent = document.body.classList.contains('oscuro') ? '☀️ Modo claro' : '🌙 Modo oscuro';
+    };
+  </script>
 </body>
 </html>
