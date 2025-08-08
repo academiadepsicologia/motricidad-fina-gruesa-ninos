@@ -19,13 +19,11 @@
       --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Montserrat', Arial, sans-serif;
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
@@ -34,7 +32,6 @@
       line-height: 1.6;
       transition: background 0.6s, color 0.6s;
     }
-
     /* Botón de modo oscuro mejorado */
     #modo {
       position: fixed;
@@ -54,12 +51,10 @@
       align-items: center;
       gap: 8px;
     }
-
     #modo:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
-
     /* Navbar mejorada - CORREGIDA */
     .navbar {
       background: var(--gradient);
@@ -71,7 +66,6 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     .navbar-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -80,7 +74,6 @@
       align-items: center;
       padding: 0 20px;
     }
-
     .navbar-logo {
       color: white;
       font-size: 1.5rem;
@@ -89,20 +82,16 @@
       display: flex;
       align-items: center;
     }
-
     .navbar-logo i {
       margin-right: 10px;
     }
-
     .navbar-menu {
       display: flex;
       list-style: none;
     }
-
     .navbar-menu li {
       margin-left: 5px;
     }
-
     .navbar-menu a {
       color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
@@ -113,7 +102,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .navbar-menu a::before {
       content: '';
       position: absolute;
@@ -125,16 +113,13 @@
       transition: all 0.3s ease;
       z-index: -1;
     }
-
     .navbar-menu a:hover::before {
       width: 100%;
     }
-
     .navbar-menu a:hover {
       color: white;
       transform: translateY(-2px);
     }
-
     .navbar-toggle {
       display: none;
       background: none;
@@ -143,14 +128,12 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-
     /* Contenedor principal mejorado */
     .container {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
     }
-
     /* Hero section mejorada */
     .hero {
       background: white;
@@ -163,7 +146,6 @@
       overflow: hidden;
       animation: fadein 1s;
     }
-
     .hero::before {
       content: '';
       position: absolute;
@@ -177,7 +159,6 @@
       z-index: 0;
       opacity: 0.1;
     }
-
     .hero::after {
       content: '';
       position: absolute;
@@ -191,12 +172,10 @@
       z-index: 0;
       opacity: 0.1;
     }
-
     @keyframes fadein {
       from { opacity: 0; transform: translateY(60px);}
       to { opacity: 1; transform: translateY(0);}
     }
-
     .hero-title {
       font-size: 2.5rem;
       color: var(--dark);
@@ -205,7 +184,6 @@
       position: relative;
       z-index: 1;
     }
-
     .hero-subtitle {
       font-size: 1.3rem;
       color: var(--primary);
@@ -217,7 +195,6 @@
       position: relative;
       z-index: 1;
     }
-
     /* Tarjetas de navegación mejoradas */
     .cards-container {
       display: grid;
@@ -225,7 +202,6 @@
       gap: 30px;
       margin-bottom: 50px;
     }
-
     .card {
       background: white;
       border-radius: 16px;
@@ -236,7 +212,6 @@
       position: relative;
       z-index: 1;
     }
-
     .card::before {
       content: '';
       position: absolute;
@@ -249,16 +224,13 @@
       transform-origin: left;
       transition: transform 0.4s ease;
     }
-
     .card:hover::before {
       transform: scaleX(1);
     }
-
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
-
     .card-icon {
       height: 80px;
       display: flex;
@@ -266,7 +238,6 @@
       justify-content: center;
       margin-bottom: 20px;
     }
-
     .card-icon i {
       font-size: 2.5rem;
       background: var(--gradient);
@@ -274,19 +245,16 @@
       background-clip: text;
       color: transparent;
     }
-
     .card-title {
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 10px;
       color: var(--dark);
     }
-
     .card-description {
       color: #6c757d;
       font-size: 0.95rem;
     }
-
     /* Secciones mejoradas */
     .section {
       background: white;
@@ -297,7 +265,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .section::after {
       content: '';
       position: absolute;
@@ -308,7 +275,6 @@
       background: var(--gradient);
       border-radius: 0 0 16px 16px;
     }
-
     .section-title {
       font-size: 2rem;
       color: var(--dark);
@@ -317,7 +283,6 @@
       position: relative;
       display: inline-block;
     }
-
     .section-title::after {
       content: '';
       position: absolute;
@@ -328,12 +293,10 @@
       background: var(--gradient);
       border-radius: 3px;
     }
-
     /* Actividades mejoradas */
     .activity-list {
       list-style: none;
     }
-
     .activity-item {
       background: #f8f9fa;
       border-radius: 12px;
@@ -342,12 +305,10 @@
       border-left: 4px solid var(--primary);
       transition: all 0.3s ease;
     }
-
     .activity-item:hover {
       transform: translateX(5px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-
     .activity-item h3 {
       color: var(--primary);
       margin-bottom: 10px;
@@ -355,12 +316,10 @@
       display: flex;
       align-items: center;
     }
-
     .activity-item h3 i {
       margin-right: 10px;
       color: var(--primary);
     }
-
     /* Tips mejorados */
     .tips {
       background: rgba(94, 114, 228, 0.1);
@@ -370,7 +329,6 @@
       border-left: 4px solid var(--primary);
       position: relative;
     }
-
     .tips::before {
       content: '\f05a';
       font-family: 'Font Awesome 5 Free';
@@ -382,13 +340,11 @@
       color: var(--primary);
       opacity: 0.3;
     }
-
     .tips-title {
       font-weight: 600;
       color: var(--primary);
       margin-bottom: 10px;
     }
-
     /* Quiz mejorado */
     .quiz-container {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -397,19 +353,16 @@
       color: white;
       margin-top: 30px;
     }
-
     .quiz-question {
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 20px;
     }
-
     .quiz-options {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
     }
-
     .quiz-btn {
       background: rgba(255, 255, 255, 0.2);
       border: 2px solid rgba(255, 255, 255, 0.3);
@@ -421,12 +374,10 @@
       transition: all 0.3s ease;
       text-align: center;
     }
-
     .quiz-btn:hover {
       background: rgba(255, 255, 255, 0.3);
       transform: translateY(-3px);
     }
-
     .quiz-feedback {
       margin-top: 20px;
       padding: 15px;
@@ -436,12 +387,10 @@
       background: rgba(255, 255, 255, 0.2);
       display: none;
     }
-
     /* Juego de memoria mejorado */
     .mem-game {
       margin-top: 30px;
     }
-
     .mem-cards {
       display: flex;
       flex-wrap: wrap;
@@ -449,7 +398,6 @@
       gap: 15px;
       margin-top: 20px;
     }
-
     .mem-card {
       width: 90px;
       height: 90px;
@@ -466,7 +414,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .mem-card::before {
       content: '';
       position: absolute;
@@ -479,26 +426,21 @@
       transition: transform 0.5s ease;
       backface-visibility: hidden;
     }
-
     .mem-card.flipped::before {
       transform: rotateY(0deg);
     }
-
     .mem-card:hover {
       transform: scale(1.05);
     }
-
     .mem-card.flipped {
       background: white;
       color: var(--primary);
       border: 2px solid var(--primary);
     }
-
     /* Drag and drop mejorado */
     .drag-container {
       margin-top: 30px;
     }
-
     .drag-area {
       background: rgba(94, 114, 228, 0.1);
       border-radius: 12px;
@@ -512,7 +454,6 @@
       margin-bottom: 20px;
       border: 2px dashed var(--primary);
     }
-
     .drag-item {
       background: white;
       color: var(--dark);
@@ -524,17 +465,14 @@
       transition: all 0.3s ease;
       user-select: none;
     }
-
     .drag-item:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
-
     .drag-item.dragging {
       opacity: 0.5;
       transform: scale(0.95);
     }
-
     .drop-area {
       background: rgba(45, 206, 137, 0.1);
       border-radius: 12px;
@@ -546,14 +484,12 @@
       align-items: center;
       border: 2px dashed var(--success);
     }
-
     .drop-area-title {
       width: 100%;
       font-weight: 600;
       color: var(--success);
       margin-bottom: 10px;
     }
-
     .dragdrop-msj {
       margin-top: 15px;
       padding: 12px;
@@ -562,19 +498,16 @@
       text-align: center;
       display: none;
     }
-
     /* FAQ mejorado */
     .faq-list {
       list-style: none;
     }
-
     .faq-item {
       margin-bottom: 20px;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-
     .faq-question {
       background: var(--gradient);
       color: white;
@@ -585,11 +518,9 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .faq-question i {
       transition: transform 0.3s ease;
     }
-
     .faq-answer {
       background: white;
       padding: 0 20px;
@@ -597,16 +528,13 @@
       overflow: hidden;
       transition: all 0.4s ease;
     }
-
     .faq-item.active .faq-question i {
       transform: rotate(180deg);
     }
-
     .faq-item.active .faq-answer {
       padding: 20px;
       max-height: 200px;
     }
-
     /* Recursos mejorados */
     .resources-grid {
       display: grid;
@@ -614,7 +542,6 @@
       gap: 25px;
       margin-top: 30px;
     }
-
     .resource-card {
       background: white;
       border-radius: 16px;
@@ -622,12 +549,10 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       transition: all 0.4s ease;
     }
-
     .resource-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
-
     .resource-image {
       height: 160px;
       background: var(--gradient);
@@ -635,29 +560,24 @@
       align-items: center;
       justify-content: center;
     }
-
     .resource-image i {
       font-size: 3rem;
       color: white;
     }
-
     .resource-content {
       padding: 20px;
     }
-
     .resource-title {
       font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 10px;
       color: var(--dark);
     }
-
     .resource-description {
       color: #6c757d;
       margin-bottom: 15px;
       font-size: 0.95rem;
     }
-
     .resource-btn {
       display: inline-block;
       background: var(--gradient);
@@ -669,12 +589,10 @@
       font-size: 0.9rem;
       transition: all 0.3s ease;
     }
-
     .resource-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
     }
-
     /* Footer mejorado */
     .footer {
       background: var(--dark);
@@ -684,55 +602,107 @@
       border-radius: 16px;
       margin-top: 50px;
     }
-
     .footer p {
       margin-bottom: 15px;
     }
-
     .social-links {
       display: flex;
       justify-content: center;
       gap: 15px;
     }
-
     .social-links a {
       color: rgba(255, 255, 255, 0.7);
       font-size: 1.2rem;
       transition: all 0.3s ease;
     }
-
     .social-links a:hover {
       color: white;
       transform: translateY(-3px);
     }
-
     /* Animaciones */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .fade-in {
       animation: fadeIn 0.8s ease forwards;
     }
-
+    /* Modal de acceso denegado */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-modal:hover {
+      color: var(--dark);
+    }
+    .modal-title {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    .access-button {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+    }
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .header {
         flex-direction: column;
         text-align: center;
       }
-
       .header-image {
         margin-left: 0;
         margin-top: 30px;
       }
-
       .header-title {
         font-size: 2.2rem;
       }
     }
-
     @media (max-width: 768px) {
       .navbar-menu {
         flex-direction: column;
@@ -747,56 +717,47 @@
         transition: transform 0.4s ease;
         z-index: 100;
       }
-
       .navbar-menu.active {
         transform: translateY(0);
       }
-
       .navbar-menu li {
         margin: 10px 0;
       }
-
       .navbar-toggle {
         display: block;
       }
-
       .cards-container {
         grid-template-columns: 1fr;
       }
-
       .quiz-options {
         grid-template-columns: 1fr;
       }
     }
-
     @media (max-width: 576px) {
       .header-title {
         font-size: 1.8rem;
       }
-
       .header-subtitle {
         font-size: 1.1rem;
       }
-
       .section {
         padding: 25px;
       }
-
       .section-title {
         font-size: 1.5rem;
       }
+      .modal-content {
+        padding: 30px 20px;
+      }
     }
-
     /* Modo oscuro mejorado */
     body.oscuro {
       background: #111 !important;
       color: #fff !important;
     }
-
     body.oscuro .navbar {
       background: #222 !important;
     }
-
     body.oscuro .hero,
     body.oscuro .card,
     body.oscuro .section,
@@ -804,27 +765,27 @@
       background: #222 !important;
       color: #fff !important;
     }
-
     body.oscuro .hero-title,
     body.oscuro .section-title,
     body.oscuro .card-title,
     body.oscuro .resource-title {
       color: #fff !important;
     }
-
     body.oscuro .hero-subtitle,
     body.oscuro .card-description,
     body.oscuro .resource-description {
       color: #aaa !important;
     }
-
     body.oscuro .activity-item,
     body.oscuro .faq-answer {
       background: #333 !important;
     }
-
     body.oscuro .footer {
       background: #000 !important;
+    }
+    body.oscuro .modal-content {
+      background: #333 !important;
+      color: #fff !important;
     }
   </style>
 </head>
@@ -834,7 +795,7 @@
     <i class="fas fa-moon"></i>
     <span>Modo oscuro</span>
   </button>
-
+  
   <!-- Navbar CORREGIDA -->
   <nav class="navbar">
     <div class="navbar-container">
@@ -854,7 +815,7 @@
       </button>
     </div>
   </nav>
-
+  
   <!-- Contenedor principal -->
   <div class="container">
     <!-- Header mejorado -->
@@ -882,7 +843,7 @@
         </svg>
       </div>
     </header>
-
+    
     <!-- Tarjetas de navegación mejoradas -->
     <div class="cards-container">
       <div class="card fade-in" onclick="document.getElementById('ejercicios').scrollIntoView({behavior:'smooth'})">
@@ -914,7 +875,7 @@
         <p class="card-description">Clasifica actividades según su tipo de motricidad</p>
       </div>
     </div>
-
+    
     <!-- Sección: ¿Qué es la motricidad fina? -->
     <section class="section fade-in">
       <h2 class="section-title">¿Qué es la motricidad fina?</h2>
@@ -931,7 +892,7 @@
         </p>
       </div>
     </section>
-
+    
     <!-- Sección: Ejercicios prácticos -->
     <section class="section fade-in" id="ejercicios">
       <h2 class="section-title">Ejercicios prácticos para familias</h2>
@@ -965,7 +926,7 @@
         </p>
       </div>
     </section>
-
+    
     <!-- Sección: Quiz interactivo -->
     <section class="section fade-in" id="quiz">
       <h2 class="section-title">Quiz interactivo</h2>
@@ -979,7 +940,7 @@
         <div id="quiz-feedback" class="quiz-feedback"></div>
       </div>
     </section>
-
+    
     <!-- Sección: Juego de memoria -->
     <section class="section fade-in" id="memoria">
       <h2 class="section-title">Juego de memoria motriz</h2>
@@ -989,7 +950,7 @@
         <div id="memoria-msj" style="font-weight:bold; margin-top:15px;"></div>
       </div>
     </section>
-
+    
     <!-- Sección: Arrastrar y soltar -->
     <section class="section fade-in" id="dragdrop">
       <h2 class="section-title">Arrastrar y soltar</h2>
@@ -1008,7 +969,7 @@
         <div id="dragdrop-msj" class="dragdrop-msj"></div>
       </div>
     </section>
-
+    
     <!-- Sección: Preguntas frecuentes -->
     <section class="section fade-in">
       <h2 class="section-title">Preguntas frecuentes</h2>
@@ -1042,7 +1003,7 @@
         </li>
       </ul>
     </section>
-
+    
     <!-- Sección: Recursos para padres -->
     <section class="section fade-in">
       <h2 class="section-title">Recursos para padres</h2>
@@ -1079,7 +1040,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Footer mejorado -->
     <footer class="footer fade-in">
       <p>Academia de Psicología &copy; 2025 - Todos los derechos reservados</p>
@@ -1091,149 +1052,192 @@
       </div>
     </footer>
   </div>
-
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
   <script>
-    // Función para el quiz
-    function respuesta(opcion) {
-      var feedback = document.getElementById('quiz-feedback');
-      feedback.style.display = 'block';
+    // Verificar si el usuario tiene acceso al curso
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
       
-      if(opcion === 'a') {
-        feedback.textContent = "¡Correcto! Ensartar cuentas mejora la coordinación ojo-mano y la precisión de movimientos.";
-        feedback.style.background = "rgba(45, 206, 137, 0.2)";
-        feedback.style.color = "var(--success)";
-      } else {
-        feedback.textContent = "Intenta de nuevo. Las otras actividades corresponden a motricidad gruesa.";
-        feedback.style.background = "rgba(245, 54, 92, 0.2)";
-        feedback.style.color = "var(--danger)";
-      }
-    }
-
-    // Juego de memoria mejorado
-    function iniciarMemoria() {
-      const icons = ['✂️','✂️','🧵','🧵','🖍️','🖍️','🧩','🧩'];
-      let cards = icons.map(i => ({icon: i, id: Math.random()})).sort(() => Math.random() - 0.5);
-      let container = document.getElementById('mem-cards');
-      container.innerHTML = '';
-      let flipped = [];
-      let matched = [];
-      
-      cards.forEach((c, i) => {
-        let div = document.createElement('div');
-        div.className = 'mem-card';
-        div.dataset.index = i;
-        div.textContent = '';
-        div.onclick = function() {
-          if (flipped.length < 2 && !div.classList.contains('flipped') && !matched.includes(i)) {
-            div.textContent = c.icon;
-            div.classList.add('flipped');
-            flipped.push({i, icon: c.icon});
-            
-            if (flipped.length == 2) {
-              setTimeout(function() {
-                let [f1, f2] = flipped;
-                if (f1.icon == f2.icon && f1.i != f2.i) {
-                  matched.push(f1.i, f2.i);
-                  if (matched.length == cards.length) {
-                    document.getElementById('memoria-msj').textContent = '¡Excelente! Completaste el juego de memoria 🎉';
-                    document.getElementById('memoria-msj').style.color = "var(--success)";
-                  }
-                } else {
-                  document.querySelectorAll('.mem-card.flipped').forEach(d => {
-                    if (!matched.includes(parseInt(d.dataset.index))) {
-                      d.textContent = '';
-                      d.classList.remove('flipped');
-                    }
-                  });
-                }
-                flipped = [];
-              }, 900);
-            }
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir al inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Configurar cierre de modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+          modal.style.display = 'none';
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
           }
-        };
-        container.appendChild(div);
-      });
-    }
-
-    // Drag and drop mejorado
-    let dragged = null;
-    let finaDrop = document.getElementById('fina-drop');
-    let dragItems = document.querySelectorAll('.drag-item');
-    
-    dragItems.forEach(item => {
-      item.addEventListener('dragstart', function(e) {
-        dragged = item;
-        item.classList.add('dragging');
-      });
-      
-      item.addEventListener('dragend', function(e) {
-        item.classList.remove('dragging');
-      });
-    });
-    
-    finaDrop.addEventListener('dragover', function(e) {
-      e.preventDefault();
-    });
-    
-    finaDrop.addEventListener('drop', function(e) {
-      e.preventDefault();
-      let msj = document.getElementById('dragdrop-msj');
-      msj.style.display = 'block';
-      
-      if (dragged && dragged.dataset.fina === "true") {
-        finaDrop.appendChild(dragged);
-        dragged.style.background = "var(--success)";
-        dragged.style.color = "white";
-        dragged.draggable = false;
-        dragged.style.cursor = "default";
-        dragged.innerHTML += " <i class='fas fa-check'></i>";
-        
-        msj.textContent = "¡Bien hecho! " + dragged.textContent + " es una actividad de motricidad fina.";
-        msj.style.background = "rgba(45, 206, 137, 0.2)";
-        msj.style.color = "var(--success)";
-        
-        // Verificar si todos los items correctos han sido arrastrados
-        let remainingItems = document.querySelectorAll('#drag-area .drag-item[data-fina="true"]');
-        if (remainingItems.length === 0) {
-          msj.textContent += " ¡Has completado todos correctamente!";
-        }
-      } else if (dragged) {
-        msj.textContent = "Esa actividad corresponde a motricidad gruesa. Intenta con otra.";
-        msj.style.background = "rgba(245, 54, 92, 0.2)";
-        msj.style.color = "var(--danger)";
-      }
-    });
-
-    // FAQ interactiva
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const faqItem = question.parentElement;
-        faqItem.classList.toggle('active');
-      });
-    });
-
-    // Toggle para menú móvil
-    document.getElementById('navbar-toggle').addEventListener('click', () => {
-      document.getElementById('navbar-menu').classList.toggle('active');
-    });
-
-    // Modo oscuro
-    document.getElementById('modo').onclick = function() {
-      document.body.classList.toggle('oscuro');
-      const icon = this.querySelector('i');
-      const text = this.querySelector('span');
-      
-      if (document.body.classList.contains('oscuro')) {
-        icon.className = 'fas fa-sun';
-        text.textContent = 'Modo claro';
+        });
       } else {
-        icon.className = 'fas fa-moon';
-        text.textContent = 'Modo oscuro';
+        // Si tiene acceso, inicializar el contenido del módulo
+        inicializarModulo();
       }
-    };
-
-    // Inicializar juego de memoria al cargar la página
-    window.addEventListener('DOMContentLoaded', () => {
+    });
+    
+    function inicializarModulo() {
+      // Función para el quiz
+      function respuesta(opcion) {
+        var feedback = document.getElementById('quiz-feedback');
+        feedback.style.display = 'block';
+        
+        if(opcion === 'a') {
+          feedback.textContent = "¡Correcto! Ensartar cuentas mejora la coordinación ojo-mano y la precisión de movimientos.";
+          feedback.style.background = "rgba(45, 206, 137, 0.2)";
+          feedback.style.color = "var(--success)";
+        } else {
+          feedback.textContent = "Intenta de nuevo. Las otras actividades corresponden a motricidad gruesa.";
+          feedback.style.background = "rgba(245, 54, 92, 0.2)";
+          feedback.style.color = "var(--danger)";
+        }
+      }
+      
+      // Juego de memoria mejorado
+      function iniciarMemoria() {
+        const icons = ['✂️','✂️','🧵','🧵','🖍️','🖍️','🧩','🧩'];
+        let cards = icons.map(i => ({icon: i, id: Math.random()})).sort(() => Math.random() - 0.5);
+        let container = document.getElementById('mem-cards');
+        container.innerHTML = '';
+        let flipped = [];
+        let matched = [];
+        
+        cards.forEach((c, i) => {
+          let div = document.createElement('div');
+          div.className = 'mem-card';
+          div.dataset.index = i;
+          div.textContent = '';
+          div.onclick = function() {
+            if (flipped.length < 2 && !div.classList.contains('flipped') && !matched.includes(i)) {
+              div.textContent = c.icon;
+              div.classList.add('flipped');
+              flipped.push({i, icon: c.icon});
+              
+              if (flipped.length == 2) {
+                setTimeout(function() {
+                  let [f1, f2] = flipped;
+                  if (f1.icon == f2.icon && f1.i != f2.i) {
+                    matched.push(f1.i, f2.i);
+                    if (matched.length == cards.length) {
+                      document.getElementById('memoria-msj').textContent = '¡Excelente! Completaste el juego de memoria 🎉';
+                      document.getElementById('memoria-msj').style.color = "var(--success)";
+                    }
+                  } else {
+                    document.querySelectorAll('.mem-card.flipped').forEach(d => {
+                      if (!matched.includes(parseInt(d.dataset.index))) {
+                        d.textContent = '';
+                        d.classList.remove('flipped');
+                      }
+                    });
+                  }
+                  flipped = [];
+                }, 900);
+              }
+            }
+          };
+          container.appendChild(div);
+        });
+      }
+      
+      // Drag and drop mejorado
+      let dragged = null;
+      let finaDrop = document.getElementById('fina-drop');
+      let dragItems = document.querySelectorAll('.drag-item');
+      
+      dragItems.forEach(item => {
+        item.addEventListener('dragstart', function(e) {
+          dragged = item;
+          item.classList.add('dragging');
+        });
+        
+        item.addEventListener('dragend', function(e) {
+          item.classList.remove('dragging');
+        });
+      });
+      
+      finaDrop.addEventListener('dragover', function(e) {
+        e.preventDefault();
+      });
+      
+      finaDrop.addEventListener('drop', function(e) {
+        e.preventDefault();
+        let msj = document.getElementById('dragdrop-msj');
+        msj.style.display = 'block';
+        
+        if (dragged && dragged.dataset.fina === "true") {
+          finaDrop.appendChild(dragged);
+          dragged.style.background = "var(--success)";
+          dragged.style.color = "white";
+          dragged.draggable = false;
+          dragged.style.cursor = "default";
+          dragged.innerHTML += " <i class='fas fa-check'></i>";
+          
+          msj.textContent = "¡Bien hecho! " + dragged.textContent + " es una actividad de motricidad fina.";
+          msj.style.background = "rgba(45, 206, 137, 0.2)";
+          msj.style.color = "var(--success)";
+          
+          // Verificar si todos los items correctos han sido arrastrados
+          let remainingItems = document.querySelectorAll('#drag-area .drag-item[data-fina="true"]');
+          if (remainingItems.length === 0) {
+            msj.textContent += " ¡Has completado todos correctamente!";
+          }
+        } else if (dragged) {
+          msj.textContent = "Esa actividad corresponde a motricidad gruesa. Intenta con otra.";
+          msj.style.background = "rgba(245, 54, 92, 0.2)";
+          msj.style.color = "var(--danger)";
+        }
+      });
+      
+      // FAQ interactiva
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          faqItem.classList.toggle('active');
+        });
+      });
+      
+      // Toggle para menú móvil
+      document.getElementById('navbar-toggle').addEventListener('click', () => {
+        document.getElementById('navbar-menu').classList.toggle('active');
+      });
+      
+      // Modo oscuro
+      document.getElementById('modo').onclick = function() {
+        document.body.classList.toggle('oscuro');
+        const icon = this.querySelector('i');
+        const text = this.querySelector('span');
+        
+        if (document.body.classList.contains('oscuro')) {
+          icon.className = 'fas fa-sun';
+          text.textContent = 'Modo claro';
+        } else {
+          icon.className = 'fas fa-moon';
+          text.textContent = 'Modo oscuro';
+        }
+      };
+      
+      // Inicializar juego de memoria al cargar la página
       iniciarMemoria();
       
       // Animaciones de entrada
@@ -1254,8 +1258,8 @@
       document.querySelectorAll('.section, .card').forEach(el => {
         observer.observe(el);
       });
-    });
-
+    }
+    
     // Transiciones suaves al navegar
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function(e) {
