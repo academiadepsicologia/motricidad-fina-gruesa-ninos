@@ -19,13 +19,11 @@
       --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Montserrat', Arial, sans-serif;
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
@@ -34,7 +32,6 @@
       line-height: 1.6;
       transition: background 0.6s, color 0.6s;
     }
-
     /* Botón de modo oscuro mejorado */
     #modo {
       position: fixed;
@@ -54,12 +51,10 @@
       align-items: center;
       gap: 8px;
     }
-
     #modo:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
-
     /* Navbar mejorada */
     .navbar {
       background: var(--gradient);
@@ -71,7 +66,6 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     .navbar-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -80,7 +74,6 @@
       align-items: center;
       padding: 0 20px;
     }
-
     .navbar-logo {
       color: white;
       font-size: 1.5rem;
@@ -89,20 +82,16 @@
       display: flex;
       align-items: center;
     }
-
     .navbar-logo i {
       margin-right: 10px;
     }
-
     .navbar-menu {
       display: flex;
       list-style: none;
     }
-
     .navbar-menu li {
       margin-left: 5px;
     }
-
     .navbar-menu a {
       color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
@@ -113,7 +102,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .navbar-menu a::before {
       content: '';
       position: absolute;
@@ -125,16 +113,13 @@
       transition: all 0.3s ease;
       z-index: -1;
     }
-
     .navbar-menu a:hover::before {
       width: 100%;
     }
-
     .navbar-menu a:hover {
       color: white;
       transform: translateY(-2px);
     }
-
     .navbar-toggle {
       display: none;
       background: none;
@@ -143,14 +128,12 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-
     /* Contenedor principal mejorado */
     .container {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
     }
-
     /* Hero section mejorada */
     .hero {
       background: white;
@@ -163,7 +146,6 @@
       overflow: hidden;
       animation: fadein 1s;
     }
-
     .hero::before {
       content: '';
       position: absolute;
@@ -177,7 +159,6 @@
       z-index: 0;
       opacity: 0.1;
     }
-
     .hero::after {
       content: '';
       position: absolute;
@@ -191,12 +172,10 @@
       z-index: 0;
       opacity: 0.1;
     }
-
     @keyframes fadein {
       from { opacity: 0; transform: translateY(60px);}
       to { opacity: 1; transform: translateY(0);}
     }
-
     .hero-title {
       font-size: 2.5rem;
       color: var(--dark);
@@ -205,7 +184,6 @@
       position: relative;
       z-index: 1;
     }
-
     .hero-subtitle {
       font-size: 1.3rem;
       color: var(--primary);
@@ -217,7 +195,6 @@
       position: relative;
       z-index: 1;
     }
-
     /* Tarjetas de módulos mejoradas */
     .modules-grid {
       display: grid;
@@ -225,7 +202,6 @@
       gap: 30px;
       margin-bottom: 50px;
     }
-
     .module-card {
       background: white;
       border-radius: 16px;
@@ -238,7 +214,6 @@
       text-align: center;
       padding: 40px 30px;
     }
-
     .module-card::before {
       content: '';
       position: absolute;
@@ -251,16 +226,13 @@
       transform-origin: left;
       transition: transform 0.4s ease;
     }
-
     .module-card:hover::before {
       transform: scaleX(1);
     }
-
     .module-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
-
     .module-icon {
       font-size: 3rem;
       margin-bottom: 20px;
@@ -269,19 +241,16 @@
       background-clip: text;
       color: transparent;
     }
-
     .module-title {
       font-size: 1.4rem;
       font-weight: 600;
       margin-bottom: 10px;
       color: var(--dark);
     }
-
     .module-description {
       color: #6c757d;
       font-size: 0.95rem;
     }
-
     /* Sección de contenido mejorada */
     .content-section {
       background: white;
@@ -291,7 +260,6 @@
       margin-bottom: 50px;
       position: relative;
     }
-
     .content-section::after {
       content: '';
       position: absolute;
@@ -302,7 +270,6 @@
       background: var(--gradient);
       border-radius: 0 0 20px 20px;
     }
-
     .section-title {
       font-size: 2rem;
       color: var(--dark);
@@ -311,7 +278,6 @@
       position: relative;
       display: inline-block;
     }
-
     .section-title::after {
       content: '';
       position: absolute;
@@ -322,13 +288,11 @@
       background: var(--gradient);
       border-radius: 3px;
     }
-
     .content-list {
       list-style: none;
       max-width: 800px;
       margin: 0 auto;
     }
-
     .content-item {
       background: #f8f9fa;
       border-radius: 12px;
@@ -339,31 +303,26 @@
       display: flex;
       align-items: center;
     }
-
     .content-item:hover {
       transform: translateX(5px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-
     .content-item i {
       font-size: 1.5rem;
       color: var(--primary);
       margin-right: 15px;
       flex-shrink: 0;
     }
-
     .content-item strong {
       color: var(--primary);
       margin-right: 8px;
     }
-
     /* Navegación entre módulos mejorada */
     .navigation {
       display: flex;
       justify-content: space-between;
       margin-top: 40px;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -382,7 +341,6 @@
       z-index: 1;
       gap: 10px;
     }
-
     .btn::before {
       content: '';
       position: absolute;
@@ -395,26 +353,21 @@
       transition: transform 0.3s ease;
       z-index: -1;
     }
-
     .btn:hover::before {
       transform: translateY(0);
     }
-
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(94, 114, 228, 0.4);
       color: white;
     }
-
     .btn-secondary {
       background: var(--gradient-2);
       box-shadow: 0 5px 15px rgba(245, 54, 108, 0.3);
     }
-
     .btn-secondary:hover {
       box-shadow: 0 8px 25px rgba(245, 54, 108, 0.4);
     }
-
     /* Footer mejorado */
     .footer {
       background: var(--dark);
@@ -424,64 +377,118 @@
       border-radius: 20px;
       margin-top: 50px;
     }
-
     .footer p {
       margin-bottom: 15px;
     }
-
     .social-links {
       display: flex;
       justify-content: center;
       gap: 15px;
     }
-
     .social-links a {
       color: rgba(255, 255, 255, 0.7);
       font-size: 1.2rem;
       transition: all 0.3s ease;
     }
-
     .social-links a:hover {
       color: white;
       transform: translateY(-3px);
     }
-
+    /* Modal de acceso denegado */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-modal:hover {
+      color: var(--dark);
+    }
+    .modal-title {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    .access-button {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+    }
     /* Modo oscuro mejorado */
     body.oscuro {
       background: #111 !important;
       color: #fff !important;
     }
-
     body.oscuro .navbar {
       background: #222 !important;
     }
-
     body.oscuro .hero,
     body.oscuro .module-card,
     body.oscuro .content-section {
       background: #222 !important;
       color: #fff !important;
     }
-
     body.oscuro .hero-title,
     body.oscuro .section-title,
     body.oscuro .module-title {
       color: #fff !important;
     }
-
     body.oscuro .hero-subtitle,
     body.oscuro .module-description {
       color: #aaa !important;
     }
-
     body.oscuro .content-item {
       background: #333 !important;
     }
-
     body.oscuro .footer {
       background: #000 !important;
     }
-
+    body.oscuro .modal-content {
+      background: #333 !important;
+      color: #fff !important;
+    }
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
@@ -492,7 +499,6 @@
         font-size: 1.2rem;
       }
     }
-
     @media (max-width: 768px) {
       .navbar-menu {
         flex-direction: column;
@@ -507,53 +513,45 @@
         transition: transform 0.4s ease;
         z-index: 100;
       }
-
       .navbar-menu.active {
         transform: translateY(0);
       }
-
       .navbar-menu li {
         margin: 10px 0;
       }
-
       .navbar-toggle {
         display: block;
       }
-
       .modules-grid {
         grid-template-columns: 1fr;
       }
-
       .navigation {
         flex-direction: column;
         gap: 20px;
       }
-
       .btn {
         width: 100%;
         justify-content: center;
       }
     }
-
     @media (max-width: 576px) {
       .hero {
         padding: 40px 20px;
       }
-
       .hero-title {
         font-size: 2rem;
       }
-
       .hero-subtitle {
         font-size: 1rem;
       }
-
       .content-section {
         padding: 30px 20px;
       }
-
       .section-title {
         font-size: 1.5rem;
+      }
+      .modal-content {
+        padding: 30px 20px;
       }
     }
   </style>
@@ -563,7 +561,7 @@
     <i class="fas fa-moon"></i>
     <span>Modo oscuro</span>
   </button>
-
+  
   <!-- Navbar mejorada -->
   <nav class="navbar">
     <div class="navbar-container">
@@ -583,7 +581,7 @@
       </button>
     </div>
   </nav>
-
+  
   <!-- Contenedor principal -->
   <div class="container">
     <!-- Hero section mejorada -->
@@ -593,7 +591,7 @@
         ¡Comienza tu viaje! Descubre qué es la motricidad fina y gruesa y por qué es clave para el desarrollo infantil.
       </p>
     </section>
-
+    
     <!-- Tarjetas de módulos mejoradas -->
     <div class="modules-grid">
       <div class="module-card" onclick="window.location='../modulo2/index.html'">
@@ -611,7 +609,7 @@
         <p class="module-description">Ejercicios para fortalecer el movimiento corporal</p>
       </div>
     </div>
-
+    
     <!-- Sección: ¿Qué es la motricidad? -->
     <section class="content-section">
       <h2 class="section-title">¿Qué es la motricidad?</h2>
@@ -630,7 +628,7 @@
         </li>
       </ul>
     </section>
-
+    
     <!-- Sección: ¿Por qué es importante? -->
     <section class="content-section">
       <h2 class="section-title">¿Por qué es importante?</h2>
@@ -649,7 +647,7 @@
         </li>
       </ul>
     </section>
-
+    
     <!-- Navegación entre módulos -->
     <div class="navigation">
       <a href="../index.html" class="btn btn-secondary">
@@ -661,7 +659,7 @@
         <i class="fas fa-arrow-right"></i>
       </a>
     </div>
-
+    
     <!-- Footer mejorado -->
     <footer class="footer">
       <p>Academia de Psicología &copy; 2025</p>
@@ -673,15 +671,55 @@
       </div>
     </footer>
   </div>
-
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
   <script>
+    // Verificar si el usuario tiene acceso al curso
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir al inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Configurar cierre de modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+          modal.style.display = 'none';
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
+          }
+        });
+      }
+    });
+    
     // Animación de entrada
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.8s';
     window.addEventListener('DOMContentLoaded', function() {
       document.body.style.opacity = '1';
     });
-
+    
     // Transición al navegar
     document.querySelectorAll('.btn, .navbar a, .module-card').forEach(function(link) {
       link.addEventListener('click', function(e) {
@@ -694,7 +732,7 @@
         }
       });
     });
-
+    
     // Modo oscuro mejorado
     document.getElementById('modo').onclick = function() {
       document.body.classList.toggle('oscuro');
@@ -709,7 +747,7 @@
         text.textContent = 'Modo oscuro';
       }
     };
-
+    
     // Toggle para menú móvil
     document.getElementById('navbar-toggle').addEventListener('click', () => {
       document.getElementById('navbar-menu').classList.toggle('active');
