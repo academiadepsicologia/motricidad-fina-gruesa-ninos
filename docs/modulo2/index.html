@@ -9,110 +9,92 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #f5faff 0%, #ffe3d9 100%);
       font-family: 'Montserrat', Arial, sans-serif;
-      color: #222;
+      background: radial-gradient(circle at 70% 30%, #ffe6cc 0%, #ffe3e3 60%, #fffbe6 100%);
+      min-height: 100vh;
+      color: #2e2e3a;
     }
     .navbar {
-      background: #0099e5;
-      padding: 14px 0 14px 0;
+      background: #ffb347;
+      box-shadow: 0 2px 18px #f76d6d33;
+      padding: 18px 0;
       text-align: center;
-      box-shadow: 0 3px 20px rgba(0,0,0,0.09);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      border-radius: 0 0 18px 18px;
     }
     .navbar a {
       color: #fff;
+      background: #f76d6d;
       font-weight: 700;
       text-decoration: none;
-      margin: 0 20px;
+      margin: 0 14px;
       padding: 10px 22px;
       border-radius: 10px;
-      background: #3ed1c7;
+      font-size: 1.13em;
+      box-shadow: 0 2px 8px #fffbe6;
       transition: background 0.3s, color 0.2s;
-      font-size: 1.12em;
-      box-shadow: 0 2px 8px #b9e7ed4d;
       display: inline-block;
     }
     .navbar a:hover {
       background: #ffd700;
-      color: #0099e5;
+      color: #f76d6d;
+      transform: scale(1.07);
     }
     .main {
       max-width: 900px;
-      margin: 30px auto 30px auto;
-      background: #fff;
+      margin: 32px auto;
+      background: #fff8e6;
       border-radius: 28px;
-      padding: 44px 26px 30px 26px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.11);
+      padding: 36px 24px 30px 24px;
+      box-shadow: 0 8px 32px #f76d6d29;
     }
     h1 {
-      color: #0099e5;
-      font-size: 2.5em;
+      color: #f76d6d;
+      font-size: 2.35em;
       margin-bottom: 10px;
       font-weight: 700;
-      text-shadow: 1px 2px 0 #e7f7ff;
-      letter-spacing:2px;
       text-align: center;
     }
-    h2 {
-      color: #3ed1c7;
-      font-size: 1.4em;
-      margin-top: 32px;
-      margin-bottom: 8px;
-      font-weight: 700;
-      text-align: left;
-    }
     .svg-img {
-      width: 140px;
+      width: 110px;
       vertical-align: middle;
-      margin: 18px 12px 8px 0;
-      filter: drop-shadow(0 6px 12px #0099e531);
-      border-radius: 18px;
-      background: #f5faff;
+      margin: 0 10px 10px 0;
+      filter: drop-shadow(0 6px 12px #ffd7007a);
     }
     .cards {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
       justify-content: center;
+      margin-bottom: 20px;
     }
     .card {
-      background: #eafcff;
+      background: #fffbe6;
       border-radius: 16px;
-      box-shadow: 0 2px 18px #0099e511;
+      box-shadow: 0 2px 16px #ffd70033;
       padding: 22px 20px;
-      max-width: 220px;
+      max-width: 230px;
       min-width: 180px;
       margin: 8px;
       text-align: center;
       font-size: 1.08em;
       font-weight: 600;
-      color: #0099e5;
+      color: #f76d6d;
       cursor: pointer;
       transition: background 0.3s, color 0.3s, transform 0.3s;
       position: relative;
     }
     .card:hover {
       background: #ffd700;
-      color: #222;
+      color: #fff;
       transform: scale(1.05) translateY(-6px);
-      box-shadow: 0 8px 28px #ffd70030;
-    }
-    .card-icon {
-      display: block;
-      margin: 0 auto 10px auto;
-      height: 48px;
-      width: 48px;
+      box-shadow: 0 8px 28px #ffd70060;
     }
     .section {
-      background: #f9f9fd;
+      background: #fffce6;
       border-radius: 18px;
-      box-shadow: 0 2px 18px #0099e511;
+      box-shadow: 0 2px 18px #ffd70018;
       padding: 22px 18px;
-      margin: 36px 0 16px 0;
+      margin: 34px 0 16px 0;
     }
     .activity {
       background: #ffe6e6;
@@ -129,26 +111,60 @@
     }
     .quiz-btn {
       display:inline-block;
-      margin:8px 0;
+      margin:7px 0;
       padding:10px 20px;
-      background:#3ed1c7;
-      color:#fff;
+      background:#ffd700;
+      color:#f76d6d;
       border:none;
       border-radius:10px;
       font-size:1em;
       font-weight:600;
       cursor:pointer;
       transition: background 0.3s, color 0.2s;
+      box-shadow: 0 2px 12px #f76d6d33;
     }
-    .quiz-btn:hover { background:#ffd700; color:#222;}
-    .quiz-feedback {margin-top:12px; font-weight:600;}
+    .quiz-btn:hover { background:#f76d6d; color:#fff;}
+    .quiz-feedback {margin-top:12px; font-weight:700;}
+    .drag-area {
+      background: #eaffea;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0;
+      min-height: 120px;
+      box-shadow: 0 2px 12px #ffd70019;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .drag-item {
+      background: #ffd700;
+      color: #f76d6d;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 1.15em;
+      font-weight: 700;
+      cursor: grab;
+      box-shadow: 0 2px 8px #f76d6d33;
+      margin: 3px;
+      user-select: none;
+      transition: background 0.3s;
+      border: 2px solid #fffbe6;
+    }
+    .drag-item.dragging {
+      background: #f76d6d;
+      color: #fff;
+      opacity: 0.6;
+      border: 2px solid #ffd700;
+    }
     .tips {
       background: #eaffea;
       border-radius: 10px;
       padding: 14px 14px;
       margin: 14px 0;
       color: #2e7d32;
-      box-shadow: 0 2px 12px #0099e511;
+      box-shadow: 0 2px 12px #ffd70018;
       font-weight: 500;
     }
     .faq {
@@ -160,11 +176,12 @@
     }
     .reto {
       background: #eafcff;
-      border-left: 8px solid #0099e5;
+      border-left: 8px solid #f76d6d;
       font-weight: bold;
       border-radius: 10px;
       padding: 13px;
       margin: 17px 0;
+      color: #f76d6d;
     }
     .footer {
       margin-top: 26px;
@@ -172,11 +189,39 @@
       font-size: 1em;
       text-align: center;
     }
+    .mem-cards {
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 10px; 
+      margin-top: 8px;
+    }
+    .mem-card {
+      width: 80px; 
+      height: 80px; 
+      background: #ffd700; 
+      border-radius: 12px;
+      color: #f76d6d;
+      font-size: 2.3em; 
+      text-align: center; 
+      line-height: 80px;
+      cursor: pointer; 
+      box-shadow: 0 2px 12px #f76d6d33;
+      user-select: none;
+      margin: 6px;
+      transition: background 0.2s, color 0.2s;
+      border: 2px solid #fffbe6;
+    }
+    .mem-card.flipped {
+      background: #f76d6d;
+      color: #fff;
+      border: 2px solid #ffd700;
+    }
     @media (max-width:700px) {
       .main {padding:10px;}
       .cards {flex-direction:column;}
       .card {max-width:100%;}
-      .svg-img {width:80px;}
+      .svg-img {width:60px;}
     }
   </style>
 </head>
@@ -191,52 +236,42 @@
   </div>
   <div class="main">
     <h1>
-      <span style="vertical-align:middle;">
       <!-- SVG dibujo niño escribiendo -->
       <svg class="svg-img" viewBox="0 0 100 100">
-        <circle cx="50" cy="45" r="24" fill="#ffe3d9"/>
+        <ellipse cx="50" cy="62" rx="24" ry="15" fill="#ffe6cc"/>
         <ellipse cx="50" cy="45" rx="14" ry="17" fill="#f2ae72"/>
-        <ellipse cx="50" cy="62" rx="19" ry="13" fill="#ffe3d9"/>
-        <ellipse cx="40" cy="44" rx="3" ry="4" fill="#fff"/>
-        <ellipse cx="60" cy="44" rx="3" ry="4" fill="#fff"/>
-        <circle cx="43" cy="45" r="1.5" fill="#222"/>
-        <circle cx="57" cy="45" r="1.5" fill="#222"/>
-        <path d="M46 54 Q50 57 54 54" stroke="#d85f5f" stroke-width="2" fill="none"/>
+        <ellipse cx="50" cy="62" rx="19" ry="11" fill="#fffbe6"/>
+        <circle cx="43" cy="45" r="2.4" fill="#fff"/>
+        <circle cx="57" cy="45" r="2.4" fill="#fff"/>
+        <circle cx="43" cy="45" r="1.2" fill="#222"/>
+        <circle cx="57" cy="45" r="1.2" fill="#222"/>
+        <path d="M46 54 Q50 57 54 54" stroke="#f76d6d" stroke-width="2" fill="none"/>
+        <rect x="40" y="65" width="20" height="8" rx="4" fill="#ffd700"/>
+        <rect x="48" y="65" width="4" height="10" fill="#3ed1c7"/>
       </svg>
-      </span>
       Motricidad Fina
     </h1>
-
     <div class="cards">
       <div class="card" onclick="document.getElementById('ejercicios').scrollIntoView({behavior:'smooth'})">
-        <span class="card-icon">
-          <!-- SVG pinza ropa -->
-          <svg viewBox="0 0 48 48"><rect x="19" y="8" width="10" height="32" rx="5" fill="#f2ae72"/><rect x="21" y="10" width="6" height="28" rx="3" fill="#ffd700"/><rect x="18" y="24" width="12" height="4" fill="#0099e5"/></svg>
-        </span>
-        Ejercicios prácticos
+        <span style="font-size:2em;">✂️</span><br>Ejercicios prácticos
       </div>
       <div class="card" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">
-        <span class="card-icon">
-          <!-- SVG cuentas -->
-          <svg viewBox="0 0 48 48"><circle cx="12" cy="24" r="6" fill="#3ed1c7"/><circle cx="24" cy="24" r="6" fill="#ffd700"/><circle cx="36" cy="24" r="6" fill="#f76d6d"/></svg>
-        </span>
-        Quiz interactivo
+        <span style="font-size:2em;">🔎</span><br>Quiz interactivo
       </div>
       <div class="card" onclick="document.getElementById('memoria').scrollIntoView({behavior:'smooth'})">
-        <span class="card-icon">
-          <!-- SVG memoria -->
-          <svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="28" rx="6" fill="#eaffea"/><circle cx="24" cy="24" r="7" fill="#f76d6d"/><rect x="18" y="18" width="12" height="12" rx="4" fill="#ffd700"/></svg>
-        </span>
-        Juego de memoria
+        <span style="font-size:2em;">🧩</span><br>Juego de memoria
+      </div>
+      <div class="card" onclick="document.getElementById('dragdrop').scrollIntoView({behavior:'smooth'})">
+        <span style="font-size:2em;">🎨</span><br>Arrastrar y soltar
       </div>
     </div>
 
     <div class="section">
       <h2>¿Qué es la motricidad fina?</h2>
       <p>
-        La motricidad fina se refiere a los movimientos pequeños y precisos que realizamos con las manos y los dedos.
-        Es fundamental para tareas como <b>escribir, dibujar, abotonar, recortar y manipular objetos pequeños</b>.  
-        <br>
+        La motricidad fina son los movimientos pequeños y precisos que hacemos con las manos y los dedos.<br>
+        Es clave para <b>escribir, dibujar, abotonar, recortar y manipular objetos pequeños</b>.
+        <br><br>
         <span class="tips">
         <b>Científicamente:</b> La motricidad fina depende de la coordinación entre el cerebro, los ojos y los músculos pequeños de manos y dedos.
         </span>
@@ -247,7 +282,7 @@
       <h2>Ejercicios prácticos para familias</h2>
       <ul>
         <li><b>Enhebrar cuentas:</b> Usen cordones y cuentas para crear collares y pulseras.</li>
-        <li><b>Recortar y pegar:</b> Recorten figuras y hágan collages juntos.</li>
+        <li><b>Recortar y pegar:</b> Recorten figuras y hagan collages juntos.</li>
         <li><b>Jugar con plastilina:</b> Formen animales, letras y números con las manos.</li>
         <li><b>Dibujar muñecos:</b> Dibuja un muñeco y pídele al niño que coloree los detalles pequeños.</li>
         <li><b>Hacer figuras con pinzas de ropa:</b> Formar animales o personas usando pinzas y papel.</li>
@@ -267,8 +302,23 @@
 
     <div class="section activity" id="memoria">
       <h3>Juego de memoria motriz</h3>
-      <div id="mem-cards" style="display:flex;flex-wrap:wrap;justify-content:center;"></div>
+      <div class="mem-cards" id="mem-cards"></div>
       <div id="memoria-msj" style="font-weight:bold; margin-top:10px;"></div>
+    </div>
+
+    <div class="section activity" id="dragdrop">
+      <h3>Arrastra y suelta: ¿qué pertenece a motricidad fina?</h3>
+      <div class="drag-area" id="drag-area">
+        <div class="drag-item" draggable="true" data-fina="true">Recortar papel</div>
+        <div class="drag-item" draggable="true" data-fina="false">Saltar en un pie</div>
+        <div class="drag-item" draggable="true" data-fina="true">Enhebrar cuentas</div>
+        <div class="drag-item" draggable="true" data-fina="false">Lanzar pelota</div>
+        <div class="drag-item" draggable="true" data-fina="true">Abotonar camisa</div>
+      </div>
+      <div class="drag-area" id="fina-drop" style="background:#eaffea; min-height:70px;">
+        <strong>Motricidad fina (arrástralos aquí):</strong>
+      </div>
+      <div id="dragdrop-msj" style="margin-top:10px;font-weight:600;"></div>
     </div>
 
     <div class="section faq">
@@ -320,20 +370,13 @@
         feedback.style.color = "green";
       } else {
         feedback.textContent = "Intenta de nuevo 😉";
-        feedback.style.color = "red";
+        feedback.style.color = "#f76d6d";
       }
     }
-    // Juego de memoria SVG
+    // Juego de memoria con emojis
     function iniciarMemoria() {
-      const icons = [
-        `<svg viewBox="0 0 48 48"><rect x="11" y="14" width="26" height="20" rx="6" fill="#ffd700"/><circle cx="24" cy="24" r="7" fill="#f76d6d"/></svg>`,
-        `<svg viewBox="0 0 48 48"><rect x="11" y="14" width="26" height="20" rx="6" fill="#ffd700"/><circle cx="24" cy="24" r="7" fill="#f76d6d"/></svg>`,
-        `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="#3ed1c7"/><rect x="17" y="20" width="14" height="8" rx="4" fill="#f76d6d"/></svg>`,
-        `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="#3ed1c7"/><rect x="17" y="20" width="14" height="8" rx="4" fill="#f76d6d"/></svg>`,
-        `<svg viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="13" ry="9" fill="#ffe3d9"/><rect x="20" y="17" width="8" height="14" rx="4" fill="#0099e5"/></svg>`,
-        `<svg viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="13" ry="9" fill="#ffe3d9"/><rect x="20" y="17" width="8" height="14" rx="4" fill="#0099e5"/></svg>`,
-      ];
-      let cards = icons.map(i => ({svg: i, id: Math.random()})).sort(() => Math.random() - 0.5);
+      const icons = ['✂️','✂️','🧵','🧵','🖍️','🖍️','🧩','🧩'];
+      let cards = icons.map(i => ({icon: i, id: Math.random()})).sort(() => Math.random() - 0.5);
       let container = document.getElementById('mem-cards');
       container.innerHTML = '';
       let flipped = [];
@@ -342,25 +385,25 @@
         let div = document.createElement('div');
         div.className = 'mem-card';
         div.dataset.index = i;
-        div.innerHTML = '';
+        div.textContent = '';
         div.onclick = function() {
           if (flipped.length < 2 && !div.classList.contains('flipped') && !matched.includes(i)) {
-            div.innerHTML = c.svg;
+            div.textContent = c.icon;
             div.classList.add('flipped');
-            flipped.push({i, svg: c.svg});
+            flipped.push({i, icon: c.icon});
             if (flipped.length == 2) {
               setTimeout(function() {
                 let [f1, f2] = flipped;
-                if (f1.svg == f2.svg && f1.i != f2.i) {
+                if (f1.icon == f2.icon && f1.i != f2.i) {
                   matched.push(f1.i, f2.i);
                 } else {
-                  document.querySelectorAll('.mem-card.flipped').forEach(d => {d.innerHTML = ''; d.classList.remove('flipped');});
+                  document.querySelectorAll('.mem-card.flipped').forEach(d => {d.textContent = ''; d.classList.remove('flipped');});
                 }
                 flipped = [];
                 if (matched.length == cards.length) {
-                  document.getElementById('memoria-msj').textContent = '¡Muy bien! Completaste el juego de memoria';
+                  document.getElementById('memoria-msj').textContent = '¡Muy bien! Completaste el juego de memoria 🎉';
                 }
-              }, 800);
+              }, 900);
             }
           }
         };
@@ -368,6 +411,35 @@
       });
     }
     window.addEventListener('DOMContentLoaded', iniciarMemoria);
+
+    // Drag and drop interactivo
+    let dragged = null;
+    let finaDrop = document.getElementById('fina-drop');
+    let dragItems = document.querySelectorAll('.drag-item');
+    dragItems.forEach(item => {
+      item.addEventListener('dragstart', function(e) {
+        dragged = item;
+        item.classList.add('dragging');
+      });
+      item.addEventListener('dragend', function(e) {
+        item.classList.remove('dragging');
+      });
+    });
+    finaDrop.addEventListener('dragover', function(e) {
+      e.preventDefault();
+    });
+    finaDrop.addEventListener('drop', function(e) {
+      e.preventDefault();
+      if (dragged && dragged.dataset.fina === "true") {
+        finaDrop.appendChild(dragged);
+        dragged.style.background = "#3ed1c7";
+        dragged.style.color = "#fff";
+        dragged.textContent += " ✅";
+        document.getElementById('dragdrop-msj').textContent = "¡Bien! " + dragged.textContent + " es motricidad fina.";
+      } else if (dragged) {
+        document.getElementById('dragdrop-msj').textContent = "Eso es motricidad gruesa, intenta con otra opción.";
+      }
+    });
   </script>
 </body>
 </html>
