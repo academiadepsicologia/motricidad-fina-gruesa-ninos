@@ -3,37 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <title>Módulo 2: Motricidad Fina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: #f0f8ff; font-family: Arial, sans-serif; color: #333; }
-    .container { max-width: 650px; margin: auto; background: #fff; padding: 30px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);}
-    h1 { color: #006699; }
-    ul { text-align:left; font-size:1.1em; }
-    .actividad { background:#e6f7ff; border-radius:12px; padding:16px; margin:18px 0;}
-    a { display:inline-block; margin:16px 0; color:#006699; text-decoration:none; font-weight:bold;}
+    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0;}
+    .navbar {
+      background: #006699;
+      padding: 16px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .navbar a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 16px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: #33b5e5;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+    .navbar a:hover {
+      background: #ffd700;
+      color: #006699;
+    }
+    .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 32px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);}
+    h1 { color: #33b5e5; font-size: 2em;}
+    h2 { color: #006699; margin-top:30px;}
+    ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
+    .actividad { background:#e6f7ff; border-radius:12px; padding:18px; margin:22px 0;}
+    .btn-act {
+      display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none;
+      border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;
+    }
+    .btn-act:hover { background:#ffec8b; color:#006699;}
+    .respuesta { display:none; background:#fffbe6; border-radius:10px; padding:16px; margin-top:12px;}
+    .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
   </style>
+  <script>
+    function mostrarRespuesta() {
+      document.getElementById('resp').style.display = 'block';
+    }
+  </script>
 </head>
 <body>
+  <div class="navbar">
+    <a href="../index.html">Inicio</a>
+    <a href="../modulo1/index.html">Módulo 1</a>
+    <a href="index.html">Módulo 2</a>
+    <a href="../modulo3/index.html">Módulo 3</a>
+    <a href="../modulo4/index.html">Módulo 4</a>
+    <a href="../modulo5/index.html">Módulo 5</a>
+  </div>
   <div class="container">
     <h1>Módulo 2: Motricidad Fina</h1>
-    <p>La motricidad fina son los movimientos pequeños que hacemos con los dedos y las manos, como escribir, dibujar, recortar o abotonar.</p>
+    <p>La <strong>motricidad fina</strong> son los movimientos pequeños que hacemos con los dedos y las manos, como escribir, dibujar, recortar o abotonar.</p>
     <h2>¿Por qué es importante?</h2>
     <ul>
       <li>Ayuda a los niños a escribir, dibujar y manipular objetos pequeños.</li>
       <li>Mejora la coordinación y la concentración.</li>
       <li>Facilita tareas cotidianas como abotonarse la camisa o atarse los zapatos.</li>
     </ul>
-    <h2>Actividad divertida</h2>
+    <h2>Actividad interactiva</h2>
     <div class="actividad">
-      <strong>Ensartar cuentas</strong><br>
-      <ul>
-        <li>Materiales: cuentas grandes y un hilo grueso.</li>
-        <li>Indicación: deja que el niño pase las cuentas por el hilo, uno a uno.</li>
-        <li>Observa: cómo toma las cuentas y si puede hacerlo solo.</li>
-      </ul>
+      <strong>Pregunta:</strong> ¿Cuál de estas actividades mejora la motricidad fina?<br>
+      <button class="btn-act" onclick="mostrarRespuesta()">Ver respuesta</button>
+      <div class="respuesta" id="resp">
+        <strong>Respuesta:</strong> Ensartar cuentas, recortar papel, dibujar y usar plastilina.
+      </div>
     </div>
-    <a href="../modulo1/index.html">Volver al Módulo 1</a>
-    <a href="../modulo3/index.html">Siguiente módulo</a>
-    <a href="../index.html">Volver al inicio</a>
+    <a class="btn-act" href="../modulo1/index.html">← Volver al Módulo 1</a>
+    <a class="btn-act" href="../modulo3/index.html">Siguiente módulo →</a>
+    <a class="btn-act" href="../index.html">Ir al inicio</a>
+    <div class="footer">Academia de Psicología &copy; 2025</div>
   </div>
 </body>
 </html>
