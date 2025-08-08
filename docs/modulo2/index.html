@@ -4,412 +4,1041 @@
   <meta charset="UTF-8">
   <title>Módulo 2: Motricidad Fina</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
+    :root {
+      --primary: #5e72e4;
+      --secondary: #f5365c;
+      --accent: #fb6340;
+      --light: #f4f5f7;
+      --dark: #32325d;
+      --success: #2dce89;
+      --info: #11cdef;
+      --warning: #fb6340;
+      --danger: #f5365c;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #d6f0ff 0%, #faf7fc 100%);
-      color: #2e2e3a;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: var(--dark);
       min-height: 100vh;
+      line-height: 1.6;
     }
+
+    /* Navbar mejorada */
     .navbar {
-      background: #7ec4cf;
-      box-shadow: 0 2px 18px #7ec4cf33;
-      padding: 18px 0;
-      text-align: center;
-      border-radius: 0 0 18px 18px;
-      font-size: 1.13em;
+      background: var(--gradient);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .navbar a {
-      color: #fff;
-      background: #f6a4ec;
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .navbar-logo {
+      color: white;
+      font-size: 1.5rem;
       font-weight: 700;
       text-decoration: none;
-      margin: 0 10px;
-      padding: 10px 22px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px #7ec4cf44;
-      transition: background 0.3s, color 0.2s;
-      display: inline-block;
+      display: flex;
+      align-items: center;
     }
-    .navbar a:hover {
-      background: #f9f871;
-      color: #7ec4cf;
-      transform: scale(1.07);
+
+    .navbar-logo i {
+      margin-right: 10px;
     }
-    .main {
-      max-width: 920px;
-      margin: 32px auto;
-      background: #fff;
-      border-radius: 28px;
-      padding: 40px 28px 30px 28px;
-      box-shadow: 0 8px 32px #7ec4cf29;
+
+    .navbar-menu {
+      display: flex;
+      list-style: none;
     }
-    .header-flex {
+
+    .navbar-menu li {
+      margin-left: 25px;
+    }
+
+    .navbar-menu a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .navbar-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    .navbar-menu a:hover::before {
+      width: 100%;
+    }
+
+    .navbar-menu a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Contenedor principal */
+    .main-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Header mejorado */
+    .header {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transform: translate(100px, -100px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+
+    .header-content {
+      flex: 1;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-size: 2.8rem;
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .header-subtitle {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    .header-description {
+      font-size: 1.1rem;
+      color: #6c757d;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .header-image {
+      width: 200px;
+      height: 200px;
+      background: var(--gradient);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
+      box-shadow: 0 15px 35px rgba(94, 114, 228, 0.2);
+      margin-left: 40px;
+      flex-shrink: 0;
     }
-    .svg-kid {
+
+    .header-image svg {
       width: 120px;
-      min-width: 80px;
-      background: #f9f871;
-      border-radius: 22px;
-      padding: 12px;
-      box-shadow: 0 4px 18px #7ec4cf22;
+      height: 120px;
+      fill: white;
     }
-    h1 {
-      color: #7ec4cf;
-      font-size: 2.3em;
-      margin-bottom: 8px;
-      font-weight: 700;
-      text-align: left;
+
+    /* Tarjetas de navegación mejoradas */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
     }
-    h2 {
-      color: #f6a4ec;
-      font-size: 1.3em;
-      margin-top: 32px;
-      margin-bottom: 10px;
-      font-weight: 700;
-      text-align: left;
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
     }
-    .cards {
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      height: 80px;
       display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
       margin-bottom: 20px;
     }
-    .card {
-      background: #f9f871;
-      border-radius: 20px;
-      box-shadow: 0 2px 16px #f6a4ec44;
-      padding: 28px 20px;
-      max-width: 230px;
-      min-width: 180px;
-      margin: 12px 4px;
-      text-align: center;
-      font-size: 1.12em;
+
+    .card-icon i {
+      font-size: 2.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
       font-weight: 600;
-      color: #7ec4cf;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .card-description {
+      color: #6c757d;
+      font-size: 0.95rem;
+    }
+
+    /* Secciones mejoradas */
+    .section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 25px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: 3px;
+    }
+
+    /* Actividades mejoradas */
+    .activity-list {
+      list-style: none;
+    }
+
+    .activity-item {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .activity-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .activity-item h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+
+    .activity-item h3 i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+
+    /* Tips mejorados */
+    .tips {
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 25px 0;
+      border-left: 4px solid var(--primary);
       position: relative;
     }
-    .card:hover {
-      background: #f6a4ec;
-      color: #fff;
-      transform: scale(1.05) translateY(-6px);
-      box-shadow: 0 8px 28px #f6a4ec60;
+
+    .tips::before {
+      content: '\f05a';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: var(--primary);
+      opacity: 0.3;
     }
-    .card-svg {
-      height: 52px;
+
+    .tips-title {
+      font-weight: 600;
+      color: var(--primary);
       margin-bottom: 10px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
-    .section {
-      background: #faf7fc;
-      border-radius: 18px;
-      box-shadow: 0 2px 18px #7ec4cf18;
-      padding: 26px 20px;
-      margin: 36px 0 16px 0;
+
+    /* Quiz mejorado */
+    .quiz-container {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px;
+      padding: 30px;
+      color: white;
+      margin-top: 30px;
     }
-    .section h2 {
-      margin-top: 0;
+
+    .quiz-question {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
     }
-    .activity {
-      background: #ffe6e6;
-      border-radius: 14px;
-      box-shadow: 0 2px 14px #f76d6d22;
-      padding: 18px 14px;
-      margin: 18px auto 16px auto;
-      text-align: left;
-      max-width: 630px;
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
     }
-    .activity h3 {
-      color: #f76d6d;
-      margin-top: 0;
-    }
+
     .quiz-btn {
-      display:inline-block;
-      margin:7px 0;
-      padding:10px 20px;
-      background:#7ec4cf;
-      color:#fff;
-      border:none;
-      border-radius:10px;
-      font-size:1em;
-      font-weight:600;
-      cursor:pointer;
-      transition: background 0.3s, color 0.2s;
-      box-shadow: 0 2px 12px #7ec4cf33;
-    }
-    .quiz-btn:hover { background:#f6a4ec; color:#fff;}
-    .quiz-feedback {margin-top:12px; font-weight:700;}
-    .drag-area {
-      background: #f6a4ec18;
-      border-radius: 14px;
-      padding: 18px;
-      margin: 18px 0;
-      min-height: 120px;
-      box-shadow: 0 2px 12px #7ec4cf19;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .drag-item {
-      background: #f9f871;
-      color: #7ec4cf;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 1.14em;
-      font-weight: 700;
-      cursor: grab;
-      box-shadow: 0 2px 8px #7ec4cf33;
-      margin: 3px;
-      user-select: none;
-      transition: background 0.3s;
-      border: 2px solid #faf7fc;
-    }
-    .drag-item.dragging {
-      background: #f6a4ec;
-      color: #fff;
-      opacity: 0.6;
-      border: 2px solid #f9f871;
-    }
-    .tips {
-      background: #d6f0ff;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 10px;
-      padding: 14px 14px;
-      margin: 14px 0;
-      color: #1c6178;
-      box-shadow: 0 2px 12px #7ec4cf18;
+      padding: 15px;
+      color: white;
       font-weight: 500;
-    }
-    .faq {
-      background: #f9f87144;
-      border-radius: 12px;
-      padding: 14px 12px;
-      margin-top: 18px;
-      box-shadow: 0 2px 12px #f6a4ec18;
-    }
-    .reto {
-      background: #f6a4ec18;
-      border-left: 8px solid #f6a4ec;
-      font-weight: bold;
-      border-radius: 10px;
-      padding: 13px;
-      margin: 17px 0;
-      color: #7ec4cf;
-    }
-    .footer {
-      margin-top: 26px;
-      color: #99a;
-      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
       text-align: center;
     }
+
+    .quiz-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .quiz-feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      display: none;
+    }
+
+    /* Juego de memoria mejorado */
+    .mem-game {
+      margin-top: 30px;
+    }
+
     .mem-cards {
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 10px; 
-      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
     }
+
     .mem-card {
-      width: 80px; 
-      height: 80px; 
-      background: #f6a4ec; 
+      width: 90px;
+      height: 90px;
+      background: var(--gradient);
       border-radius: 12px;
-      color: #fff;
-      font-size: 2.3em; 
-      text-align: center; 
-      line-height: 80px;
-      cursor: pointer; 
-      box-shadow: 0 2px 12px #f6a4ec33;
+      color: white;
+      font-size: 2.5rem;
+      text-align: center;
+      line-height: 90px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       user-select: none;
-      margin: 6px;
-      transition: background 0.2s, color 0.2s;
-      border: 2px solid #faf7fc;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+
+    .mem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      transform: rotateY(90deg);
+      transition: transform 0.5s ease;
+      backface-visibility: hidden;
+    }
+
+    .mem-card.flipped::before {
+      transform: rotateY(0deg);
+    }
+
+    .mem-card:hover {
+      transform: scale(1.05);
+    }
+
     .mem-card.flipped {
-      background: #f9f871;
-      color: #7ec4cf;
-      border: 2px solid #f6a4ec;
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
     }
-    @media (max-width:700px) {
-      .main {padding:8px;}
-      .header-flex{flex-direction:column;gap:10px;}
-      .cards {flex-direction:column;}
-      .card {max-width:100%;}
-      .svg-kid{width:60px;}
+
+    /* Drag and drop mejorado */
+    .drag-container {
+      margin-top: 30px;
+    }
+
+    .drag-area {
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 120px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      border: 2px dashed var(--primary);
+    }
+
+    .drag-item {
+      background: white;
+      color: var(--dark);
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-weight: 600;
+      cursor: grab;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .drag-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .drag-item.dragging {
+      opacity: 0.5;
+      transform: scale(0.95);
+    }
+
+    .drop-area {
+      background: rgba(45, 206, 137, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      border: 2px dashed var(--success);
+    }
+
+    .drop-area-title {
+      width: 100%;
+      font-weight: 600;
+      color: var(--success);
+      margin-bottom: 10px;
+    }
+
+    .dragdrop-msj {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+
+    /* FAQ mejorado */
+    .faq-list {
+      list-style: none;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+      background: var(--gradient);
+      color: white;
+      padding: 15px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      background: white;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 200px;
+    }
+
+    /* Recursos mejorados */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .resource-image {
+      height: 160px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .resource-image i {
+      font-size: 3rem;
+      color: white;
+    }
+
+    .resource-content {
+      padding: 20px;
+    }
+
+    .resource-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .resource-description {
+      color: #6c757d;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+
+    .resource-btn {
+      display: inline-block;
+      background: var(--gradient);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .resource-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
+    }
+
+    /* Footer mejorado */
+    .footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 30px 20px;
+      border-radius: 16px;
+      margin-top: 50px;
+    }
+
+    .footer p {
+      margin-bottom: 15px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Responsive mejorado */
+    @media (max-width: 992px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-image {
+        margin-left: 0;
+        margin-top: 30px;
+      }
+
+      .header-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--gradient);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 100;
+      }
+
+      .navbar-menu.active {
+        transform: translateY(0);
+      }
+
+      .navbar-menu li {
+        margin: 10px 0;
+      }
+
+      .navbar-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+
+      .header-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .section {
+        padding: 25px;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <a href="../index.html">Inicio</a>
-    <a href="index.html">Motricidad Fina</a>
-    <a href="../modulo1/index.html">Introducción</a>
-    <a href="../modulo3/index.html">Motricidad Gruesa</a>
-    <a href="../modulo4/index.html">Evaluación</a>
-    <a href="../modulo5/index.html">Recursos</a>
-  </div>
-  <div class="main">
-    <div class="header-flex">
-      <svg class="svg-kid" viewBox="0 0 100 100">
-        <ellipse cx="50" cy="62" rx="22" ry="13" fill="#f9f871"/>
-        <ellipse cx="50" cy="45" rx="14" ry="17" fill="#f6a4ec"/>
-        <ellipse cx="50" cy="62" rx="19" ry="10" fill="#fff"/>
-        <circle cx="43" cy="45" r="2.4" fill="#fff"/>
-        <circle cx="57" cy="45" r="2.4" fill="#fff"/>
-        <circle cx="43" cy="45" r="1.2" fill="#7ec4cf"/>
-        <circle cx="57" cy="45" r="1.2" fill="#7ec4cf"/>
-        <path d="M46 54 Q50 57 54 54" stroke="#f6a4ec" stroke-width="2" fill="none"/>
-        <rect x="40" y="65" width="20" height="8" rx="4" fill="#f9f871"/>
-        <rect x="48" y="65" width="4" height="10" fill="#7ec4cf"/>
-      </svg>
-      <div>
-        <h1>Motricidad Fina</h1>
-        <div style="color:#7ec4cf;font-size:1.2em;">
-          ¡Desarrolla las manos y la creatividad de tu hijo!
+  <!-- Navbar mejorada -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <i class="fas fa-child"></i> Academia de Psicología
+      </a>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="index.html">Motricidad Fina</a></li>
+        <li><a href="../modulo1/index.html">Introducción</a></li>
+        <li><a href="../modulo3/index.html">Motricidad Gruesa</a></li>
+        <li><a href="../modulo4/index.html">Evaluación</a></li>
+        <li><a href="../modulo5/index.html">Recursos</a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <!-- Header mejorado -->
+    <header class="header fade-in">
+      <div class="header-content">
+        <h1 class="header-title">Motricidad Fina</h1>
+        <p class="header-subtitle">¡Desarrolla las manos y la creatividad de tu hijo!</p>
+        <p class="header-description">
+          Descubre actividades prácticas y divertidas para estimular la motricidad fina en niños de 3 a 5 años, 
+          esencial para su desarrollo cognitivo y autonomía.
+        </p>
+      </div>
+      <div class="header-image">
+        <svg viewBox="0 0 100 100">
+          <ellipse cx="50" cy="62" rx="22" ry="13" fill="#fff"/>
+          <ellipse cx="50" cy="45" rx="14" ry="17" fill="#fff"/>
+          <ellipse cx="50" cy="62" rx="19" ry="10" fill="#5e72e4"/>
+          <circle cx="43" cy="45" r="2.4" fill="#fff"/>
+          <circle cx="57" cy="45" r="2.4" fill="#fff"/>
+          <circle cx="43" cy="45" r="1.2" fill="#5e72e4"/>
+          <circle cx="57" cy="45" r="1.2" fill="#5e72e4"/>
+          <path d="M46 54 Q50 57 54 54" stroke="#f5365c" stroke-width="2" fill="none"/>
+          <rect x="40" y="65" width="20" height="8" rx="4" fill="#fff"/>
+          <rect x="48" y="65" width="4" height="10" fill="#5e72e4"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Tarjetas de navegación mejoradas -->
+    <div class="cards-container">
+      <div class="card fade-in" onclick="document.getElementById('ejercicios').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">
+          <i class="fas fa-hand-paper"></i>
+        </div>
+        <h3 class="card-title">Ejercicios prácticos</h3>
+        <p class="card-description">Actividades sencillas para hacer en casa con materiales cotidianos</p>
+      </div>
+      <div class="card fade-in" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <h3 class="card-title">Quiz interactivo</h3>
+        <p class="card-description">Pon a prueba tus conocimientos sobre motricidad fina</p>
+      </div>
+      <div class="card fade-in" onclick="document.getElementById('memoria').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3 class="card-title">Juego de memoria</h3>
+        <p class="card-description">Estimula la memoria visual y coordinación ojo-mano</p>
+      </div>
+      <div class="card fade-in" onclick="document.getElementById('dragdrop').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">
+          <i class="fas fa-hand-rock"></i>
+        </div>
+        <h3 class="card-title">Arrastrar y soltar</h3>
+        <p class="card-description">Clasifica actividades según su tipo de motricidad</p>
+      </div>
+    </div>
+
+    <!-- Sección: ¿Qué es la motricidad fina? -->
+    <section class="section fade-in">
+      <h2 class="section-title">¿Qué es la motricidad fina?</h2>
+      <p>
+        La motricidad fina se refiere a los movimientos pequeños y precisos que realizamos con manos, dedos, 
+        muñecas y pies. Estas habilidades son fundamentales para tareas cotidianas como escribir, abotonar ropa, 
+        usar utensilios y manipular objetos pequeños.
+      </p>
+      <div class="tips">
+        <h3 class="tips-title">Dato científico</h3>
+        <p>
+          El desarrollo de la motricidad fina está directamente relacionado con la maduración del sistema nervioso 
+          y es un indicador importante del desarrollo cognitivo en los niños.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Ejercicios prácticos -->
+    <section class="section fade-in" id="ejercicios">
+      <h2 class="section-title">Ejercicios prácticos para familias</h2>
+      <ul class="activity-list">
+        <li class="activity-item">
+          <h3><i class="fas fa-cut"></i> Recortar y crear</h3>
+          <p>Usa tijeras de seguridad para recortar formas y crear collages con diferentes texturas y colores.</p>
+        </li>
+        <li class="activity-item">
+          <h3><i class="fas fa-paint-brush"></i> Pintura con dedos</h3>
+          <p>Usa pinturas no tóxicas para que el niño explore diferentes texturas y cree obras de arte.</p>
+        </li>
+        <li class="activity-item">
+          <h3><i class="fas fa-shapes"></i> Modelado con plastilina</h3>
+          <p>Crea figuras, letras y números usando plastilina para fortalecer los músculos de las manos.</p>
+        </li>
+        <li class="activity-item">
+          <h3><i class="fas fa-th"></i> Enhebrar cuentas</h3>
+          <p>Usa cordones gruesos y cuentas grandes para crear collares y pulseras, mejorando la coordinación.</p>
+        </li>
+        <li class="activity-item">
+          <h3><i class="fas fa-tshirt"></i> Abrochar y desabrochar</h3>
+          <p>Practica abrochar botones, cremalleras y hebillas en ropa y juguetes para desarrollar autonomía.</p>
+        </li>
+      </ul>
+      <div class="tips">
+        <h3 class="tips-title">Consejo profesional</h3>
+        <p>
+          Dedica 15-20 minutos diarios a estas actividades. La constancia es más importante que la duración. 
+          Celebra cada logro, por pequeño que parezca.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Quiz interactivo -->
+    <section class="section fade-in" id="quiz">
+      <h2 class="section-title">Quiz interactivo</h2>
+      <div class="quiz-container">
+        <div class="quiz-question">¿Cuál de estas actividades mejora principalmente la motricidad fina?</div>
+        <div class="quiz-options">
+          <div class="quiz-btn" onclick="respuesta('a')">A) Ensartar cuentas</div>
+          <div class="quiz-btn" onclick="respuesta('b')">B) Saltar la cuerda</div>
+          <div class="quiz-btn" onclick="respuesta('c')">C) Lanzar una pelota</div>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </section>
+
+    <!-- Sección: Juego de memoria -->
+    <section class="section fade-in" id="memoria">
+      <h2 class="section-title">Juego de memoria motriz</h2>
+      <p>Encuentra los pares de actividades relacionadas con la motricidad fina. Este juego estimula la memoria visual y la concentración.</p>
+      <div class="mem-game">
+        <div class="mem-cards" id="mem-cards"></div>
+        <div id="memoria-msj" style="font-weight:bold; margin-top:15px;"></div>
+      </div>
+    </section>
+
+    <!-- Sección: Arrastrar y soltar -->
+    <section class="section fade-in" id="dragdrop">
+      <h2 class="section-title">Arrastrar y soltar</h2>
+      <p>Arrastra las actividades que corresponden a motricidad fina al área designada.</p>
+      <div class="drag-container">
+        <div class="drag-area" id="drag-area">
+          <div class="drag-item" draggable="true" data-fina="true">Recortar papel</div>
+          <div class="drag-item" draggable="true" data-fina="false">Saltar en un pie</div>
+          <div class="drag-item" draggable="true" data-fina="true">Enhebrar cuentas</div>
+          <div class="drag-item" draggable="true" data-fina="false">Lanzar pelota</div>
+          <div class="drag-item" draggable="true" data-fina="true">Abotonar camisa</div>
+        </div>
+        <div class="drop-area" id="fina-drop">
+          <div class="drop-area-title">Motricidad fina (arrástralos aquí):</div>
+        </div>
+        <div id="dragdrop-msj" class="dragdrop-msj"></div>
+      </div>
+    </section>
+
+    <!-- Sección: Preguntas frecuentes -->
+    <section class="section fade-in">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿A qué edad se desarrolla la motricidad fina?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>La motricidad fina comienza a desarrollarse desde los primeros meses de vida, pero es entre los 3 y 5 años cuando se produce un avance significativo. Cada niño tiene su propio ritmo de desarrollo.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿Qué hago si mi hijo no quiere recortar o dibujar?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Ofrece diferentes materiales y texturas. Convierte la actividad en un juego sin presión. Algunos niños prefieren actividades tridimensionales como construir con bloques en lugar de dibujar.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿La tecnología afecta la motricidad fina?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>El uso excesivo de pantallas puede limitar el desarrollo de la motricidad fina. Es importante equilibrar el tiempo frente a pantallas con actividades manuales y juegos tradicionales.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Sección: Recursos para padres -->
+    <section class="section fade-in">
+      <h2 class="section-title">Recursos para padres</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-image">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="resource-content">
+            <h3 class="resource-title">Guía completa</h3>
+            <p class="resource-description">Descarga nuestra guía con actividades para estimular la motricidad fina en casa.</p>
+            <a href="#" class="resource-btn">Descargar PDF</a>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-image">
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="resource-content">
+            <h3 class="resource-title">Videos tutoriales</h3>
+            <p class="resource-description">Accede a nuestra colección de videos con ejercicios demostrativos.</p>
+            <a href="#" class="resource-btn">Ver videos</a>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-image">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="resource-content">
+            <h3 class="resource-title">Plan semanal</h3>
+            <p class="resource-description">Descarga un planificador semanal con actividades organizadas por día.</p>
+            <a href="#" class="resource-btn">Descargar</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="cards">
-      <div class="card" onclick="document.getElementById('ejercicios').scrollIntoView({behavior:'smooth'})">
-        <svg class="card-svg" viewBox="0 0 48 48"><rect x="11" y="14" width="26" height="20" rx="6" fill="#7ec4cf"/><circle cx="24" cy="24" r="7" fill="#f6a4ec"/></svg>
-        Ejercicios prácticos
-      </div>
-      <div class="card" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">
-        <svg class="card-svg" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="#f9f871"/><rect x="17" y="20" width="14" height="8" rx="4" fill="#f6a4ec"/></svg>
-        Quiz interactivo
-      </div>
-      <div class="card" onclick="document.getElementById('memoria').scrollIntoView({behavior:'smooth'})">
-        <svg class="card-svg" viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="28" rx="6" fill="#f6a4ec"/><circle cx="24" cy="24" r="7" fill="#f9f871"/><rect x="18" y="18" width="12" height="12" rx="4" fill="#7ec4cf"/></svg>
-        Juego de memoria
-      </div>
-      <div class="card" onclick="document.getElementById('dragdrop').scrollIntoView({behavior:'smooth'})">
-        <svg class="card-svg" viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="13" ry="9" fill="#f9f871"/><rect x="20" y="17" width="8" height="14" rx="4" fill="#f6a4ec"/></svg>
-        Arrastrar y soltar
-      </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>¿Qué es la motricidad fina?</h2>
-      <p>
-        Son los movimientos pequeños y precisos que hacemos con manos y dedos.<br>
-        Permite escribir, dibujar, abotonar, recortar y manipular objetos pequeños.<br>
-        <span class="tips">
-        <b>Científicamente:</b> La motricidad fina depende de la coordinación entre el cerebro, los ojos y los músculos pequeños de manos y dedos.
-        </span>
-      </p>
-    </div>
-
-    <div class="section" id="ejercicios">
-      <h2>Ejercicios prácticos para familias</h2>
-      <ul>
-        <li><b>Enhebrar cuentas:</b> Usen cordones y cuentas para crear collares y pulseras.</li>
-        <li><b>Recortar y pegar:</b> Recorten figuras y hagan collages juntos.</li>
-        <li><b>Jugar con plastilina:</b> Formen animales, letras y números con las manos.</li>
-        <li><b>Dibujar muñecos:</b> Dibuja un muñeco y pídele al niño que coloree los detalles pequeños.</li>
-        <li><b>Hacer figuras con pinzas de ropa:</b> Formar animales o personas usando pinzas y papel.</li>
-      </ul>
-      <div class="tips">
-        Haz estos ejercicios al menos 3 veces por semana. ¡Acompaña a tu hijo y celebra cada avance!
+    <!-- Footer mejorado -->
+    <footer class="footer fade-in">
+      <p>Academia de Psicología &copy; 2025 - Todos los derechos reservados</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
-    </div>
-
-    <div class="section activity" id="quiz">
-      <h3>Quiz: ¿Cuál mejora la motricidad fina?</h3>
-      <button class="quiz-btn" onclick="respuesta('a')">A) Ensartar cuentas</button>
-      <button class="quiz-btn" onclick="respuesta('b')">B) Saltar la cuerda</button>
-      <button class="quiz-btn" onclick="respuesta('c')">C) Lanzar una pelota</button>
-      <div id="quiz-feedback" class="quiz-feedback"></div>
-    </div>
-
-    <div class="section activity" id="memoria">
-      <h3>Juego de memoria motriz</h3>
-      <div class="mem-cards" id="mem-cards"></div>
-      <div id="memoria-msj" style="font-weight:bold; margin-top:10px;"></div>
-    </div>
-
-    <div class="section activity" id="dragdrop">
-      <h3>Arrastra y suelta: ¿qué pertenece a motricidad fina?</h3>
-      <div class="drag-area" id="drag-area">
-        <div class="drag-item" draggable="true" data-fina="true">Recortar papel</div>
-        <div class="drag-item" draggable="true" data-fina="false">Saltar en un pie</div>
-        <div class="drag-item" draggable="true" data-fina="true">Enhebrar cuentas</div>
-        <div class="drag-item" draggable="true" data-fina="false">Lanzar pelota</div>
-        <div class="drag-item" draggable="true" data-fina="true">Abotonar camisa</div>
-      </div>
-      <div class="drag-area" id="fina-drop" style="background:#f9f87144; min-height:70px;">
-        <strong>Motricidad fina (arrástralos aquí):</strong>
-      </div>
-      <div id="dragdrop-msj" style="margin-top:10px;font-weight:600;"></div>
-    </div>
-
-    <div class="section faq">
-      <h2>Preguntas frecuentes</h2>
-      <ul>
-        <li><b>¿A qué edad se desarrolla la motricidad fina?</b> Desde los 6 meses en adelante, pero cada niño tiene su ritmo.</li>
-        <li><b>¿Qué hago si mi hijo no quiere recortar o dibujar?</b> Propón la actividad en forma de juego, sin presión.</li>
-        <li><b>¿La tecnología afecta la motricidad fina?</b> El uso excesivo de pantallas puede limitar el movimiento manual. Equilibra con juegos físicos.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Consejos para padres</h2>
-      <div class="tips">
-        <b>Evita corregir demasiado:</b> Deja que el niño experimente y aprenda por sí mismo.
-      </div>
-      <div class="tips">
-        <b>Motiva con elogios:</b> Cada logro, incluso pequeño, merece reconocimiento.
-      </div>
-      <div class="tips">
-        <b>Hazlo divertido:</b> Pon música, usa colores, inventa historias.
-      </div>
-    </div>
-
-    <div class="section reto">
-      <b>Reto de la semana:</b> Haz un collar de cuentas y plastilina con tu hijo y comparte una foto con la familia. ¡Premia el esfuerzo!
-    </div>
-
-    <div class="section">
-      <h2>¿Cómo evaluar el avance?</h2>
-      <ul>
-        <li>¿Puede tu hijo recortar con tijeras sin ayuda?</li>
-        <li>¿Enhebra cuentas y hace nudos?</li>
-        <li>¿Colorea dentro de las líneas?</li>
-        <li>Observa si mejora con práctica. Registra los avances cada semana en una tabla simple.</li>
-      </ul>
-    </div>
-
-    <div class="footer">
-      Academia de Psicología &copy; 2025
-    </div>
+    </footer>
   </div>
+
   <script>
-    // Quiz
+    // Función para el quiz
     function respuesta(opcion) {
       var feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+      
       if(opcion === 'a') {
-        feedback.textContent = "¡Correcto! Ensartar cuentas mejora la motricidad fina.";
-        feedback.style.color = "#2e7d32";
+        feedback.textContent = "¡Correcto! Ensartar cuentas mejora la coordinación ojo-mano y la precisión de movimientos.";
+        feedback.style.background = "rgba(45, 206, 137, 0.2)";
+        feedback.style.color = "var(--success)";
       } else {
-        feedback.textContent = "Intenta de nuevo 😉";
-        feedback.style.color = "#f76d6d";
+        feedback.textContent = "Intenta de nuevo. Las otras actividades corresponden a motricidad gruesa.";
+        feedback.style.background = "rgba(245, 54, 92, 0.2)";
+        feedback.style.color = "var(--danger)";
       }
     }
-    // Juego de memoria con emojis
+
+    // Juego de memoria mejorado
     function iniciarMemoria() {
       const icons = ['✂️','✂️','🧵','🧵','🖍️','🖍️','🧩','🧩'];
       let cards = icons.map(i => ({icon: i, id: Math.random()})).sort(() => Math.random() - 0.5);
@@ -417,6 +1046,7 @@
       container.innerHTML = '';
       let flipped = [];
       let matched = [];
+      
       cards.forEach((c, i) => {
         let div = document.createElement('div');
         div.className = 'mem-card';
@@ -427,18 +1057,25 @@
             div.textContent = c.icon;
             div.classList.add('flipped');
             flipped.push({i, icon: c.icon});
+            
             if (flipped.length == 2) {
               setTimeout(function() {
                 let [f1, f2] = flipped;
                 if (f1.icon == f2.icon && f1.i != f2.i) {
                   matched.push(f1.i, f2.i);
+                  if (matched.length == cards.length) {
+                    document.getElementById('memoria-msj').textContent = '¡Excelente! Completaste el juego de memoria 🎉';
+                    document.getElementById('memoria-msj').style.color = "var(--success)";
+                  }
                 } else {
-                  document.querySelectorAll('.mem-card.flipped').forEach(d => {d.textContent = ''; d.classList.remove('flipped');});
+                  document.querySelectorAll('.mem-card.flipped').forEach(d => {
+                    if (!matched.includes(parseInt(d.dataset.index))) {
+                      d.textContent = '';
+                      d.classList.remove('flipped');
+                    }
+                  });
                 }
                 flipped = [];
-                if (matched.length == cards.length) {
-                  document.getElementById('memoria-msj').textContent = '¡Muy bien! Completaste el juego de memoria 🎉';
-                }
               }, 900);
             }
           }
@@ -446,35 +1083,91 @@
         container.appendChild(div);
       });
     }
-    window.addEventListener('DOMContentLoaded', iniciarMemoria);
 
-    // Drag and drop interactivo
+    // Drag and drop mejorado
     let dragged = null;
     let finaDrop = document.getElementById('fina-drop');
     let dragItems = document.querySelectorAll('.drag-item');
+    
     dragItems.forEach(item => {
       item.addEventListener('dragstart', function(e) {
         dragged = item;
         item.classList.add('dragging');
       });
+      
       item.addEventListener('dragend', function(e) {
         item.classList.remove('dragging');
       });
     });
+    
     finaDrop.addEventListener('dragover', function(e) {
       e.preventDefault();
     });
+    
     finaDrop.addEventListener('drop', function(e) {
       e.preventDefault();
+      let msj = document.getElementById('dragdrop-msj');
+      msj.style.display = 'block';
+      
       if (dragged && dragged.dataset.fina === "true") {
         finaDrop.appendChild(dragged);
-        dragged.style.background = "#7ec4cf";
-        dragged.style.color = "#fff";
-        dragged.textContent += " ✅";
-        document.getElementById('dragdrop-msj').textContent = "¡Bien! " + dragged.textContent + " es motricidad fina.";
+        dragged.style.background = "var(--success)";
+        dragged.style.color = "white";
+        dragged.draggable = false;
+        dragged.style.cursor = "default";
+        dragged.innerHTML += " <i class='fas fa-check'></i>";
+        
+        msj.textContent = "¡Bien hecho! " + dragged.textContent + " es una actividad de motricidad fina.";
+        msj.style.background = "rgba(45, 206, 137, 0.2)";
+        msj.style.color = "var(--success)";
+        
+        // Verificar si todos los items correctos han sido arrastrados
+        let remainingItems = document.querySelectorAll('#drag-area .drag-item[data-fina="true"]');
+        if (remainingItems.length === 0) {
+          msj.textContent += " ¡Has completado todos correctamente!";
+        }
       } else if (dragged) {
-        document.getElementById('dragdrop-msj').textContent = "Eso es motricidad gruesa, intenta con otra opción.";
+        msj.textContent = "Esa actividad corresponde a motricidad gruesa. Intenta con otra.";
+        msj.style.background = "rgba(245, 54, 92, 0.2)";
+        msj.style.color = "var(--danger)";
       }
+    });
+
+    // FAQ interactiva
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+
+    // Toggle para menú móvil
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+      document.getElementById('navbar-menu').classList.toggle('active');
+    });
+
+    // Inicializar juego de memoria al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      iniciarMemoria();
+      
+      // Animaciones de entrada
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.section, .card').forEach(el => {
+        observer.observe(el);
+      });
     });
   </script>
 </body>
