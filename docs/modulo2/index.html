@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Montserrat', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
+    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Montserrat', Arial, sans-serif; color: #333; margin:0; }
     .navbar { background: #FFB347; padding: 20px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); font-size:1.1em;}
     .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 14px; padding: 12px 24px; border-radius: 14px; background: #F76D6D; transition: background 0.3s, color 0.3s, transform 0.3s; display: inline-block;}
     .navbar a:hover { background: #FFD700; color: #F76D6D; transform: scale(1.07);}
@@ -14,14 +14,24 @@
     @keyframes fadein { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: translateY(0);}}
     h1 { color: #33b5e5; font-size: 2.2em; }
     h2 { color: #006699; margin-top:30px;}
-    ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
+    ul, ol { text-align:left; font-size:1.13em; margin: 16px auto 30px auto; max-width:650px;}
     .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#FFD700; color:#F76D6D; border:none; border-radius:14px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s, color 0.3s;}
     .btn-act:hover { background:#F76D6D; color:#fff;}
     .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
-    .actividad { background:#e6f7ff; border-radius:18px; padding:20px; margin:32px 0;}
+    .section { background: #f8f9fa; border-radius: 18px; padding: 24px; margin: 28px 0;}
+    .draw-img, .video-embed { width:120px; height:auto; margin:12px 12px; vertical-align:middle; border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+    .faq { background: #e6f7ff; border-radius: 14px; padding: 18px; margin: 17px 0;}
+    .consejo { background: #fffbe6; border-radius: 14px; padding: 12px; margin: 9px 0;}
     .quiz { padding:8px 0;}
     .quiz button {margin:8px;}
     .quiz-feedback {margin-top:14px; font-weight:600;}
+    .juego-memoria { background:#e6e6ff; border-radius:18px; padding:20px; margin:32px auto; display:inline-block;}
+    .mem-card { width:80px; height:80px; margin:10px; display:inline-block; border-radius:10px; background:#FFD700; font-size:2.5em; line-height:80px; text-align:center; cursor:pointer; box-shadow:0 2px 12px rgba(0,0,0,0.09);}
+    .mem-card.flipped { background:#F76D6D; color:#fff;}
+    .material {background:#ffe;color:#444;padding:10px 18px;border-radius:10px;margin:10px 0;}
+    .reto {background: #d2ffe6; font-weight: bold; border-left: 6px solid #33b5e5; padding: 15px; margin: 15px 0;}
+    .video-embed { width:220px; height:auto;}
+    @media (max-width:600px) {.container{padding:10px;}}
     body.oscuro { background: #222 !important; color: #fff !important;}
     .oscuro .container { background: #333 !important; }
     .oscuro .navbar { background: #444 !important; }
@@ -29,8 +39,9 @@
     .oscuro .navbar a:hover { background: #FFD700 !important; color: #F76D6D !important;}
     .oscuro .btn-act { background: #222 !important; color: #FFD700 !important;}
     .oscuro .btn-act:hover { background: #FFD700 !important; color: #222 !important;}
-    .oscuro .actividad { background: #444 !important;}
-    .oscuro .quiz-feedback {color: #FFD700;}
+    .oscuro .section, .oscuro .faq, .oscuro .consejo, .oscuro .juego-memoria, .oscuro .material, .oscuro .reto { background: #444 !important;}
+    .oscuro .mem-card { background: #FFD700 !important; color: #333;}
+    .oscuro .mem-card.flipped { background:#F76D6D!important;color:#fff;}
   </style>
 </head>
 <body>
@@ -44,33 +55,122 @@
     <a href="../modulo5/index.html">Módulo 5</a>
   </div>
   <div class="container">
-    <h1>Módulo 2: Motricidad Fina</h1>
-    <p>La <strong>motricidad fina</strong> son los movimientos pequeños que hacemos con los dedos y las manos, como escribir, dibujar, recortar o abotonar.</p>
-    <h2>¿Por qué es importante?</h2>
-    <ul>
-      <li>Ayuda a los niños a escribir, dibujar y manipular objetos pequeños.</li>
-      <li>Mejora la coordinación y la concentración.</li>
-      <li>Facilita tareas cotidianas como abotonarse la camisa o atarse los zapatos.</li>
-    </ul>
-    <h2>Actividad interactiva: ¿Cuál mejora la motricidad fina?</h2>
-    <div class="actividad">
-      <div class="quiz">
-        <button class="btn-act" onclick="respuesta('a')">A) Ensartar cuentas</button>
-        <button class="btn-act" onclick="respuesta('b')">B) Saltar la cuerda</button>
-        <button class="btn-act" onclick="respuesta('c')">C) Lanzar una pelota</button>
+    <h1>Motricidad Fina</h1>
+    <div class="section">
+      <h2>¿Qué es la motricidad fina?</h2>
+      <img src="https://cdn.pixabay.com/photo/2017/01/31/19/14/child-2026201_1280.png" class="draw-img" alt="niño dibujando">
+      <p>
+        La motricidad fina se refiere a los movimientos pequeños y precisos que realizamos con las manos, dedos y muñeca.
+        Es clave para <b>escribir, dibujar, abotonar, recortar, manipular objetos pequeños</b> y muchas actividades cotidianas.
+      </p>
+      <div class="consejo">
+        <b>Científicamente:</b> El desarrollo de la motricidad fina se relaciona con la maduración del sistema nervioso y la coordinación entre ojo y mano.
+        <br>
+        <b>En casa:</b> Puedes ayudar a tu hijo con juegos, arte y actividades sencillas.
       </div>
-      <div id="quiz-feedback" class="quiz-feedback"></div>
     </div>
+
+    <div class="section">
+      <h2>Ejercicios prácticos para familias</h2>
+      <ol>
+        <li><b>Enhebrar cuentas:</b> Usen cordones y cuentas de colores para crear collares. Ideal para dedos pequeños.</li>
+        <li><b>Recortar y pegar:</b> Recorten figuras de revistas y hagan collages juntos.</li>
+        <li><b>Jugar con plastilina:</b> Formen animales, letras y números con las manos.</li>
+        <li><b>Dibujar muñecos:</b> Dibuja el muñeco favorito y pídele al niño que coloree los detalles pequeños.</li>
+        <li><b>Hacer figuras con pinzas de ropa:</b> Formar animales o personas usando pinzas y papel.</li>
+      </ol>
+      <img src="https://cdn.pixabay.com/photo/2017/01/31/19/14/children-2026203_1280.png" class="draw-img" alt="niños recortando">
+      <img src="https://cdn.pixabay.com/photo/2017/01/31/19/14/child-2026202_1280.png" class="draw-img" alt="niño plastilina">
+      <div class="material">
+        <b>Material recomendado:</b> Cuentas, cordones, tijeras, pegamento, plastilina, pinzas de ropa, revistas viejas.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Juego interactivo: Memoria Motriz</h2>
+      <div class="juego-memoria" id="memoria">
+        <!-- Cards will appear here -->
+      </div>
+      <div id="memoria-msj" style="font-weight:bold; margin-top:10px;"></div>
+    </div>
+
+    <div class="section">
+      <h2>Quiz: ¿Cuál mejora la motricidad fina?</h2>
+      <div class="actividad">
+        <div class="quiz">
+          <button class="btn-act" onclick="respuesta('a')">A) Ensartar cuentas</button>
+          <button class="btn-act" onclick="respuesta('b')">B) Saltar la cuerda</button>
+          <button class="btn-act" onclick="respuesta('c')">C) Lanzar una pelota</button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Consejos para padres</h2>
+      <div class="consejo">
+        <b>Evita corregir demasiado:</b> Deja que el niño experimente y aprenda por sí mismo.
+      </div>
+      <div class="consejo">
+        <b>Motiva con elogios:</b> Cada logro, incluso pequeño, merece reconocimiento.
+      </div>
+      <div class="consejo">
+        <b>Hazlo divertido:</b> Pon música, usa colores, inventa historias.
+      </div>
+    </div>
+
+    <div class="section faq">
+      <h2>Preguntas frecuentes</h2>
+      <ul>
+        <li><b>¿A qué edad se desarrolla la motricidad fina?</b> Desde los 6 meses en adelante, pero cada niño tiene su ritmo.</li>
+        <li><b>¿Qué hago si mi hijo no quiere recortar o dibujar?</b> Propón la actividad en forma de juego, sin presión.</li>
+        <li><b>¿La tecnología afecta la motricidad fina?</b> El uso excesivo de pantallas puede limitar el movimiento manual. Equilibra con juegos físicos.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Videos recomendados</h2>
+      <div>
+        <iframe class="video-embed" width="220" height="124" src="https://www.youtube.com/embed/4b7rRkppJ9g" title="Actividades Motricidad Fina" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video-embed" width="220" height="124" src="https://www.youtube.com/embed/_Vv7vFzjP8I" title="Motricidad fina para niños" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Material descargable</h2>
+      <div class="material">
+        <a href="https://www.educapeques.com/wp-content/uploads/2013/02/actividades-motricidad-fina.pdf" target="_blank">Descargar PDF de actividades motricidad fina</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="reto">
+        <b>Reto de la semana:</b> Haz un collar de cuentas y plastilina con tu hijo y comparte una foto con la familia. ¡Premia el esfuerzo!
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>¿Cómo evaluar el avance?</h2>
+      <ul>
+        <li>¿Puede tu hijo recortar con tijeras sin ayuda?</li>
+        <li>¿Enhebra cuentas y hace nudos?</li>
+        <li>¿Colorea dentro de las líneas?</li>
+        <li>Observa si mejora con práctica. Registra los avances cada semana en una tabla simple.</li>
+      </ul>
+    </div>
+
     <a class="btn-act" href="../modulo1/index.html">← Volver al Módulo 1</a>
     <a class="btn-act" href="../modulo3/index.html">Siguiente módulo →</a>
     <a class="btn-act" href="../index.html">Ir al inicio</a>
     <div class="footer">Academia de Psicología &copy; 2025</div>
   </div>
   <script>
+    // Animación de entrada
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.8s';
     window.addEventListener('DOMContentLoaded', function() {
       document.body.style.opacity = '1';
+      iniciarMemoria();
     });
     document.querySelectorAll('.btn-act, .navbar a').forEach(function(link) {
       link.addEventListener('click', function(e) {
@@ -96,6 +196,44 @@
         feedback.textContent = "Intenta de nuevo 😉";
         feedback.style.color = "red";
       }
+    }
+    // Juego de memoria
+    function iniciarMemoria() {
+      const icons = ['✂️','✂️','🖍️','🖍️','🧩','🧩','🧵','🧵'];
+      let cards = icons
+        .map(i=>({icon:i, id:Math.random()}))
+        .sort(()=>Math.random()-0.5);
+      let container = document.getElementById('memoria');
+      container.innerHTML = '';
+      let flipped = [];
+      let matched = [];
+      cards.forEach((c,i)=>{
+        let div = document.createElement('div');
+        div.className = 'mem-card';
+        div.dataset.index = i;
+        div.onclick = function(){
+          if(flipped.length<2 && !div.classList.contains('flipped') && !matched.includes(i)){
+            div.textContent = c.icon;
+            div.classList.add('flipped');
+            flipped.push({i,icon:c.icon});
+            if(flipped.length==2){
+              setTimeout(function(){
+                let [f1,f2]=flipped;
+                if(f1.icon==f2.icon && f1.i!=f2.i){
+                  matched.push(f1.i,f2.i);
+                } else {
+                  document.querySelectorAll('.mem-card.flipped').forEach(d=>{d.textContent='';d.classList.remove('flipped');});
+                }
+                flipped = [];
+                if(matched.length==cards.length){
+                  document.getElementById('memoria-msj').textContent='¡Muy bien! Completaste el juego de memoria';
+                }
+              }, 800);
+            }
+          }
+        };
+        container.appendChild(div);
+      });
     }
   </script>
 </body>
