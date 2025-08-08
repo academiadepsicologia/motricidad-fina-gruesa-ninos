@@ -2,38 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Módulo 3: Motricidad Gruesa</title>
+  <title>Módulo 4: Evaluación y Seguimiento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: #f0f8ff; font-family: Arial, sans-serif; color: #333; }
-    .container { max-width: 650px; margin: auto; background: #fff; padding: 30px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);}
-    h1 { color: #006699; }
-    ul { text-align:left; font-size:1.1em; }
-    .actividad { background:#e6ffed; border-radius:12px; padding:16px; margin:18px 0;}
-    a { display:inline-block; margin:16px 0; color:#006699; text-decoration:none; font-weight:bold;}
+    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
+    .navbar { background: #006699; padding: 16px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
+    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 16px; padding: 12px 24px; border-radius: 8px; background: #33b5e5; transition: background 0.3s; display: inline-block;}
+    .navbar a:hover { background: #ffd700; color: #006699;}
+    .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 32px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);}
+    h1 { color: #33b5e5; font-size: 2em;}
+    h2 { color: #006699; margin-top:30px;}
+    ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
+    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none; border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;}
+    .btn-act:hover { background:#ffec8b; color:#006699;}
+    .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
+    .actividad { background:#fffbe6; border-radius:12px; padding:18px; margin:22px 0;}
+    body.oscuro { background: #222 !important; color: #fff !important;}
+    .oscuro .container { background: #333 !important; }
+    .oscuro .navbar { background: #444 !important; }
+    .oscuro .navbar a { background: #555 !important; color: #ffd700 !important;}
+    .oscuro .navbar a:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .btn-act { background: #444 !important; color: #ffd700 !important;}
+    .oscuro .btn-act:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .actividad { background: #444 !important;}
   </style>
 </head>
 <body>
+  <button id="modo" class="btn-act" style="float:right; margin:10px 25px;">🌙 Modo oscuro</button>
+  <div class="navbar">
+    <a href="../index.html">Inicio</a>
+    <a href="../modulo1/index.html">Módulo 1</a>
+    <a href="../modulo2/index.html">Módulo 2</a>
+    <a href="../modulo3/index.html">Módulo 3</a>
+    <a href="index.html">Módulo 4</a>
+    <a href="../modulo5/index.html">Módulo 5</a>
+  </div>
   <div class="container">
-    <h1>Módulo 3: Motricidad Gruesa</h1>
-    <p>La motricidad gruesa son los movimientos grandes que hacemos con todo el cuerpo, como saltar, correr, bailar o lanzar una pelota.</p>
-    <h2>¿Por qué es importante?</h2>
+    <h1>Módulo 4: Evaluación y Seguimiento</h1>
+    <p>En este módulo aprenderás cómo observar y registrar el progreso de los niños en sus actividades de motricidad fina y gruesa.</p>
+    <h2>¿Cómo evaluar?</h2>
     <ul>
-      <li>Ayuda a los niños a moverse, jugar y explorar el mundo.</li>
-      <li>Mejora el equilibrio y la fuerza.</li>
-      <li>Es necesaria para actividades como subir escaleras o andar en bicicleta.</li>
+      <li>Observa si el niño realiza la actividad solo o necesita ayuda.</li>
+      <li>Fíjate si mejora con la práctica: ¿lo hace más rápido? ¿con más precisión?</li>
+      <li>Pregunta al niño cómo se siente haciendo la actividad.</li>
     </ul>
-    <h2>Actividad divertida</h2>
+    <h2>Actividad</h2>
     <div class="actividad">
-      <strong>Saltos de obstáculos</strong><br>
+      <strong>Registro de avances</strong><br>
       <ul>
-        <li>Materiales: almohadas o cojines.</li>
-        <li>Indicación: coloca las almohadas en el suelo y pide al niño que salte de una a otra sin tocar el suelo.</li>
-        <li>Observa: cómo salta y si mantiene el equilibrio.</li>
+        <li>Haz una tabla sencilla con el nombre de cada actividad y la fecha.</li>
+        <li>Marca con una carita feliz si el niño la hizo bien, una carita seria si necesita más práctica.</li>
+        <li>Repite las actividades cada semana y observa el cambio.</li>
       </ul>
     </div>
-    <a href="../modulo2/index.html">Volver al Módulo 2</a>
-    <a href="../modulo4/index.html">Siguiente módulo</a>
-    <a href="../index.html">Volver al inicio</a>
+    <a class="btn-act" href="../modulo3/index.html">← Volver al Módulo 3</a>
+    <a class="btn-act" href="../modulo5/index.html">Siguiente módulo →</a>
+    <a class="btn-act" href="../index.html">Ir al inicio</a>
+    <div class="footer">Academia de Psicología &copy; 2025</div>
   </div>
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s';
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.style.opacity = '1';
+    });
+    document.querySelectorAll('.btn-act, .navbar a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (link.getAttribute('target') !== '_blank') {
+          e.preventDefault();
+          document.body.style.opacity = '0.2';
+          setTimeout(function() {
+            window.location.href = link.href;
+          }, 350);
+        }
+      });
+    });
+    document.getElementById('modo').onclick = function() {
+      document.body.classList.toggle('oscuro');
+      this.textContent = document.body.classList.contains('oscuro') ? '☀️ Modo claro' : '🌙 Modo oscuro';
+    };
+  </script>
 </body>
 </html>
