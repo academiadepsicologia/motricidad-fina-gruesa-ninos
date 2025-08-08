@@ -4,25 +4,33 @@
   <meta charset="UTF-8">
   <title>Módulo 1: Introducción a la Motricidad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
-    .navbar { background: #006699; padding: 16px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
-    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 16px; padding: 12px 24px; border-radius: 8px; background: #33b5e5; transition: background 0.3s; display: inline-block;}
-    .navbar a:hover { background: #ffd700; color: #006699;}
-    .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 32px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);}
-    h1 { color: #006699; font-size: 2em;}
-    h2 { color: #33b5e5; margin-top:30px;}
-    ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
-    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none; border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;}
-    .btn-act:hover { background:#ffec8b; color:#006699;}
+    body { background: linear-gradient(135deg, #FCEABB 0%, #FFEEAF 100%); font-family: 'Montserrat', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
+    .navbar { background: #FFB347; padding: 20px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); font-size:1.1em;}
+    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 14px; padding: 12px 24px; border-radius: 14px; background: #F76D6D; transition: background 0.3s, color 0.3s, transform 0.3s; display: inline-block;}
+    .navbar a:hover { background: #FFD700; color: #F76D6D; transform: scale(1.07);}
+    .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 40px 32px; border-radius: 26px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); text-align: center; animation: fadein 1s;}
+    @keyframes fadein { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: translateY(0);}}
+    h1 { color: #F76D6D; font-size: 2.2em; }
+    h2 { color: #FFB347; margin-top:30px;}
+    ul { text-align:left; font-size:1.15em; margin: 16px auto 30px auto; max-width:650px; line-height:1.65;}
+    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#FFD700; color:#F76D6D; border:none; border-radius:14px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s, color 0.3s;}
+    .btn-act:hover { background:#F76D6D; color:#fff;}
     .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
-    body.oscuro { background: #222 !important; color: #fff !important;}
-    .oscuro .container { background: #333 !important; }
-    .oscuro .navbar { background: #444 !important; }
-    .oscuro .navbar a { background: #555 !important; color: #ffd700 !important;}
-    .oscuro .navbar a:hover { background: #ffd700 !important; color: #444 !important;}
-    .oscuro .btn-act { background: #444 !important; color: #ffd700 !important;}
-    .oscuro .btn-act:hover { background: #ffd700 !important; color: #444 !important;}
+    .card-group { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; margin-bottom:36px;}
+    .card { flex: 1 1 200px; max-width: 220px; background: #FFD700; color:#444; border-radius: 18px; padding: 24px 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); margin: 0 8px 18px 8px; text-align:center; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; font-weight:500; font-size:1.15em; position:relative;}
+    .card:hover { transform: translateY(-8px) scale(1.08); box-shadow: 0 8px 28px rgba(0,0,0,0.15); background: #FFB347; color: #F76D6D;}
+    .emoji { font-size:2.5em; margin-bottom:10px; display:block;}
+    body.oscuro { background: #111 !important; color: #fff !important;}
+    .oscuro .container { background: #222 !important; }
+    .oscuro .navbar { background: #333 !important; }
+    .oscuro .navbar a { background: #222 !important; color: #FFD700 !important;}
+    .oscuro .navbar a:hover { background: #FFD700 !important; color: #F76D6D !important;}
+    .oscuro .btn-act { background: #222 !important; color: #FFD700 !important;}
+    .oscuro .btn-act:hover { background: #FFD700 !important; color: #222 !important;}
+    .oscuro .card { background: #222 !important; color: #FFD700 !important;}
+    .oscuro .card:hover { background: #FFD700 !important; color: #F76D6D !important;}
   </style>
 </head>
 <body>
@@ -37,16 +45,21 @@
   </div>
   <div class="container">
     <h1>Módulo 1: Introducción a la Motricidad</h1>
-    <p>La motricidad es la capacidad de mover nuestro cuerpo. <b>Hay dos tipos principales:</b></p>
+    <div class="desc">¡Comienza tu viaje! Descubre qué es la motricidad fina y gruesa y por qué es clave para el desarrollo infantil.</div>
+    <div class="card-group">
+      <div class="card" onclick="window.location='../modulo2/index.html'"><span class="emoji">🖐️</span>Motricidad fina</div>
+      <div class="card" onclick="window.location='../modulo3/index.html'"><span class="emoji">🏃‍♂️</span>Motricidad gruesa</div>
+    </div>
+    <h2>¿Qué es la motricidad?</h2>
     <ul>
-      <li><b>Motricidad fina:</b> movimientos pequeños con dedos y manos.</li>
-      <li><b>Motricidad gruesa:</b> movimientos grandes: saltar, correr, bailar.</li>
+      <li><b>Motricidad fina:</b> movimientos pequeños con dedos y manos (dibujar, recortar, abotonar).</li>
+      <li><b>Motricidad gruesa:</b> movimientos grandes con el cuerpo (saltar, correr, bailar).</li>
     </ul>
     <h2>¿Por qué es importante?</h2>
     <ul>
-      <li>Ayuda a los niños a escribir, jugar y explorar.</li>
-      <li>Desarrolla su autonomía y creatividad.</li>
-      <li>Mejora la coordinación y el equilibrio.</li>
+      <li>Desarrolla autonomía, creatividad y coordinación.</li>
+      <li>Facilita el aprendizaje escolar y el juego.</li>
+      <li>Mejora el equilibrio y la fuerza.</li>
     </ul>
     <a class="btn-act" href="../index.html">← Ir al inicio</a>
     <a class="btn-act" href="../modulo2/index.html">Siguiente módulo →</a>
@@ -58,14 +71,20 @@
     window.addEventListener('DOMContentLoaded', function() {
       document.body.style.opacity = '1';
     });
-    document.querySelectorAll('.btn-act, .navbar a').forEach(function(link) {
+    document.querySelectorAll('.btn-act, .navbar a, .card').forEach(function(link) {
       link.addEventListener('click', function(e) {
-        if (link.getAttribute('target') !== '_blank') {
+        if (link.getAttribute('target') !== '_blank' && link.tagName !== 'DIV') {
           e.preventDefault();
           document.body.style.opacity = '0.2';
           setTimeout(function() {
             window.location.href = link.href;
-          }, 350);
+          }, 320);
+        }
+        if (link.classList.contains('card')) {
+          document.body.style.opacity = '0.2';
+          setTimeout(function() {
+            window.location.href = link.getAttribute('onclick').split("'")[1];
+          }, 320);
         }
       });
     });
