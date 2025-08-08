@@ -4,29 +4,33 @@
   <meta charset="UTF-8">
   <title>Módulo 2: Motricidad Fina</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
-    .navbar { background: #006699; padding: 16px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
-    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 16px; padding: 12px 24px; border-radius: 8px; background: #33b5e5; transition: background 0.3s; display: inline-block;}
-    .navbar a:hover { background: #ffd700; color: #006699;}
-    .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 32px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);}
-    h1 { color: #33b5e5; font-size: 2em;}
+    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Montserrat', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
+    .navbar { background: #FFB347; padding: 20px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); font-size:1.1em;}
+    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 14px; padding: 12px 24px; border-radius: 14px; background: #F76D6D; transition: background 0.3s, color 0.3s, transform 0.3s; display: inline-block;}
+    .navbar a:hover { background: #FFD700; color: #F76D6D; transform: scale(1.07);}
+    .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 40px 32px; border-radius: 26px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); text-align: center; animation: fadein 1s;}
+    @keyframes fadein { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: translateY(0);}}
+    h1 { color: #33b5e5; font-size: 2.2em; }
     h2 { color: #006699; margin-top:30px;}
     ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
-    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none; border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;}
-    .btn-act:hover { background:#ffec8b; color:#006699;}
+    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#FFD700; color:#F76D6D; border:none; border-radius:14px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s, color 0.3s;}
+    .btn-act:hover { background:#F76D6D; color:#fff;}
     .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
-    .actividad { background:#e6f7ff; border-radius:12px; padding:18px; margin:22px 0;}
-    .respuesta { display:none; background:#fffbe6; border-radius:10px; padding:16px; margin-top:12px;}
+    .actividad { background:#e6f7ff; border-radius:18px; padding:20px; margin:32px 0;}
+    .quiz { padding:8px 0;}
+    .quiz button {margin:8px;}
+    .quiz-feedback {margin-top:14px; font-weight:600;}
     body.oscuro { background: #222 !important; color: #fff !important;}
     .oscuro .container { background: #333 !important; }
     .oscuro .navbar { background: #444 !important; }
-    .oscuro .navbar a { background: #555 !important; color: #ffd700 !important;}
-    .oscuro .navbar a:hover { background: #ffd700 !important; color: #444 !important;}
-    .oscuro .btn-act { background: #444 !important; color: #ffd700 !important;}
-    .oscuro .btn-act:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .navbar a { background: #222 !important; color: #FFD700 !important;}
+    .oscuro .navbar a:hover { background: #FFD700 !important; color: #F76D6D !important;}
+    .oscuro .btn-act { background: #222 !important; color: #FFD700 !important;}
+    .oscuro .btn-act:hover { background: #FFD700 !important; color: #222 !important;}
     .oscuro .actividad { background: #444 !important;}
-    .oscuro .respuesta { background: #222 !important;}
+    .oscuro .quiz-feedback {color: #FFD700;}
   </style>
 </head>
 <body>
@@ -48,13 +52,14 @@
       <li>Mejora la coordinación y la concentración.</li>
       <li>Facilita tareas cotidianas como abotonarse la camisa o atarse los zapatos.</li>
     </ul>
-    <h2>Actividad interactiva</h2>
+    <h2>Actividad interactiva: ¿Cuál mejora la motricidad fina?</h2>
     <div class="actividad">
-      <strong>Pregunta:</strong> ¿Cuál de estas actividades mejora la motricidad fina?<br>
-      <button class="btn-act" onclick="mostrarRespuesta()">Ver respuesta</button>
-      <div class="respuesta" id="resp">
-        <strong>Respuesta:</strong> Ensartar cuentas, recortar papel, dibujar y usar plastilina.
+      <div class="quiz">
+        <button class="btn-act" onclick="respuesta('a')">A) Ensartar cuentas</button>
+        <button class="btn-act" onclick="respuesta('b')">B) Saltar la cuerda</button>
+        <button class="btn-act" onclick="respuesta('c')">C) Lanzar una pelota</button>
       </div>
+      <div id="quiz-feedback" class="quiz-feedback"></div>
     </div>
     <a class="btn-act" href="../modulo1/index.html">← Volver al Módulo 1</a>
     <a class="btn-act" href="../modulo3/index.html">Siguiente módulo →</a>
@@ -74,17 +79,24 @@
           document.body.style.opacity = '0.2';
           setTimeout(function() {
             window.location.href = link.href;
-          }, 350);
+          }, 320);
         }
       });
     });
-    function mostrarRespuesta() {
-      document.getElementById('resp').style.display = 'block';
-    }
     document.getElementById('modo').onclick = function() {
       document.body.classList.toggle('oscuro');
       this.textContent = document.body.classList.contains('oscuro') ? '☀️ Modo claro' : '🌙 Modo oscuro';
     };
+    function respuesta(opcion) {
+      var feedback = document.getElementById('quiz-feedback');
+      if(opcion === 'a') {
+        feedback.textContent = "¡Correcto! Ensartar cuentas mejora la motricidad fina.";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Intenta de nuevo 😉";
+        feedback.style.color = "red";
+      }
+    }
   </script>
 </body>
 </html>
