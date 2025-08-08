@@ -3,27 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <title>Módulo 1: Introducción a la Motricidad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: #f0f8ff; font-family: Arial, sans-serif; color: #333; }
-    .container { max-width: 650px; margin: auto; background: #fff; padding: 30px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);}
-    h1 { color: #006699; }
-    a { display:inline-block; margin:16px 0; color:#006699; text-decoration:none; font-weight:bold;}
+    body { background: linear-gradient(135deg, #fffde4 0%, #c9eaff 100%); font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin:0; transition: background 0.6s, color 0.6s, opacity 0.5s;}
+    .navbar { background: #006699; padding: 16px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
+    .navbar a { color: #fff; font-weight: bold; text-decoration: none; margin: 0 16px; padding: 12px 24px; border-radius: 8px; background: #33b5e5; transition: background 0.3s; display: inline-block;}
+    .navbar a:hover { background: #ffd700; color: #006699;}
+    .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 32px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);}
+    h1 { color: #006699; font-size: 2em;}
+    h2 { color: #33b5e5; margin-top:30px;}
+    ul { text-align:left; font-size:1.1em; margin: 16px auto 30px auto; max-width:600px;}
+    .btn-act { display:inline-block; margin:14px 0; padding:10px 22px; background:#ffd700; color:#333; border:none; border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; transition: background 0.3s;}
+    .btn-act:hover { background:#ffec8b; color:#006699;}
+    .footer { margin-top: 30px; color: #999; font-size: 0.95em; }
+    body.oscuro { background: #222 !important; color: #fff !important;}
+    .oscuro .container { background: #333 !important; }
+    .oscuro .navbar { background: #444 !important; }
+    .oscuro .navbar a { background: #555 !important; color: #ffd700 !important;}
+    .oscuro .navbar a:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .btn-act { background: #444 !important; color: #ffd700 !important;}
+    .oscuro .btn-act:hover { background: #ffd700 !important; color: #444 !important;}
   </style>
 </head>
 <body>
+  <button id="modo" class="btn-act" style="float:right; margin:10px 25px;">🌙 Modo oscuro</button>
+  <div class="navbar">
+    <a href="../index.html">Inicio</a>
+    <a href="index.html">Módulo 1</a>
+    <a href="../modulo2/index.html">Módulo 2</a>
+    <a href="../modulo3/index.html">Módulo 3</a>
+    <a href="../modulo4/index.html">Módulo 4</a>
+    <a href="../modulo5/index.html">Módulo 5</a>
+  </div>
   <div class="container">
     <h1>Módulo 1: Introducción a la Motricidad</h1>
-    <p>¡Hola! En este módulo aprenderás qué es la motricidad y por qué es tan importante para los niños.</p>
-    <h2>¿Qué es la motricidad?</h2>
-    <p>La motricidad es cómo movemos nuestro cuerpo. Hay dos tipos:</p>
+    <p>La motricidad es la capacidad de mover nuestro cuerpo. <b>Hay dos tipos principales:</b></p>
     <ul>
-      <li><strong>Motricidad fina:</strong> movimientos pequeños, como usar los dedos para dibujar o ensartar cuentas.</li>
-      <li><strong>Motricidad gruesa:</strong> movimientos grandes, como saltar, correr o bailar.</li>
+      <li><b>Motricidad fina:</b> movimientos pequeños con dedos y manos.</li>
+      <li><b>Motricidad gruesa:</b> movimientos grandes: saltar, correr, bailar.</li>
     </ul>
     <h2>¿Por qué es importante?</h2>
-    <p>Nos ayuda a jugar, escribir, movernos y aprender cosas nuevas.</p>
-    <a href="../index.html">Volver al inicio</a>
-    <a href="../modulo2/index.html">Siguiente módulo</a>
+    <ul>
+      <li>Ayuda a los niños a escribir, jugar y explorar.</li>
+      <li>Desarrolla su autonomía y creatividad.</li>
+      <li>Mejora la coordinación y el equilibrio.</li>
+    </ul>
+    <a class="btn-act" href="../index.html">← Ir al inicio</a>
+    <a class="btn-act" href="../modulo2/index.html">Siguiente módulo →</a>
+    <div class="footer">Academia de Psicología &copy; 2025</div>
   </div>
+  <script>
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s';
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.style.opacity = '1';
+    });
+    document.querySelectorAll('.btn-act, .navbar a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (link.getAttribute('target') !== '_blank') {
+          e.preventDefault();
+          document.body.style.opacity = '0.2';
+          setTimeout(function() {
+            window.location.href = link.href;
+          }, 350);
+        }
+      });
+    });
+    document.getElementById('modo').onclick = function() {
+      document.body.classList.toggle('oscuro');
+      this.textContent = document.body.classList.contains('oscuro') ? '☀️ Modo claro' : '🌙 Modo oscuro';
+    };
+  </script>
 </body>
 </html>
