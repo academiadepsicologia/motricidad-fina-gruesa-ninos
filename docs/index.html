@@ -573,6 +573,116 @@
       color: var(--kid-green);
       transform: rotate(10deg);
     }
+    
+    /* Modal de acceso */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-modal:hover {
+      color: var(--dark);
+    }
+    .modal-title {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    .access-form {
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    .access-button {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+    }
+    .error-message {
+      color: var(--secondary);
+      margin-top: 15px;
+      font-weight: 500;
+      display: none;
+    }
+    .purchase-info {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }
+    .purchase-info a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .purchase-info a:hover {
+      text-decoration: underline;
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
@@ -653,6 +763,9 @@
       .cta-subtitle {
         font-size: 1rem;
       }
+      .modal-content {
+        padding: 30px 20px;
+      }
     }
     /* Modo oscuro mejorado */
     body.oscuro {
@@ -696,6 +809,21 @@
     body.oscuro .footer {
       background: #000 !important;
     }
+    body.oscuro .modal-content {
+      background: #333 !important;
+      color: #fff !important;
+    }
+    body.oscuro .form-group label {
+      color: #fff !important;
+    }
+    body.oscuro .form-group input {
+      background: #444 !important;
+      color: #fff !important;
+      border-color: #555 !important;
+    }
+    body.oscuro .purchase-info {
+      background: rgba(94, 114, 228, 0.2) !important;
+    }
   </style>
 </head>
 <body>
@@ -722,7 +850,6 @@
       </button>
     </div>
   </nav>
-
   <!-- Contenedor principal -->
   <div class="container">
     <!-- Hero section mejorada -->
@@ -738,7 +865,6 @@
       <div class="kid-3">🧒</div>
       <div class="kid-4">👶</div>
     </section>
-
     <!-- Sección de importancia -->
     <section class="importance-section" id="importancia">
       <h2 class="section-title">¿Por qué es crucial desarrollar la motricidad en la primera infancia?</h2>
@@ -772,7 +898,6 @@
         </div>
       </div>
     </section>
-
     <!-- Sección de desarrollo por edad -->
     <section class="age-section" id="desarrollo">
       <h2 class="section-title">Desarrollo motriz por edades</h2>
@@ -806,7 +931,6 @@
         </div>
       </div>
     </section>
-
     <!-- Sección de beneficios -->
     <section class="benefits-section" id="beneficios">
       <h2 class="section-title">Beneficios científicamente comprobados</h2>
@@ -861,7 +985,6 @@
         </div>
       </div>
     </section>
-
     <!-- Sección de testimonios -->
     <section class="testimonials-section" id="testimonios">
       <h2 class="section-title">Lo que dicen otros padres</h2>
@@ -904,7 +1027,6 @@
         </div>
       </div>
     </section>
-
     <!-- Sección CTA -->
     <section class="cta-section" id="acceder">
       <h2 class="cta-title">Transforma el futuro de tu hijo</h2>
@@ -917,7 +1039,7 @@
         <span class="price-period">USD</span>
       </div>
       
-      <a href="#" class="cta-button">ACCEDER AL CURSO AHORA</a>
+      <a href="#" class="cta-button" id="acceder-curso">ACCEDER AL CURSO AHORA</a>
       
       <div class="cta-guarantee">
         <i class="fas fa-shield-alt"></i> Garantía de satisfacción de 30 días
@@ -930,14 +1052,39 @@
         <div style="position: absolute; bottom: 40px; right: 60px; font-size: 2rem; color: rgba(255,255,255,0.3);">🎯</div>
       </div>
     </section>
-
     <!-- Footer mejorado -->
     <footer class="footer">
       <p>Academia de Psicología &copy; 2025 - Todos los derechos reservados</p>
       <p>Desarrollado por expertos en desarrollo infantil</p>
     </footer>
   </div>
-
+  
+  <!-- Modal de acceso al curso -->
+  <div id="accesoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso al Curso</h2>
+      <p class="modal-description">Ingresa tu correo electrónico y la contraseña que recibiste al comprar el curso.</p>
+      
+      <form class="access-form" id="accessForm">
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="Tu contraseña" required>
+        </div>
+        <button type="submit" class="access-button">Acceder al Curso</button>
+        <div class="error-message" id="errorMessage">Credenciales incorrectas. Por favor, intenta de nuevo.</div>
+      </form>
+      
+      <div class="purchase-info">
+        ¿No tienes acceso? <a href="#">Compra el curso aquí</a>
+      </div>
+    </div>
+  </div>
+  
   <script>
     // Animación de entrada
     document.body.style.opacity = '0';
@@ -945,7 +1092,55 @@
     window.addEventListener('DOMContentLoaded', function() {
       document.body.style.opacity = '1';
     });
-
+    
+    // Modal de acceso
+    const modal = document.getElementById('accesoModal');
+    const accederBtn = document.getElementById('acceder-curso');
+    const closeModal = document.getElementById('closeModal');
+    const accessForm = document.getElementById('accessForm');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    // Abrir modal al hacer clic en "ACCEDER AL CURSO AHORA"
+    accederBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+    
+    // Cerrar modal
+    closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+      errorMessage.style.display = 'none';
+    });
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        errorMessage.style.display = 'none';
+      }
+    });
+    
+    // Manejar envío del formulario de acceso
+    accessForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Verificar credenciales (en un caso real, esto se haría en el servidor)
+      // Para este ejemplo, usaremos credenciales de demostración
+      if (email === 'demo@ejemplo.com' && password === 'curso2025') {
+        // Guardar token de acceso en localStorage
+        localStorage.setItem('cursoAcceso', 'autorizado');
+        
+        // Redirigir al primer módulo
+        window.location.href = 'modulo1/index.html';
+      } else {
+        // Mostrar mensaje de error
+        errorMessage.style.display = 'block';
+      }
+    });
+    
     // Modo oscuro mejorado
     document.getElementById('modo').onclick = function() {
       document.body.classList.toggle('oscuro');
@@ -960,12 +1155,12 @@
         text.textContent = 'Modo oscuro';
       }
     };
-
+    
     // Toggle para menú móvil
     document.getElementById('navbar-toggle').addEventListener('click', () => {
       document.getElementById('navbar-menu').classList.toggle('active');
     });
-
+    
     // Suavizado de scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -979,13 +1174,12 @@
         }
       });
     });
-
+    
     // Animación de entrada para tarjetas
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -999,7 +1193,6 @@
         }
       });
     }, observerOptions);
-
     document.querySelectorAll('.importance-card, .age-card, .benefit-item, .testimonial-card').forEach(el => {
       observer.observe(el);
     });
