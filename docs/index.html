@@ -10,6 +10,7 @@
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       color: #333;
+      transition: background 0.6s, color 0.6s, opacity 0.5s;
     }
     .navbar {
       background: #006699;
@@ -74,19 +75,38 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       transition: background 0.3s;
       font-weight: bold;
+      cursor: pointer;
     }
     .btn:hover {
       background: #ffec8b;
       color: #006699;
+    }
+    #modo {
+      float: right;
+      margin: 0 24px 0 0;
+      font-size: 1em;
+      padding: 8px 18px;
     }
     .footer {
       margin-top: 30px;
       color: #999;
       font-size: 0.95em;
     }
+    /* Modo oscuro */
+    body.oscuro {
+      background: #222 !important;
+      color: #fff !important;
+    }
+    .oscuro .container { background: #333 !important; }
+    .oscuro .navbar { background: #444 !important; }
+    .oscuro .navbar a { background: #555 !important; color: #ffd700 !important;}
+    .oscuro .navbar a:hover { background: #ffd700 !important; color: #444 !important;}
+    .oscuro .btn { background: #444 !important; color: #ffd700 !important; }
+    .oscuro .btn:hover { background: #ffd700 !important; color: #444 !important;}
   </style>
 </head>
 <body>
+  <button id="modo" class="btn">🌙 Modo oscuro</button>
   <div class="navbar">
     <a href="index.html">Inicio</a>
     <a href="modulo1/index.html">Módulo 1</a>
@@ -113,5 +133,30 @@
     <a class="btn" href="modulo5/index.html">Ir al Módulo 5: Recursos</a>
     <div class="footer">Academia de Psicología &copy; 2025</div>
   </div>
+  <script>
+    // Animación de entrada
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s';
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.style.opacity = '1';
+    });
+    // Transición al navegar
+    document.querySelectorAll('a.btn, .navbar a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (link.getAttribute('target') !== '_blank') {
+          e.preventDefault();
+          document.body.style.opacity = '0.2';
+          setTimeout(function() {
+            window.location.href = link.href;
+          }, 350);
+        }
+      });
+    });
+    // Modo oscuro
+    document.getElementById('modo').onclick = function() {
+      document.body.classList.toggle('oscuro');
+      this.textContent = document.body.classList.contains('oscuro') ? '☀️ Modo claro' : '🌙 Modo oscuro';
+    };
+  </script>
 </body>
 </html>
