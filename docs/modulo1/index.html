@@ -1,169 +1,1130 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Módulo 1 - Introducción a la Motricidad Fina y Gruesa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Módulo 1: Introducción a la Motricidad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --color-primario: #4cafef;
-      --color-secundario: #ffb347;
-      --color-fondo: #f9f9f9;
-      --color-texto: #333;
-      --color-blanco: #fff;
+      --primary: #5e72e4;
+      --secondary: #f5365c;
+      --accent: #fb6340;
+      --light: #f4f5f7;
+      --dark: #32325d;
+      --success: #2dce89;
+      --info: #11cdef;
+      --warning: #fb6340;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --kid-blue: #4dabf7;
+      --kid-pink: #ff7eb9;
+      --kid-yellow: #ffd93d;
+      --kid-green: #6bcf7f;
+      --kid-purple: #9c88ff;
+      --kid-orange: #ff9a56;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Quicksand', sans-serif; background-color: var(--color-fondo); color: var(--color-texto); }
-
-    header {
-      background-color: var(--color-primario);
-      color: var(--color-blanco);
-      padding: 1rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background 0.6s, color 0.6s;
+    }
+    /* Botón de modo oscuro mejorado */
+    #modo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #modo:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    /* Navbar mejorada */
+    .navbar {
+      background: var(--gradient);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .navbar-logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-logo i {
+      margin-right: 10px;
+    }
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    .navbar-menu li {
+      margin-left: 5px;
+    }
+    .navbar-menu a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .navbar-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    .navbar-menu a:hover::before {
+      width: 100%;
+    }
+    .navbar-menu a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    /* Contenedor principal mejorado */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    /* Hero section mejorada */
+    .hero {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      padding: 60px 40px;
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadein 1s;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transform: translate(100px, -100px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      background: var(--gradient-2);
+      border-radius: 50%;
+      transform: translate(-100px, 100px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(60px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-weight: 500;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Test previo mejorado */
+    .test-section {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .test-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--kid-purple), var(--kid-green));
+      border-radius: 20px 20px 0 0;
+    }
+    .test-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+    }
+    .test-description {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #6c757d;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-question {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+    }
+    .test-question h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .test-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .test-option {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
       text-align: center;
     }
-
-    header h1 { font-size: 1.8rem; font-weight: 700; }
-
-    main { max-width: 900px; margin: auto; padding: 1rem; }
-
-    h2 { color: var(--color-primario); margin-bottom: 0.5rem; }
-    p { margin-bottom: 1rem; }
-
-    /* Checklist */
-    .checklist { background: var(--color-blanco); padding: 1rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
-    .checklist label { display: block; padding: 0.5rem 0; }
-    .checklist input { margin-right: 0.5rem; }
-
-    /* Drag & Drop */
-    .dragdrop-container { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .dropzone {
-      flex: 1;
-      min-width: 250px;
-      background: var(--color-blanco);
-      padding: 1rem;
-      border: 2px dashed var(--color-secundario);
-      border-radius: 10px;
-      min-height: 150px;
+    .test-option:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-    .draggable {
-      background: var(--color-secundario);
-      color: var(--color-blanco);
-      padding: 0.5rem;
-      margin: 0.3rem 0;
-      border-radius: 5px;
-      cursor: grab;
+    .test-option.selected {
+      background: rgba(94, 114, 228, 0.1);
+      border-color: var(--primary);
     }
-    .dropzone.highlight { background: #fff5e6; }
-
-    /* Botón PDF */
-    .btn {
-      display: inline-block;
-      padding: 0.7rem 1.2rem;
-      margin-top: 1rem;
-      background: var(--color-primario);
-      color: var(--color-blanco);
-      border-radius: 8px;
-      text-decoration: none;
+    .test-option.correct {
+      background: rgba(45, 206, 137, 0.1);
+      border-color: var(--success);
+    }
+    .test-option.incorrect {
+      background: rgba(245, 54, 92, 0.1);
+      border-color: var(--secondary);
+    }
+    .test-results {
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      display: none;
+      text-align: center;
+    }
+    .test-results h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .test-score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .test-score.good {
+      color: var(--success);
+    }
+    .test-score.regular {
+      color: var(--warning);
+    }
+    .test-score.low {
+      color: var(--secondary);
+    }
+    .test-button {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s ease;
+      transition: all 0.3s ease;
+      margin-top: 20px;
     }
-    .btn:hover { transform: scale(1.05); }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.4rem; }
-      .dragdrop-container { flex-direction: column; }
+    .test-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
+    }
+    
+    /* Tarjetas de módulos mejoradas */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .module-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 30px;
+    }
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .module-card:hover::before {
+      transform: scaleX(1);
+    }
+    .module-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    .module-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .module-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    .module-description {
+      color: #6c757d;
+      font-size: 0.95rem;
+    }
+    
+    /* Sección de contenido mejorada */
+    .content-section {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .content-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+      border-radius: 0 0 20px 20px;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: 3px;
+    }
+    .content-list {
+      list-style: none;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .content-item {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    .content-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .content-item i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .content-item strong {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+    
+    /* Sección de información científica */
+    .science-section {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f5ff 100%);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      border-left: 5px solid var(--kid-purple);
+    }
+    .science-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transform: translate(50px, -50px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    .science-title {
+      font-size: 1.8rem;
+      color: var(--kid-purple);
+      margin-bottom: 20px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+    .science-title i {
+      margin-right: 10px;
+    }
+    .science-content {
+      position: relative;
+      z-index: 1;
+    }
+    .science-quote {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-style: italic;
+      position: relative;
+    }
+    .science-quote::before {
+      content: '"';
+      font-size: 4rem;
+      color: rgba(156, 136, 255, 0.2);
+      position: absolute;
+      top: 0;
+      left: 10px;
+    }
+    .science-source {
+      text-align: right;
+      font-weight: 600;
+      color: var(--kid-purple);
+      margin-bottom: 10px;
+    }
+    .science-fact {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .science-fact i {
+      font-size: 1.5rem;
+      color: var(--kid-purple);
+      margin-right: 15px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    
+    /* Navegación entre módulos mejorada */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 30px;
+      background: var(--gradient);
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      gap: 10px;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+    .btn:hover::before {
+      transform: translateY(0);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(94, 114, 228, 0.4);
+      color: white;
+    }
+    .btn-secondary {
+      background: var(--gradient-2);
+      box-shadow: 0 5px 15px rgba(245, 54, 108, 0.3);
+    }
+    .btn-secondary:hover {
+      box-shadow: 0 8px 25px rgba(245, 54, 108, 0.4);
+    }
+    
+    /* Footer mejorado */
+    .footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 20px;
+      margin-top: 50px;
+    }
+    .footer p {
+      margin-bottom: 15px;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .social-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Modal de acceso denegado */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-modal:hover {
+      color: var(--dark);
+    }
+    .modal-title {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    .access-button {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+    }
+    
+    /* Responsive mejorado */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--gradient);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 100;
+      }
+      .navbar-menu.active {
+        transform: translateY(0);
+      }
+      .navbar-menu li {
+        margin: 10px 0;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+      .navigation {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .test-options {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 576px) {
+      .hero {
+        padding: 40px 20px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .content-section,
+      .test-section,
+      .science-section {
+        padding: 30px 20px;
+      }
+      .section-title,
+      .test-title {
+        font-size: 1.5rem;
+      }
+      .modal-content {
+        padding: 30px 20px;
+      }
+    }
+    
+    /* Modo oscuro mejorado */
+    body.oscuro {
+      background: #111 !important;
+      color: #fff !important;
+    }
+    body.oscuro .navbar {
+      background: #222 !important;
+    }
+    body.oscuro .hero,
+    body.oscuro .test-section,
+    body.oscuro .module-card,
+    body.oscuro .content-section,
+    body.oscuro .science-section {
+      background: #222 !important;
+      color: #fff !important;
+    }
+    body.oscuro .hero-title,
+    body.oscuro .section-title,
+    body.oscuro .test-title,
+    body.oscuro .module-title,
+    body.oscuro .science-title {
+      color: #fff !important;
+    }
+    body.oscuro .hero-subtitle,
+    body.oscuro .module-description,
+    body.oscuro .test-description {
+      color: #aaa !important;
+    }
+    body.oscuro .test-question,
+    body.oscuro .content-item,
+    body.oscuro .science-quote,
+    body.oscuro .science-fact {
+      background: #333 !important;
+    }
+    body.oscuro .test-option {
+      background: #444 !important;
+      border-color: #555 !important;
+    }
+    body.oscuro .footer {
+      background: #000 !important;
+    }
+    body.oscuro .modal-content {
+      background: #333 !important;
+      color: #fff !important;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Módulo 1: Introducción a la Motricidad</h1>
-</header>
-
-<main>
-  <section>
-    <h2>¿Qué es la motricidad fina y gruesa?</h2>
-    <p>La motricidad fina implica movimientos pequeños y precisos, como escribir o abotonar una camisa. La motricidad gruesa involucra movimientos amplios como correr, saltar o lanzar.</p>
-  </section>
-
-  <!-- Checklist -->
-  <section class="checklist">
-    <h2>Checklist de aprendizaje</h2>
-    <label><input type="checkbox" class="check-item"> Entiendo la diferencia entre motricidad fina y gruesa</label>
-    <label><input type="checkbox" class="check-item"> Puedo dar ejemplos de cada una</label>
-    <label><input type="checkbox" class="check-item"> Conozco actividades para estimularlas</label>
-  </section>
-
-  <!-- Drag & Drop -->
-  <section>
-    <h2>Clasifica las actividades</h2>
-    <p>Arrastra cada actividad al tipo de motricidad que corresponde.</p>
-    <div class="dragdrop-container">
-      <div>
-        <div class="draggable" draggable="true">Cortar con tijeras</div>
-        <div class="draggable" draggable="true">Saltar la cuerda</div>
-        <div class="draggable" draggable="true">Colorear dibujos</div>
-        <div class="draggable" draggable="true">Lanzar una pelota</div>
-      </div>
-      <div class="dropzone" data-type="fina">Motricidad fina</div>
-      <div class="dropzone" data-type="gruesa">Motricidad gruesa</div>
+  <button id="modo">
+    <i class="fas fa-moon"></i>
+    <span>Modo oscuro</span>
+  </button>
+  
+  <!-- Navbar mejorada -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <i class="fas fa-brain"></i> Academia de Psicología
+      </a>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="index.html">Módulo 1</a></li>
+        <li><a href="../modulo2/index.html">Módulo 2</a></li>
+        <li><a href="../modulo3/index.html">Módulo 3</a></li>
+        <li><a href="../modulo4/index.html">Módulo 4</a></li>
+        <li><a href="../modulo5/index.html">Módulo 5</a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-  </section>
-
-  <!-- PDF -->
-  <section>
-    <h2>Material imprimible</h2>
-    <p>Descarga actividades para trabajar en casa.</p>
-    <a href="actividades_modulo1.pdf" class="btn" download>Descargar PDF</a>
-  </section>
-</main>
-
-<script>
-  // Guardar checklist en localStorage
-  const checkItems = document.querySelectorAll('.check-item');
-  checkItems.forEach((item, index) => {
-    const saved = localStorage.getItem('check-' + index);
-    if (saved === 'true') item.checked = true;
-
-    item.addEventListener('change', () => {
-      localStorage.setItem('check-' + index, item.checked);
+  </nav>
+  
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Hero section mejorada -->
+    <section class="hero">
+      <h1 class="hero-title">Módulo 1: Introducción a la Motricidad</h1>
+      <p class="hero-subtitle">
+        ¡Comienza tu viaje! Descubre qué es la motricidad fina y gruesa y por qué es clave para el desarrollo infantil.
+      </p>
+    </section>
+    
+    <!-- Test previo -->
+    <section class="test-section">
+      <h2 class="test-title">Evalúa tus conocimientos</h2>
+      <p class="test-description">
+        Antes de comenzar, responde estas preguntas para conocer cuánto sabes sobre la motricidad infantil. No te preocupes si no tienes todas las respuestas, el objetivo es aprender.
+      </p>
+      
+      <div class="test-container">
+        <div class="test-question">
+          <h3>1. ¿A qué edad se considera que un niño debe comenzar a desarrollar habilidades de motricidad fina?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">A partir de los 6 años</div>
+            <div class="test-option" data-correct="true">Desde los primeros meses de vida</div>
+            <div class="test-option" data-correct="false">Solo después de los 3 años</div>
+            <div class="test-option" data-correct="false">Después de ingresar a la escuela primaria</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>2. ¿Cuál de estas actividades es un ejemplo de motricidad fina?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">Recortar con tijeras</div>
+            <div class="test-option" data-correct="false">Correr en el parque</div>
+            <div class="test-option" data-correct="false">Saltar la cuerda</div>
+            <div class="test-option" data-correct="false">Lanzar una pelota</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>3. ¿Qué relación existe entre el desarrollo motriz y el aprendizaje escolar?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">No existe relación entre ambos aspectos</div>
+            <div class="test-option" data-correct="true">El desarrollo motriz es base para el aprendizaje académico</div>
+            <div class="test-option" data-correct="false">Solo afecta a la educación física</div>
+            <div class="test-option" data-correct="false">Es más importante el desarrollo cognitivo</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>4. ¿Entre qué edades se produce el período crítico para el desarrollo de habilidades motoras?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">De 0 a 2 años</div>
+            <div class="test-option" data-correct="false">De 6 a 8 años</div>
+            <div class="test-option" data-correct="true">De 3 a 5 años</div>
+            <div class="test-option" data-correct="false">De 10 a 12 años</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>5. ¿Qué órgano es fundamental en el desarrollo de la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">El corazón</div>
+            <div class="test-option" data-correct="false">Los pulmones</div>
+            <div class="test-option" data-correct="true">El cerebro</div>
+            <div class="test-option" data-correct="false">El estómago</div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <button class="test-button" id="checkTest">Ver resultados</button>
+        </div>
+        
+        <div class="test-results" id="testResults">
+          <h3>Tus resultados</h3>
+          <div class="test-score" id="testScore"></div>
+          <p id="testMessage"></p>
+          <button class="test-button" id="continueToContent">Continuar al contenido</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Tarjetas de módulos mejoradas -->
+    <div class="modules-grid">
+      <div class="module-card" onclick="window.location='../modulo2/index.html'">
+        <div class="module-icon">
+          <i class="fas fa-hand-paper"></i>
+        </div>
+        <h3 class="module-title">Motricidad Fina</h3>
+        <p class="module-description">Actividades para desarrollar precisión y destreza manual</p>
+      </div>
+      <div class="module-card" onclick="window.location='../modulo3/index.html'">
+        <div class="module-icon">
+          <i class="fas fa-running"></i>
+        </div>
+        <h3 class="module-title">Motricidad Gruesa</h3>
+        <p class="module-description">Ejercicios para fortalecer el movimiento corporal</p>
+      </div>
+    </div>
+    
+    <!-- Sección: ¿Qué es la motricidad? -->
+    <section class="content-section">
+      <h2 class="section-title">¿Qué es la motricidad?</h2>
+      <ul class="content-list">
+        <li class="content-item">
+          <i class="fas fa-hand-paper"></i>
+          <div>
+            <strong>Motricidad fina:</strong> movimientos pequeños con dedos y manos (dibujar, recortar, abotonar).
+          </div>
+        </li>
+        <li class="content-item">
+          <i class="fas fa-running"></i>
+          <div>
+            <strong>Motricidad gruesa:</strong> movimientos grandes con el cuerpo (saltar, correr, bailar).
+          </div>
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Sección: ¿Por qué es importante? -->
+    <section class="content-section">
+      <h2 class="section-title">¿Por qué es importante?</h2>
+      <ul class="content-list">
+        <li class="content-item">
+          <i class="fas fa-star"></i>
+          <div>Desarrolla autonomía, creatividad y coordinación.</div>
+        </li>
+        <li class="content-item">
+          <i class="fas fa-graduation-cap"></i>
+          <div>Facilita el aprendizaje escolar y el juego.</div>
+        </li>
+        <li class="content-item">
+          <i class="fas fa-balance-scale"></i>
+          <div>Mejora el equilibrio y la fuerza.</div>
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Sección de información científica -->
+    <section class="science-section">
+      <h2 class="science-title">
+        <i class="fas fa-microscope"></i>
+        Evidencia científica
+      </h2>
+      <div class="science-content">
+        <div class="science-quote">
+          "El desarrollo motor en la primera infancia es un predictor importante del desarrollo cognitivo posterior. Las conexiones neuronales que se forman durante las actividades motoras son las mismas que se utilizan para el pensamiento abstracto y la resolución de problemas."
+          <div class="science-source">- American Academy of Pediatrics, 2020</div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            Según la Organización Mundial de la Salud, los niños que desarrollan adecuadamente sus habilidades motoras en los primeros años de vida tienen un 40% más de probabilidades de mostrar un rendimiento académico superior.
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            Investigaciones de la Universidad de Harvard demuestran que el juego activo, que involucra tanto motricidad fina como gruesa, aumenta la producción de BDNF (Factor Neurotrófico Derivado del Cerebro), una proteína esencial para el crecimiento y supervivencia de las neuronas.
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            Los Centros para el Control y Prevención de Enfermedades (CDC) establecen que entre los 3 y 5 años se produce el período crítico para el desarrollo de habilidades motoras, sentando las bases para el aprendizaje futuro.
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Navegación entre módulos -->
+    <div class="navigation">
+      <a href="../index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+        Ir al inicio
+      </a>
+      <a href="../modulo2/index.html" class="btn">
+        Siguiente módulo
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    
+    <!-- Footer mejorado -->
+    <footer class="footer">
+      <p>Academia de Psicología &copy; 2025</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
+  <script>
+    // Verificar si el usuario tiene acceso al curso
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir al inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Configurar cierre de modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+          modal.style.display = 'none';
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
+          }
+        });
+      } else {
+        // Si tiene acceso, inicializar el contenido del módulo
+        inicializarModulo();
+      }
     });
-  });
+    
+    function inicializarModulo() {
+      // Configurar test previo
+      const testOptions = document.querySelectorAll('.test-option');
+      const checkButton = document.getElementById('checkTest');
+      const testResults = document.getElementById('testResults');
+      const testScore = document.getElementById('testScore');
+      const testMessage = document.getElementById('testMessage');
+      const continueButton = document.getElementById('continueToContent');
+      
+      // Agregar evento click a las opciones del test
+      testOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Eliminar selección previa
+          const parent = this.parentElement;
+          parent.querySelectorAll('.test-option').forEach(opt => {
+            opt.classList.remove('selected');
+          });
+          
+          // Marcar opción seleccionada
+          this.classList.add('selected');
+        });
+      });
+      
+      // Verificar respuestas al hacer clic en el botón
+      checkButton.addEventListener('click', function() {
+        let correctAnswers = 0;
+        const totalQuestions = document.querySelectorAll('.test-question').length;
+        
+        // Verificar cada pregunta
+        document.querySelectorAll('.test-question').forEach(question => {
+          const selectedOption = question.querySelector('.test-option.selected');
+          
+          if (selectedOption) {
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+              correctAnswers++;
+              selectedOption.classList.add('correct');
+            } else {
+              selectedOption.classList.add('incorrect');
+              
+              // Mostrar la respuesta correcta
+              question.querySelectorAll('.test-option').forEach(opt => {
+                if (opt.getAttribute('data-correct') === 'true') {
+                  opt.classList.add('correct');
+                }
+              });
+            }
+          }
+        });
+        
+        // Calcular porcentaje
+        const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+        
+        // Mostrar resultados
+        testResults.style.display = 'block';
+        
+        // Configurar mensaje según puntuación
+        if (percentage >= 80) {
+          testScore.textContent = `${percentage}% - ¡Excelente!`;
+          testScore.className = 'test-score good';
+          testMessage.textContent = 'Tienes muy buenos conocimientos sobre la motricidad infantil. Este módulo te ayudará a profundizar en ellos.';
+        } else if (percentage >= 50) {
+          testScore.textContent = `${percentage}% - Bien hecho`;
+          testScore.className = 'test-score regular';
+          testMessage.textContent = 'Tienes conocimientos básicos sobre el tema. Este
 
-  // Drag & Drop
-  const draggables = document.querySelectorAll('.draggable');
-  const dropzones = document.querySelectorAll('.dropzone');
 
-  draggables.forEach(drag => {
-    drag.addEventListener('dragstart', () => {
-      drag.classList.add('dragging');
-    });
-    drag.addEventListener('dragend', () => {
-      drag.classList.remove('dragging');
-    });
-  });
 
-  dropzones.forEach(zone => {
-    zone.addEventListener('dragover', e => {
-      e.preventDefault();
-      zone.classList.add('highlight');
-    });
 
-    zone.addEventListener('dragleave', () => {
-      zone.classList.remove('highlight');
-    });
-
-    zone.addEventListener('drop', e => {
-      const dragging = document.querySelector('.dragging');
-      if (dragging) zone.appendChild(dragging);
-      zone.classList.remove('highlight');
-    });
-  });
-</script>
-
-</body>
-</html>
