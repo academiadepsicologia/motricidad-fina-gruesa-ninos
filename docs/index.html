@@ -4,27 +4,29 @@
   <meta charset="UTF-8">
   <title>Curso Motricidad Fina y Gruesa en Niños</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #5e72e4;
-      --secondary: #f5365c;
-      --accent: #fb6340;
-      --light: #f4f5f7;
-      --dark: #32325d;
-      --success: #2dce89;
-      --info: #11cdef;
-      --warning: #fb6340;
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --accent: #ff6b6b;
+      --light: #f8f9fa;
+      --dark: #2d3436;
+      --success: #00b894;
+      --info: #0984e3;
+      --warning: #fdcb6e;
       --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-4: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
       --kid-blue: #4dabf7;
       --kid-pink: #ff7eb9;
       --kid-yellow: #ffd93d;
       --kid-green: #6bcf7f;
       --kid-purple: #9c88ff;
       --kid-orange: #ff9a56;
+      --kid-teal: #26d0ce;
     }
     * {
       margin: 0;
@@ -32,7 +34,7 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
       color: var(--dark);
       min-height: 100vh;
@@ -46,26 +48,27 @@
       top: 20px;
       right: 20px;
       z-index: 1000;
-      background: var(--gradient);
+      background: var(--gradient-4);
       color: white;
       border: none;
       border-radius: 30px;
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       gap: 8px;
+      font-family: 'Montserrat', sans-serif;
     }
     #modo:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
     }
     /* Navbar mejorada */
     .navbar {
-      background: var(--gradient);
+      background: var(--gradient-4);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       padding: 15px 0;
       position: sticky;
@@ -84,31 +87,34 @@
     }
     .navbar-logo {
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       text-decoration: none;
       display: flex;
       align-items: center;
+      font-family: 'Montserrat', sans-serif;
     }
     .navbar-logo i {
-      margin-right: 10px;
+      margin-right: 12px;
+      font-size: 2rem;
     }
     .navbar-menu {
       display: flex;
       list-style: none;
     }
     .navbar-menu li {
-      margin-left: 5px;
+      margin-left: 8px;
     }
     .navbar-menu a {
       color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
-      font-weight: 500;
-      padding: 10px 15px;
+      font-weight: 600;
+      padding: 12px 18px;
       border-radius: 30px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
     }
     .navbar-menu a::before {
       content: '';
@@ -133,7 +139,7 @@
       background: none;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
     }
     /* Contenedor principal mejorado */
@@ -145,10 +151,10 @@
     /* Hero section mejorada */
     .hero {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      padding: 60px 40px;
-      margin-bottom: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 70px 50px;
+      margin-bottom: 60px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -157,88 +163,93 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background: var(--gradient);
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--kid-pink) 0%, var(--kid-purple) 70%, transparent 100%);
       border-radius: 50%;
-      transform: translate(100px, -100px);
       z-index: 0;
-      opacity: 0.1;
+      opacity: 0.15;
     }
     .hero::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200px;
-      height: 200px;
-      background: var(--gradient-2);
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--kid-blue) 0%, var(--kid-teal) 70%, transparent 100%);
       border-radius: 50%;
-      transform: translate(-100px, 100px);
       z-index: 0;
-      opacity: 0.1;
+      opacity: 0.15;
     }
     @keyframes fadein {
       from { opacity: 0; transform: translateY(60px);}
       to { opacity: 1; transform: translateY(0);}
     }
     .hero-title {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: var(--dark);
-      margin-bottom: 20px;
-      font-weight: 700;
+      margin-bottom: 25px;
+      font-weight: 800;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .hero-subtitle {
-      font-size: 1.4rem;
-      color: var(--primary);
-      margin-bottom: 30px;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 40px;
       font-weight: 500;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
     }
     
     /* Ilustraciones de niños mejoradas */
     .kids-illustrations {
       display: flex;
       justify-content: space-around;
-      margin-top: 40px;
+      margin-top: 50px;
       position: relative;
       z-index: 1;
     }
     .kid-illustration {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       position: relative;
-      animation: float 3s ease-in-out infinite;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
     }
     .kid-illustration:nth-child(2) {
-      animation-delay: 0.5s;
+      animation-delay: 0.7s;
     }
     .kid-illustration:nth-child(3) {
-      animation-delay: 1s;
+      animation-delay: 1.4s;
     }
     .kid-illustration:nth-child(4) {
-      animation-delay: 1.5s;
+      animation-delay: 2.1s;
     }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-20px); }
     }
     
     /* Sección de importancia */
     .importance-section {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      padding: 50px 40px;
-      margin-bottom: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 60px 50px;
+      margin-bottom: 60px;
       position: relative;
       overflow: hidden;
     }
@@ -248,33 +259,46 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 8px;
+      height: 10px;
       background: linear-gradient(90deg, var(--primary), var(--kid-purple), var(--kid-green), var(--kid-yellow));
-      border-radius: 20px 20px 0 0;
+      border-radius: 25px 25px 0 0;
     }
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: var(--dark);
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       font-weight: 700;
       text-align: center;
       position: relative;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-4);
+      border-radius: 2px;
     }
     .importance-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      gap: 40px;
+      margin-top: 50px;
     }
     .importance-card {
       background: linear-gradient(135deg, #f8f9ff 0%, #f0f5ff 100%);
-      border-radius: 16px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 35px;
       text-align: center;
-      transition: all 0.3s ease;
-      border-left: 5px solid var(--primary);
+      transition: all 0.4s ease;
+      border-left: 6px solid var(--primary);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     }
     .importance-card:nth-child(2) {
       border-left-color: var(--kid-purple);
@@ -285,59 +309,75 @@
       background: linear-gradient(135deg, #f0fff9 0%, #e6fff5 100%);
     }
     .importance-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     .importance-icon {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: var(--primary);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      display: inline-block;
+      padding: 20px;
+      background: rgba(106, 17, 203, 0.1);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .importance-card:nth-child(2) .importance-icon {
       color: var(--kid-purple);
+      background: rgba(156, 136, 255, 0.1);
     }
     .importance-card:nth-child(3) .importance-icon {
       color: var(--kid-green);
+      background: rgba(107, 207, 127, 0.1);
     }
     .importance-title {
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--dark);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
     }
     .importance-text {
       color: #6c757d;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
     .importance-badge {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 20px;
+      right: 20px;
       background: var(--primary);
       color: white;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
     }
     .importance-card:nth-child(2) .importance-badge {
       background: var(--kid-purple);
+      box-shadow: 0 4px 10px rgba(156, 136, 255, 0.3);
     }
     .importance-card:nth-child(3) .importance-badge {
       background: var(--kid-green);
+      box-shadow: 0 4px 10px rgba(107, 207, 127, 0.3);
     }
     
     /* Sección de desarrollo por edad */
     .age-section {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      padding: 50px 40px;
-      margin-bottom: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 60px 50px;
+      margin-bottom: 60px;
       position: relative;
       overflow: hidden;
     }
@@ -347,24 +387,25 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 8px;
+      height: 10px;
       background: linear-gradient(90deg, var(--secondary), var(--kid-orange), var(--kid-yellow));
-      border-radius: 20px 20px 0 0;
+      border-radius: 25px 25px 0 0;
     }
     .age-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      gap: 40px;
+      margin-top: 50px;
     }
     .age-card {
       background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 100%);
-      border-radius: 16px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 35px;
       text-align: center;
-      transition: all 0.3s ease;
-      border-left: 5px solid var(--secondary);
+      transition: all 0.4s ease;
+      border-left: 6px solid var(--secondary);
       position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     }
     .age-card:nth-child(2) {
       border-left-color: var(--kid-orange);
@@ -375,42 +416,70 @@
       background: linear-gradient(135deg, #fffbf0 0%, #fff8e6 100%);
     }
     .age-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     .age-icon {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: var(--secondary);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      display: inline-block;
+      padding: 20px;
+      background: rgba(37, 117, 252, 0.1);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .age-card:nth-child(2) .age-icon {
       color: var(--kid-orange);
+      background: rgba(255, 154, 86, 0.1);
     }
     .age-card:nth-child(3) .age-icon {
       color: var(--kid-yellow);
+      background: rgba(255, 217, 61, 0.1);
     }
     .age-title {
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--dark);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
     }
     .age-text {
       color: #6c757d;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
     .age-progress {
-      margin-top: 20px;
-      height: 8px;
+      margin-top: 25px;
+      height: 10px;
       background: #e9ecef;
-      border-radius: 4px;
+      border-radius: 5px;
       overflow: hidden;
     }
     .age-progress-bar {
       height: 100%;
       background: var(--secondary);
-      border-radius: 4px;
-      transition: width 1s ease;
+      border-radius: 5px;
+      transition: width 1.5s ease;
+      position: relative;
+    }
+    .age-progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     .age-card:nth-child(2) .age-progress-bar {
       background: var(--kid-orange);
@@ -422,10 +491,10 @@
     /* Sección de beneficios */
     .benefits-section {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      padding: 50px 40px;
-      margin-bottom: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 60px 50px;
+      margin-bottom: 60px;
       position: relative;
       overflow: hidden;
     }
@@ -435,25 +504,26 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 8px;
+      height: 10px;
       background: linear-gradient(90deg, var(--info), var(--kid-blue), var(--kid-green));
-      border-radius: 20px 20px 0 0;
+      border-radius: 25px 25px 0 0;
     }
     .benefits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
     }
     .benefit-item {
       background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 16px;
+      padding: 25px;
       display: flex;
       align-items: center;
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--info);
+      transition: all 0.4s ease;
+      border-left: 5px solid var(--info);
       position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     }
     .benefit-item:nth-child(2n) {
       background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
@@ -464,24 +534,36 @@
       border-left-color: var(--kid-green);
     }
     .benefit-item:hover {
-      transform: translateX(10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      transform: translateX(15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
     .benefit-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--info);
-      margin-right: 15px;
+      margin-right: 20px;
       flex-shrink: 0;
+      display: inline-block;
+      padding: 15px;
+      background: rgba(9, 132, 227, 0.1);
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .benefit-item:nth-child(2n) .benefit-icon {
       color: var(--kid-blue);
+      background: rgba(77, 171, 247, 0.1);
     }
     .benefit-item:nth-child(3n) .benefit-icon {
       color: var(--kid-green);
+      background: rgba(107, 207, 127, 0.1);
     }
     .benefit-text {
       color: var(--dark);
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 1.2rem;
     }
     .benefit-stat {
       position: absolute;
@@ -489,25 +571,28 @@
       right: 15px;
       background: var(--info);
       color: white;
-      border-radius: 20px;
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      border-radius: 30px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
     }
     .benefit-item:nth-child(2n) .benefit-stat {
       background: var(--kid-blue);
+      box-shadow: 0 4px 10px rgba(77, 171, 247, 0.3);
     }
     .benefit-item:nth-child(3n) .benefit-stat {
       background: var(--kid-green);
+      box-shadow: 0 4px 10px rgba(107, 207, 127, 0.3);
     }
     
     /* Sección de testimonios */
     .testimonials-section {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      padding: 50px 40px;
-      margin-bottom: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 60px 50px;
+      margin-bottom: 60px;
       position: relative;
       overflow: hidden;
     }
@@ -517,22 +602,28 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 8px;
+      height: 10px;
       background: linear-gradient(90deg, var(--success), var(--kid-green), var(--kid-blue));
-      border-radius: 20px 20px 0 0;
+      border-radius: 25px 25px 0 0;
     }
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      gap: 40px;
+      margin-top: 50px;
     }
     .testimonial-card {
       background: linear-gradient(135deg, #f0fff4 0%, #e6ffef 100%);
-      border-radius: 16px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 35px;
       position: relative;
-      border-left: 5px solid var(--success);
+      border-left: 6px solid var(--success);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     .testimonial-card:nth-child(2) {
       background: linear-gradient(135deg, #f0fff7 0%, #e6fff5 100%);
@@ -545,57 +636,65 @@
     .testimonial-text {
       font-style: italic;
       color: var(--dark);
-      margin-bottom: 20px;
-      font-size: 1rem;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
     .testimonial-author {
       display: flex;
       align-items: center;
     }
     .testimonial-avatar {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: var(--success);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-weight: 600;
-      margin-right: 15px;
+      font-weight: 700;
+      margin-right: 20px;
+      font-size: 1.3rem;
+      box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
     }
     .testimonial-card:nth-child(2) .testimonial-avatar {
       background: var(--kid-green);
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
     }
     .testimonial-card:nth-child(3) .testimonial-avatar {
       background: var(--kid-blue);
+      box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
     }
     .testimonial-info {
       flex: 1;
     }
     .testimonial-name {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--dark);
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      font-family: 'Montserrat', sans-serif;
     }
     .testimonial-role {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: #6c757d;
     }
     .testimonial-rating {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 20px;
+      right: 20px;
       color: var(--warning);
+      font-size: 1.2rem;
     }
     
     /* Sección CTA */
     .cta-section {
-      background: linear-gradient(135deg, var(--gradient) 0%, var(--gradient-2) 100%);
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      padding: 60px 40px;
-      margin-bottom: 50px;
+      background: linear-gradient(135deg, var(--gradient-4) 0%, var(--gradient) 100%);
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      padding: 70px 50px;
+      margin-bottom: 60px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -607,75 +706,82 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: pulse 4s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      animation: pulse 5s ease-in-out infinite;
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
     }
     .cta-title {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: white;
-      margin-bottom: 20px;
-      font-weight: 700;
+      margin-bottom: 25px;
+      font-weight: 800;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
     .cta-subtitle {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 40px;
+      margin-bottom: 50px;
       font-weight: 500;
-      max-width: 600px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
     }
     .price-tag {
       background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
       border-radius: 50px;
-      padding: 15px 30px;
+      padding: 20px 40px;
       display: inline-block;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       position: relative;
       z-index: 1;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     .price-amount {
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 3.5rem;
+      font-weight: 800;
       color: white;
     }
     .price-period {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: rgba(255, 255, 255, 0.8);
-      margin-left: 5px;
+      margin-left: 8px;
     }
     .cta-button {
       display: inline-block;
-      padding: 20px 50px;
+      padding: 25px 60px;
       background: white;
       color: var(--primary);
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 700;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
     }
     .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
     }
     .cta-guarantee {
-      margin-top: 20px;
+      margin-top: 25px;
       color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       position: relative;
       z-index: 1;
+      font-weight: 500;
     }
     
     /* Footer mejorado */
@@ -683,12 +789,13 @@
       background: var(--dark);
       color: rgba(255, 255, 255, 0.7);
       text-align: center;
-      padding: 40px 20px;
-      border-radius: 20px;
-      margin-top: 50px;
+      padding: 50px 20px;
+      border-radius: 25px;
+      margin-top: 60px;
     }
     .footer p {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
     }
     
     /* Modal de acceso */
@@ -699,26 +806,27 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.7);
       z-index: 10000;
       justify-content: center;
       align-items: center;
+      backdrop-filter: blur(5px);
     }
     .modal-content {
       background-color: white;
-      padding: 40px;
-      border-radius: 20px;
+      padding: 50px;
+      border-radius: 25px;
       width: 90%;
-      max-width: 500px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 550px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
       text-align: center;
       position: relative;
     }
     .close-modal {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 28px;
+      top: 20px;
+      right: 25px;
+      font-size: 32px;
       font-weight: bold;
       color: #aaa;
       cursor: pointer;
@@ -728,72 +836,78 @@
       color: var(--dark);
     }
     .modal-title {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--dark);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
     }
     .modal-description {
       color: #6c757d;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
     }
     .access-form {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: left;
     }
     .form-group label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: 600;
       color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
     }
     .form-group input {
       width: 100%;
-      padding: 15px;
+      padding: 18px;
       border: 2px solid #e9ecef;
-      border-radius: 10px;
-      font-size: 1rem;
-      transition: border-color 0.3s;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      font-family: 'Quicksand', sans-serif;
     }
     .form-group input:focus {
       border-color: var(--primary);
       outline: none;
+      box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
     }
     .access-button {
       width: 100%;
-      padding: 15px;
-      background: var(--gradient);
+      padding: 18px;
+      background: var(--gradient-4);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      font-weight: 600;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
     }
     .access-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+      box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
     }
     .error-message {
-      color: var(--secondary);
-      margin-top: 15px;
-      font-weight: 500;
+      color: var(--accent);
+      margin-top: 20px;
+      font-weight: 600;
       display: none;
     }
     .purchase-info {
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(94, 114, 228, 0.1);
-      border-radius: 10px;
-      font-size: 0.9rem;
+      margin-top: 25px;
+      padding: 20px;
+      background: rgba(106, 17, 203, 0.1);
+      border-radius: 12px;
+      font-size: 1rem;
     }
     .purchase-info a {
       color: var(--primary);
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
     }
     .purchase-info a:hover {
@@ -803,15 +917,15 @@
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
       .cta-title {
-        font-size: 2rem;
+        font-size: 2.3rem;
       }
       .importance-grid,
       .age-grid,
       .testimonials-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
     }
     @media (max-width: 768px) {
@@ -821,7 +935,7 @@
         top: 70px;
         left: 0;
         width: 100%;
-        background: var(--gradient);
+        background: var(--gradient-4);
         padding: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-150%);
@@ -832,58 +946,62 @@
         transform: translateY(0);
       }
       .navbar-menu li {
-        margin: 10px 0;
+        margin: 12px 0;
       }
       .navbar-toggle {
         display: block;
       }
       .hero-title {
-        font-size: 2rem;
+        font-size: 2.3rem;
       }
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       .section-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .cta-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .price-amount {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
       .cta-button {
-        padding: 15px 30px;
-        font-size: 1.1rem;
+        padding: 20px 40px;
+        font-size: 1.3rem;
       }
       .kids-illustrations {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+        gap: 30px;
+      }
+      .kid-illustration {
+        width: 120px;
+        height: 120px;
       }
     }
     @media (max-width: 576px) {
       .hero {
-        padding: 40px 20px;
+        padding: 50px 25px;
       }
       .importance-section,
       .age-section,
       .benefits-section,
       .testimonials-section,
       .cta-section {
-        padding: 30px 20px;
+        padding: 40px 25px;
       }
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
       .cta-title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
       .cta-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
       .modal-content {
-        padding: 30px 20px;
+        padding: 40px 25px;
       }
     }
     /* Modo oscuro mejorado */
@@ -941,7 +1059,7 @@
       border-color: #555 !important;
     }
     body.oscuro .purchase-info {
-      background: rgba(94, 114, 228, 0.2) !important;
+      background: rgba(106, 17, 203, 0.2) !important;
     }
   </style>
 </head>
@@ -983,67 +1101,72 @@
       <div class="kids-illustrations">
         <div class="kid-illustration">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Niño saltando -->
-            <ellipse cx="50" cy="70" rx="15" ry="10" fill="#ff9a56"/>
+            <!-- Niño saltando mejorado -->
+            <ellipse cx="50" cy="70" rx="18" ry="12" fill="#ff9a56"/>
             <rect x="45" y="50" width="10" height="20" rx="5" fill="#ffcc99"/>
-            <circle cx="50" cy="40" r="12" fill="#ffcc99"/>
-            <circle cx="47" cy="38" r="1.5" fill="#333"/>
-            <circle cx="53" cy="38" r="1.5" fill="#333"/>
-            <path d="M47 43 Q50 45 53 43" stroke="#ff7eb9" stroke-width="1" fill="none"/>
-            <path d="M45 25 Q50 20 55 25 Q50 30 45 25" fill="#8b4513"/>
-            <line x1="40" y1="55" x2="35" y2="45" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="60" y1="55" x2="65" y2="45" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="45" y1="60" x2="40" y2="75" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="55" y1="60" x2="60" y2="75" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="50" cy="40" r="14" fill="#ffcc99"/>
+            <circle cx="46" cy="37" r="2" fill="#333"/>
+            <circle cx="54" cy="37" r="2" fill="#333"/>
+            <path d="M46 43 Q50 46 54 43" stroke="#ff7eb9" stroke-width="1.5" fill="none"/>
+            <path d="M40 25 Q50 18 60 25 Q50 32 40 25" fill="#8b4513"/>
+            <line x1="38" y1="55" x2="30" y2="42" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="62" y1="55" x2="70" y2="42" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="43" y1="60" x2="35" y2="78" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="57" y1="60" x2="65" y2="78" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="kid-illustration">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Niña dibujando -->
-            <ellipse cx="50" cy="75" rx="15" ry="8" fill="#ff7eb9"/>
+            <!-- Niña dibujando mejorada -->
+            <ellipse cx="50" cy="75" rx="18" ry="10" fill="#ff7eb9"/>
             <rect x="45" y="55" width="10" height="20" rx="5" fill="#ffcc99"/>
-            <circle cx="50" cy="45" r="12" fill="#ffcc99"/>
-            <circle cx="47" cy="43" r="1.5" fill="#333"/>
-            <circle cx="53" cy="43" r="1.5" fill="#333"/>
-            <path d="M47 48 Q50 50 53 48" stroke="#ff7eb9" stroke-width="1" fill="none"/>
-            <path d="M40 25 Q50 20 60 25 Q55 35 40 25" fill="#8b4513"/>
-            <line x1="40" y1="60" x2="30" y2="65" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="60" y1="60" x2="70" y2="65" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="45" y1="65" x2="40" y2="80" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="55" y1="65" x2="60" y2="80" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <rect x="30" y="75" width="40" height="5" fill="#4dabf7"/>
+            <circle cx="50" cy="45" r="14" fill="#ffcc99"/>
+            <circle cx="46" cy="42" r="2" fill="#333"/>
+            <circle cx="54" cy="42" r="2" fill="#333"/>
+            <path d="M46 48 Q50 51 54 48" stroke="#ff7eb9" stroke-width="1.5" fill="none"/>
+            <path d="M38 25 Q50 18 62 25 Q56 36 38 25" fill="#8b4513"/>
+            <line x1="38" y1="60" x2="25" y2="68" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="62" y1="60" x2="75" y2="68" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="43" y1="65" x2="35" y2="83" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="57" y1="65" x2="65" y2="83" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <rect x="25" y="75" width="50" height="8" rx="4" fill="#4dabf7"/>
+            <circle cx="35" cy="65" r="3" fill="#ff6b6b"/>
+            <circle cx="45" cy="62" r="3" fill="#ffd93d"/>
+            <circle cx="55" cy="65" r="3" fill="#6bcf7f"/>
           </svg>
         </div>
         <div class="kid-illustration">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Niño corriendo -->
-            <ellipse cx="50" cy="75" rx="15" ry="8" fill="#6bcf7f"/>
+            <!-- Niño corriendo mejorado -->
+            <ellipse cx="50" cy="75" rx="18" ry="10" fill="#6bcf7f"/>
             <rect x="45" y="55" width="10" height="20" rx="5" fill="#ffcc99"/>
-            <circle cx="50" cy="45" r="12" fill="#ffcc99"/>
-            <circle cx="47" cy="43" r="1.5" fill="#333"/>
-            <circle cx="53" cy="43" r="1.5" fill="#333"/>
-            <path d="M47 48 Q50 50 53 48" stroke="#ff7eb9" stroke-width="1" fill="none"/>
-            <path d="M40 25 Q50 20 60 25 Q55 35 40 25" fill="#8b4513"/>
-            <line x1="40" y1="60" x2="25" y2="50" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="60" y1="60" x2="75" y2="50" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="45" y1="65" x2="35" y2="85" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="55" y1="65" x2="65" y2="85" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="50" cy="45" r="14" fill="#ffcc99"/>
+            <circle cx="46" cy="42" r="2" fill="#333"/>
+            <circle cx="54" cy="42" r="2" fill="#333"/>
+            <path d="M46 48 Q50 51 54 48" stroke="#ff7eb9" stroke-width="1.5" fill="none"/>
+            <path d="M38 25 Q50 18 62 25 Q56 36 38 25" fill="#8b4513"/>
+            <line x1="38" y1="60" x2="20" y2="45" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="62" y1="60" x2="80" y2="45" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="43" y1="65" x2="30" y2="88" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="57" y1="65" x2="70" y2="88" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="kid-illustration">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Niña bailando -->
-            <ellipse cx="50" cy="75" rx="15" ry="8" fill="#9c88ff"/>
+            <!-- Niña bailando mejorada -->
+            <ellipse cx="50" cy="75" rx="18" ry="10" fill="#9c88ff"/>
             <rect x="45" y="55" width="10" height="20" rx="5" fill="#ffcc99"/>
-            <circle cx="50" cy="45" r="12" fill="#ffcc99"/>
-            <circle cx="47" cy="43" r="1.5" fill="#333"/>
-            <circle cx="53" cy="43" r="1.5" fill="#333"/>
-            <path d="M47 48 Q50 50 53 48" stroke="#ff7eb9" stroke-width="1" fill="none"/>
-            <path d="M40 25 Q50 20 60 25 Q55 35 40 25" fill="#8b4513"/>
-            <line x1="40" y1="60" x2="25" y2="55" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="60" y1="60" x2="75" y2="55" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="45" y1="65" x2="35" y2="85" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
-            <line x1="55" y1="65" x2="70" y2="80" stroke="#ffcc99" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="50" cy="45" r="14" fill="#ffcc99"/>
+            <circle cx="46" cy="42" r="2" fill="#333"/>
+            <circle cx="54" cy="42" r="2" fill="#333"/>
+            <path d="M46 48 Q50 51 54 48" stroke="#ff7eb9" stroke-width="1.5" fill="none"/>
+            <path d="M38 25 Q50 18 62 25 Q56 36 38 25" fill="#8b4513"/>
+            <line x1="38" y1="60" x2="20" y2="50" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="62" y1="60" x2="80" y2="50" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="43" y1="65" x2="25" y2="85" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <line x1="57" y1="65" x2="75" y2="85" stroke="#ffcc99" stroke-width="4" stroke-linecap="round"/>
+            <ellipse cx="30" cy="50" rx="8" ry="4" fill="#ff7eb9"/>
+            <ellipse cx="70" cy="50" rx="8" ry="4" fill="#ff7eb9"/>
           </svg>
         </div>
       </div>
