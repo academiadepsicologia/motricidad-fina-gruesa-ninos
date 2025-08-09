@@ -47,7 +47,6 @@
       color: var(--dark);
       min-height: 100vh;
       line-height: 1.6;
-      transition: background 0.6s, color 0.6s;
       position: relative;
       overflow-x: hidden;
     }
@@ -130,45 +129,6 @@
       66% {
         transform: translateY(30px) rotate(240deg);
       }
-    }
-    
-    /* Botón de modo oscuro con animación */
-    #modo {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: var(--gradient-4);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 12px 20px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Montserrat', sans-serif;
-      animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
-    }
-    
-    #modo:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
     }
     
     /* Navbar con animación */
@@ -1051,29 +1011,104 @@
       font-family: 'Montserrat', sans-serif;
     }
     
-    .price-tag {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 50px;
-      padding: 20px 40px;
-      display: inline-block;
-      margin-bottom: 40px;
+    /* Banner de precio mejorado */
+    .price-banner {
       position: relative;
+      margin: 0 auto 40px;
+      max-width: 500px;
       z-index: 1;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    .price-tag {
+      background: linear-gradient(135deg, var(--warning) 0%, var(--primary) 100%);
+      border-radius: 20px;
+      padding: 25px 40px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      animation: pulse 2s ease-in-out infinite;
+      overflow: hidden;
+    }
+    
+    .price-tag::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      animation: shine 3s ease-in-out infinite;
+    }
+    
+    @keyframes shine {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+      50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
     }
     
     .price-amount {
-      font-size: 3.5rem;
+      font-size: 4.5rem;
       font-weight: 800;
       color: white;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+      display: block;
+      line-height: 1;
     }
     
     .price-period {
-      font-size: 1.4rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.8rem;
+      color: rgba(255, 255, 255, 0.9);
       margin-left: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .price-details {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .price-original {
+      text-decoration: line-through;
+      opacity: 0.8;
+      margin-right: 10px;
+    }
+    
+    .price-discount {
+      background: var(--warning);
+      color: var(--dark);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-block;
+      margin-left: 10px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    .price-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .price-timer i {
+      margin-right: 8px;
+      color: var(--warning);
+      animation: pulse 1.5s ease-in-out infinite;
     }
     
     .cta-button {
@@ -1347,7 +1382,7 @@
       }
       
       .price-amount {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
       }
       
       .cta-button {
@@ -1392,67 +1427,13 @@
         font-size: 1.2rem;
       }
       
+      .price-amount {
+        font-size: 3rem;
+      }
+      
       .modal-content {
         padding: 40px 25px;
       }
-    }
-    
-    /* Modo oscuro mejorado */
-    body.oscuro {
-      background: #111 !important;
-      color: #fff !important;
-    }
-    
-    body.oscuro .navbar {
-      background: #222 !important;
-    }
-    
-    body.oscuro .hero,
-    body.oscuro .importance-section,
-    body.oscuro .age-section,
-    body.oscuro .benefits-section,
-    body.oscuro .testimonials-section {
-      background: #222 !important;
-      color: #fff !important;
-    }
-    
-    body.oscuro .hero-title,
-    body.oscuro .section-title,
-    body.oscuro .importance-title,
-    body.oscuro .age-title,
-    body.oscuro .benefit-text,
-    body.oscuro .testimonial-name {
-      color: #fff !important;
-    }
-    
-    body.oscuro .hero-subtitle,
-    body.oscuro .importance-text,
-    body.oscuro .age-text,
-    body.oscuro .testimonial-role {
-      color: #aaa !important;
-    }
-    
-    body.oscuro .footer {
-      background: #000 !important;
-    }
-    
-    body.oscuro .modal-content {
-      background: #333 !important;
-      color: #fff !important;
-    }
-    
-    body.oscuro .form-group label {
-      color: #fff !important;
-    }
-    
-    body.oscuro .form-group input {
-      background: #444 !important;
-      color: #fff !important;
-      border-color: #555 !important;
-    }
-    
-    body.oscuro .purchase-info {
-      background: rgba(255, 107, 107, 0.2) !important;
     }
   </style>
 </head>
@@ -1465,11 +1446,6 @@
     <div class="shape"></div>
     <div class="shape"></div>
   </div>
-  
-  <button id="modo">
-    <i class="fas fa-moon"></i>
-    <span>Modo oscuro</span>
-  </button>
   
   <!-- Navbar -->
   <nav class="navbar">
@@ -1782,9 +1758,20 @@
         Accede al curso basado en la psicología del desarrollo con 5 módulos especializados, actividades terapéuticas y seguimiento profesional
       </p>
       
-      <div class="price-tag">
-        <span class="price-amount">$67</span>
-        <span class="price-period">USD</span>
+      <!-- Banner de precio mejorado -->
+      <div class="price-banner">
+        <div class="price-tag">
+          <span class="price-amount">$67</span>
+          <span class="price-period">USD</span>
+        </div>
+        <div class="price-details">
+          <span class="price-original">$97 USD</span>
+          <span class="price-discount">-30% OFF</span>
+        </div>
+        <div class="price-timer">
+          <i class="fas fa-clock"></i>
+          <span>Oferta por tiempo limitado</span>
+        </div>
       </div>
       
       <a href="#" class="cta-button" id="acceder-curso">ACCEDER AL CURSO AHORA</a>
@@ -1882,21 +1869,6 @@
         errorMessage.style.display = 'block';
       }
     });
-    
-    // Modo oscuro mejorado
-    document.getElementById('modo').onclick = function() {
-      document.body.classList.toggle('oscuro');
-      const icon = this.querySelector('i');
-      const text = this.querySelector('span');
-      
-      if (document.body.classList.contains('oscuro')) {
-        icon.className = 'fas fa-sun';
-        text.textContent = 'Modo claro';
-      } else {
-        icon.className = 'fas fa-moon';
-        text.textContent = 'Modo oscuro';
-      }
-    };
     
     // Toggle para menú móvil
     document.getElementById('navbar-toggle').addEventListener('click', () => {
