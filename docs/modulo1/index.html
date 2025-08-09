@@ -18,6 +18,12 @@
       --warning: #fb6340;
       --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --kid-blue: #4dabf7;
+      --kid-pink: #ff7eb9;
+      --kid-yellow: #ffd93d;
+      --kid-green: #6bcf7f;
+      --kid-purple: #9c88ff;
+      --kid-orange: #ff9a56;
     }
     * {
       margin: 0;
@@ -195,6 +201,134 @@
       position: relative;
       z-index: 1;
     }
+    
+    /* Test previo mejorado */
+    .test-section {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .test-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--kid-purple), var(--kid-green));
+      border-radius: 20px 20px 0 0;
+    }
+    .test-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+    }
+    .test-description {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #6c757d;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-question {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+    }
+    .test-question h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .test-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .test-option {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    .test-option:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .test-option.selected {
+      background: rgba(94, 114, 228, 0.1);
+      border-color: var(--primary);
+    }
+    .test-option.correct {
+      background: rgba(45, 206, 137, 0.1);
+      border-color: var(--success);
+    }
+    .test-option.incorrect {
+      background: rgba(245, 54, 92, 0.1);
+      border-color: var(--secondary);
+    }
+    .test-results {
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      display: none;
+      text-align: center;
+    }
+    .test-results h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .test-score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .test-score.good {
+      color: var(--success);
+    }
+    .test-score.regular {
+      color: var(--warning);
+    }
+    .test-score.low {
+      color: var(--secondary);
+    }
+    .test-button {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+    .test-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
+    }
+    
     /* Tarjetas de módulos mejoradas */
     .modules-grid {
       display: grid;
@@ -251,6 +385,7 @@
       color: #6c757d;
       font-size: 0.95rem;
     }
+    
     /* Sección de contenido mejorada */
     .content-section {
       background: white;
@@ -317,6 +452,85 @@
       color: var(--primary);
       margin-right: 8px;
     }
+    
+    /* Sección de información científica */
+    .science-section {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f5ff 100%);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      border-left: 5px solid var(--kid-purple);
+    }
+    .science-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transform: translate(50px, -50px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    .science-title {
+      font-size: 1.8rem;
+      color: var(--kid-purple);
+      margin-bottom: 20px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+    .science-title i {
+      margin-right: 10px;
+    }
+    .science-content {
+      position: relative;
+      z-index: 1;
+    }
+    .science-quote {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-style: italic;
+      position: relative;
+    }
+    .science-quote::before {
+      content: '"';
+      font-size: 4rem;
+      color: rgba(156, 136, 255, 0.2);
+      position: absolute;
+      top: 0;
+      left: 10px;
+    }
+    .science-source {
+      text-align: right;
+      font-weight: 600;
+      color: var(--kid-purple);
+      margin-bottom: 10px;
+    }
+    .science-fact {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .science-fact i {
+      font-size: 1.5rem;
+      color: var(--kid-purple);
+      margin-right: 15px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    
     /* Navegación entre módulos mejorada */
     .navigation {
       display: flex;
@@ -368,6 +582,7 @@
     .btn-secondary:hover {
       box-shadow: 0 8px 25px rgba(245, 54, 108, 0.4);
     }
+    
     /* Footer mejorado */
     .footer {
       background: var(--dark);
@@ -394,6 +609,7 @@
       color: white;
       transform: translateY(-3px);
     }
+    
     /* Modal de acceso denegado */
     .modal {
       display: none;
@@ -456,39 +672,7 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
     }
-    /* Modo oscuro mejorado */
-    body.oscuro {
-      background: #111 !important;
-      color: #fff !important;
-    }
-    body.oscuro .navbar {
-      background: #222 !important;
-    }
-    body.oscuro .hero,
-    body.oscuro .module-card,
-    body.oscuro .content-section {
-      background: #222 !important;
-      color: #fff !important;
-    }
-    body.oscuro .hero-title,
-    body.oscuro .section-title,
-    body.oscuro .module-title {
-      color: #fff !important;
-    }
-    body.oscuro .hero-subtitle,
-    body.oscuro .module-description {
-      color: #aaa !important;
-    }
-    body.oscuro .content-item {
-      background: #333 !important;
-    }
-    body.oscuro .footer {
-      background: #000 !important;
-    }
-    body.oscuro .modal-content {
-      background: #333 !important;
-      color: #fff !important;
-    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
@@ -533,6 +717,9 @@
         width: 100%;
         justify-content: center;
       }
+      .test-options {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 576px) {
       .hero {
@@ -544,15 +731,64 @@
       .hero-subtitle {
         font-size: 1rem;
       }
-      .content-section {
+      .content-section,
+      .test-section,
+      .science-section {
         padding: 30px 20px;
       }
-      .section-title {
+      .section-title,
+      .test-title {
         font-size: 1.5rem;
       }
       .modal-content {
         padding: 30px 20px;
       }
+    }
+    
+    /* Modo oscuro mejorado */
+    body.oscuro {
+      background: #111 !important;
+      color: #fff !important;
+    }
+    body.oscuro .navbar {
+      background: #222 !important;
+    }
+    body.oscuro .hero,
+    body.oscuro .test-section,
+    body.oscuro .module-card,
+    body.oscuro .content-section,
+    body.oscuro .science-section {
+      background: #222 !important;
+      color: #fff !important;
+    }
+    body.oscuro .hero-title,
+    body.oscuro .section-title,
+    body.oscuro .test-title,
+    body.oscuro .module-title,
+    body.oscuro .science-title {
+      color: #fff !important;
+    }
+    body.oscuro .hero-subtitle,
+    body.oscuro .module-description,
+    body.oscuro .test-description {
+      color: #aaa !important;
+    }
+    body.oscuro .test-question,
+    body.oscuro .content-item,
+    body.oscuro .science-quote,
+    body.oscuro .science-fact {
+      background: #333 !important;
+    }
+    body.oscuro .test-option {
+      background: #444 !important;
+      border-color: #555 !important;
+    }
+    body.oscuro .footer {
+      background: #000 !important;
+    }
+    body.oscuro .modal-content {
+      background: #333 !important;
+      color: #fff !important;
     }
   </style>
 </head>
@@ -566,7 +802,7 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="../index.html" class="navbar-logo">
-        <i class="fas fa-child"></i> Academia de Psicología
+        <i class="fas fa-brain"></i> Academia de Psicología
       </a>
       <ul class="navbar-menu" id="navbar-menu">
         <li><a href="../index.html">Inicio</a></li>
@@ -590,6 +826,77 @@
       <p class="hero-subtitle">
         ¡Comienza tu viaje! Descubre qué es la motricidad fina y gruesa y por qué es clave para el desarrollo infantil.
       </p>
+    </section>
+    
+    <!-- Test previo -->
+    <section class="test-section">
+      <h2 class="test-title">Evalúa tus conocimientos</h2>
+      <p class="test-description">
+        Antes de comenzar, responde estas preguntas para conocer cuánto sabes sobre la motricidad infantil. No te preocupes si no tienes todas las respuestas, el objetivo es aprender.
+      </p>
+      
+      <div class="test-container">
+        <div class="test-question">
+          <h3>1. ¿A qué edad se considera que un niño debe comenzar a desarrollar habilidades de motricidad fina?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">A partir de los 6 años</div>
+            <div class="test-option" data-correct="true">Desde los primeros meses de vida</div>
+            <div class="test-option" data-correct="false">Solo después de los 3 años</div>
+            <div class="test-option" data-correct="false">Después de ingresar a la escuela primaria</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>2. ¿Cuál de estas actividades es un ejemplo de motricidad fina?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">Recortar con tijeras</div>
+            <div class="test-option" data-correct="false">Correr en el parque</div>
+            <div class="test-option" data-correct="false">Saltar la cuerda</div>
+            <div class="test-option" data-correct="false">Lanzar una pelota</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>3. ¿Qué relación existe entre el desarrollo motriz y el aprendizaje escolar?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">No existe relación entre ambos aspectos</div>
+            <div class="test-option" data-correct="true">El desarrollo motriz es base para el aprendizaje académico</div>
+            <div class="test-option" data-correct="false">Solo afecta a la educación física</div>
+            <div class="test-option" data-correct="false">Es más importante el desarrollo cognitivo</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>4. ¿Entre qué edades se produce el período crítico para el desarrollo de habilidades motoras?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">De 0 a 2 años</div>
+            <div class="test-option" data-correct="false">De 6 a 8 años</div>
+            <div class="test-option" data-correct="true">De 3 a 5 años</div>
+            <div class="test-option" data-correct="false">De 10 a 12 años</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>5. ¿Qué órgano es fundamental en el desarrollo de la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="false">El corazón</div>
+            <div class="test-option" data-correct="false">Los pulmones</div>
+            <div class="test-option" data-correct="true">El cerebro</div>
+            <div class="test-option" data-correct="false">El estómago</div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <button class="test-button" id="checkTest">Ver resultados</button>
+        </div>
+        
+        <div class="test-results" id="testResults">
+          <h3>Tus resultados</h3>
+          <div class="test-score" id="testScore"></div>
+          <p id="testMessage"></p>
+          <button class="test-button" id="continueToContent">Continuar al contenido</button>
+        </div>
+      </div>
     </section>
     
     <!-- Tarjetas de módulos mejoradas -->
@@ -646,6 +953,41 @@
           <div>Mejora el equilibrio y la fuerza.</div>
         </li>
       </ul>
+    </section>
+    
+    <!-- Sección de información científica -->
+    <section class="science-section">
+      <h2 class="science-title">
+        <i class="fas fa-microscope"></i>
+        Evidencia científica
+      </h2>
+      <div class="science-content">
+        <div class="science-quote">
+          "El desarrollo motor en la primera infancia es un predictor importante del desarrollo cognitivo posterior. Las conexiones neuronales que se forman durante las actividades motoras son las mismas que se utilizan para el pensamiento abstracto y la resolución de problemas."
+          <div class="science-source">- American Academy of Pediatrics, 2020</div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            Según la Organización Mundial de la Salud, los niños que desarrollan adecuadamente sus habilidades motoras en los primeros años de vida tienen un 40% más de probabilidades de mostrar un rendimiento académico superior.
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            Investigaciones de la Universidad de Harvard demuestran que el juego activo, que involucra tanto motricidad fina como gruesa, aumenta la producción de BDNF (Factor Neurotrófico Derivado del Cerebro), una proteína esencial para el crecimiento y supervivencia de las neuronas.
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            Los Centros para el Control y Prevención de Enfermedades (CDC) establecen que entre los 3 y 5 años se produce el período crítico para el desarrollo de habilidades motoras, sentando las bases para el aprendizaje futuro.
+          </div>
+        </div>
+      </div>
     </section>
     
     <!-- Navegación entre módulos -->
@@ -710,48 +1052,75 @@
             window.location.href = '../index.html';
           }
         });
-      }
-    });
-    
-    // Animación de entrada
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.8s';
-    window.addEventListener('DOMContentLoaded', function() {
-      document.body.style.opacity = '1';
-    });
-    
-    // Transición al navegar
-    document.querySelectorAll('.btn, .navbar a, .module-card').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        if (link.getAttribute('target') !== '_blank') {
-          e.preventDefault();
-          document.body.style.opacity = '0.2';
-          setTimeout(function() {
-            window.location.href = link.href;
-          }, 320);
-        }
-      });
-    });
-    
-    // Modo oscuro mejorado
-    document.getElementById('modo').onclick = function() {
-      document.body.classList.toggle('oscuro');
-      const icon = this.querySelector('i');
-      const text = this.querySelector('span');
-      
-      if (document.body.classList.contains('oscuro')) {
-        icon.className = 'fas fa-sun';
-        text.textContent = 'Modo claro';
       } else {
-        icon.className = 'fas fa-moon';
-        text.textContent = 'Modo oscuro';
+        // Si tiene acceso, inicializar el contenido del módulo
+        inicializarModulo();
       }
-    };
-    
-    // Toggle para menú móvil
-    document.getElementById('navbar-toggle').addEventListener('click', () => {
-      document.getElementById('navbar-menu').classList.toggle('active');
     });
-  </script>
-</body>
-</html>
+    
+    function inicializarModulo() {
+      // Configurar test previo
+      const testOptions = document.querySelectorAll('.test-option');
+      const checkButton = document.getElementById('checkTest');
+      const testResults = document.getElementById('testResults');
+      const testScore = document.getElementById('testScore');
+      const testMessage = document.getElementById('testMessage');
+      const continueButton = document.getElementById('continueToContent');
+      
+      // Agregar evento click a las opciones del test
+      testOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Eliminar selección previa
+          const parent = this.parentElement;
+          parent.querySelectorAll('.test-option').forEach(opt => {
+            opt.classList.remove('selected');
+          });
+          
+          // Marcar opción seleccionada
+          this.classList.add('selected');
+        });
+      });
+      
+      // Verificar respuestas al hacer clic en el botón
+      checkButton.addEventListener('click', function() {
+        let correctAnswers = 0;
+        const totalQuestions = document.querySelectorAll('.test-question').length;
+        
+        // Verificar cada pregunta
+        document.querySelectorAll('.test-question').forEach(question => {
+          const selectedOption = question.querySelector('.test-option.selected');
+          
+          if (selectedOption) {
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+              correctAnswers++;
+              selectedOption.classList.add('correct');
+            } else {
+              selectedOption.classList.add('incorrect');
+              
+              // Mostrar la respuesta correcta
+              question.querySelectorAll('.test-option').forEach(opt => {
+                if (opt.getAttribute('data-correct') === 'true') {
+                  opt.classList.add('correct');
+                }
+              });
+            }
+          }
+        });
+        
+        // Calcular porcentaje
+        const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+        
+        // Mostrar resultados
+        testResults.style.display = 'block';
+        
+        // Configurar mensaje según puntuación
+        if (percentage >= 80) {
+          testScore.textContent = `${percentage}% - ¡Excelente!`;
+          testScore.className = 'test-score good';
+          testMessage.textContent = 'Tienes muy buenos conocimientos sobre la motricidad infantil. Este módulo te ayudará a profundizar en ellos.';
+        } else if (percentage >= 50) {
+          testScore.textContent = `${percentage}% - Bien hecho`;
+          testScore.className = 'test-score regular';
+          testMessage.textContent = 'Tienes conocimientos básicos sobre el tema. Este
