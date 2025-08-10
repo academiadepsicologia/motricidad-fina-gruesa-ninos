@@ -22,6 +22,12 @@
       --orange: #FF9A56;
       --teal: #26D0CE;
       --yellow: #FFD93D;
+      --kid-blue: #4dabf7;
+      --kid-pink: #ff7eb9;
+      --kid-green: #6bcf7f;
+      --kid-purple: #9c88ff;
+      --kid-orange: #ff9a56;
+      --kid-teal: #26d0ce;
       
       /* Gradientes más vibrantes */
       --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
@@ -30,13 +36,11 @@
       --gradient-4: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 100%);
       --gradient-5: linear-gradient(135deg, #FF7EB9 0%, #FF9A56 100%);
     }
-    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
     body {
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       background: linear-gradient(135deg, #F7FFF7 0%, #E8F8F5 100%);
@@ -150,11 +154,6 @@
       60% {
         transform: translateY(-5px);
       }
-    }
-    
-    #modo:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
     }
     
     /* Navbar con animación */
@@ -758,14 +757,13 @@
       font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 15px;
-      color: var(--dark);
       font-family: 'Montserrat', sans-serif;
     }
     
     .module-description {
       color: #6c757d;
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.5;
     }
     
     /* Secciones de contenido con acordeón animado */
@@ -1107,6 +1105,34 @@
     
     .btn i {
       font-size: 1.3rem;
+    }
+    
+    /* Botón de completar módulo */
+    .complete-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
+    }
+    
+    .complete-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(107, 207, 127, 0.4);
+    }
+    
+    .complete-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
     }
     
     /* Footer simplificado */
@@ -1597,6 +1623,11 @@
       </div>
     </section>
     
+    <!-- Botón para completar módulo -->
+    <button class="complete-btn" id="completeModule1">
+      <i class="fas fa-check-circle"></i> Completar Módulo 1
+    </button>
+    
     <!-- Navegación entre módulos -->
     <div class="navigation">
       <a href="../index.html" class="btn btn-secondary">
@@ -1749,6 +1780,47 @@
           item.classList.toggle('active');
         });
       });
+      
+      // Configurar botón de completar módulo
+      const completeBtn = document.getElementById('completeModule1');
+      completeBtn.addEventListener('click', function() {
+        // Marcar módulo 1 como completado
+        localStorage.setItem('modulo1Completado', 'true');
+        
+        // Deshabilitar botón y cambiar texto
+        this.disabled = true;
+        this.innerHTML = '<i class="fas fa-check"></i> Módulo Completado';
+        
+        // Mostrar mensaje de éxito
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--success);
+          color: white;
+          padding: 15px 20px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 10001;
+          font-weight: 600;
+          max-width: 300px;
+          animation: slideInRight 0.5s ease;
+        `;
+        successMsg.innerHTML = `
+          <i class="fas fa-check-circle"></i> 
+          ¡Módulo 1 completado! Ahora puedes acceder al Módulo 2.
+        `;
+        
+        document.body.appendChild(successMsg);
+        
+        setTimeout(() => {
+          successMsg.style.animation = 'slideOutRight 0.5s ease';
+          setTimeout(() => {
+            document.body.removeChild(successMsg);
+          }, 500);
+        }, 4000);
+      });
     }
     
     // Toggle para menú móvil
@@ -1784,6 +1856,33 @@
         }
       });
     });
+    
+    // Añadir animaciones CSS para los mensajes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
