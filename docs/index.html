@@ -1923,9 +1923,9 @@
         // Guardar token de acceso en localStorage
         localStorage.setItem('cursoAcceso', 'autorizado');
         
-        // Cerrar modal y recargar la página para mostrar los módulos
+        // Cerrar modal y redirigir al primer módulo
         modal.style.display = 'none';
-        location.reload();
+        window.location.href = 'modulo1/index.html';
       } else {
         // Mostrar mensaje de error
         errorMessage.style.display = 'block';
