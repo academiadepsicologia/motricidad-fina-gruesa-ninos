@@ -1169,6 +1169,268 @@
       z-index: 1;
     }
     
+    /* Sección de módulos */
+    .modules-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 60px 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+    
+    .modules-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      border-radius: 25px 25px 0 0;
+      animation: gradientShift 3s ease infinite;
+    }
+    
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .module-card {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      animation: slideInUp 0.8s ease both;
+    }
+    
+    .module-card:nth-child(1) { animation-delay: 0.1s; }
+    .module-card:nth-child(2) { animation-delay: 0.2s; }
+    .module-card:nth-child(3) { animation-delay: 0.3s; }
+    .module-card:nth-child(4) { animation-delay: 0.4s; }
+    .module-card:nth-child(5) { animation-delay: 0.5s; }
+    
+    .module-card.completed {
+      border-color: var(--success);
+      background: linear-gradient(135deg, #F0FFF7 0%, #E6FFF5 100%);
+    }
+    
+    .module-card.available {
+      border-color: var(--secondary);
+      background: linear-gradient(135deg, #F0FDFF 0%, #E6F9FF 100%);
+    }
+    
+    .module-card.locked {
+      border-color: #dee2e6;
+      background: #f8f9fa;
+      opacity: 0.7;
+    }
+    
+    .module-card.available:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+      border-color: var(--secondary);
+    }
+    
+    .module-status {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      z-index: 2;
+    }
+    
+    .module-card.completed .module-status {
+      background: var(--success);
+      color: white;
+    }
+    
+    .module-card.available .module-status {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .module-card.locked .module-status {
+      background: #dee2e6;
+      color: #6c757d;
+    }
+    
+    .module-number {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .module-card.completed .module-number {
+      color: var(--success);
+    }
+    
+    .module-card.available .module-number {
+      color: var(--secondary);
+    }
+    
+    .module-card.locked .module-number {
+      color: #adb5bd;
+    }
+    
+    .module-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .module-card.completed .module-title,
+    .module-card.available .module-title {
+      color: var(--dark);
+    }
+    
+    .module-card.locked .module-title {
+      color: #6c757d;
+    }
+    
+    .module-description {
+      font-size: 1rem;
+      color: #6c757d;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    
+    .module-progress {
+      height: 8px;
+      background: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .module-progress-bar {
+      height: 100%;
+      background: var(--secondary);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+    
+    .module-card.completed .module-progress-bar {
+      background: var(--success);
+      width: 100% !important;
+    }
+    
+    .module-card.locked .module-progress-bar {
+      background: #dee2e6;
+      width: 0% !important;
+    }
+    
+    .module-button {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .module-card.completed .module-button {
+      background: var(--success);
+      color: white;
+    }
+    
+    .module-card.available .module-button {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .module-card.locked .module-button {
+      background: #dee2e6;
+      color: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    .module-card.available .module-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
+    }
+    
+    .module-card.completed .module-button:hover {
+      background: var(--success);
+      opacity: 0.9;
+    }
+    
+    .overall-progress {
+      background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .progress-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .progress-bar-container {
+      height: 20px;
+      background: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    
+    .overall-progress-bar {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 10px;
+      transition: width 0.8s ease;
+      position: relative;
+    }
+    
+    .overall-progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    .progress-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    .progress-percentage {
+      color: var(--primary);
+      font-weight: 800;
+    }
+    
     /* Footer */
     .footer {
       background: var(--dark);
@@ -1338,7 +1600,8 @@
       
       .importance-grid,
       .age-grid,
-      .testimonials-grid {
+      .testimonials-grid,
+      .modules-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
       
@@ -1422,6 +1685,10 @@
         padding: 16px 35px;
         font-size: 1.1rem;
       }
+      
+      .modules-section {
+        padding: 40px 30px;
+      }
     }
     
     @media (max-width: 576px) {
@@ -1433,7 +1700,8 @@
       .age-section,
       .benefits-section,
       .testimonials-section,
-      .cta-section {
+      .cta-section,
+      .modules-section {
         padding: 0;
         margin-bottom: 40px;
       }
@@ -1470,6 +1738,18 @@
       .cta-feature-text {
         font-size: 1rem;
       }
+      
+      .module-card {
+        padding: 25px 20px;
+      }
+      
+      .module-number {
+        font-size: 2.5rem;
+      }
+      
+      .module-title {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -1494,6 +1774,7 @@
         <li><a href="#desarrollo">Desarrollo</a></li>
         <li><a href="#beneficios">Beneficios</a></li>
         <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#modulos">Módulos</a></li>
         <li><a href="#acceder">Acceder</a></li>
       </ul>
       <button class="navbar-toggle" id="navbar-toggle">
@@ -1620,7 +1901,7 @@
     </section>
     
     <!-- Sección de desarrollo por edad -->
-    .age-section" id="desarrollo">
+    <section class="age-section" id="desarrollo">
       <h2 class="section-title">Etapas del desarrollo psicomotor</h2>
       <div class="age-grid">
         <div class="age-card">
@@ -1787,6 +2068,23 @@
       </div>
     </section>
     
+    <!-- Sección de módulos -->
+    <section class="modules-section" id="modulos">
+      <h2 class="section-title">Módulos del Curso</h2>
+      
+      <div class="overall-progress">
+        <h3 class="progress-title">Tu Progreso General</h3>
+        <div class="progress-bar-container">
+          <div class="overall-progress-bar" id="overallProgressBar"></div>
+        </div>
+        <p class="progress-text">Has completado <span class="progress-percentage" id="progressPercentage">0%</span> del curso</p>
+      </div>
+      
+      <div class="modules-grid" id="modulesGrid">
+        <!-- Los módulos se generarán dinámicamente con JavaScript -->
+      </div>
+    </section>
+    
     <!-- Sección CTA profesional -->
     <section class="cta-section" id="acceder">
       <div class="cta-container">
@@ -1876,6 +2174,229 @@
   </div>
   
   <script>
+    // Sistema de gestión de módulos y progreso
+    class CourseManager {
+      constructor() {
+        this.modules = [
+          {
+            id: 1,
+            title: "Fundamentos del Desarrollo Motriz",
+            description: "Introducción a la psicología del desarrollo motriz infantil y sus bases teóricas",
+            progress: 0,
+            completed: false,
+            available: true
+          },
+          {
+            id: 2,
+            title: "Evaluación y Diagnóstico",
+            description: "Herramientas para evaluar el desarrollo motor y detectar necesidades específicas",
+            progress: 0,
+            completed: false,
+            available: false
+          },
+          {
+            id: 3,
+            title: "Estrategias de Intervención",
+            description: "Técnicas y actividades para estimular el desarrollo motor en niños",
+            progress: 0,
+            completed: false,
+            available: false
+          },
+          {
+            id: 4,
+            title: "Integración Sensorial",
+            description: "Cómo trabajar la integración sensorial para mejorar el desarrollo motor",
+            progress: 0,
+            completed: false,
+            available: false
+          },
+          {
+            id: 5,
+            title: "Seguimiento y Evaluación",
+            description: "Métodos para monitorear el progreso y ajustar las intervenciones",
+            progress: 0,
+            completed: false,
+            available: false
+          }
+        ];
+        
+        this.loadProgress();
+        this.updateModuleAvailability();
+        this.renderModules();
+        this.updateOverallProgress();
+      }
+      
+      loadProgress() {
+        const savedProgress = localStorage.getItem('courseProgress');
+        if (savedProgress) {
+          const progressData = JSON.parse(savedProgress);
+          this.modules.forEach((module, index) => {
+            if (progressData[index]) {
+              module.progress = progressData[index].progress || 0;
+              module.completed = progressData[index].completed || false;
+            }
+          });
+        }
+      }
+      
+      saveProgress() {
+        const progressData = this.modules.map(module => ({
+          progress: module.progress,
+          completed: module.completed
+        }));
+        localStorage.setItem('courseProgress', JSON.stringify(progressData));
+      }
+      
+      updateModuleAvailability() {
+        this.modules.forEach((module, index) => {
+          if (index === 0) {
+            module.available = true;
+          } else {
+            const previousModule = this.modules[index - 1];
+            module.available = previousModule.completed;
+          }
+        });
+      }
+      
+      renderModules() {
+        const modulesGrid = document.getElementById('modulesGrid');
+        modulesGrid.innerHTML = '';
+        
+        this.modules.forEach((module, index) => {
+          const moduleCard = this.createModuleCard(module, index);
+          modulesGrid.appendChild(moduleCard);
+        });
+      }
+      
+      createModuleCard(module, index) {
+        const card = document.createElement('div');
+        card.className = 'module-card';
+        
+        if (module.completed) {
+          card.classList.add('completed');
+        } else if (module.available) {
+          card.classList.add('available');
+        } else {
+          card.classList.add('locked');
+        }
+        
+        card.innerHTML = `
+          <div class="module-status">
+            ${module.completed ? '<i class="fas fa-check"></i>' : 
+              module.available ? '<i class="fas fa-play"></i>' : 
+              '<i class="fas fa-lock"></i>'}
+          </div>
+          <div class="module-number">${module.id}</div>
+          <h3 class="module-title">${module.title}</h3>
+          <p class="module-description">${module.description}</p>
+          <div class="module-progress">
+            <div class="module-progress-bar" style="width: ${module.progress}%"></div>
+          </div>
+          <button class="module-button" onclick="courseManager.accessModule(${index})">
+            ${module.completed ? 'Revisar' : 
+              module.available ? 'Continuar' : 
+              'Bloqueado'}
+          </button>
+        `;
+        
+        return card;
+      }
+      
+      accessModule(moduleIndex) {
+        const module = this.modules[moduleIndex];
+        
+        if (!module.available) {
+          this.showModuleLockedMessage(moduleIndex);
+          return;
+        }
+        
+        // Redirigir al módulo correspondiente
+        window.location.href = `modulo${moduleIndex + 1}/index.html`;
+      }
+      
+      showModuleLockedMessage(moduleIndex) {
+        const previousModule = this.modules[moduleIndex - 1];
+        const message = document.createElement('div');
+        message.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--warning);
+          color: var(--dark);
+          padding: 15px 20px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 10001;
+          font-weight: 600;
+          max-width: 300px;
+          animation: slideInRight 0.5s ease;
+        `;
+        message.innerHTML = `
+          <i class="fas fa-lock"></i> 
+          Debes completar primero el módulo "${previousModule.title}" para desbloquear este módulo.
+        `;
+        
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.style.animation = 'slideOutRight 0.5s ease';
+          setTimeout(() => {
+            document.body.removeChild(message);
+          }, 500);
+        }, 4000);
+      }
+      
+      completeModule(moduleIndex) {
+        this.modules[moduleIndex].completed = true;
+        this.modules[moduleIndex].progress = 100;
+        this.updateModuleAvailability();
+        this.saveProgress();
+        this.renderModules();
+        this.updateOverallProgress();
+      }
+      
+      updateModuleProgress(moduleIndex, progress) {
+        this.modules[moduleIndex].progress = Math.min(100, Math.max(0, progress));
+        if (this.modules[moduleIndex].progress === 100) {
+          this.completeModule(moduleIndex);
+        } else {
+          this.saveProgress();
+          this.renderModules();
+          this.updateOverallProgress();
+        }
+      }
+      
+      updateOverallProgress() {
+        const completedModules = this.modules.filter(m => m.completed).length;
+        const totalModules = this.modules.length;
+        const percentage = Math.round((completedModules / totalModules) * 100);
+        
+        const progressBar = document.getElementById('overallProgressBar');
+        const progressText = document.getElementById('progressPercentage');
+        
+        if (progressBar) {
+          progressBar.style.width = `${percentage}%`;
+        }
+        
+        if (progressText) {
+          progressText.textContent = `${percentage}%`;
+        }
+      }
+      
+      checkAccess() {
+        const hasAccess = localStorage.getItem('cursoAcceso') === 'autorizado';
+        if (!hasAccess) {
+          // Mostrar modal de acceso si no está autenticado
+          document.getElementById('accesoModal').style.display = 'flex';
+          return false;
+        }
+        return true;
+      }
+    }
+    
+    // Inicializar el gestor del curso
+    const courseManager = new CourseManager();
+    
     // Animación de entrada
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.8s';
@@ -1923,8 +2444,9 @@
         // Guardar token de acceso en localStorage
         localStorage.setItem('cursoAcceso', 'autorizado');
         
-        // Redirigir al primer módulo
-        window.location.href = 'modulo1/index.html';
+        // Cerrar modal y recargar la página para mostrar los módulos
+        modal.style.display = 'none';
+        location.reload();
       } else {
         // Mostrar mensaje de error
         errorMessage.style.display = 'block';
@@ -1968,9 +2490,47 @@
         }
       });
     }, observerOptions);
-    document.querySelectorAll('.importance-card, .age-card, .benefit-item, .testimonial-card').forEach(el => {
+    document.querySelectorAll('.importance-card, .age-card, .benefit-item, .testimonial-card, .module-card').forEach(el => {
       observer.observe(el);
     });
+    
+    // Verificar acceso al cargar la página
+    window.addEventListener('load', () => {
+      if (!courseManager.checkAccess()) {
+        // Si no hay acceso, ocultar la sección de módulos
+        const modulesSection = document.getElementById('modulos');
+        if (modulesSection) {
+          modulesSection.style.display = 'none';
+        }
+      }
+    });
+    
+    // Añadir animaciones CSS para los mensajes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
