@@ -791,6 +791,15 @@
       animation-delay: 2s;
     }
     
+    @keyframes bounceIcon {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
     .activity-title {
       font-size: 1.4rem;
       font-weight: 700;
@@ -974,6 +983,7 @@
       gap: 12px;
       align-items: center;
       border: 2px dashed var(--primary);
+      margin-bottom: 20px;
     }
     .drop-area-title {
       width: 100%;
@@ -994,6 +1004,101 @@
       font-weight: 600;
       text-align: center;
       display: none;
+    }
+    
+    /* Rompecabezas mejorado */
+    .puzzle-container {
+      text-align: center;
+    }
+    .puzzle-area {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 20px auto;
+      border: 3px solid var(--secondary);
+      border-radius: 15px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+    .puzzle-piece {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      cursor: grab;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    .puzzle-piece:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .puzzle-piece.dragging {
+      opacity: 0.7;
+      transform: scale(0.9);
+      cursor: grabbing;
+    }
+    .puzzle-piece.placed {
+      cursor: default;
+      background: var(--success);
+    }
+    .puzzle-pieces-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .puzzle-msj {
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+    }
+    
+    /* Dibujo guiado mejorado */
+    .drawing-container {
+      text-align: center;
+    }
+    .drawing-canvas {
+      border: 3px solid var(--secondary);
+      border-radius: 15px;
+      cursor: crosshair;
+      margin: 20px auto;
+      display: block;
+      background: white;
+    }
+    .drawing-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .drawing-btn {
+      background: var(--gradient-2);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .drawing-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+    }
+    .drawing-msj {
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
     }
     
     /* FAQ mejorado */
@@ -1326,6 +1431,21 @@
         flex-direction: column;
         align-items: center;
       }
+      
+      .puzzle-area {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .puzzle-piece {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .drawing-canvas {
+        width: 300px !important;
+        height: 200px !important;
+      }
     }
   </style>
 </head>
@@ -1555,11 +1675,12 @@
         <div class="quiz-container">
           <div class="quiz-question" id="quizQuestion">¿Cuál de estas actividades mejora principalmente la motricidad fina?</div>
           <div class="quiz-options" id="quizOptions">
-            <div class="quiz-btn" onclick="respuesta('a')">Ensartar cuentas</div>
-            <div class="quiz-btn" onclick="respuesta('b')">Saltar la cuerda</div>
-            <div class="quiz-btn" onclick="respuesta('c')">Lanzar una pelota</div>
+            <!-- Las opciones se cargarán dinámicamente -->
           </div>
           <div id="quiz-feedback" class="quiz-feedback"></div>
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="activity-btn" onclick="showQuiz()">Siguiente pregunta</button>
+          </div>
         </div>
       </div>
       
@@ -1569,6 +1690,9 @@
           <p style="text-align: center; margin-bottom: 20px;">Encuentra los pares de actividades relacionadas con la motricidad fina.</p>
           <div class="mem-cards" id="mem-cards"></div>
           <div id="memoria-msj" style="font-weight:bold; margin-top:15px; text-align: center;"></div>
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="activity-btn" onclick="showMemory()">Nuevo juego</button>
+          </div>
         </div>
       </div>
       
@@ -1592,36 +1716,35 @@
             <div class="drop-area-title-gruesa">Motricidad gruesa (arrástralos aquí):</div>
           </div>
           <div id="dragdrop-msj" class="dragdrop-msj"></div>
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="activity-btn" onclick="showDragDrop()">Reiniciar actividad</button>
+          </div>
         </div>
       </div>
       
       <div id="puzzleContainer" style="display: none;">
-        <div style="text-align: center;">
+        <div class="puzzle-container">
           <h3 style="color: var(--secondary); margin-bottom: 20px;">Rompecabezas de motricidad fina</h3>
-          <p style="margin-bottom: 20px;">Arrastra las piezas para completar la imagen.</p>
-          <div style="position: relative; width: 300px; height: 300px; margin: 0 auto; border: 2px solid var(--secondary); border-radius: 10px;">
-            <div id="puzzle-area" style="position: absolute; width: 100%; height: 100%; background-image: url('https://picsum.photos/seed/motricidad/300/300.jpg'); background-size: cover; border-radius: 8px;"></div>
+          <p style="margin-bottom: 20px;">Arrastra las piezas para completar la imagen según la edad.</p>
+          <div class="puzzle-area" id="puzzle-area"></div>
+          <div class="puzzle-pieces-container" id="puzzle-pieces"></div>
+          <div id="puzzle-msj" class="puzzle-msj"></div>
+          <div style="margin-top: 20px;">
+            <button class="activity-btn" onclick="showPuzzle()">Nuevo rompecabezas</button>
           </div>
-          <div id="puzzle-pieces" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient); border-radius: 5px; cursor: grab;">1</div>
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient-2); border-radius: 5px; cursor: grab;">2</div>
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient-3); border-radius: 5px; cursor: grab;">3</div>
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient-4); border-radius: 5px; cursor: grab;">4</div>
-          </div>
-          <div id="puzzle-msj" style="font-weight:bold; margin-top:15px;"></div>
         </div>
       </div>
       
       <div id="drawingContainer" style="display: none;">
-        <div style="text-align: center;">
+        <div class="drawing-container">
           <h3 style="color: var(--secondary); margin-bottom: 20px;">Dibujo guiado</h3>
-          <p style="margin-bottom: 20px;">Sigue las líneas punteadas para completar el dibujo.</p>
-          <canvas id="drawingCanvas" width="400" height="300" style="border: 2px solid var(--secondary); border-radius: 10px; cursor: crosshair; margin: 0 auto; display: block;"></canvas>
-          <div style="margin-top: 20px;">
-            <button class="activity-btn" onclick="clearCanvas()">Limpiar</button>
-            <button class="activity-btn" onclick="showNewDrawing()">Nuevo dibujo</button>
+          <p style="margin-bottom: 20px;">Sigue las líneas punteadas para completar el dibujo según la edad.</p>
+          <canvas id="drawingCanvas" class="drawing-canvas" width="400" height="300"></canvas>
+          <div class="drawing-controls">
+            <button class="drawing-btn" onclick="clearCanvas()">Limpiar</button>
+            <button class="drawing-btn" onclick="showDrawing()">Nuevo dibujo</button>
           </div>
-          <div id="drawing-msj" style="font-weight:bold; margin-top:15px;"></div>
+          <div id="drawing-msj" class="drawing-msj"></div>
         </div>
       </div>
     </section>
@@ -1740,7 +1863,30 @@
         consejoProfesional: "A los 3 años, los juegos deben ser cortos (5-10 minutos) y muy divertidos. Usa materiales grandes y seguros. Celebra el esfuerzo más que el resultado y recuerda que cada niño tiene su propio ritmo.",
         faqEdad: "A los 3 años, los niños comienzan a desarrollar habilidades básicas de motricidad fina como hacer torres de 6 bloques, garabatear y usar utensilios. Si tu hijo no muestra interés en estas actividades, ofrece alternativas como jugar con arena o agua.",
         faqRecortar: "A los 3 años, muchos niños aún no están listos para usar tijeras. Comienza con actividades de rasgado papel o usar punzones seguros. Si muestra resistencia, espera unas semanas e intenta de nuevo.",
-        faqTecnologia: "A los 3 años, el tiempo frente a pantallas debe ser muy limitado (máximo 30 minutos al día). Prioriza juegos manipulativos que desarrollen la motricidad fina, como plastilina o bloques."
+        faqTecnologia: "A los 3 años, el tiempo frente a pantallas debe ser muy limitado (máximo 30 minutos al día). Prioriza juegos manipulativos que desarrollen la motricidad fina, como plastilina o bloques.",
+        quizPreguntas: [
+          {
+            pregunta: "¿Qué actividad es adecuada para un niño de 3 años?",
+            opciones: ["Escribir letras", "Hacer torres de bloques", "Recortar formas"],
+            correcta: 1,
+            explicacion: "¡Correcto! A los 3 años, hacer torres de bloques es una actividad perfecta para desarrollar la motricidad fina."
+          },
+          {
+            pregunta: "¿Cuál es un hito de motricidad fina a los 3 años?",
+            opciones: ["Abrochar botones pequeños", "Usar cuchara", "Escribir el nombre"],
+            correcta: 1,
+            explicacion: "¡Excelente! Usar cuchara es un hito importante de motricidad fina a los 3 años."
+          },
+          {
+            pregunta: "¿Qué ayuda a desarrollar la pinza digital?",
+            opciones: ["Ver televisión", "Recoger objetos pequeños", "Correr en el parque"],
+            correcta: 1,
+            explicacion: "¡Muy bien! Recoger objetos pequeños ayuda a desarrollar la pinza digital (pulgar e índice)."
+          }
+        ],
+        memoriaIconos: ["🧸", "🧸", "🖍️", "🖍️", "🍴", "🍴", "🧺", "🧺"],
+        puzzleImagen: "https://picsum.photos/seed/ninos3anos/300/300.jpg",
+        dibujoFigura: "círculo"
       },
       4: {
         titulo: "¡Continúa el desarrollo! Descubre actividades avanzadas para niños de 4 años que potencian la motricidad fina.",
@@ -1764,7 +1910,7 @@
           {
             icono: "fas fa-bezier-curve",
             titulo: "Ensartar cuentas pequeñas",
-            descripcion: "Usa cordones y cuentas de tamaño mediano para crear collajes. Comienza con cuentas grandes y reduce gradualmente el tamaño. Mejora la precisión y paciencia."
+            descripcion: "Usa cordones y cuentas de tamaño mediano para crear collages. Comienza con cuentas grandes y reduce gradualmente el tamaño. Mejora la precisión y paciencia."
           },
           {
             icono: "fas fa-lock",
@@ -1780,7 +1926,30 @@
         consejoProfesional: "A los 4 años, las actividades pueden durar 10-15 minutos. Introduce desafíos gradualmente y celebra los progresos. Usa materiales variados para mantener el interés y recuerda que la práctica constante es clave.",
         faqEdad: "A los 4 años, los niños pueden recortar líneas rectas, dibujar figuras simples y vestirse con ayuda mínima. Si tu hijo tiene dificultades, asegúrate de que las actividades sean divertidas y sin presión.",
         faqRecortar: "A los 4 años, los niños están listos para usar tijeras de seguridad. Comienza con líneas rectas anchas y progresa gradualmente. Si muestra frustración, ofrece ayuda y haz la actividad más corta.",
-        faqTecnologia: "A los 4 años, limita el tiempo de pantalla a 1 hora al día. Ofrece actividades alternativas que desarrollen la motricidad fina, como manualidades, juegos de mesa o actividades al aire libre."
+        faqTecnologia: "A los 4 años, limita el tiempo de pantalla a 1 hora al día. Ofrece actividades alternativas que desarrollen la motricidad fina, como manualidades, juegos de mesa o actividades al aire libre.",
+        quizPreguntas: [
+          {
+            pregunta: "¿Qué pueden hacer los niños de 4 años?",
+            opciones: ["Recortar líneas rectas", "Escribir párrafos", "Hacer nudos complejos"],
+            correcta: 0,
+            explicacion: "¡Correcto! A los 4 años, los niños pueden recortar líneas rectas con tijeras de seguridad."
+          },
+          {
+            pregunta: "¿Qué habilidad se desarrolla a los 4 años?",
+            opciones: ["Dominancia manual", "Caligrafía perfecta", "Cocinar solo"],
+            correcta: 0,
+            explicacion: "¡Excelente! A los 4 años se desarrolla la dominancia manual (preferencia por una mano)."
+          },
+          {
+            pregunta: "¿Qué actividad prepara para la escritura?",
+            opciones: ["Ver dibujos animados", "Recortar y pegar", "Jugar videojuegos"],
+            correcta: 1,
+            explicacion: "¡Muy bien! Recortar y pegar desarrolla la coordinación ojo-mano necesaria para la escritura."
+          }
+        ],
+        memoriaIconos: ["✂️", "✂️", "📝", "📝", "🧩", "🧩", "🔒", "🔒"],
+        puzzleImagen: "https://picsum.photos/seed/ninos4anos/300/300.jpg",
+        dibujoFigura: "cuadrado"
       },
       5: {
         titulo: "¡Domina las habilidades! Actividades especializadas para niños de 5 años que perfeccionan la motricidad fina.",
@@ -1820,13 +1989,37 @@
         consejoProfesional: "A los 5 años, las actividades pueden durar 15-20 minutos. Introduce actividades que preparen para la escuela, como escribir el nombre. Usa refuerzos positivos y recuerda que la calidad es más importante que la cantidad.",
         faqEdad: "A los 5 años, los niños pueden escribir algunas letras, recortar formas simples y vestirse solos. Si tu hijo muestra dificultades, considera una evaluación con un especialista en desarrollo infantil.",
         faqRecortar: "A los 5 años, los niños deben poder recortar formas simples. Si tiene dificultades, practica con tijeras de buena calidad y asegúrate de que sostenga las tijeras correctamente. Considera actividades de fortalecimiento previo.",
-        faqTecnologia: "A los 5 años, el uso educativo de la tecnología puede complementar el desarrollo. Limita el tiempo recreativo a 1-2 horas al día y prioriza actividades interactivas que desarrollen la motricidad fina."
+        faqTecnologia: "A los 5 años, el uso educativo de la tecnología puede complementar el desarrollo. Limita el tiempo recreativo a 1-2 horas al día y prioriza actividades interactivas que desarrollen la motricidad fina.",
+        quizPreguntas: [
+          {
+            pregunta: "¿Qué es característico de los 5 años?",
+            opciones: ["Escribir algunas letras", "Solo garabatear", "No usar tijeras"],
+            correcta: 0,
+            explicacion: "¡Correcto! A los 5 años los niños pueden empezar a escribir algunas letras y números."
+          },
+          {
+            pregunta: "¿Qué prepara a los niños de 5 años para la escuela?",
+            opciones: ["Ver televisión", "Escribir su nombre", "Jugar videojuegos"],
+            correcta: 1,
+            explicacion: "¡Excelente! Escribir su nombre es una habilidad importante que prepara a los niños para la escuela."
+          },
+          {
+            pregunta: "¿Qué desarrolla la pinza trípode?",
+            opciones: ["Usar cuchara", "Sostener lápiz correctamente", "Atrapar pelota"],
+            correcta: 1,
+            explicacion: "¡Muy bien! La pinza trípode (sostener lápiz con 3 dedos) es fundamental para la escritura."
+          }
+        ],
+        memoriaIconos: ["🔤", "🔤", "📐", "📐", "🎨", "🎨", "📄", "📄"],
+        puzzleImagen: "https://picsum.photos/seed/ninos5anos/300/300.jpg",
+        dibujoFigura: "estrella"
       }
     };
     
     // Variables globales
     let edadSeleccionada = null;
     let actividadActual = null;
+    let preguntaActual = 0;
     
     // Verificar si el usuario tiene acceso al curso y si completó el módulo 1
     document.addEventListener('DOMContentLoaded', function() {
@@ -1993,442 +2186,42 @@
     
     // Funciones para actividades interactivas
     function showQuiz() {
+      if (!edadSeleccionada) {
+        alert('Por favor, selecciona la edad de tu hijo/a primero.');
+        return;
+      }
+      
       hideAllActivities();
       document.getElementById('quizContainer').style.display = 'block';
       actividadActual = 'quiz';
       
-      // Configurar preguntas según la edad
-      const preguntas = {
-        3: [
-          { pregunta: "¿Qué actividad es adecuada para un niño de 3 años?", opciones: ["Escribir letras", "Hacer torres de bloques", "Recortar formas"], correcta: 1 },
-          { pregunta: "¿Cuál es un hito de motricidad fina a los 3 años?", opciones: ["Abrochar botones pequeños", "Usar cuchara", "Escribir el nombre"], correcta: 1 }
-        ],
-        4: [
-          { pregunta: "¿Qué pueden hacer los niños de 4 años?", opciones: ["Recortar líneas rectas", "Escribir párrafos", "Hacer nudos complejos"], correcta: 0 },
-          { pregunta: "¿Qué habilidad se desarrolla a los 4 años?", opciones: ["Dominancia manual", "Caligrafía perfecta", "Cocinar solo"], correcta: 0 }
-        ],
-        5: [
-          { pregunta: "¿Qué es característico de los 5 años?", opciones: ["Escribir algunas letras", "Solo garabatear", "No usar tijeras"], correcta: 0 },
-          { pregunta: "¿Qué prepara a los niños de 5 años para la escuela?", opciones: ["Ver televisión", "Escribir su nombre", "Jugar videojuegos"], correcta: 1 }
-        ]
-      };
+      const contenido = contenidoPorEdad[edadSeleccionada];
+      preguntaActual = Math.floor(Math.random() * contenido.quizPreguntas.length);
+      const pregunta = contenido.quizPreguntas[preguntaActual];
       
-      const preguntaActual = preguntas[edadSeleccionada][Math.floor(Math.random() * preguntas[edadSeleccionada].length)];
-      
-      document.getElementById('quizQuestion').textContent = preguntaActual.pregunta;
+      document.getElementById('quizQuestion').textContent = pregunta.pregunta;
       const optionsContainer = document.getElementById('quizOptions');
       optionsContainer.innerHTML = '';
       
-      preguntaActual.opciones.forEach((opcion, index) => {
+      pregunta.opciones.forEach((opcion, index) => {
         const btn = document.createElement('div');
         btn.className = 'quiz-btn';
         btn.textContent = opcion;
-        btn.onclick = () => respuestaQuiz(index === preguntaActual.correcta);
+        btn.onclick = () => respuestaQuiz(index === pregunta.correcta, pregunta.explicacion);
         optionsContainer.appendChild(btn);
       });
+      
+      // Ocultar feedback anterior
+      document.getElementById('quiz-feedback').style.display = 'none';
     }
     
-    function respuestaQuiz(esCorrecta) {
+    function respuestaQuiz(esCorrecta, explicacion) {
       const feedback = document.getElementById('quiz-feedback');
       feedback.style.display = 'block';
       
       if(esCorrecta) {
-        feedback.textContent = "¡Correcto! Sigue así para fortalecer tus conocimientos.";
+        feedback.textContent = explicacion;
         feedback.style.background = "rgba(45, 206, 137, 0.2)";
         feedback.style.color = "var(--success)";
       } else {
-        feedback.textContent = "Intenta de nuevo. Recuerda leer bien la información del módulo.";
-        feedback.style.background = "rgba(245, 54, 92, 0.2)";
-        feedback.style.color = "var(--danger)";
-      }
-    }
-    
-    function showMemory() {
-      hideAllActivities();
-      document.getElementById('memoryContainer').style.display = 'block';
-      actividadActual = 'memory';
-      
-      // Iniciar juego de memoria
-      const icons = ['✂️','✂️','🧵','🧵','🖍️','🖍️','🧩','🧩'];
-      let cards = icons.map(i => ({icon: i, id: Math.random()})).sort(() => Math.random() - 0.5);
-      let container = document.getElementById('mem-cards');
-      container.innerHTML = '';
-      let flipped = [];
-      let matched = [];
-      
-      cards.forEach((c, i) => {
-        let div = document.createElement('div');
-        div.className = 'mem-card';
-        div.dataset.index = i;
-        div.textContent = '';
-        div.onclick = function() {
-          if (flipped.length < 2 && !div.classList.contains('flipped') && !matched.includes(i)) {
-            div.textContent = c.icon;
-            div.classList.add('flipped');
-            flipped.push({i, icon: c.icon});
-            
-            if (flipped.length == 2) {
-              setTimeout(function() {
-                let [f1, f2] = flipped;
-                if (f1.icon == f2.icon && f1.i != f2.i) {
-                  matched.push(f1.i, f2.i);
-                  if (matched.length == cards.length) {
-                    document.getElementById('memoria-msj').textContent = '¡Excelente! Completaste el juego de memoria 🎉';
-                    document.getElementById('memoria-msj').style.color = "var(--success)";
-                  }
-                } else {
-                  document.querySelectorAll('.mem-card.flipped').forEach(d => {
-                    if (!matched.includes(parseInt(d.dataset.index))) {
-                      d.textContent = '';
-                      d.classList.remove('flipped');
-                    }
-                  });
-                }
-                flipped = [];
-              }, 900);
-            }
-          }
-        };
-        container.appendChild(div);
-      });
-    }
-    
-    function showDragDrop() {
-      hideAllActivities();
-      document.getElementById('dragDropContainer').style.display = 'block';
-      actividadActual = 'dragdrop';
-      
-      // Configurar drag and drop
-      let dragged = null;
-      let finaDrop = document.getElementById('fina-drop');
-      let gruesaDrop = document.getElementById('gruesa-drop');
-      let dragItems = document.querySelectorAll('.drag-item');
-      
-      // Limpiar áreas de drop
-      finaDrop.innerHTML = '<div class="drop-area-title">Motricidad fina (arrástralos aquí):</div>';
-      gruesaDrop.innerHTML = '<div class="drop-area-title-gruesa">Motricidad gruesa (arrástralos aquí):</div>';
-      
-      // Restaurar items al área original
-      const dragArea = document.getElementById('drag-area');
-      dragArea.innerHTML = `
-        <div class="drag-item" draggable="true" data-fina="true">Recortar papel</div>
-        <div class="drag-item" draggable="true" data-fina="false">Saltar en un pie</div>
-        <div class="drag-item" draggable="true" data-fina="true">Enhebrar cuentas</div>
-        <div class="drag-item" draggable="true" data-fina="false">Lanzar pelota</div>
-        <div class="drag-item" draggable="true" data-fina="true">Abotonar camisa</div>
-        <div class="drag-item" draggable="true" data-fina="false">Correr</div>
-        <div class="drag-item" draggable="true" data-fina="true">Escribir</div>
-      `;
-      
-      // Re-seleccionar items después de restaurar
-      dragItems = document.querySelectorAll('.drag-item');
-      
-      dragItems.forEach(item => {
-        item.addEventListener('dragstart', function(e) {
-          dragged = item;
-          item.classList.add('dragging');
-        });
-        
-        item.addEventListener('dragend', function(e) {
-          item.classList.remove('dragging');
-        });
-      });
-      
-      [finaDrop, gruesaDrop].forEach(dropArea => {
-        dropArea.addEventListener('dragover', function(e) {
-          e.preventDefault();
-        });
-        
-        dropArea.addEventListener('drop', function(e) {
-          e.preventDefault();
-          let msj = document.getElementById('dragdrop-msj');
-          msj.style.display = 'block';
-          
-          if (dragged) {
-            const esFina = dragged.getAttribute('data-fina') === 'true';
-            const dropCorrecto = (dropArea === finaDrop && esFina) || (dropArea === gruesaDrop && !esFina);
-            
-            if (dropCorrecto) {
-              dropArea.appendChild(dragged);
-              dragged.style.background = esFina ? "var(--success)" : "var(--primary)";
-              dragged.style.color = "white";
-              dragged.draggable = false;
-              dragged.style.cursor = "default";
-              dragged.innerHTML += " <i class='fas fa-check'></i>";
-              
-              msj.textContent = "¡Bien hecho! " + dragged.textContent + " es una actividad de " + (esFina ? "motricidad fina" : "motricidad gruesa") + ".";
-              msj.style.background = "rgba(45, 206, 137, 0.2)";
-              msj.style.color = "var(--success)";
-              
-              // Verificar si todos los items han sido clasificados correctamente
-              let remainingItems = document.querySelectorAll('#drag-area .drag-item');
-              if (remainingItems.length === 0) {
-                msj.textContent += " ¡Has completado todos correctamente!";
-              }
-            } else {
-              msj.textContent = "Esa actividad corresponde a " + (esFina ? "motricidad fina" : "motricidad gruesa") + ". Intenta con otra.";
-              msj.style.background = "rgba(245, 54, 92, 0.2)";
-              msj.style.color = "var(--danger)";
-            }
-          }
-        });
-      });
-    }
-    
-    function showPuzzle() {
-      hideAllActivities();
-      document.getElementById('puzzleContainer').style.display = 'block';
-      actividadActual = 'puzzle';
-      
-      // Configurar puzzle simple
-      const puzzlePieces = document.querySelectorAll('.puzzle-piece');
-      const puzzleArea = document.getElementById('puzzle-area');
-      const puzzleMsj = document.getElementById('puzzle-msj');
-      
-      let draggedPiece = null;
-      let piecesPlaced = 0;
-      
-      puzzlePieces.forEach(piece => {
-        piece.addEventListener('dragstart', function(e) {
-          draggedPiece = this;
-          this.style.opacity = '0.5';
-        });
-        
-        piece.addEventListener('dragend', function(e) {
-          this.style.opacity = '1';
-        });
-      });
-      
-      puzzleArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-      });
-      
-      puzzleArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        if (draggedPiece) {
-          puzzleArea.appendChild(draggedPiece);
-          draggedPiece.style.position = 'absolute';
-          draggedPiece.style.left = (e.offsetX - 30) + 'px';
-          draggedPiece.style.top = (e.offsetY - 30) + 'px';
-          draggedPiece.draggable = false;
-          draggedPiece.style.cursor = 'default';
-          piecesPlaced++;
-          
-          if (piecesPlaced === puzzlePieces.length) {
-            puzzleMsj.textContent = '¡Felicidades! Has completado el rompecabezas 🎉';
-            puzzleMsj.style.color = 'var(--success)';
-          }
-        }
-      });
-    }
-    
-    function showDrawing() {
-      hideAllActivities();
-      document.getElementById('drawingContainer').style.display = 'block';
-      actividadActual = 'drawing';
-      
-      const canvas = document.getElementById('drawingCanvas');
-      const ctx = canvas.getContext('2d');
-      const drawingMsj = document.getElementById('drawing-msj');
-      
-      // Limpiar canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Dibujar figura punteada según la edad
-      ctx.strokeStyle = '#ddd';
-      ctx.lineWidth = 3;
-      ctx.setLineDash([5, 5]);
-      
-      if (edadSeleccionada === 3) {
-        // Dibujar círculo punteado
-        ctx.beginPath();
-        ctx.arc(200, 150, 80, 0, 2 * Math.PI);
-        ctx.stroke();
-      } else if (edadSeleccionada === 4) {
-        // Dibujar cuadrado punteado
-        ctx.beginPath();
-        ctx.rect(120, 70, 160, 160);
-        ctx.stroke();
-      } else {
-        // Dibujar estrella punteada
-        ctx.beginPath();
-        const spikes = 5;
-        const outerRadius = 80;
-        const innerRadius = 40;
-        let rot = Math.PI / 2 * 3;
-        let x = 200;
-        let y = 150;
-        let step = Math.PI / spikes;
-        
-        ctx.moveTo(x, y - outerRadius);
-        for (let i = 0; i < spikes; i++) {
-          x = 200 + Math.cos(rot) * outerRadius;
-          y = 150 + Math.sin(rot) * outerRadius;
-          ctx.lineTo(x, y);
-          rot += step;
-          
-          x = 200 + Math.cos(rot) * innerRadius;
-          y = 150 + Math.sin(rot) * innerRadius;
-          ctx.lineTo(x, y);
-          rot += step;
-        }
-        ctx.lineTo(200, 150 - outerRadius);
-        ctx.closePath();
-        ctx.stroke();
-      }
-      
-      // Configurar dibujo
-      let isDrawing = false;
-      ctx.strokeStyle = '#FF6B6B';
-      ctx.lineWidth = 3;
-      ctx.setLineDash([]);
-      
-      canvas.addEventListener('mousedown', startDrawing);
-      canvas.addEventListener('mousemove', draw);
-      canvas.addEventListener('mouseup', stopDrawing);
-      canvas.addEventListener('mouseout', stopDrawing);
-      
-      // Touch events para móviles
-      canvas.addEventListener('touchstart', handleTouch);
-      canvas.addEventListener('touchmove', handleTouch);
-      canvas.addEventListener('touchend', stopDrawing);
-      
-      function startDrawing(e) {
-        isDrawing = true;
-        const rect = canvas.getBoundingClientRect();
-        ctx.beginPath();
-        ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-      }
-      
-      function draw(e) {
-        if (!isDrawing) return;
-        const rect = canvas.getBoundingClientRect();
-        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-        ctx.stroke();
-      }
-      
-      function stopDrawing() {
-        if (isDrawing) {
-          isDrawing = false;
-          drawingMsj.textContent = '¡Buen trabajo! Sigue practicando.';
-          drawingMsj.style.color = 'var(--success)';
-        }
-      }
-      
-      function handleTouch(e) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
-          clientX: touch.clientX,
-          clientY: touch.clientY
-        });
-        canvas.dispatchEvent(mouseEvent);
-      }
-      
-      window.clearCanvas = function() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Redibujar la figura punteada
-        ctx.strokeStyle = '#ddd';
-        ctx.lineWidth = 3;
-        ctx.setLineDash([5, 5]);
-        
-        if (edadSeleccionada === 3) {
-          ctx.beginPath();
-          ctx.arc(200, 150, 80, 0, 2 * Math.PI);
-          ctx.stroke();
-        } else if (edadSeleccionada === 4) {
-          ctx.beginPath();
-          ctx.rect(120, 70, 160, 160);
-          ctx.stroke();
-        } else {
-          // Redibujar estrella
-          ctx.beginPath();
-          const spikes = 5;
-          const outerRadius = 80;
-          const innerRadius = 40;
-          let rot = Math.PI / 2 * 3;
-          let x = 200;
-          let y = 150;
-          let step = Math.PI / spikes;
-          
-          ctx.moveTo(x, y - outerRadius);
-          for (let i = 0; i < spikes; i++) {
-            x = 200 + Math.cos(rot) * outerRadius;
-            y = 150 + Math.sin(rot) * outerRadius;
-            ctx.lineTo(x, y);
-            rot += step;
-            
-            x = 200 + Math.cos(rot) * innerRadius;
-            y = 150 + Math.sin(rot) * innerRadius;
-            ctx.lineTo(x, y);
-            rot += step;
-          }
-          ctx.lineTo(200, 150 - outerRadius);
-          ctx.closePath();
-          ctx.stroke();
-        }
-        
-        drawingMsj.textContent = '';
-      };
-      
-      window.showNewDrawing = function() {
-        showDrawing();
-      };
-    }
-    
-    function hideAllActivities() {
-      document.getElementById('quizContainer').style.display = 'none';
-      document.getElementById('memoryContainer').style.display = 'none';
-      document.getElementById('dragDropContainer').style.display = 'none';
-      document.getElementById('puzzleContainer').style.display = 'none';
-      document.getElementById('drawingContainer').style.display = 'none';
-    }
-    
-    // Toggle para menú móvil
-    document.getElementById('navbar-toggle').addEventListener('click', () => {
-      document.getElementById('navbar-menu').classList.toggle('active');
-    });
-    
-    // Suavizado de scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-    
-    // Añadir animaciones CSS para los mensajes
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes slideInRight {
-        from {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-      
-      @keyframes slideOutRight {
-        from {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        to {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
-</body>
-</html>
+        feedback.textContent = "Intenta de nuevo. Recuerda leer bien la
