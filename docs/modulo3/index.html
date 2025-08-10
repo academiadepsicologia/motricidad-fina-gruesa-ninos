@@ -667,7 +667,7 @@
       background: rgba(78, 205, 196, 0.1);
     }
     
-    /* Actividades mejoradas */
+    /* Actividades mejoradas con ejemplos visuales */
     .activity-list {
       list-style: none;
     }
@@ -693,6 +693,34 @@
     .activity-item h3 i {
       margin-right: 10px;
       color: var(--primary);
+    }
+    
+    /* Ejemplos visuales para actividades */
+    .activity-visual {
+      display: flex;
+      justify-content: space-around;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    
+    .kid-example {
+      text-align: center;
+      margin: 10px;
+    }
+    
+    .kid-example img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .kid-example p {
+      font-size: 0.9rem;
+      color: var(--dark);
+      font-weight: 500;
     }
     
     /* Tips mejorados */
@@ -721,7 +749,7 @@
       margin-bottom: 10px;
     }
     
-    /* Actividades interactivas */
+    /* Actividades interactivas mejoradas */
     .interactive-activities {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -853,7 +881,130 @@
       box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
     }
     
-    /* Juego de secuencia de movimientos */
+    /* Modal para actividades interactivas */
+    .activity-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .activity-modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      position: relative;
+      animation: modalSlideIn 0.5s ease;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    .close-activity-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-activity-modal:hover {
+      color: var(--primary);
+    }
+    
+    .activity-modal-title {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+    
+    /* Actividades mejoradas por edad */
+    .activity-age-3 {
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .activity-age-4 {
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .activity-age-5 {
+      background: rgba(156, 136, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .activity-age-title {
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .activity-age-title i {
+      margin-right: 10px;
+    }
+    
+    .activity-age-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .activity-age-item {
+      flex: 1 1 200px;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .activity-age-item h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .activity-age-item p {
+      color: #6c757d;
+      font-size: 0.95rem;
+    }
+    
+    /* Juego de secuencia de movimientos mejorado */
     .sequence-game {
       margin-top: 30px;
       text-align: center;
@@ -882,6 +1033,7 @@
       justify-content: center;
       gap: 15px;
       margin: 20px 0;
+      flex-wrap: wrap;
     }
     .sequence-btn {
       background: var(--gradient-3);
@@ -898,7 +1050,7 @@
       box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
     }
     
-    /* Juego de obstáculos */
+    /* Juego de obstáculos mejorado */
     .obstacle-game {
       margin-top: 30px;
       text-align: center;
@@ -934,6 +1086,7 @@
       justify-content: center;
       gap: 15px;
       margin: 20px 0;
+      flex-wrap: wrap;
     }
     .obstacle-btn {
       background: var(--gradient-3);
@@ -950,7 +1103,7 @@
       box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
     }
     
-    /* Juego de lanzamiento */
+    /* Juego de lanzamiento mejorado */
     .throw-game {
       margin-top: 30px;
       text-align: center;
@@ -998,6 +1151,7 @@
       justify-content: center;
       gap: 15px;
       margin: 20px 0;
+      flex-wrap: wrap;
     }
     .throw-btn {
       background: var(--gradient-3);
@@ -1014,7 +1168,7 @@
       box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
     }
     
-    /* Simulador de caminata */
+    /* Simulador de caminata mejorado */
     .walk-simulator {
       margin-top: 30px;
       text-align: center;
@@ -1053,6 +1207,7 @@
       justify-content: center;
       gap: 15px;
       margin: 20px 0;
+      flex-wrap: wrap;
     }
     .walk-btn {
       background: var(--gradient-3);
@@ -1363,6 +1518,11 @@
       .interactive-activities {
         grid-template-columns: 1fr;
       }
+      
+      .activity-modal-content {
+        width: 95%;
+        padding: 30px 20px;
+      }
     }
     
     @media (max-width: 576px) {
@@ -1397,6 +1557,11 @@
       }
       
       .age-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .activity-visual {
         flex-direction: column;
         align-items: center;
       }
@@ -1568,7 +1733,7 @@
       </div>
     </section>
     
-    <!-- Sección: Ejercicios prácticos -->
+    <!-- Sección: Ejercicios prácticos con ejemplos visuales -->
     <section class="content-section">
       <h2 class="section-title">Ejercicios prácticos para familias</h2>
       <ul class="activity-list" id="activityList">
@@ -1583,7 +1748,7 @@
       </div>
     </section>
     
-    <!-- Sección: Actividades interactivas -->
+    <!-- Sección: Actividades interactivas mejoradas -->
     <section class="content-section">
       <h2 class="section-title">Actividades interactivas</h2>
       
@@ -1594,7 +1759,7 @@
           </div>
           <h3 class="activity-title">Secuencia de movimientos</h3>
           <p class="activity-description">Repite secuencias de movimientos para mejorar la coordinación</p>
-          <button class="activity-btn" onclick="showSequence()">Comenzar actividad</button>
+          <button class="activity-btn" onclick="showActivityModal('sequence')">Comenzar actividad</button>
         </div>
         
         <div class="activity-card">
@@ -1603,7 +1768,7 @@
           </div>
           <h3 class="activity-title">Juego de obstáculos</h3>
           <p class="activity-description">Supera obstáculos para mejorar el equilibrio y la agilidad</p>
-          <button class="activity-btn" onclick="showObstacle()">Comenzar juego</button>
+          <button class="activity-btn" onclick="showActivityModal('obstacle')">Comenzar juego</button>
         </div>
         
         <div class="activity-card">
@@ -1612,7 +1777,7 @@
           </div>
           <h3 class="activity-title">Lanzamiento de precisión</h3>
           <p class="activity-description">Mejora la precisión al lanzar objetos a un objetivo</p>
-          <button class="activity-btn" onclick="showThrow()">Comenzar juego</button>
+          <button class="activity-btn" onclick="showActivityModal('throw')">Comenzar juego</button>
         </div>
         
         <div class="activity-card">
@@ -1621,7 +1786,19 @@
           </div>
           <h3 class="activity-title">Simulador de caminata</h3>
           <p class="activity-description">Practica diferentes formas de caminar y moverte</p>
-          <button class="activity-btn" onclick="showWalk()">Comenzar simulador</button>
+          <button class="activity-btn" onclick="showActivityModal('walk')">Comenzar simulador</button>
+        </div>
+      </div>
+      
+      <!-- Modal para actividades interactivas -->
+      <div id="activityModal" class="activity-modal">
+        <div class="activity-modal-content">
+          <span class="close-activity-modal" id="closeActivityModal">&times;</span>
+          <h3 class="activity-modal-title" id="activityModalTitle">Actividad Interactiva</h3>
+          
+          <div id="activityModalContent">
+            <!-- El contenido se cargará dinámicamente según la actividad seleccionada -->
+          </div>
         </div>
       </div>
       
@@ -1781,27 +1958,32 @@
           {
             icono: "fas fa-child",
             titulo: "Saltos en colchonetas",
-            descripcion: "Coloca colchonetas en el suelo y anima al niño a saltar de una a otra. Esta actividad fortalece los músculos de las piernas y mejora el equilibrio."
+            descripcion: "Coloca colchonetas en el suelo y anima al niño a saltar de una a otra. Esta actividad fortalece los músculos de las piernas y mejora el equilibrio.",
+            imagen: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-running",
             titulo: "Carreras cortas",
-            descripcion: "Organiza carreras cortas en un espacio seguro. Esta actividad desarrolla la velocidad, la coordinación y la conciencia espacial."
+            descripcion: "Organiza carreras cortas en un espacio seguro. Esta actividad desarrolla la velocidad, la coordinación y la conciencia espacial.",
+            imagen: "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-sort-amount-up",
             titulo: "Subir escaleras",
-            descripcion: "Practica subir escaleras con apoyo, alternando pies cuando sea posible. Esta actividad fortalece las piernas y mejora la coordinación."
+            descripcion: "Practica subir escaleras con apoyo, alternando pies cuando sea posible. Esta actividad fortalece las piernas y mejora la coordinación.",
+            imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-circle",
             titulo: "Lanzar pelotas grandes",
-            descripcion: "Usa pelotas grandes y suaves para practicar lanzar y rodar. Esta actividad desarrolla la coordinación ojo-mano y la fuerza de los brazos."
+            descripcion: "Usa pelotas grandes y suaves para practicar lanzar y rodar. Esta actividad desarrolla la coordinación ojo-mano y la fuerza de los brazos.",
+            imagen: "https://images.unsplash.com/photo-1534750209976-4ffb7b1d2f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-music",
             titulo: "Baile libre",
-            descripcion: "Pon música y anima al niño a bailar libremente. Esta actividad mejora el ritmo, la coordinación y la expresión corporal."
+            descripcion: "Pon música y anima al niño a bailar libremente. Esta actividad mejora el ritmo, la coordinación y la expresión corporal.",
+            imagen: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           }
         ],
         consejoProfesional: "A los 3 años, enfócate en actividades divertidas y breves (10-15 minutos). Usa equipos grandes y seguros. Celebra el esfuerzo y la participación, no solo los resultados. Recuerda que el juego es la principal forma de aprendizaje a esta edad.",
@@ -1821,27 +2003,32 @@
           {
             icono: "fas fa-child",
             titulo: "Saltos en un pie",
-            descripcion: "Anima al niño a saltar en un pie, luego en el otro. Esta actividad mejora el equilibrio y la fuerza de las piernas."
+            descripcion: "Anima al niño a saltar en un pie, luego en el otro. Esta actividad mejora el equilibrio y la fuerza de las piernas.",
+            imagen: "https://images.unsplash.com/photo-1535530995731-6462cf516ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-running",
             titulo: "Carreras con obstáculos",
-            descripcion: "Crea un circuito simple con obstáculos como cojines o cajas. Esta actividad desarrolla la agilidad, la coordinación y la planificación motriz."
+            descripcion: "Crea un circuito simple con obstáculos como cojines o cajas. Esta actividad desarrolla la agilidad, la coordinación y la planificación motriz.",
+            imagen: "https://images.unsplash.com/photo-1579631542044-a8d5a6b3f9d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-sort-amount-up",
             titulo: "Subir y bajar escaleras",
-            descripcion: "Practica subir y bajar escaleras alternando pies sin apoyo. Esta actividad fortalece las piernas y mejora la coordinación."
+            descripcion: "Practica subir y bajar escaleras alternando pies sin apoyo. Esta actividad fortalece las piernas y mejora la coordinación.",
+            imagen: "https://images.unsplash.com/photo-1596428253078-819a9e5a8f9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-baseball-ball",
             titulo: "Lanzar y atrapar pelotas",
-            descripcion: "Usa pelotas de diferentes tamaños para practicar lanzar y atrapar. Esta actividad mejora la coordinación ojo-mano y la precisión."
+            descripcion: "Usa pelotas de diferentes tamaños para practicar lanzar y atrapar. Esta actividad mejora la coordinación ojo-mano y la precisión.",
+            imagen: "https://images.unsplash.com/photo-1599558947748-6c3e1c1e9211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-bicycle",
             titulo: "Triciclo o bicicleta con ruedines",
-            descripcion: "Enseña al niño a usar un triciclo o bicicleta con ruedines. Esta actividad desarrolla la coordinación, el equilibrio y la fuerza de las piernas."
+            descripcion: "Enseña al niño a usar un triciclo o bicicleta con ruedines. Esta actividad desarrolla la coordinación, el equilibrio y la fuerza de las piernas.",
+            imagen: "https://images.unsplash.com/photo-1556989252-47d468511a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           }
         ],
         consejoProfesional: "A los 4 años, las actividades pueden durar entre 15-20 minutos. Introduce juegos con reglas simples y estructura. Ofrece desafíos gradualmente más complejos y celebra los progresos. Recuerda que el juego sigue siendo la principal forma de aprendizaje.",
@@ -1861,27 +2048,32 @@
           {
             icono: "fas fa-child",
             titulo: "Saltos coordinados",
-            descripcion: "Practica diferentes tipos de saltos: con pies juntos, alternando pies, hacia adelante y hacia atrás. Esta actividad mejora la coordinación, el equilibrio y la fuerza."
+            descripcion: "Practica diferentes tipos de saltos: con pies juntos, alternando pies, hacia adelante y hacia atrás. Esta actividad mejora la coordinación, el equilibrio y la fuerza.",
+            imagen: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-running",
             titulo: "Circuitos de obstáculos",
-            descripcion: "Crea circuitos con diversos desafíos como saltar, gatear, equilibrarse y lanzar. Esta actividad desarrolla la planificación motriz, la agilidad y la coordinación."
+            descripcion: "Crea circuitos con diversos desafíos como saltar, gatear, equilibrarse y lanzar. Esta actividad desarrolla la planificación motriz, la agilidad y la coordinación.",
+            imagen: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-sort-amount-up",
             titulo: "Deportes simples",
-            descripcion: "Introduce deportes simples como fútbol, básquet o atletismo adaptado. Estas actividades mejoran la coordinación, el trabajo en equipo y el seguimiento de reglas."
+            descripcion: "Introduce deportes simples como fútbol, básquet o atletismo adaptado. Estas actividades mejoran la coordinación, el trabajo en equipo y el seguimiento de reglas.",
+            imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-bicycle",
             titulo: "Bicicleta sin ruedines",
-            descripcion: "Enseña al niño a andar en bicicleta sin ruedines. Esta actividad desarrolla el equilibrio, la coordinación y la confianza en sí mismo."
+            descripcion: "Enseña al niño a andar en bicicleta sin ruedines. Esta actividad desarrolla el equilibrio, la coordinación y la confianza en sí mismo.",
+            imagen: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           },
           {
             icono: "fas fa-swimmer",
             titulo: "Natación básica",
-            descripcion: "Enseña al niño a flotar y moverse en el agua. Esta actividad mejora la coordinación general, la fuerza y la confianza en el agua."
+            descripcion: "Enseña al niño a flotar y moverse en el agua. Esta actividad mejora la coordinación general, la fuerza y la confianza en el agua.",
+            imagen: "https://images.unsplash.com/photo-1560996344-408a5ee7dbfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
           }
         ],
         consejoProfesional: "A los 5 años, las actividades pueden durar entre 20-30 minutos. Introduce deportes simples y actividades estructuradas que preparen para la escuela. Usa refuerzos positivos y enfócate en el disfrute y la participación, no solo en el rendimiento.",
@@ -1978,6 +2170,20 @@
         });
       });
       
+      // Configurar modal de actividades
+      const modal = document.getElementById('activityModal');
+      const closeBtn = document.getElementById('closeActivityModal');
+      
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+      
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+      
       // Configurar botón de completar módulo
       const completeBtn = document.getElementById('completeModule3');
       completeBtn.addEventListener('click', function() {
@@ -2040,17 +2246,30 @@
       document.getElementById('autonomiaIndependencia').textContent = contenido.autonomiaIndependencia;
       document.getElementById('interaccionSocial').textContent = contenido.interaccionSocial;
       
-      // Actualizar actividades prácticas
+      // Actualizar actividades prácticas con ejemplos visuales
       const activityList = document.getElementById('activityList');
       activityList.innerHTML = '';
       contenido.actividades.forEach((actividad, index) => {
         const li = document.createElement('li');
         li.className = 'activity-item';
         li.style.animationDelay = `${index * 0.2}s`;
+        
+        // Crear el contenido HTML con el ejemplo visual
         li.innerHTML = `
           <h3><i class="${actividad.icono}"></i>${actividad.titulo}</h3>
           <p>${actividad.descripcion}</p>
+          <div class="activity-visual">
+            <div class="kid-example">
+              <img src="${actividad.imagen}" alt="Niño realizando ${actividad.titulo}">
+              <p>Niño practicando</p>
+            </div>
+            <div class="kid-example">
+              <img src="https://images.unsplash.com/photo-1516450360458-6312a5e0c8f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Niña realizando ${actividad.titulo}">
+              <p>Niña practicando</p>
+            </div>
+          </div>
         `;
+        
         activityList.appendChild(li);
       });
       
@@ -2063,14 +2282,50 @@
       document.getElementById('faqActividadFisica').textContent = contenido.faqActividadFisica;
     }
     
+    // Función para mostrar actividades en un modal
+    function showActivityModal(activityType) {
+      const modal = document.getElementById('activityModal');
+      const modalContent = document.getElementById('activityModalContent');
+      const modalTitle = document.getElementById('activityModalTitle');
+      
+      // Limpiar contenido anterior
+      modalContent.innerHTML = '';
+      
+      // Configurar título según la actividad
+      switch(activityType) {
+        case 'sequence':
+          modalTitle.textContent = 'Secuencia de movimientos';
+          modalContent.appendChild(document.getElementById('sequenceContainer'));
+          document.getElementById('sequenceContainer').style.display = 'block';
+          generateSequence();
+          break;
+        case 'obstacle':
+          modalTitle.textContent = 'Juego de obstáculos';
+          modalContent.appendChild(document.getElementById('obstacleContainer'));
+          document.getElementById('obstacleContainer').style.display = 'block';
+          initObstacleGame();
+          break;
+        case 'throw':
+          modalTitle.textContent = 'Lanzamiento de precisión';
+          modalContent.appendChild(document.getElementById('throwContainer'));
+          document.getElementById('throwContainer').style.display = 'block';
+          initThrowGame();
+          break;
+        case 'walk':
+          modalTitle.textContent = 'Simulador de caminata';
+          modalContent.appendChild(document.getElementById('walkContainer'));
+          document.getElementById('walkContainer').style.display = 'block';
+          initWalkSimulator();
+          break;
+      }
+      
+      // Mostrar modal
+      modal.style.display = 'flex';
+    }
+    
     // Funciones para actividades interactivas
     function showSequence() {
-      hideAllActivities();
-      document.getElementById('sequenceContainer').style.display = 'block';
-      actividadActual = 'sequence';
-      
-      // Inicializar juego de secuencia
-      generateSequence();
+      showActivityModal('sequence');
     }
     
     function generateSequence() {
@@ -2142,12 +2397,7 @@
     }
     
     function showObstacle() {
-      hideAllActivities();
-      document.getElementById('obstacleContainer').style.display = 'block';
-      actividadActual = 'obstacle';
-      
-      // Inicializar juego de obstáculos
-      initObstacleGame();
+      showActivityModal('obstacle');
     }
     
     function initObstacleGame() {
@@ -2210,18 +2460,14 @@
     }
     
     function showThrow() {
-      hideAllActivities();
-      document.getElementById('throwContainer').style.display = 'block';
-      actividadActual = 'throw';
-      
-      // Inicializar juego de lanzamiento
-      initThrowGame();
+      showActivityModal('throw');
     }
     
     function initThrowGame() {
       const ball = document.getElementById('throw-ball');
       ball.style.left = '50px';
       ball.style.bottom = '20px';
+      ball.style.top = 'auto';
       
       // Configurar arrastre de la pelota
       ball.addEventListener('dragstart', function(e) {
@@ -2280,12 +2526,7 @@
     }
     
     function showWalk() {
-      hideAllActivities();
-      document.getElementById('walkContainer').style.display = 'block';
-      actividadActual = 'walk';
-      
-      // Inicializar simulador de caminata
-      initWalkSimulator();
+      showActivityModal('walk');
     }
     
     function initWalkSimulator() {
