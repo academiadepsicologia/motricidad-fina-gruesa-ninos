@@ -962,202 +962,211 @@
       animation: pulse 2s ease-in-out infinite;
     }
     
-    /* Sección CTA */
+    /* Sección CTA profesional */
     .cta-section {
-      background: linear-gradient(135deg, var(--gradient-4) 0%, var(--gradient) 100%);
+      background: white;
       border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-      padding: 70px 50px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 0;
       margin-bottom: 60px;
-      text-align: center;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease 1s both;
     }
     
-    .cta-section::before {
+    .cta-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      min-height: 500px;
+    }
+    
+    .cta-content {
+      padding: 60px 50px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cta-visual {
+      background: linear-gradient(135deg, var(--gradient-4) 0%, var(--gradient) 100%);
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-visual::before {
       content: '';
       position: absolute;
       top: -50%;
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
       animation: pulse 5s ease-in-out infinite;
     }
     
     .cta-title {
-      font-size: 2.8rem;
-      color: white;
-      margin-bottom: 25px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
       font-weight: 800;
-      position: relative;
-      z-index: 1;
       font-family: 'Montserrat', sans-serif;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      animation: titleGlow 2s ease-in-out infinite alternate;
+      line-height: 1.2;
     }
     
     .cta-subtitle {
-      font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 50px;
+      font-size: 1.2rem;
+      color: #6c757d;
+      margin-bottom: 30px;
       font-weight: 500;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      line-height: 1.6;
+      font-family: 'Quicksand', sans-serif;
+    }
+    
+    .cta-features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .cta-feature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .cta-feature i {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      width: 30px;
+      text-align: center;
+    }
+    
+    .cta-feature-text {
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .price-display {
+      text-align: center;
+      margin-bottom: 30px;
       position: relative;
-      z-index: 1;
-      font-family: 'Montserrat', sans-serif;
+      z-index: 2;
     }
     
-    /* Banner de precio mejorado */
-    .price-banner {
-      position: relative;
-      margin: 0 auto 40px;
-      max-width: 500px;
-      z-index: 1;
-    }
-    
-    .price-tag {
-      background: linear-gradient(135deg, var(--warning) 0%, var(--primary) 100%);
-      border-radius: 20px;
-      padding: 25px 40px;
-      position: relative;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      animation: pulse 2s ease-in-out infinite;
-      overflow: hidden;
-    }
-    
-    .price-tag::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-      animation: shine 3s ease-in-out infinite;
-    }
-    
-    @keyframes shine {
-      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
-      50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+    .price-label {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
     .price-amount {
-      font-size: 4.5rem;
+      font-size: 4rem;
       font-weight: 800;
       color: white;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      position: relative;
-      z-index: 2;
-      display: block;
       line-height: 1;
+      margin-bottom: 5px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .price-currency {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      vertical-align: top;
     }
     
     .price-period {
-      font-size: 1.8rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-left: 8px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .price-details {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(5px);
-      border-radius: 15px;
-      padding: 15px;
-      margin-top: 20px;
-      color: white;
       font-size: 1.2rem;
-      font-weight: 600;
-      position: relative;
-      z-index: 2;
+      color: rgba(255, 255, 255, 0.8);
     }
     
     .price-original {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: line-through;
-      opacity: 0.8;
-      margin-right: 10px;
+      margin-bottom: 15px;
     }
     
-    .price-discount {
+    .price-badge {
       background: var(--warning);
       color: var(--dark);
-      padding: 5px 12px;
+      padding: 8px 16px;
       border-radius: 20px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.9rem;
       display: inline-block;
-      margin-left: 10px;
-      animation: bounce 2s ease-in-out infinite;
-    }
-    
-    .price-timer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 15px;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    
-    .price-timer i {
-      margin-right: 8px;
-      color: var(--warning);
-      animation: pulse 1.5s ease-in-out infinite;
+      margin-bottom: 20px;
+      animation: pulse 2s ease-in-out infinite;
     }
     
     .cta-button {
       display: inline-block;
-      padding: 25px 60px;
-      background: white;
-      color: var(--primary);
-      font-size: 1.5rem;
+      padding: 18px 40px;
+      background: var(--primary);
+      color: white;
+      font-size: 1.2rem;
       font-weight: 700;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      transition: all 0.4s ease;
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+      transition: all 0.3s ease;
       font-family: 'Montserrat', sans-serif;
-    }
-    
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 107, 107, 0.2);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-      z-index: -1;
-    }
-    
-    .cta-button:hover::before {
-      width: 300px;
-      height: 300px;
+      position: relative;
+      z-index: 2;
     }
     
     .cta-button:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+      background: var(--pink);
     }
     
     .cta-guarantee {
-      margin-top: 25px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1.1rem;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       position: relative;
+      z-index: 2;
+    }
+    
+    .cta-guarantee i {
+      color: var(--warning);
+    }
+    
+    .cta-decoration {
+      position: absolute;
+      bottom: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
       z-index: 1;
-      font-weight: 500;
+    }
+    
+    .cta-decoration-2 {
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      z-index: 1;
     }
     
     /* Footer */
@@ -1327,14 +1336,27 @@
         font-size: 2.8rem;
       }
       
-      .cta-title {
-        font-size: 2.3rem;
-      }
-      
       .importance-grid,
       .age-grid,
       .testimonials-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+      
+      .cta-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-visual {
+        order: -1;
+        padding: 40px 30px;
+      }
+      
+      .cta-content {
+        padding: 40px 30px;
+      }
+      
+      .cta-title {
+        font-size: 2.2rem;
       }
     }
     
@@ -1377,17 +1399,8 @@
         font-size: 2rem;
       }
       
-      .cta-title {
-        font-size: 2rem;
-      }
-      
       .price-amount {
         font-size: 3.5rem;
-      }
-      
-      .cta-button {
-        padding: 20px 40px;
-        font-size: 1.3rem;
       }
       
       .psychology-illustrations {
@@ -1399,6 +1412,15 @@
       .psychology-illustration {
         width: 120px;
         height: 120px;
+      }
+      
+      .cta-title {
+        font-size: 2rem;
+      }
+      
+      .cta-button {
+        padding: 16px 35px;
+        font-size: 1.1rem;
       }
     }
     
@@ -1412,7 +1434,13 @@
       .benefits-section,
       .testimonials-section,
       .cta-section {
-        padding: 40px 25px;
+        padding: 0;
+        margin-bottom: 40px;
+      }
+      
+      .cta-content,
+      .cta-visual {
+        padding: 30px 20px;
       }
       
       .section-title {
@@ -1420,11 +1448,11 @@
       }
       
       .cta-title {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
       }
       
       .cta-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
       
       .price-amount {
@@ -1433,6 +1461,14 @@
       
       .modal-content {
         padding: 40px 25px;
+      }
+      
+      .cta-features {
+        gap: 12px;
+      }
+      
+      .cta-feature-text {
+        font-size: 1rem;
       }
     }
   </style>
@@ -1584,7 +1620,7 @@
     </section>
     
     <!-- Sección de desarrollo por edad -->
-    <section class="age-section" id="desarrollo">
+    .age-section" id="desarrollo">
       <h2 class="section-title">Etapas del desarrollo psicomotor</h2>
       <div class="age-grid">
         <div class="age-card">
@@ -1751,33 +1787,58 @@
       </div>
     </section>
     
-    <!-- Sección CTA -->
+    <!-- Sección CTA profesional -->
     <section class="cta-section" id="acceder">
-      <h2 class="cta-title">Potencia el desarrollo integral de tu hijo</h2>
-      <p class="cta-subtitle">
-        Accede al curso basado en la psicología del desarrollo con 5 módulos especializados, actividades terapéuticas y seguimiento profesional
-      </p>
-      
-      <!-- Banner de precio mejorado -->
-      <div class="price-banner">
-        <div class="price-tag">
-          <span class="price-amount">$67</span>
-          <span class="price-period">USD</span>
+      <div class="cta-container">
+        <div class="cta-content">
+          <h2 class="cta-title">Potencia el desarrollo integral de tu hijo</h2>
+          <p class="cta-subtitle">
+            Accede al curso basado en la psicología del desarrollo con 5 módulos especializados, actividades terapéuticas y seguimiento profesional
+          </p>
+          
+          <div class="cta-features">
+            <div class="cta-feature">
+              <i class="fas fa-check-circle"></i>
+              <span class="cta-feature-text">5 módulos especializados</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-check-circle"></i>
+              <span class="cta-feature-text">Actividades terapéuticas</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-check-circle"></i>
+              <span class="cta-feature-text">Seguimiento profesional</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-check-circle"></i>
+              <span class="cta-feature-text">Certificado de finalización</span>
+            </div>
+          </div>
+          
+          <a href="#" class="cta-button" id="acceder-curso">ACCEDER AL CURSO AHORA</a>
         </div>
-        <div class="price-details">
-          <span class="price-original">$97 USD</span>
-          <span class="price-discount">-30% OFF</span>
+        
+        <div class="cta-visual">
+          <div class="cta-decoration"></div>
+          <div class="cta-decoration-2"></div>
+          
+          <div class="price-badge">OFERTA LIMITADA</div>
+          
+          <div class="price-original">$97 USD</div>
+          
+          <div class="price-display">
+            <div class="price-label">Precio especial</div>
+            <div class="price-amount">
+              <span class="price-currency">$</span>67
+              <span class="price-period">USD</span>
+            </div>
+          </div>
+          
+          <div class="cta-guarantee">
+            <i class="fas fa-shield-alt"></i>
+            <span>Garantía de satisfacción de 30 días</span>
+          </div>
         </div>
-        <div class="price-timer">
-          <i class="fas fa-clock"></i>
-          <span>Oferta por tiempo limitado</span>
-        </div>
-      </div>
-      
-      <a href="#" class="cta-button" id="acceder-curso">ACCEDER AL CURSO AHORA</a>
-      
-      <div class="cta-guarantee">
-        <i class="fas fa-shield-alt"></i> Garantía de satisfacción de 30 días
       </div>
     </section>
     
