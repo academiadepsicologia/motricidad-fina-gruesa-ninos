@@ -598,6 +598,34 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
     }
+    /* Botón de completar módulo */
+    .complete-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
+    }
+    
+    .complete-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(107, 207, 127, 0.4);
+    }
+    
+    .complete-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
     /* Modo oscuro mejorado */
     body.oscuro {
       background: #111 !important;
@@ -607,8 +635,8 @@
       background: #222 !important;
     }
     body.oscuro .hero,
-    body.oscuro .section,
     body.oscuro .activity-card,
+    body.oscuro .section,
     body.oscuro .tool-card,
     body.oscuro .evaluation-table {
       background: #222 !important;
@@ -867,194 +895,4 @@
             <thead>
               <tr>
                 <th>Actividad</th>
-                <th>Semana 1</th>
-                <th>Semana 2</th>
-                <th>Semana 3</th>
-                <th>Notas</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Recortar con tijeras</td>
-                <td class="emoji-rating">😐</td>
-                <td class="emoji-rating">😊</td>
-                <td class="emoji-rating">😊</td>
-                <td>Mejoró la precisión</td>
-              </tr>
-              <tr>
-                <td>Enhebrar cuentas</td>
-                <td class="emoji-rating">😐</td>
-                <td class="emoji-rating">😐</td>
-                <td class="emoji-rating">😊</td>
-                <td>Necesita más práctica</td>
-              </tr>
-              <tr>
-                <td>Saltar en un pie</td>
-                <td class="emoji-rating">😊</td>
-                <td class="emoji-rating">😊</td>
-                <td class="emoji-rating">😊</td>
-                <td>Domina la habilidad</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Sección: Señales de alerta -->
-    <section class="section">
-      <h2 class="section-title">Señales de alerta</h2>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-header" style="background: var(--gradient-2);">
-            <div class="tool-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h3 class="tool-title">Motricidad fina</h3>
-          </div>
-          <div class="tool-content">
-            <ul style="padding-left: 20px;">
-              <li>Dificultad persistente para sostener utensilios</li>
-              <li>No puede recortar con tijeras a los 4 años</li>
-              <li>Problemas para abrochar botones</li>
-              <li>Dificultad para manipular objetos pequeños</li>
-            </ul>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-header" style="background: var(--gradient-2);">
-            <div class="tool-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h3 class="tool-title">Motricidad gruesa</h3>
-          </div>
-          <div class="tool-content">
-            <ul style="padding-left: 20px;">
-              <li>Dificultad para saltar o correr</li>
-              <li>Tropieza con frecuencia</li>
-              <li>No puede subir escaleras alternando pies</li>
-              <li>Problemas de equilibrio constantes</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="tips">
-        <h3 class="tips-title">Cuándo consultar a un especialista</h3>
-        <p>
-          Si observas varias de estas señales de alerta de forma persistente, es recomendable consultar con un especialista en desarrollo infantil o terapeuta ocupacional.
-        </p>
-      </div>
-    </section>
-    
-    <!-- Navegación entre módulos -->
-    <div class="navigation">
-      <a href="../modulo3/index.html" class="btn btn-secondary">
-        <i class="fas fa-arrow-left"></i>
-        Volver al Módulo 3
-      </a>
-      <a href="../index.html" class="btn btn-info">
-        <i class="fas fa-home"></i>
-        Ir al inicio
-      </a>
-      <a href="../modulo5/index.html" class="btn">
-        Siguiente módulo
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-    
-    <!-- Footer mejorado -->
-    <footer class="footer">
-      <p>Academia de Psicología &copy; 2025</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-      </div>
-    </footer>
-  </div>
-  
-  <!-- Modal de acceso denegado -->
-  <div id="accesoDenegadoModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" id="closeModal">&times;</span>
-      <h2 class="modal-title">Acceso Restringido</h2>
-      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
-      <button class="access-button" id="irAInicio">Ir a la página principal</button>
-    </div>
-  </div>
-  
-  <script>
-    // Verificar si el usuario tiene acceso al curso
-    document.addEventListener('DOMContentLoaded', function() {
-      const accesoAutorizado = localStorage.getItem('cursoAcceso');
-      
-      if (accesoAutorizado !== 'autorizado') {
-        // Mostrar modal de acceso denegado
-        const modal = document.getElementById('accesoDenegadoModal');
-        modal.style.display = 'flex';
-        
-        // Configurar botón para ir al inicio
-        document.getElementById('irAInicio').addEventListener('click', function() {
-          window.location.href = '../index.html';
-        });
-        
-        // Configurar cierre de modal
-        document.getElementById('closeModal').addEventListener('click', function() {
-          modal.style.display = 'none';
-          window.location.href = '../index.html';
-        });
-        
-        // Cerrar modal al hacer clic fuera
-        window.addEventListener('click', function(e) {
-          if (e.target === modal) {
-            modal.style.display = 'none';
-            window.location.href = '../index.html';
-          }
-        });
-      }
-    });
-    
-    // Animación de entrada
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.8s';
-    window.addEventListener('DOMContentLoaded', function() {
-      document.body.style.opacity = '1';
-    });
-    
-    // Transición al navegar
-    document.querySelectorAll('.btn, .navbar a, .tool-btn').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        if (link.getAttribute('target') !== '_blank' && !link.getAttribute('href').startsWith('#')) {
-          e.preventDefault();
-          document.body.style.opacity = '0.2';
-          setTimeout(function() {
-            window.location.href = link.href;
-          }, 320);
-        }
-      });
-    });
-    
-    // Modo oscuro mejorado
-    document.getElementById('modo').onclick = function() {
-      document.body.classList.toggle('oscuro');
-      const icon = this.querySelector('i');
-      const text = this.querySelector('span');
-      
-      if (document.body.classList.contains('oscuro')) {
-        icon.className = 'fas fa-sun';
-        text.textContent = 'Modo claro';
-      } else {
-        icon.className = 'fas fa-moon';
-        text.textContent = 'Modo oscuro';
-      }
-    };
-    
-    // Toggle para menú móvil
-    document.getElementById('navbar-toggle').addEventListener('click', () => {
-      document.getElementById('navbar-menu').classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
+                <th>Semana 1</th
