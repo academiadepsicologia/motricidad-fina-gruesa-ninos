@@ -18,6 +18,7 @@
       --warning: #fb6340;
       --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     }
     * {
       margin: 0;
@@ -153,7 +154,7 @@
       right: 0;
       width: 300px;
       height: 300px;
-      background: var(--gradient);
+      background: var(--gradient-3);
       border-radius: 50%;
       transform: translate(100px, -100px);
       z-index: 0;
@@ -263,7 +264,6 @@
       padding: 40px;
       margin-bottom: 40px;
       position: relative;
-      overflow: hidden;
     }
     .section::after {
       content: '';
@@ -272,7 +272,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: var(--gradient);
+      background: var(--gradient-3);
       border-radius: 0 0 16px 16px;
     }
     .section-title {
@@ -290,7 +290,7 @@
       left: 0;
       width: 50px;
       height: 3px;
-      background: var(--gradient);
+      background: var(--gradient-3);
       border-radius: 3px;
     }
     /* Actividades mejoradas */
@@ -689,6 +689,34 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
     }
+    /* Botón de completar módulo */
+    .complete-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
+    }
+    
+    .complete-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(107, 207, 127, 0.4);
+    }
+    
+    .complete-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .header {
@@ -741,7 +769,7 @@
         font-size: 1.1rem;
       }
       .section {
-        padding: 25px;
+        padding: 25px 20px;
       }
       .section-title {
         font-size: 1.5rem;
@@ -837,7 +865,7 @@
           <circle cx="57" cy="45" r="2.4" fill="#fff"/>
           <circle cx="43" cy="45" r="1.2" fill="#5e72e4"/>
           <circle cx="57" cy="45" r="1.2" fill="#5e72e4"/>
-          <path d="M46 54 Q50 57 54 54" stroke="#f5365c" stroke-width="2" fill="none"/>
+          <path d="M46 54 Q50 57 54 54" stroke="#f5365c" stroke-width="2"/>
           <rect x="40" y="65" width="20" height="8" rx="4" fill="#fff"/>
           <rect x="48" y="65" width="4" height="10" fill="#5e72e4"/>
         </svg>
@@ -1041,6 +1069,23 @@
       </div>
     </section>
     
+    <!-- Botón para completar módulo -->
+    <button class="complete-btn" id="completeModule2">
+      <i class="fas fa-check-circle"></i> Completar Módulo 2
+    </button>
+    
+    <!-- Navegación entre módulos -->
+    <div class="navigation">
+      <a href="../modulo1/index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+        Volver al Módulo 1
+      </a>
+      <a href="../modulo3/index.html" class="btn">
+        Siguiente módulo
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    
     <!-- Footer mejorado -->
     <footer class="footer fade-in">
       <p>Academia de Psicología &copy; 2025 - Todos los derechos reservados</p>
@@ -1064,9 +1109,10 @@
   </div>
   
   <script>
-    // Verificar si el usuario tiene acceso al curso
+    // Verificar si el usuario tiene acceso al curso y si completó el módulo 1
     document.addEventListener('DOMContentLoaded', function() {
       const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      const modulo1Completado = localStorage.getItem('modulo1Completado');
       
       if (accesoAutorizado !== 'autorizado') {
         // Mostrar modal de acceso denegado
@@ -1091,8 +1137,12 @@
             window.location.href = '../index.html';
           }
         });
+      } else if (modulo1Completado !== 'true') {
+        // Redirigir si no ha completado el módulo 1
+        alert('Debes completar el Módulo 1 antes de acceder al Módulo 2');
+        window.location.href = '../modulo1/index.html';
       } else {
-        // Si tiene acceso, inicializar el contenido del módulo
+        // Si tiene acceso y completó el módulo 1, inicializar el contenido del módulo
         inicializarModulo();
       }
     });
@@ -1217,61 +1267,108 @@
         });
       });
       
-      // Toggle para menú móvil
-      document.getElementById('navbar-toggle').addEventListener('click', () => {
-        document.getElementById('navbar-menu').classList.toggle('active');
-      });
-      
-      // Modo oscuro
-      document.getElementById('modo').onclick = function() {
-        document.body.classList.toggle('oscuro');
-        const icon = this.querySelector('i');
-        const text = this.querySelector('span');
+      // Configurar botón de completar módulo
+      const completeBtn = document.getElementById('completeModule2');
+      completeBtn.addEventListener('click', function() {
+        // Marcar módulo 2 como completado
+        localStorage.setItem('modulo2Completado', 'true');
         
-        if (document.body.classList.contains('oscuro')) {
-          icon.className = 'fas fa-sun';
-          text.textContent = 'Modo claro';
-        } else {
-          icon.className = 'fas fa-moon';
-          text.textContent = 'Modo oscuro';
-        }
-      };
-      
-      // Inicializar juego de memoria al cargar la página
-      iniciarMemoria();
-      
-      // Animaciones de entrada
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-          }
-        });
-      }, observerOptions);
-      
-      document.querySelectorAll('.section, .card').forEach(el => {
-        observer.observe(el);
+        // Deshabilitar botón y cambiar texto
+        this.disabled = true;
+        this.innerHTML = '<i class="fas fa-check"></i> Módulo Completado';
+        
+        // Mostrar mensaje de éxito
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--success);
+          color: white;
+          padding: 15px 20px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 10001;
+          font-weight: 600;
+          max-width: 300px;
+          animation: slideInRight 0.5s ease;
+        `;
+        successMsg.innerHTML = `
+          <i class="fas fa-check-circle"></i> 
+          ¡Módulo 2 completado! Ahora puedes acceder al Módulo 3.
+        `;
+        
+        document.body.appendChild(successMsg);
+        
+        setTimeout(() => {
+          successMsg.style.animation = 'slideOutRight 0.5s ease';
+          setTimeout(() => {
+            document.body.removeChild(successMsg);
+          }, 500);
+        }, 4000);
       });
     }
     
-    // Transiciones suaves al navegar
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (link.getAttribute('target') !== '_blank' && !link.getAttribute('href').startsWith('#')) {
-          e.preventDefault();
-          document.body.style.opacity = '0';
-          setTimeout(() => {
-            window.location.href = link.href;
-          }, 300);
+    // Toggle para menú móvil
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+      document.getElementById('navbar-menu').classList.toggle('active');
+    });
+    
+    // Modo oscuro mejorado
+    document.getElementById('modo').onclick = function() {
+      document.body.classList.toggle('oscuro');
+      const icon = this.querySelector('i');
+      const text = this.querySelector('span');
+      
+      if (document.body.classList.contains('oscuro')) {
+        icon.className = 'fas fa-sun';
+        text.textContent = 'Modo claro';
+      } else {
+        icon.className = 'fas fa-moon';
+        text.textContent = 'Modo oscuro';
+      }
+    };
+    
+    // Suavizado de scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
       });
     });
+    
+    // Añadir animaciones CSS para los mensajes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
