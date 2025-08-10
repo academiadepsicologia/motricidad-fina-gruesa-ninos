@@ -927,7 +927,7 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      transform-style: preserve-3d;
+      perspective: 1000px;
     }
     .mem-card:hover {
       transform: scale(1.05);
@@ -2631,14 +2631,39 @@
         carta.className = 'mem-card';
         carta.dataset.indice = indice;
         carta.dataset.simbolo = simbolo;
+        carta.style.transformStyle = 'preserve-3d';
+        carta.style.transition = 'transform 0.6s';
         
         // Crear frente y dorso de la carta
         const frente = document.createElement('div');
         frente.className = 'mem-card-front';
+        frente.style.position = 'absolute';
+        frente.style.width = '100%';
+        frente.style.height = '100%';
+        frente.style.backfaceVisibility = 'hidden';
+        frente.style.display = 'flex';
+        frente.style.alignItems = 'center';
+        frente.style.justifyContent = 'center';
+        frente.style.borderRadius = '12px';
+        frente.style.background = 'var(--gradient)';
+        frente.style.color = 'white';
+        frente.style.fontSize = '1.5rem';
         frente.innerHTML = '?';
         
         const dorso = document.createElement('div');
         dorso.className = 'mem-card-back';
+        dorso.style.position = 'absolute';
+        dorso.style.width = '100%';
+        dorso.style.height = '100%';
+        dorso.style.backfaceVisibility = 'hidden';
+        dorso.style.display = 'flex';
+        dorso.style.alignItems = 'center';
+        dorso.style.justifyContent = 'center';
+        dorso.style.borderRadius = '12px';
+        dorso.style.background = 'white';
+        dorso.style.color = 'var(--primary)';
+        dorso.style.border = '2px solid var(--primary)';
+        dorso.style.transform = 'rotateY(180deg)';
         dorso.innerHTML = simbolo;
         
         carta.appendChild(frente);
@@ -2669,6 +2694,7 @@
       
       // Voltear la carta
       carta.classList.add('flipped');
+      carta.style.transform = 'rotateY(180deg)';
       flippedCards.push(carta);
       
       // Si hay dos cartas volteadas, verificar si coinciden
@@ -2684,6 +2710,10 @@
         // Las cartas coinciden
         carta1.classList.add('matched');
         carta2.classList.add('matched');
+        carta1.style.background = 'var(--success)';
+        carta1.style.border = 'none';
+        carta2.style.background = 'var(--success)';
+        carta2.style.border = 'none';
         matchedPairs++;
         
         // Verificar si se han encontrado todos los pares
@@ -2694,7 +2724,9 @@
       } else {
         // Las cartas no coinciden, volverlas a su estado original
         carta1.classList.remove('flipped');
+        carta1.style.transform = 'rotateY(0deg)';
         carta2.classList.remove('flipped');
+        carta2.style.transform = 'rotateY(0deg)';
       }
       
       // Limpiar el array de cartas volteadas
@@ -3312,18 +3344,14 @@
           
           // Alas
           ctx.beginPath();
-          ctx.moveTo(180, 150);
-          ctx.lineTo(150, 120);
-          ctx.lineTo(150, 180);
-          ctx.closePath();
+          ctx.moveTo(180, 140);
+          ctx.quadraticCurveTo(150, 120, 160, 160);
           ctx.stroke();
           
           // Cola
           ctx.beginPath();
           ctx.moveTo(280, 150);
-          ctx.lineTo(310, 130);
-          ctx.lineTo(310, 170);
-          ctx.closePath();
+          ctx.quadraticCurveTo(310, 130, 310, 170);
           ctx.stroke();
           break;
         case "Pájaro":
