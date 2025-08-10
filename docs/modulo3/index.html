@@ -4,21 +4,37 @@
   <meta charset="UTF-8">
   <title>Módulo 3: Motricidad Gruesa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #5e72e4;
-      --secondary: #f5365c;
-      --accent: #fb6340;
-      --light: #f4f5f7;
-      --dark: #32325d;
-      --success: #2dce89;
-      --info: #11cdef;
-      --warning: #fb6340;
-      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      /* Paleta de colores consistente con la página principal y módulos anteriores */
+      --primary: #FF6B6B;
+      --secondary: #4ECDC4;
+      --accent: #FFE66D;
+      --light: #F7FFF7;
+      --dark: #2D3436;
+      --success: #6BCF7F;
+      --info: #5DADE2;
+      --warning: #FF9F43;
+      --purple: #9C88FF;
+      --pink: #FF7EB9;
+      --orange: #FF9A56;
+      --teal: #26D0CE;
+      --yellow: #FFD93D;
+      --kid-blue: #4dabf7;
+      --kid-pink: #ff7eb9;
+      --kid-green: #6bcf7f;
+      --kid-purple: #9c88ff;
+      --kid-orange: #ff9a56;
+      --kid-teal: #26d0ce;
+      
+      /* Gradientes consistentes */
+      --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
+      --gradient-2: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+      --gradient-3: linear-gradient(135deg, #9C88FF 0%, #8C7AE6 100%);
+      --gradient-4: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 100%);
+      --gradient-5: linear-gradient(135deg, #FF7EB9 0%, #FF9A56 100%);
     }
     * {
       margin: 0;
@@ -26,37 +42,97 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #F7FFF7 0%, #E8F8F5 100%);
       color: var(--dark);
       min-height: 100vh;
       line-height: 1.6;
       transition: background 0.6s, color 0.6s;
+      position: relative;
+      overflow-x: hidden;
     }
-    /* Botón de modo oscuro mejorado */
-    #modo {
+    
+    /* Animaciones de fondo */
+    .floating-shapes {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: var(--gradient);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 10px 20px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
     }
-    #modo:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 20s infinite ease-in-out;
     }
-    /* Navbar mejorada */
+    
+    .shape:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation-delay: 0s;
+    }
+    
+    .shape:nth-child(2) {
+      top: 60%;
+      left: 80%;
+      width: 60px;
+      height: 60px;
+      background: var(--secondary);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation-delay: 2s;
+    }
+    
+    .shape:nth-child(3) {
+      top: 80%;
+      left: 20%;
+      width: 100px;
+      height: 100px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: 4s;
+    }
+    
+    .shape:nth-child(4) {
+      top: 10%;
+      left: 70%;
+      width: 70px;
+      height: 70px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation-delay: 6s;
+    }
+    
+    .shape:nth-child(5) {
+      top: 40%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation-delay: 8s;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      33% {
+        transform: translateY(-30px) rotate(120deg);
+      }
+      66% {
+        transform: translateY(30px) rotate(240deg);
+      }
+    }
+    
+    /* Navbar con animación */
     .navbar {
       background: var(--gradient);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -66,7 +142,20 @@
       z-index: 999;
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDown 0.8s ease;
     }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
     .navbar-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -75,34 +164,58 @@
       align-items: center;
       padding: 0 20px;
     }
+    
     .navbar-logo {
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       text-decoration: none;
       display: flex;
       align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
     }
+    
+    .navbar-logo:hover {
+      transform: scale(1.05);
+    }
+    
     .navbar-logo i {
-      margin-right: 10px;
+      margin-right: 12px;
+      font-size: 2rem;
+      animation: spin 3s linear infinite;
     }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
     .navbar-menu {
       display: flex;
       list-style: none;
     }
+    
     .navbar-menu li {
-      margin-left: 5px;
+      margin-left: 8px;
     }
+    
     .navbar-menu a {
       color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
-      font-weight: 500;
-      padding: 10px 15px;
+      font-weight: 600;
+      padding: 12px 18px;
       border-radius: 30px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
     }
+    
     .navbar-menu a::before {
       content: '';
       position: absolute;
@@ -114,453 +227,954 @@
       transition: all 0.3s ease;
       z-index: -1;
     }
+    
     .navbar-menu a:hover::before {
       width: 100%;
     }
+    
     .navbar-menu a:hover {
       color: white;
       transform: translateY(-2px);
     }
+    
     .navbar-toggle {
       display: none;
       background: none;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
     }
-    /* Contenedor principal mejorado */
+    
+    /* Contenedor principal */
     .container {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
     }
-    /* Hero section mejorada */
-    .hero {
+    
+    /* Selector de edad */
+    .age-selector {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      padding: 60px 40px;
-      margin-bottom: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      margin-bottom: 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      animation: fadein 1s;
+      animation: fadeInUp 1s ease;
     }
-    .hero::before {
+    
+    .age-selector::before {
       content: '';
       position: absolute;
       top: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background: var(--gradient-3);
-      border-radius: 50%;
-      transform: translate(100px, -100px);
-      z-index: 0;
-      opacity: 0.1;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--gradient-2);
+      border-radius: 25px 25px 0 0;
     }
+    
+    .age-selector h2 {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .age-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .age-btn {
+      background: var(--gradient-2);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .age-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .age-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .age-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .age-btn.active {
+      background: var(--gradient);
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+    }
+    
+    .age-info {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      color: var(--secondary);
+      font-weight: 600;
+      display: none;
+    }
+    
+    /* Hero section mejorada */
+    .hero {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 70px 50px;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--primary) 0%, var(--pink) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    
     .hero::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200px;
-      height: 200px;
-      background: var(--gradient-2);
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--secondary) 0%, var(--teal) 70%, transparent 100%);
       border-radius: 50%;
-      transform: translate(-100px, 100px);
       z-index: 0;
-      opacity: 0.1;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite 2s;
     }
-    @keyframes fadein {
-      from { opacity: 0; transform: translateY(60px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
+    
     .hero-title {
-      font-size: 2.5rem;
-      color: var(--dark);
-      margin-bottom: 20px;
-      font-weight: 700;
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-weight: 800;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: titleGlow 2s ease-in-out infinite alternate;
     }
+    
+    @keyframes titleGlow {
+      from {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      }
+      to {
+        text-shadow: 2px 2px 20px rgba(255,107,107,0.5);
+      }
+    }
+    
     .hero-subtitle {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 30px;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 40px;
       font-weight: 500;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
       position: relative;
       z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      animation: slideInLeft 1s ease 0.5s both;
     }
-    /* Sección de contenido mejorada */
-    .content-section {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      padding: 40px;
-      margin-bottom: 40px;
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Animación de niños para motricidad gruesa */
+    .kids-animation {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+      gap: 50px;
+    }
+    
+    .kid {
+      width: 120px;
+      height: 120px;
       position: relative;
     }
+    
+    .kid:nth-child(1) {
+      animation: jump 2s infinite ease-in-out;
+    }
+    
+    .kid:nth-child(2) {
+      animation: run 3s infinite ease-in-out;
+    }
+    
+    .kid:nth-child(3) {
+      animation: throw 2.5s infinite ease-in-out;
+    }
+    
+    @keyframes jump {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+    
+    @keyframes run {
+      0% {
+        transform: translateX(-20px);
+      }
+      50% {
+        transform: translateX(20px);
+      }
+      100% {
+        transform: translateX(-20px);
+      }
+    }
+    
+    @keyframes throw {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(-20deg);
+      }
+      75% {
+        transform: rotate(20deg);
+      }
+    }
+    
+    /* Secciones de contenido con acordeón animado */
+    .content-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
     .content-section::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 5px;
-      background: var(--gradient-3);
-      border-radius: 0 0 16px 16px;
+      height: 8px;
+      background: var(--gradient-2);
+      border-radius: 0 0 25px 25px;
     }
+    
     .section-title {
-      font-size: 2rem;
-      color: var(--dark);
-      margin-bottom: 30px;
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 40px;
       font-weight: 700;
       position: relative;
       display: inline-block;
+      font-family: 'Montserrat', sans-serif;
     }
+    
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: -10px;
       left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--gradient-3);
-      border-radius: 3px;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-2);
+      border-radius: 2px;
+      animation: titleUnderline 2s ease-in-out infinite;
     }
-    /* Lista de evaluación mejorada */
-    .evaluation-list {
-      list-style: none;
+    
+    @keyframes titleUnderline {
+      0%, 100% {
+        width: 80px;
+      }
+      50% {
+        width: 120px;
+      }
+    }
+    
+    /* Acordeón con animaciones */
+    .accordion {
       max-width: 800px;
       margin: 0 auto;
     }
-    .evaluation-item {
+    
+    .accordion-item {
+      background: linear-gradient(135deg, #F0F9FF 0%, #E6F7FF 100%);
+      border-radius: 20px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      border-left: 6px solid var(--secondary);
+      transition: all 0.4s ease;
+      animation: slideInLeft 0.8s ease both;
+    }
+    
+    .accordion-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .accordion-item:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    .accordion-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.2);
+    }
+    
+    .accordion-header {
+      padding: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .accordion-header::after {
+      content: '\f107';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      right: 25px;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      transition: transform 0.3s ease;
+    }
+    
+    .accordion-item.active .accordion-header::after {
+      transform: rotate(180deg);
+    }
+    
+    .accordion-header:hover {
+      background: rgba(78, 205, 196, 0.1);
+    }
+    
+    .accordion-header i {
+      margin-right: 20px;
+      color: var(--secondary);
+      font-size: 2rem;
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+    
+    @keyframes iconFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .accordion-header strong {
+      font-size: 1.3rem;
+      color: var(--dark);
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      padding: 0 25px;
+    }
+    
+    .accordion-content p {
+      padding: 20px 0;
+      color: #6c757d;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+    
+    .accordion-item.active .accordion-header {
+      background: rgba(78, 205, 196, 0.1);
+    }
+    
+    /* Actividades mejoradas */
+    .activity-list {
+      list-style: none;
+    }
+    .activity-item {
       background: #f8f9fa;
       border-radius: 12px;
       padding: 20px;
-      margin-bottom: 15px;
-      border-left: 4px solid var(--info);
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
     }
-    .evaluation-item:hover {
+    .activity-item:hover {
       transform: translateX(5px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-    .evaluation-item i {
-      font-size: 1.5rem;
-      color: var(--info);
-      margin-right: 15px;
-      flex-shrink: 0;
+    .activity-item h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
     }
-    /* Tarjetas de actividades mejoradas */
-    .activities-grid {
+    .activity-item h3 i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+    
+    /* Tips mejorados */
+    .tips {
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 25px 0;
+      border-left: 4px solid var(--primary);
+      position: relative;
+    }
+    .tips::before {
+      content: '\f05a';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: var(--primary);
+      opacity: 0.3;
+    }
+    .tips-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    /* Actividades interactivas */
+    .interactive-activities {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
+    
     .activity-card {
       background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       overflow: hidden;
       transition: all 0.4s ease;
       position: relative;
       z-index: 1;
+      text-align: center;
+      padding: 30px;
+      animation: fadeInUp 1s ease 0.4s both;
     }
+    
+    .activity-card:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    
+    .activity-card:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+    
+    .activity-card:nth-child(4) {
+      animation-delay: 1s;
+    }
+    
+    .activity-card:nth-child(5) {
+      animation-delay: 1.2s;
+    }
+    
     .activity-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 5px;
-      background: var(--gradient-3);
+      height: 8px;
+      background: var(--gradient-5);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.4s ease;
     }
+    
     .activity-card:hover::before {
       transform: scaleX(1);
     }
+    
     .activity-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transform: translateY(-15px) rotate(2deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
-    .activity-header {
-      background: var(--gradient-3);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+    
     .activity-icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: var(--gradient-5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: bounceIcon 2s ease-in-out infinite;
     }
+    
+    .activity-card:nth-child(2) .activity-icon {
+      background: var(--gradient-3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation-delay: 0.5s;
+    }
+    
+    .activity-card:nth-child(3) .activity-icon {
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation-delay: 1s;
+    }
+    
+    .activity-card:nth-child(4) .activity-icon {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation-delay: 1.5s;
+    }
+    
+    .activity-card:nth-child(5) .activity-icon {
+      background: var(--gradient-4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation-delay: 2s;
+    }
+    
     .activity-title {
       font-size: 1.4rem;
-      font-weight: 600;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
     }
-    .activity-content {
-      padding: 25px;
-    }
+    
     .activity-description {
       color: #6c757d;
-      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.5;
     }
-    .activity-materials {
-      background: rgba(79, 172, 254, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    .activity-materials h4 {
-      color: var(--info);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-    .activity-materials ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    .activity-materials li {
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-    }
-    .activity-materials li::before {
-      content: '•';
-      color: var(--info);
-      font-weight: bold;
-      margin-right: 10px;
-    }
-    .activity-instructions {
-      background: rgba(79, 172, 254, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    .activity-instructions h4 {
-      color: var(--info);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-    .activity-observation {
-      background: rgba(79, 172, 254, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-    }
-    .activity-observation h4 {
-      color: var(--info);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-    /* Sección de beneficios mejorada */
-    .benefits-section {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      padding: 40px;
-      margin-bottom: 40px;
-      position: relative;
-    }
-    .benefits-section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
+    
+    .activity-btn {
+      margin-top: 20px;
       background: var(--gradient-2);
-      border-radius: 0 0 16px 16px;
-    }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    .benefit-card {
-      background: #f8f9fa;
-      border-radius: 12px;
-      padding: 25px;
-      text-align: center;
-      transition: all 0.3s ease;
-      border-bottom: 3px solid var(--info);
-    }
-    .benefit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-    .benefit-icon {
-      font-size: 2.5rem;
-      color: var(--info);
-      margin-bottom: 15px;
-    }
-    .benefit-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 10px;
-    }
-    .benefit-description {
-      color: #6c757d;
-    }
-    /* Navegación entre módulos mejorada */
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 15px 30px;
-      background: var(--gradient);
       color: white;
-      font-size: 1.1rem;
       border: none;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
-      transition: all 0.3s ease;
+      border-radius: 30px;
+      padding: 12px 25px;
       font-weight: 600;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
     }
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-      z-index: -1;
-    }
-    .btn:hover::before {
-      transform: translateY(0);
-    }
-    .btn:hover {
+    
+    .activity-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(94, 114, 228, 0.4);
-      color: white;
+      box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
     }
-    .btn-secondary {
-      background: var(--gradient-2);
-      box-shadow: 0 5px 15px rgba(245, 54, 108, 0.3);
-    }
-    .btn-secondary:hover {
-      box-shadow: 0 8px 25px rgba(245, 54, 108, 0.4);
-    }
-    .btn-info {
-      background: var(--gradient-3);
-      box-shadow: 0 5px 15px rgba(17, 205, 239, 0.3);
-    }
-    .btn-info:hover {
-      box-shadow: 0 8px 25px rgba(17, 205, 239, 0.4);
-    }
-    /* Footer mejorado */
-    .footer {
-      background: var(--dark);
-      color: rgba(255, 255, 255, 0.7);
+    
+    /* Juego de secuencia de movimientos */
+    .sequence-game {
+      margin-top: 30px;
       text-align: center;
-      padding: 40px 20px;
-      border-radius: 20px;
-      margin-top: 50px;
     }
-    .footer p {
-      margin-bottom: 15px;
-    }
-    .social-links {
+    .sequence-display {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
     }
-    .social-links a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-    .social-links a:hover {
-      color: white;
-      transform: translateY(-3px);
-    }
-    /* Modal de acceso denegado */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 10000;
-      justify-content: center;
+    .sequence-item {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-2);
+      border-radius: 15px;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    .modal-content {
-      background-color: white;
-      padding: 40px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      position: relative;
+    .sequence-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
     }
-    .close-modal {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #aaa;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-    .close-modal:hover {
-      color: var(--dark);
-    }
-    .modal-title {
-      font-size: 1.8rem;
-      color: var(--dark);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-    .modal-description {
-      color: #6c757d;
-      margin-bottom: 30px;
-    }
-    .access-button {
-      width: 100%;
-      padding: 15px;
-      background: var(--gradient);
+    .sequence-btn {
+      background: var(--gradient-3);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
+      border-radius: 30px;
+      padding: 10px 20px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .access-button:hover {
+    .sequence-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
     }
+    
+    /* Juego de obstáculos */
+    .obstacle-game {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .obstacle-area {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .obstacle-character {
+      position: absolute;
+      bottom: 20px;
+      left: 50px;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    .obstacle {
+      position: absolute;
+      width: 40px;
+      height: 80px;
+      background: var(--warning);
+      border-radius: 10px;
+    }
+    .obstacle-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .obstacle-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .obstacle-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
+    }
+    
+    /* Juego de lanzamiento */
+    .throw-game {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .throw-area {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .throw-target {
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      width: 80px;
+      height: 80px;
+      background: var(--warning);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+    .throw-ball {
+      position: absolute;
+      bottom: 20px;
+      left: 50px;
+      width: 40px;
+      height: 40px;
+      background: var(--gradient);
+      border-radius: 50%;
+      cursor: grab;
+      transition: all 0.3s ease;
+    }
+    .throw-ball:active {
+      cursor: grabbing;
+    }
+    .throw-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .throw-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .throw-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
+    }
+    
+    /* Simulador de caminata */
+    .walk-simulator {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .walk-area {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .walk-path {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--dark);
+      transform: translateY(-50%);
+    }
+    .walk-character {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 60px;
+      background: var(--gradient);
+      border-radius: 20px 20px 0 0;
+      transition: all 0.5s ease;
+    }
+    .walk-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .walk-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .walk-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
+    }
+    
+    /* FAQ mejorado */
+    .faq-list {
+      list-style: none;
+    }
+    .faq-item {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .faq-question {
+      background: var(--gradient);
+      color: white;
+      padding: 15px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    .faq-answer {
+      background: white;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 200px;
+    }
+    
+    /* Navegación entre módulos */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 18px 40px;
+      background: var(--gradient);
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+      transition: all 0.4s ease;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      gap: 12px;
+      font-family: 'Montserrat', sans-serif;
+      min-width: 200px;
+      justify-content: center;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-secondary {
+      background: var(--gradient-2);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
+    }
+    
+    .btn i {
+      font-size: 1.3rem;
+    }
+    
     /* Botón de completar módulo */
     .complete-btn {
       background: var(--success);
@@ -589,61 +1203,133 @@
       box-shadow: none;
     }
     
-    /* Modo oscuro mejorado */
-    body.oscuro {
-      background: #111 !important;
-      color: #fff !important;
+    /* Footer simplificado */
+    .footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 25px;
+      margin-top: 60px;
+      animation: fadeInUp 1s ease 1.2s both;
     }
-    body.oscuro .navbar {
-      background: #222 !important;
+    
+    .footer p {
+      font-size: 1.1rem;
+      font-weight: 500;
     }
-    body.oscuro .hero,
-    body.oscuro .activity-card,
-    body.oscuro .content-section,
-    body.oscuro .benefits-section,
-    body.oscuro .benefit-card {
-      background: #222 !important;
-      color: #fff !important;
+    
+    /* Modal de acceso */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
     }
-    body.oscuro .hero-title,
-    body.oscuro .section-title,
-    body.oscuro .activity-title,
-    body.oscuro .benefit-title {
-      color: #fff !important;
+    
+    .modal-content {
+      background-color: white;
+      padding: 50px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 550px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      position: relative;
+      animation: modalSlideIn 0.5s ease;
     }
-    body.oscuro .hero-subtitle,
-    body.oscuro .activity-description,
-    body.oscuro .benefit-description {
-      color: #aaa !important;
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
-    body.oscuro .evaluation-item,
-    body.oscuro .activity-materials,
-    body.oscuro .activity-instructions,
-    body.oscuro .activity-observation {
-      background: #333 !important;
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
     }
-    body.oscuro .footer {
-      background: #000 !important;
+    
+    .close-modal:hover {
+      color: var(--primary);
     }
-    body.oscuro .modal-content {
-      background: #333 !important;
-      color: #fff !important;
+    
+    .modal-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
     }
+    
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    
+    .access-button {
+      width: 100%;
+      padding: 18px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+    }
+    
+    /* Contenedores para actividades interactivas */
+    #sequenceContainer, #obstacleContainer, #throwContainer, #walkContainer {
+      display: none;
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
       }
       
       .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
       }
     }
+    
     @media (max-width: 768px) {
       .navbar-menu {
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 80px;
         left: 0;
         width: 100%;
         background: var(--gradient);
@@ -653,58 +1339,79 @@
         transition: transform 0.4s ease;
         z-index: 100;
       }
+      
       .navbar-menu.active {
         transform: translateY(0);
       }
+      
       .navbar-menu li {
-        margin: 10px 0;
+        margin: 12px 0;
       }
+      
       .navbar-toggle {
         display: block;
       }
-      .activities-grid {
-        grid-template-columns: 1fr;
-      }
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
+      
       .navigation {
         flex-direction: column;
-        gap: 15px;
       }
+      
       .btn {
         width: 100%;
-        justify-content: center;
+      }
+      
+      .interactive-activities {
+        grid-template-columns: 1fr;
       }
     }
+    
     @media (max-width: 576px) {
       .hero {
-        padding: 40px 20px;
+        padding: 50px 25px;
       }
+      
       .hero-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
+      
       .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
-      .content-section,
-      .benefits-section {
+      
+      .content-section {
         padding: 30px 20px;
       }
+      
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
+      
       .modal-content {
-        padding: 30px 20px;
+        padding: 40px 25px;
+      }
+      
+      .kids-animation {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .age-buttons {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <button id="modo">
-    <i class="fas fa-moon"></i>
-    <span>Modo oscuro</span>
-  </button>
+  <!-- Formas animadas de fondo -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
   
   <!-- Navbar mejorada -->
   <nav class="navbar">
@@ -728,150 +1435,302 @@
   
   <!-- Contenedor principal -->
   <div class="container">
+    <!-- Selector de edad -->
+    <div class="age-selector">
+      <h2>Selecciona la edad de tu hijo/a</h2>
+      <div class="age-buttons">
+        <button class="age-btn" data-age="3">3 años</button>
+        <button class="age-btn" data-age="4">4 años</button>
+        <button class="age-btn" data-age="5">5 años</button>
+      </div>
+      <div class="age-info" id="ageInfo"></div>
+    </div>
+    
     <!-- Hero section mejorada -->
     <section class="hero">
       <h1 class="hero-title">Módulo 3: Motricidad Gruesa</h1>
-      <p class="hero-subtitle">
-        La motricidad gruesa son los movimientos grandes que hacemos con todo el cuerpo, como saltar, correr, bailar o lanzar una pelota.
+      <p class="hero-subtitle" id="heroSubtitle">
+        ¡Descubre el mundo en movimiento! Aprende sobre el desarrollo de las habilidades motrices gruesas en niños de 3 a 5 años.
       </p>
+      
+      <!-- Animación de niños para motricidad gruesa -->
+      <div class="kids-animation">
+        <div class="kid">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="15" fill="#FF6B6B"/>
+            <rect x="40" y="45" width="20" height="35" rx="5" fill="#FF6B6B"/>
+            <rect x="35" y="50" width="10" height="20" rx="5" fill="#FF6B6B"/>
+            <rect x="55" y="50" width="10" height="20" rx="5" fill="#FF6B6B"/>
+            <rect x="40" y="80" width="8" height="15" rx="4" fill="#FF6B6B"/>
+            <rect x="52" y="80" width="8" height="15" rx="4" fill="#FF6B6B"/>
+          </svg>
+        </div>
+        <div class="kid">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="15" fill="#4ECDC4"/>
+            <rect x="40" y="45" width="20" height="35" rx="5" fill="#4ECDC4"/>
+            <path d="M35,50 L25,65 L35,65 Z" fill="#4ECDC4"/>
+            <path d="M65,50 L75,65 L65,65 Z" fill="#4ECDC4"/>
+            <rect x="40" y="80" width="8" height="15" rx="4" fill="#4ECDC4"/>
+            <rect x="52" y="80" width="8" height="15" rx="4" fill="#4ECDC4"/>
+          </svg>
+        </div>
+        <div class="kid">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="15" fill="#FFE66D"/>
+            <rect x="40" y="45" width="20" height="35" rx="5" fill="#FFE66D"/>
+            <circle cx="30" cy="55" r="8" fill="#FFE66D"/>
+            <circle cx="70" cy="55" r="8" fill="#FFE66D"/>
+            <rect x="40" y="80" width="8" height="15" rx="4" fill="#FFE66D"/>
+            <rect x="52" y="80" width="8" height="15" rx="4" fill="#FFE66D"/>
+          </svg>
+        </div>
+      </div>
     </section>
     
-    <!-- Sección: ¿Por qué es importante? -->
+    <!-- Sección: ¿Qué es la motricidad gruesa? -->
     <section class="content-section">
-      <h2 class="section-title">¿Por qué es importante?</h2>
-      <ul class="evaluation-list">
-        <li class="evaluation-item">
-          <i class="fas fa-child"></i>
-          <div>Ayuda a los niños a moverse, jugar y explorar el mundo.</div>
+      <h2 class="section-title">¿Qué es la motricidad gruesa?</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-running"></i>
+            <strong>Motricidad gruesa:</strong> movimientos grandes del cuerpo.
+          </div>
+          <div class="accordion-content">
+            <p id="definicionMotricidad">
+              La motricidad gruesa se refiere a la capacidad de usar los músculos grandes del cuerpo para realizar movimientos como caminar, correr, saltar, lanzar y atrapar. Estas habilidades son fundamentales para la autonomía de los niños y su interacción con el entorno. Se desarrolla progresivamente desde los primeros años de vida y es esencial para el crecimiento físico y la salud general.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-brain"></i>
+            <strong>Desarrollo neurológico:</strong> conexión cerebro-movimiento.
+          </div>
+          <div class="accordion-content">
+            <p id="desarrolloNeurologico">
+              El desarrollo de la motricidad gruesa está directamente relacionado con la maduración del sistema nervioso. A medida que el cerebro del niño crece, se establecen conexiones neuronales que permiten un mayor control sobre los movimientos del cuerpo. Este proceso es crucial para el desarrollo cognitivo, ya que las áreas del cerebro responsables del movimiento también están involucradas en el pensamiento y el aprendizaje.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-chart-line"></i>
+            <strong>Etapas de desarrollo:</strong> evolución de las habilidades motoras gruesas.
+          </div>
+          <div class="accordion-content">
+            <p id="etapasDesarrollo">
+              El desarrollo de la motricidad gruesa sigue un proceso progresivo. A los 3 años, los niños comienzan a subir escaleras alternando pies, saltan con ambos pies y corren de manera un poco torpe. A los 4 años, ya pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota, y mantienen mejor el equilibrio. A los 5 años, suben y bajan escaleras sin apoyo, patean una pelota con dirección y comienzan a aprender a andar en bicicleta con ruedines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Importancia de la motricidad gruesa -->
+    <section class="content-section">
+      <h2 class="section-title">Importancia de la motricidad gruesa</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-heartbeat"></i>
+            <strong>Salud física:</strong> base para un desarrollo saludable.
+          </div>
+          <div class="accordion-content">
+            <p id="saludFisica">
+              La motricidad gruesa es fundamental para la salud física de los niños. Fomenta el desarrollo muscular, mejora la resistencia cardiovascular, fortalece los huesos y ayuda a mantener un peso saludable. Los niños con buenas habilidades motrices gruesas suelen tener más energía, mejor postura y menor riesgo de enfermedades relacionadas con el sedentarismo.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-child"></i>
+            <strong>Autonomía e independencia:</strong> habilidades para la vida diaria.
+          </div>
+          <div class="accordion-content">
+            <p id="autonomiaIndependencia">
+              Las habilidades de motricidad gruesa permiten a los niños realizar tareas cotidianas de forma independiente, como subir escaleras, vestirse, jugar en el parque o participar en actividades deportivas. Esta autonomía no solo aumenta su confianza y autoestima, sino que también fomenta su sentido de responsabilidad y capacidad para cuidar de sí mismos.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-users"></i>
+            <strong>Interacción social:</strong> base para las relaciones con otros.
+          </div>
+          <div class="accordion-content">
+            <p id="interaccionSocial">
+              La motricidad gruesa es esencial para la interacción social. A través del juego físico, los niños aprenden a compartir, turnarse, cooperar y competir de manera saludable. Estas habilidades sociales son fundamentales para establecer amistades, trabajar en equipo y desenvolverse en diferentes entornos sociales. Los niños con buenas habilidades motrices suelen participar más activamente en juegos grupales y actividades deportivas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Ejercicios prácticos -->
+    <section class="content-section">
+      <h2 class="section-title">Ejercicios prácticos para familias</h2>
+      <ul class="activity-list" id="activityList">
+        <!-- Las actividades se cargarán dinámicamente según la edad -->
+      </ul>
+      <div class="tips">
+        <h3 class="tips-title">Consejo profesional</h3>
+        <p id="consejoProfesional">
+          Dedica 30-45 minutos diarios a actividades de motricidad gruesa. La constancia es más importante que la duración. 
+          Celebra cada logro, por pequeño que parezca. Recuerda que cada niño tiene su propio ritmo de desarrollo.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Sección: Actividades interactivas -->
+    <section class="content-section">
+      <h2 class="section-title">Actividades interactivas</h2>
+      
+      <div class="interactive-activities">
+        <div class="activity-card">
+          <div class="activity-icon">
+            <i class="fas fa-random"></i>
+          </div>
+          <h3 class="activity-title">Secuencia de movimientos</h3>
+          <p class="activity-description">Repite secuencias de movimientos para mejorar la coordinación</p>
+          <button class="activity-btn" onclick="showSequence()">Comenzar actividad</button>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-icon">
+            <i class="fas fa-road"></i>
+          </div>
+          <h3 class="activity-title">Juego de obstáculos</h3>
+          <p class="activity-description">Supera obstáculos para mejorar el equilibrio y la agilidad</p>
+          <button class="activity-btn" onclick="showObstacle()">Comenzar juego</button>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-icon">
+            <i class="fas fa-baseball-ball"></i>
+          </div>
+          <h3 class="activity-title">Lanzamiento de precisión</h3>
+          <p class="activity-description">Mejora la precisión al lanzar objetos a un objetivo</p>
+          <button class="activity-btn" onclick="showThrow()">Comenzar juego</button>
+        </div>
+        
+        <div class="activity-card">
+          <div class="activity-icon">
+            <i class="fas fa-walking"></i>
+          </div>
+          <h3 class="activity-title">Simulador de caminata</h3>
+          <p class="activity-description">Practica diferentes formas de caminar y moverte</p>
+          <button class="activity-btn" onclick="showWalk()">Comenzar simulador</button>
+        </div>
+      </div>
+      
+      <!-- Contenedores para actividades interactivas -->
+      <div id="sequenceContainer">
+        <div class="sequence-game">
+          <h3 style="color: var(--secondary); margin-bottom: 20px;">Secuencia de movimientos</h3>
+          <p style="margin-bottom: 20px;">Observa la secuencia y luego repítela en el orden correcto.</p>
+          <div class="sequence-display" id="sequence-display">
+            <!-- Los movimientos se cargarán dinámicamente -->
+          </div>
+          <div class="sequence-controls">
+            <button class="sequence-btn" onclick="generateSequence()">Nueva secuencia</button>
+            <button class="sequence-btn" onclick="checkSequence()">Verificar respuesta</button>
+          </div>
+          <div id="sequence-msj" style="font-weight:bold; margin-top:15px;"></div>
+        </div>
+      </div>
+      
+      <div id="obstacleContainer">
+        <div class="obstacle-game">
+          <h3 style="color: var(--secondary); margin-bottom: 20px;">Juego de obstáculos</h3>
+          <p style="margin-bottom: 20px;">Usa los botones para mover al personaje y superar los obstáculos.</p>
+          <div class="obstacle-area" id="obstacle-area">
+            <div class="obstacle-character" id="obstacle-character"></div>
+            <!-- Los obstáculos se cargarán dinámicamente -->
+          </div>
+          <div class="obstacle-controls">
+            <button class="obstacle-btn" onclick="moveCharacter('left')">Izquierda</button>
+            <button class="obstacle-btn" onclick="moveCharacter('jump')">Saltar</button>
+            <button class="obstacle-btn" onclick="moveCharacter('right')">Derecha</button>
+          </div>
+          <div id="obstacle-msj" style="font-weight:bold; margin-top:15px;"></div>
+        </div>
+      </div>
+      
+      <div id="throwContainer">
+        <div class="throw-game">
+          <h3 style="color: var(--secondary); margin-bottom: 20px;">Lanzamiento de precisión</h3>
+          <p style="margin-bottom: 20px;">Arrastra la pelota y suéltala para intentar alcanzar el objetivo.</p>
+          <div class="throw-area" id="throw-area">
+            <div class="throw-target" id="throw-target">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="throw-ball" id="throw-ball" draggable="true"></div>
+          </div>
+          <div class="throw-controls">
+            <button class="throw-btn" onclick="resetThrow()">Reiniciar</button>
+          </div>
+          <div id="throw-msj" style="font-weight:bold; margin-top:15px;"></div>
+        </div>
+      </div>
+      
+      <div id="walkContainer">
+        <div class="walk-simulator">
+          <h3 style="color: var(--secondary); margin-bottom: 20px;">Simulador de caminata</h3>
+          <p style="margin-bottom: 20px;">Usa los botones para controlar cómo se mueve el personaje.</p>
+          <div class="walk-area" id="walk-area">
+            <div class="walk-path"></div>
+            <div class="walk-character" id="walk-character"></div>
+          </div>
+          <div class="walk-controls">
+            <button class="walk-btn" onclick="walkForward()">Adelante</button>
+            <button class="walk-btn" onclick="walkBackward()">Atrás</button>
+            <button class="walk-btn" onclick="walkJump()">Saltar</button>
+          </div>
+          <div id="walk-msj" style="font-weight:bold; margin-top:15px;"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Preguntas frecuentes -->
+    <section class="content-section">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿A qué edad deben los niños dominar la motricidad gruesa?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p id="faqEdad">
+              El desarrollo de la motricidad gruesa es un proceso gradual que se extiende desde el nacimiento hasta los 7 años aproximadamente. Sin embargo, entre los 3 y 5 años se produce un avance significativo en habilidades como correr, saltar, lanzar y atrapar. Cada niño tiene su propio ritmo, pero existen hitos generales que podemos observar en cada edad.
+            </p>
+          </div>
         </li>
-        <li class="evaluation-item">
-          <i class="fas fa-balance-scale"></i>
-          <div>Mejora el equilibrio y la fuerza.</div>
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿Qué hacer si mi hijo parece torpe o se cae con frecuencia?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p id="faqTorpeza">
+              Es normal que algunos niños sean más torpes que otros, especialmente durante las etapas de crecimiento rápido. Ofrece oportunidades para practicar en un entorno seguro, elogia el esfuerzo más que el resultado y consulta con un pediatra si la torpeza es extrema o persistente. A veces, actividades específicas como caminar sobre líneas o equilibrios pueden ayudar a mejorar la coordinación.
+            </p>
+          </div>
         </li>
-        <li class="evaluation-item">
-          <i class="fas fa-bicycle"></i>
-          <div>Es necesaria para actividades como subir escaleras o andar en bicicleta.</div>
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿Cuánta actividad física necesitan los niños de 3 a 5 años?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p id="faqActividadFisica">
+              Los niños de 3 a 5 años necesitan al menos 180 minutos de actividad física distribuidos a lo largo del día. Esto no tiene que ser ejercicio estructurado; puede incluir juegos al aire libre, baile, caminatas y otras actividades divertidas. Lo importante es limitar el tiempo sedentario (sentados) a no más de 1 hora continuada, excepto durante el sueño.
+            </p>
+          </div>
         </li>
       </ul>
-    </section>
-    
-    <!-- Sección de beneficios -->
-    <section class="benefits-section">
-      <h2 class="section-title">Beneficios de la motricidad gruesa</h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-heartbeat"></i>
-          </div>
-          <h3 class="benefit-title">Salud física</h3>
-          <p class="benefit-description">Mejora la condición cardiovascular, la fuerza muscular y la resistencia.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-brain"></i>
-          </div>
-          <h3 class="benefit-title">Desarrollo cognitivo</h3>
-          <p class="benefit-description">Estimula la coordinación, la concentración y el pensamiento espacial.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3 class="benefit-title">Habilidades sociales</h3>
-          <p class="benefit-description">Fomenta el trabajo en equipo, la comunicación y la cooperación.</p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Sección de actividades -->
-    <section class="content-section">
-      <h2 class="section-title">Actividades divertidas</h2>
-      <div class="activities-grid">
-        <div class="activity-card">
-          <div class="activity-header">
-            <div class="activity-icon">
-              <i class="fas fa-child"></i>
-            </div>
-            <h3 class="activity-title">Saltos de obstáculos</h3>
-          </div>
-          <div class="activity-content">
-            <p class="activity-description">
-              Una actividad divertida que mejora el equilibrio, la coordinación y la fuerza de las piernas.
-            </p>
-            <div class="activity-materials">
-              <h4>Materiales:</h4>
-              <ul>
-                <li>Almohadas o cojines</li>
-                <li>Espacio despejado</li>
-              </ul>
-            </div>
-            <div class="activity-instructions">
-              <h4>Indicación:</h4>
-              <p>Coloca las almohadas en el suelo formando un camino y pide al niño que salte de una a otra sin tocar el suelo.</p>
-            </div>
-            <div class="activity-observation">
-              <h4>Observa:</h4>
-              <p>Cómo salta y si mantiene el equilibrio. Anima al niño a usar diferentes formas de saltar.</p>
-            </div>
-          </div>
-        </div>
-        <div class="activity-card">
-          <div class="activity-header">
-            <div class="activity-icon">
-              <i class="fas fa-running"></i>
-            </div>
-            <h3 class="activity-title">Carrera de relevos</h3>
-          </div>
-          <div class="activity-content">
-            <p class="activity-description">
-              Una actividad grupal que desarrolla la velocidad, la coordinación y el trabajo en equipo.
-            </p>
-            <div class="activity-materials">
-              <h4>Materiales:</h4>
-              <ul>
-                <li>Espacio al aire libre</li>
-                <li>Objetos para pasar (pelota, bastón)</li>
-              </ul>
-            </div>
-            <div class="activity-instructions">
-              <h4>Indicación:</h4>
-              <p>Forma dos equipos. Cada niño debe correr hasta un punto, dar la vuelta y pasar el objeto al siguiente compañero.</p>
-            </div>
-            <div class="activity-observation">
-              <h4>Observa:</h4>
-              <p>La coordinación al correr y pasar el objeto. Fomenta el ánimo y la cooperación entre los niños.</p>
-            </div>
-          </div>
-        </div>
-        <div class="activity-card">
-          <div class="activity-header">
-            <div class="activity-icon">
-              <i class="fas fa-music"></i>
-            </div>
-            <h3 class="activity-title">Baile libre</h3>
-          </div>
-          <div class="activity-content">
-            <p class="activity-description">
-              Una actividad divertida que mejora el ritmo, la coordinación y la expresión corporal.
-            </p>
-            <div class="activity-materials">
-              <h4>Materiales:</h4>
-              <ul>
-                <li>Música variada</li>
-                <li>Espacio despejado</li>
-              </ul>
-            </div>
-            <div class="activity-instructions">
-              <h4>Indicación:</h4>
-              <p>Pon música de diferentes ritmos y anima al niño a bailar libremente, expresándose con el cuerpo.</p>
-            </div>
-            <div class="activity-observation">
-              <h4>Observa:</h4>
-              <p>Cómo se mueve al ritmo de la música. Anima la creatividad y la expresión libre del movimiento.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
     
     <!-- Botón para completar módulo -->
@@ -885,10 +1744,6 @@
         <i class="fas fa-arrow-left"></i>
         Volver al Módulo 2
       </a>
-      <a href="../index.html" class="btn btn-info">
-        <i class="fas fa-home"></i>
-        Ir al inicio
-      </a>
       <a href="../modulo4/index.html" class="btn">
         Siguiente módulo
         <i class="fas fa-arrow-right"></i>
@@ -898,12 +1753,6 @@
     <!-- Footer mejorado -->
     <footer class="footer">
       <p>Academia de Psicología &copy; 2025</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-      </div>
     </footer>
   </div>
   
@@ -918,6 +1767,139 @@
   </div>
   
   <script>
+    // Base de datos de contenido por edad
+    const contenidoPorEdad = {
+      3: {
+        titulo: "¡Descubre el movimiento! Aprende sobre la motricidad gruesa en niños de 3 años.",
+        definicionMotricidad: "La motricidad gruesa en niños de 3 años se refiere a la capacidad de usar los músculos grandes para realizar movimientos como caminar, correr y saltar. A esta edad, los niños comienzan a subir escaleras alternando pies, pueden saltar con ambos pies y corren de manera un poco torpe. Estas habilidades son fundamentales para su autonomía y exploración del entorno.",
+        desarrolloNeurologico: "A los 3 años, el cerebro del niño está estableciendo conexiones neuronales cruciales para el control motor. La mielinización de las vías nerviosas permite movimientos más coordinados, sentando las bases para habilidades más complejas como el equilibrio y la coordinación ojo-mano.",
+        etapasDesarrollo: "A los 3 años, los niños comienzan a dominar habilidades como subir escaleras con apoyo, saltar con ambos pies, correr con mayor control y patear una pelota estática. Están desarrollando la conciencia corporal y la capacidad de planificar movimientos simples.",
+        saludFisica: "A los 3 años, la motricidad gruesa contribuye significativamente al desarrollo físico. Fortalece los músculos grandes, mejora la coordinación general y ayuda a desarrollar el equilibrio. Los niños que practican actividades de motricidad gruesa regularmente suelen tener mejor postura y mayor resistencia física.",
+        autonomiaIndependencia: "Los niños de 3 años comienzan a realizar tareas de forma más independiente, como subir escaleras con menos ayuda, correr en espacios abiertos y participar en juegos simples. Esta creciente autonomía fomenta su confianza y deseo de explorar el mundo que les rodea.",
+        interaccionSocial: "A los 3 años, los niños empiezan a participar en juegos grupales simples, aunque todavía les cuesta compartir y turnarse. Las actividades de motricidad gruesa en grupo les ayudan a aprender normas sociales básicas y a desarrollar habilidades de comunicación mientras juegan.",
+        actividades: [
+          {
+            icono: "fas fa-child",
+            titulo: "Saltos en colchonetas",
+            descripcion: "Coloca colchonetas en el suelo y anima al niño a saltar de una a otra. Esta actividad fortalece los músculos de las piernas y mejora el equilibrio."
+          },
+          {
+            icono: "fas fa-running",
+            titulo: "Carreras cortas",
+            descripcion: "Organiza carreras cortas en un espacio seguro. Esta actividad desarrolla la velocidad, la coordinación y la conciencia espacial."
+          },
+          {
+            icono: "fas fa-sort-amount-up",
+            titulo: "Subir escaleras",
+            descripcion: "Practica subir escaleras con apoyo, alternando pies cuando sea posible. Esta actividad fortalece las piernas y mejora la coordinación."
+          },
+          {
+            icono: "fas fa-circle",
+            titulo: "Lanzar pelotas grandes",
+            descripcion: "Usa pelotas grandes y suaves para practicar lanzar y rodar. Esta actividad desarrolla la coordinación ojo-mano y la fuerza de los brazos."
+          },
+          {
+            icono: "fas fa-music",
+            titulo: "Baile libre",
+            descripcion: "Pon música y anima al niño a bailar libremente. Esta actividad mejora el ritmo, la coordinación y la expresión corporal."
+          }
+        ],
+        consejoProfesional: "A los 3 años, enfócate en actividades divertidas y breves (10-15 minutos). Usa equipos grandes y seguros. Celebra el esfuerzo y la participación, no solo los resultados. Recuerda que el juego es la principal forma de aprendizaje a esta edad.",
+        faqEdad: "A los 3 años, los niños están desarrollando habilidades motrices gruesas básicas como correr, saltar con ambos pies y subir escaleras con apoyo. Si tu hijo parece retrasado en comparación con otros niños de su edad, ofrece más oportunidades para practicar en un entorno lúdico y sin presión.",
+        faqTorpeza: "A los 3 años es normal que los niños sean torpes mientras están desarrollando su coordinación. Ofrece actividades que mejoren el equilibrio como caminar sobre líneas o sobre superficies ligeramente inestables. Si la torpeza es extrema o persistente, consulta con un pediatra.",
+        faqActividadFisica: "Los niños de 3 años necesitan al menos 180 minutos de actividad física al día, distribuidos en sesiones cortas. Limita el tiempo sedentario a no más de 1 hora continuada, excepto durante el sueño. Ofrece variedad de actividades para mantener su interés."
+      },
+      4: {
+        titulo: "¡Continúa desarrollando movimiento! Descubre actividades avanzadas para niños de 4 años.",
+        definicionMotricidad: "La motricidad gruesa en niños de 4 años se caracteriza por un mayor control y coordinación. Pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota, y mantienen mejor el equilibrio. Estas habilidades les permiten participar en juegos más complejos y deportes simples.",
+        desarrolloNeurologico: "A los 4 años, el cerebro muestra mayor especialización en el control motor. Las áreas responsables de la planificación y ejecución de movimientos están más desarrolladas, permitiendo una mayor coordinación y precisión en las acciones físicas.",
+        etapasDesarrollo: "A los 4 años, los niños pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota con más precisión, mantener el equilibrio en un pie por más tiempo y correr con mayor control. Están desarrollando la capacidad de combinar movimientos de manera más fluida.",
+        saludFisica: "A los 4 años, la motricidad gruesa continúa fortaleciendo el sistema muscular y óseo. Las actividades físicas regulares mejoran la resistencia cardiovascular, la flexibilidad y la fuerza general. Los niños activos suelen tener mejor postura y menor riesgo de obesidad infantil.",
+        autonomiaIndependencia: "Los niños de 4 años pueden realizar más tareas de forma independiente, como subir y bajar escaleras con menos ayuda, vestirse con menor asistencia y participar en juegos más complejos. Esta autonomía creciente aumenta su confianza y sentido de logro.",
+        interaccionSocial: "A los 4 años, los niños comienzan a entender mejor las reglas de los juegos y a participar en actividades grupales más estructuradas. Aprenden a turnarse, compartir y cooperar, habilidades sociales fundamentales que se desarrollan a través del juego físico.",
+        actividades: [
+          {
+            icono: "fas fa-child",
+            titulo: "Saltos en un pie",
+            descripcion: "Anima al niño a saltar en un pie, luego en el otro. Esta actividad mejora el equilibrio y la fuerza de las piernas."
+          },
+          {
+            icono: "fas fa-running",
+            titulo: "Carreras con obstáculos",
+            descripcion: "Crea un circuito simple con obstáculos como cojines o cajas. Esta actividad desarrolla la agilidad, la coordinación y la planificación motriz."
+          },
+          {
+            icono: "fas fa-sort-amount-up",
+            titulo: "Subir y bajar escaleras",
+            descripcion: "Practica subir y bajar escaleras alternando pies sin apoyo. Esta actividad fortalece las piernas y mejora la coordinación."
+          },
+          {
+            icono: "fas fa-baseball-ball",
+            titulo: "Lanzar y atrapar pelotas",
+            descripcion: "Usa pelotas de diferentes tamaños para practicar lanzar y atrapar. Esta actividad mejora la coordinación ojo-mano y la precisión."
+          },
+          {
+            icono: "fas fa-bicycle",
+            titulo: "Triciclo o bicicleta con ruedines",
+            descripcion: "Enseña al niño a usar un triciclo o bicicleta con ruedines. Esta actividad desarrolla la coordinación, el equilibrio y la fuerza de las piernas."
+          }
+        ],
+        consejoProfesional: "A los 4 años, las actividades pueden durar entre 15-20 minutos. Introduce juegos con reglas simples y estructura. Ofrece desafíos gradualmente más complejos y celebra los progresos. Recuerda que el juego sigue siendo la principal forma de aprendizaje.",
+        faqEdad: "A los 4 años, los niños están desarrollando habilidades más avanzadas como saltar en un pie, lanzar y atrapar pelotas, y mantener el equilibrio. Si tu hijo tiene dificultades con estas habilidades, ofrece oportunidades para practicar de manera lúdica y sin presión.",
+        faqTorpeza: "A los 4 años, algunos niños pueden parecer torpes mientras están perfeccionando su coordinación. Actividades como caminar sobre líneas, equilibrarse en un pie o jugar a seguir al líder pueden ayudar a mejorar la coordinación. Si la torpeza persiste, consulta con un especialista.",
+        faqActividadFisica: "Los niños de 4 años necesitan al menos 180 minutos de actividad física al día. Ofrece una mezcla de actividades estructuradas y no estructuradas. Limita el tiempo de pantalla a no más de 1 hora al día y fomenta el juego activo tanto en interiores como en exteriores."
+      },
+      5: {
+        titulo: "¡Domina el movimiento! Actividades especializadas para niños de 5 años.",
+        definicionMotricidad: "La motricidad gruesa en niños de 5 años se caracteriza por movimientos precisos y coordinados. Pueden saltar en un pie con facilidad, patear una pelota con dirección, y comienzan a aprender a andar en bicicleta sin ruedines. Estas habilidades les permiten participar en deportes organizados y actividades físicas más complejas.",
+        desarrolloNeurologico: "A los 5 años, el cerebro muestra madurez en las áreas motoras. La mielinización de las vías nerviosas está casi completa, permitiendo un control refinado de los movimientos y mayor velocidad de procesamiento. Esto facilita el aprendizaje de habilidades motoras más complejas.",
+        etapasDesarrollo: "A los 5 años, los niños pueden saltar en un pie con facilidad, patear una pelota con dirección, subir y bajar escaleras sin apoyo y comienzan a aprender a andar en bicicleta sin ruedines. Están desarrollando la capacidad de combinar movimientos complejos de manera fluida.",
+        saludFisica: "A los 5 años, la motricidad gruesa contribuye significativamente a la salud física general. Las actividades físicas regulares mejoran la fuerza, la resistencia, la flexibilidad y la coordinación. Los niños activos tienen menor riesgo de obesidad y mejores indicadores de salud general.",
+        autonomiaIndependencia: "Los niños de 5 años pueden realizar la mayoría de las tareas físicas de forma independiente, como vestirse completamente, subir y bajar escaleras sin ayuda, y participar en deportes organizados. Esta autonomía completa fomenta su autoconfianza y preparación para la escuela.",
+        interaccionSocial: "A los 5 años, los niños pueden participar en juegos con reglas complejas y deportes organizados. Entienden conceptos como competencia justa, trabajo en equipo y deportividad. Estas habilidades sociales se desarrollan fundamentalmente a través de actividades físicas grupales.",
+        actividades: [
+          {
+            icono: "fas fa-child",
+            titulo: "Saltos coordinados",
+            descripcion: "Practica diferentes tipos de saltos: con pies juntos, alternando pies, hacia adelante y hacia atrás. Esta actividad mejora la coordinación, el equilibrio y la fuerza."
+          },
+          {
+            icono: "fas fa-running",
+            titulo: "Circuitos de obstáculos",
+            descripcion: "Crea circuitos con diversos desafíos como saltar, gatear, equilibrarse y lanzar. Esta actividad desarrolla la planificación motriz, la agilidad y la coordinación."
+          },
+          {
+            icono: "fas fa-sort-amount-up",
+            titulo: "Deportes simples",
+            descripcion: "Introduce deportes simples como fútbol, básquet o atletismo adaptado. Estas actividades mejoran la coordinación, el trabajo en equipo y el seguimiento de reglas."
+          },
+          {
+            icono: "fas fa-bicycle",
+            titulo: "Bicicleta sin ruedines",
+            descripcion: "Enseña al niño a andar en bicicleta sin ruedines. Esta actividad desarrolla el equilibrio, la coordinación y la confianza en sí mismo."
+          },
+          {
+            icono: "fas fa-swimmer",
+            titulo: "Natación básica",
+            descripcion: "Enseña al niño a flotar y moverse en el agua. Esta actividad mejora la coordinación general, la fuerza y la confianza en el agua."
+          }
+        ],
+        consejoProfesional: "A los 5 años, las actividades pueden durar entre 20-30 minutos. Introduce deportes simples y actividades estructuradas que preparen para la escuela. Usa refuerzos positivos y enfócate en el disfrute y la participación, no solo en el rendimiento.",
+        faqEdad: "A los 5 años, los niños están desarrollando habilidades complejas como andar en bicicleta sin ruedines, patear una pelota con dirección y participar en deportes simples. Si tu hijo muestra dificultades significativas, considera una evaluación con un especialista en desarrollo infantil.",
+        faqTorpeza: "A los 5 años, la mayoría de los niños han superado la torpeza típica de edades anteriores. Si tu hijo sigue siendo muy torpe o se cae con frecuencia, actividades específicas como equilibrio, coordinación y fuerza pueden ayudar. Consulta con un especialista si hay preocupaciones persistentes.",
+        faqActividadFisica: "Los niños de 5 años necesitan al menos 60 minutos de actividad física moderada a vigorosa al día, además de varias horas de actividad ligera. Limita el tiempo de pantalla a no más de 2 horas al día y fomenta una variedad de actividades físicas que incluyan fuerza, flexibilidad y resistencia."
+      }
+    };
+    
+    // Variables globales
+    let edadSeleccionada = null;
+    let actividadActual = null;
+    let sequenceMovements = [];
+    let userSequence = [];
+    let characterPosition = 50;
+    let obstacles = [];
+    let walkPosition = 20;
+    
     // Verificar si el usuario tiene acceso al curso y si completó el módulo 2
     document.addEventListener('DOMContentLoaded', function() {
       const accesoAutorizado = localStorage.getItem('cursoAcceso');
@@ -951,15 +1933,60 @@
         alert('Debes completar el Módulo 2 antes de acceder al Módulo 3');
         window.location.href = '../modulo2/index.html';
       } else {
-        // Si tiene acceso y completó el módulo 2, continuar normalmente
-        // No se necesita inicialización adicional para este módulo
+        // Si tiene acceso y completó el módulo 2, inicializar el módulo
+        inicializarModulo();
       }
     });
     
-    // Configurar botón de completar módulo
-    const completeBtn = document.getElementById('completeModule3');
-    if (completeBtn) {
+    function inicializarModulo() {
+      // Configurar botones de edad
+      const ageButtons = document.querySelectorAll('.age-btn');
+      ageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remover clase activa de todos los botones
+          ageButtons.forEach(btn => btn.classList.remove('active'));
+          // Agregar clase activa al botón seleccionado
+          this.classList.add('active');
+          
+          // Guardar edad seleccionada
+          edadSeleccionada = parseInt(this.getAttribute('data-age'));
+          
+          // Actualizar contenido según la edad
+          actualizarContenidoEdad(edadSeleccionada);
+          
+          // Mostrar mensaje de confirmación
+          const ageInfo = document.getElementById('ageInfo');
+          ageInfo.textContent = `Has seleccionado ${edadSeleccionada} años. Todo el contenido está adaptado para esta edad.`;
+          ageInfo.style.display = 'block';
+        });
+      });
+      
+      // Configurar acordeones interactivos
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+      
+      // FAQ interactiva
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          faqItem.classList.toggle('active');
+        });
+      });
+      
+      // Configurar botón de completar módulo
+      const completeBtn = document.getElementById('completeModule3');
       completeBtn.addEventListener('click', function() {
+        // Verificar si se ha seleccionado una edad
+        if (!edadSeleccionada) {
+          alert('Por favor, selecciona la edad de tu hijo/a antes de completar el módulo.');
+          return;
+        }
+        
         // Marcar módulo 3 como completado
         localStorage.setItem('modulo3Completado', 'true');
         
@@ -985,7 +2012,7 @@
         `;
         successMsg.innerHTML = `
           <i class="fas fa-check-circle"></i> 
-          ¡Módulo 3 completado! Ahora puedes acceder al Módulo 4.
+          ¡Módulo 3 completado para ${edadSeleccionada} años! Ahora puedes acceder al Módulo 4.
         `;
         
         document.body.appendChild(successMsg);
@@ -999,25 +2026,349 @@
       });
     }
     
+    function actualizarContenidoEdad(edad) {
+      const contenido = contenidoPorEdad[edad];
+      
+      // Actualizar subtítulo del hero
+      document.getElementById('heroSubtitle').textContent = contenido.titulo;
+      
+      // Actualizar contenido de acordeones
+      document.getElementById('definicionMotricidad').textContent = contenido.definicionMotricidad;
+      document.getElementById('desarrolloNeurologico').textContent = contenido.desarrolloNeurologico;
+      document.getElementById('etapasDesarrollo').textContent = contenido.etapasDesarrollo;
+      document.getElementById('saludFisica').textContent = contenido.saludFisica;
+      document.getElementById('autonomiaIndependencia').textContent = contenido.autonomiaIndependencia;
+      document.getElementById('interaccionSocial').textContent = contenido.interaccionSocial;
+      
+      // Actualizar actividades prácticas
+      const activityList = document.getElementById('activityList');
+      activityList.innerHTML = '';
+      contenido.actividades.forEach((actividad, index) => {
+        const li = document.createElement('li');
+        li.className = 'activity-item';
+        li.style.animationDelay = `${index * 0.2}s`;
+        li.innerHTML = `
+          <h3><i class="${actividad.icono}"></i>${actividad.titulo}</h3>
+          <p>${actividad.descripcion}</p>
+        `;
+        activityList.appendChild(li);
+      });
+      
+      // Actualizar consejo profesional
+      document.getElementById('consejoProfesional').textContent = contenido.consejoProfesional;
+      
+      // Actualizar FAQs
+      document.getElementById('faqEdad').textContent = contenido.faqEdad;
+      document.getElementById('faqTorpeza').textContent = contenido.faqTorpeza;
+      document.getElementById('faqActividadFisica').textContent = contenido.faqActividadFisica;
+    }
+    
+    // Funciones para actividades interactivas
+    function showSequence() {
+      hideAllActivities();
+      document.getElementById('sequenceContainer').style.display = 'block';
+      actividadActual = 'sequence';
+      
+      // Inicializar juego de secuencia
+      generateSequence();
+    }
+    
+    function generateSequence() {
+      // Definir movimientos según la edad
+      let movements;
+      if (edadSeleccionada === 3) {
+        movements = [
+          { icon: 'fas fa-child', name: 'saltar', color: '#FF6B6B' },
+          { icon: 'fas fa-running', name: 'correr', color: '#4ECDC4' },
+          { icon: 'fas fa-hand-paper', name: 'girar', color: '#FFE66D' }
+        ];
+      } else if (edadSeleccionada === 4) {
+        movements = [
+          { icon: 'fas fa-child', name: 'saltar', color: '#FF6B6B' },
+          { icon: 'fas fa-running', name: 'correr', color: '#4ECDC4' },
+          { icon: 'fas fa-hand-paper', name: 'girar', color: '#FFE66D' },
+          { icon: 'fas fa-arrows-alt-h', name: 'lateral', color: '#9C88FF' }
+        ];
+      } else {
+        movements = [
+          { icon: 'fas fa-child', name: 'saltar', color: '#FF6B6B' },
+          { icon: 'fas fa-running', name: 'correr', color: '#4ECDC4' },
+          { icon: 'fas fa-hand-paper', name: 'girar', color: '#FFE66D' },
+          { icon: 'fas fa-arrows-alt-h', name: 'lateral', color: '#9C88FF' },
+          { icon: 'fas fa-sort-amount-up', name: 'agacharse', color: '#FF7EB9' }
+        ];
+      }
+      
+      // Generar secuencia aleatoria
+      const sequenceLength = edadSeleccionada === 3 ? 3 : edadSeleccionada === 4 ? 4 : 5;
+      sequenceMovements = [];
+      
+      for (let i = 0; i < sequenceLength; i++) {
+        const randomIndex = Math.floor(Math.random() * movements.length);
+        sequenceMovements.push(movements[randomIndex]);
+      }
+      
+      // Mostrar secuencia
+      const sequenceDisplay = document.getElementById('sequence-display');
+      sequenceDisplay.innerHTML = '';
+      
+      sequenceMovements.forEach((movement, index) => {
+        const item = document.createElement('div');
+        item.className = 'sequence-item';
+        item.style.background = movement.color;
+        item.innerHTML = `<i class="${movement.icon}"></i>`;
+        sequenceDisplay.appendChild(item);
+      });
+      
+      // Limpiar secuencia del usuario
+      userSequence = [];
+      document.getElementById('sequence-msj').textContent = '';
+    }
+    
+    function checkSequence() {
+      // Verificar si la secuencia del usuario coincide
+      const isCorrect = userSequence.length === sequenceMovements.length && 
+                       userSequence.every((movement, index) => movement === sequenceMovements[index].name);
+      
+      const msjElement = document.getElementById('sequence-msj');
+      
+      if (isCorrect) {
+        msjElement.textContent = '¡Excelente! Has repetido la secuencia correctamente.';
+        msjElement.style.color = 'var(--success)';
+      } else {
+        msjElement.textContent = 'Inténtalo de nuevo. Observa bien la secuencia.';
+        msjElement.style.color = 'var(--primary)';
+      }
+    }
+    
+    function showObstacle() {
+      hideAllActivities();
+      document.getElementById('obstacleContainer').style.display = 'block';
+      actividadActual = 'obstacle';
+      
+      // Inicializar juego de obstáculos
+      initObstacleGame();
+    }
+    
+    function initObstacleGame() {
+      // Reiniciar posición del personaje
+      characterPosition = 50;
+      const character = document.getElementById('obstacle-character');
+      character.style.left = characterPosition + 'px';
+      
+      // Limpiar área de obstáculos
+      const obstacleArea = document.getElementById('obstacle-area');
+      const existingObstacles = obstacleArea.querySelectorAll('.obstacle');
+      existingObstacles.forEach(obstacle => obstacle.remove());
+      
+      // Generar obstáculos según la edad
+      const obstacleCount = edadSeleccionada === 3 ? 3 : edadSeleccionada === 4 ? 4 : 5;
+      obstacles = [];
+      
+      for (let i = 0; i < obstacleCount; i++) {
+        const obstacle = document.createElement('div');
+        obstacle.className = 'obstacle';
+        obstacle.style.left = (150 + i * 100) + 'px';
+        obstacle.style.bottom = '0px';
+        obstacleArea.appendChild(obstacle);
+        obstacles.push({
+          element: obstacle,
+          position: 150 + i * 100,
+          height: 80
+        });
+      }
+      
+      // Limpiar mensaje
+      document.getElementById('obstacle-msj').textContent = '';
+    }
+    
+    function moveCharacter(direction) {
+      const character = document.getElementById('obstacle-character');
+      const characterRect = character.getBoundingClientRect();
+      const obstacleArea = document.getElementById('obstacle-area');
+      const areaRect = obstacleArea.getBoundingClientRect();
+      
+      if (direction === 'left' && characterPosition > 20) {
+        characterPosition -= 20;
+      } else if (direction === 'right' && characterPosition < areaRect.width - 70) {
+        characterPosition += 20;
+      } else if (direction === 'jump') {
+        // Simular salto
+        character.style.bottom = '100px';
+        setTimeout(() => {
+          character.style.bottom = '20px';
+        }, 500);
+      }
+      
+      character.style.left = characterPosition + 'px';
+      
+      // Verificar si el personaje ha llegado al final
+      if (characterPosition >= areaRect.width - 100) {
+        document.getElementById('obstacle-msj').textContent = '¡Felicidades! Has superado todos los obstáculos.';
+        document.getElementById('obstacle-msj').style.color = 'var(--success)';
+      }
+    }
+    
+    function showThrow() {
+      hideAllActivities();
+      document.getElementById('throwContainer').style.display = 'block';
+      actividadActual = 'throw';
+      
+      // Inicializar juego de lanzamiento
+      initThrowGame();
+    }
+    
+    function initThrowGame() {
+      const ball = document.getElementById('throw-ball');
+      ball.style.left = '50px';
+      ball.style.bottom = '20px';
+      
+      // Configurar arrastre de la pelota
+      ball.addEventListener('dragstart', function(e) {
+        e.dataTransfer.setData('text/plain', '');
+      });
+      
+      // Configurar área de lanzamiento
+      const throwArea = document.getElementById('throw-area');
+      throwArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+      });
+      
+      throwArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        const ball = document.getElementById('throw-ball');
+        const target = document.getElementById('throw-target');
+        const ballRect = ball.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const areaRect = throwArea.getBoundingClientRect();
+        
+        // Calcular posición relativa
+        const relativeX = e.clientX - areaRect.left;
+        const relativeY = e.clientY - areaRect.top;
+        
+        // Colocar la pelota en la posición soltada
+        ball.style.left = (relativeX - 20) + 'px';
+        ball.style.top = (relativeY - 20) + 'px';
+        ball.style.bottom = 'auto';
+        
+        // Verificar si la pelota está cerca del objetivo
+        const distance = Math.sqrt(
+          Math.pow(ballRect.left - targetRect.left, 2) + 
+          Math.pow(ballRect.top - targetRect.top, 2)
+        );
+        
+        const msjElement = document.getElementById('throw-msj');
+        
+        if (distance < 50) {
+          msjElement.textContent = '¡Excelente tiro! Has alcanzado el objetivo.';
+          msjElement.style.color = 'var(--success)';
+        } else if (distance < 100) {
+          msjElement.textContent = 'Buen intento. Estás cerca del objetivo.';
+          msjElement.style.color = 'var(--warning)';
+        } else {
+          msjElement.textContent = 'Inténtalo de nuevo. Apunta bien al objetivo.';
+          msjElement.style.color = 'var(--primary)';
+        }
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('throw-msj').textContent = '';
+    }
+    
+    function resetThrow() {
+      initThrowGame();
+    }
+    
+    function showWalk() {
+      hideAllActivities();
+      document.getElementById('walkContainer').style.display = 'block';
+      actividadActual = 'walk';
+      
+      // Inicializar simulador de caminata
+      initWalkSimulator();
+    }
+    
+    function initWalkSimulator() {
+      // Reiniciar posición del personaje
+      walkPosition = 20;
+      const character = document.getElementById('walk-character');
+      character.style.left = walkPosition + 'px';
+      character.style.transform = 'translateY(-50%)';
+      
+      // Limpiar mensaje
+      document.getElementById('walk-msj').textContent = '';
+    }
+    
+    function walkForward() {
+      const character = document.getElementById('walk-character');
+      const walkArea = document.getElementById('walk-area');
+      const areaWidth = walkArea.offsetWidth;
+      
+      if (walkPosition < areaWidth - 60) {
+        walkPosition += 20;
+        character.style.left = walkPosition + 'px';
+        
+        // Verificar si el personaje ha llegado al final
+        if (walkPosition >= areaWidth - 60) {
+          document.getElementById('walk-msj').textContent = '¡Has llegado al final! Ahora puedes volver atrás.';
+          document.getElementById('walk-msj').style.color = 'var(--success)';
+        }
+      }
+    }
+    
+    function walkBackward() {
+      const character = document.getElementById('walk-character');
+      
+      if (walkPosition > 20) {
+        walkPosition -= 20;
+        character.style.left = walkPosition + 'px';
+        
+        // Verificar si el personaje ha vuelto al inicio
+        if (walkPosition <= 20) {
+          document.getElementById('walk-msj').textContent = 'Has vuelto al inicio. Sigue explorando.';
+          document.getElementById('walk-msj').style.color = 'var(--info)';
+        }
+      }
+    }
+    
+    function walkJump() {
+      const character = document.getElementById('walk-character');
+      
+      // Simular salto
+      character.style.transform = 'translateY(-80px)';
+      setTimeout(() => {
+        character.style.transform = 'translateY(-50%)';
+      }, 500);
+      
+      document.getElementById('walk-msj').textContent = '¡Buen salto! Sigue practicando.';
+      document.getElementById('walk-msj').style.color = 'var(--secondary)';
+    }
+    
+    function hideAllActivities() {
+      document.getElementById('sequenceContainer').style.display = 'none';
+      document.getElementById('obstacleContainer').style.display = 'none';
+      document.getElementById('throwContainer').style.display = 'none';
+      document.getElementById('walkContainer').style.display = 'none';
+    }
+    
     // Toggle para menú móvil
     document.getElementById('navbar-toggle').addEventListener('click', () => {
       document.getElementById('navbar-menu').classList.toggle('active');
     });
     
-    // Modo oscuro mejorado
-    document.getElementById('modo').onclick = function() {
-      document.body.classList.toggle('oscuro');
-      const icon = this.querySelector('i');
-      const text = this.querySelector('span');
-      
-      if (document.body.classList.contains('oscuro')) {
-        icon.className = 'fas fa-sun';
-        text.textContent = 'Modo claro';
-      } else {
-        icon.className = 'fas fa-moon';
-        text.textContent = 'Modo oscuro';
-      }
-    };
+    // Suavizado de scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
     
     // Añadir animaciones CSS para los mensajes
     const style = document.createElement('style');
