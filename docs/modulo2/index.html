@@ -855,6 +855,14 @@
       background: rgba(255, 255, 255, 0.3);
       transform: translateY(-3px);
     }
+    .quiz-btn.correct {
+      background: rgba(107, 207, 127, 0.5);
+      border-color: var(--success);
+    }
+    .quiz-btn.incorrect {
+      background: rgba(255, 107, 107, 0.5);
+      border-color: var(--primary);
+    }
     .quiz-feedback {
       margin-top: 20px;
       padding: 15px;
@@ -862,6 +870,34 @@
       font-weight: 600;
       text-align: center;
       background: rgba(255, 255, 255, 0.2);
+      display: none;
+    }
+    .quiz-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .quiz-next-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: none;
+    }
+    .quiz-next-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(107, 207, 127, 0.3);
+    }
+    .quiz-score {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
       display: none;
     }
     
@@ -891,29 +927,64 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-    }
-    .mem-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      transform: rotateY(90deg);
-      transition: transform 0.5s ease;
-      backface-visibility: hidden;
-    }
-    .mem-card.flipped::before {
-      transform: rotateY(0deg);
+      transform-style: preserve-3d;
     }
     .mem-card:hover {
       transform: scale(1.05);
     }
     .mem-card.flipped {
+      transform: rotateY(180deg);
+    }
+    .mem-card-front, .mem-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    .mem-card-front {
+      background: var(--gradient);
+      color: white;
+      font-size: 1.5rem;
+    }
+    .mem-card-back {
       background: white;
       color: var(--primary);
       border: 2px solid var(--primary);
+      transform: rotateY(180deg);
+    }
+    .mem-card.matched {
+      background: var(--success);
+      color: white;
+      cursor: default;
+    }
+    .mem-card.matched .mem-card-back {
+      background: var(--success);
+      color: white;
+      border: none;
+    }
+    .mem-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .mem-reset-btn {
+      background: var(--warning);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .mem-reset-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
     }
     
     /* Drag and drop mejorado */
@@ -994,6 +1065,136 @@
       font-weight: 600;
       text-align: center;
       display: none;
+    }
+    .dragdrop-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .dragdrop-reset-btn {
+      background: var(--warning);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .dragdrop-reset-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
+    }
+    
+    /* Rompecabezas mejorado */
+    .puzzle-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .puzzle-area {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+    }
+    .puzzle-piece {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      border-radius: 5px;
+      cursor: grab;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    .puzzle-piece:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .puzzle-piece.dragging {
+      opacity: 0.8;
+      transform: scale(1.1);
+      z-index: 100;
+    }
+    .puzzle-piece.correct {
+      background: var(--success);
+      cursor: default;
+    }
+    .puzzle-piece.correct:hover {
+      transform: none;
+    }
+    .puzzle-pieces {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .puzzle-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .puzzle-reset-btn {
+      background: var(--warning);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .puzzle-reset-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
+    }
+    
+    /* Dibujo guiado mejorado */
+    .drawing-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    #drawingCanvas {
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      cursor: crosshair;
+      margin: 0 auto;
+      display: block;
+      background: white;
+    }
+    .drawing-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .drawing-btn {
+      background: var(--gradient-2);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .drawing-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
     }
     
     /* FAQ mejorado */
@@ -1326,6 +1527,21 @@
         flex-direction: column;
         align-items: center;
       }
+      
+      .puzzle-area {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .puzzle-piece {
+        width: 50px;
+        height: 50px;
+      }
+      
+      #drawingCanvas {
+        width: 300px;
+        height: 200px;
+      }
     }
   </style>
 </head>
@@ -1553,13 +1769,15 @@
       <!-- Contenedores para actividades interactivas -->
       <div id="quizContainer" style="display: none;">
         <div class="quiz-container">
-          <div class="quiz-question" id="quizQuestion">¿Cuál de estas actividades mejora principalmente la motricidad fina?</div>
+          <div class="quiz-question" id="quizQuestion">Cargando pregunta...</div>
           <div class="quiz-options" id="quizOptions">
-            <div class="quiz-btn" onclick="respuesta('a')">Ensartar cuentas</div>
-            <div class="quiz-btn" onclick="respuesta('b')">Saltar la cuerda</div>
-            <div class="quiz-btn" onclick="respuesta('c')">Lanzar una pelota</div>
+            <!-- Las opciones se cargarán dinámicamente -->
           </div>
           <div id="quiz-feedback" class="quiz-feedback"></div>
+          <div class="quiz-controls">
+            <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">Siguiente pregunta</button>
+          </div>
+          <div id="quiz-score" class="quiz-score"></div>
         </div>
       </div>
       
@@ -1569,6 +1787,9 @@
           <p style="text-align: center; margin-bottom: 20px;">Encuentra los pares de actividades relacionadas con la motricidad fina.</p>
           <div class="mem-cards" id="mem-cards"></div>
           <div id="memoria-msj" style="font-weight:bold; margin-top:15px; text-align: center;"></div>
+          <div class="mem-controls">
+            <button class="mem-reset-btn" onclick="resetMemory()">Reiniciar juego</button>
+          </div>
         </div>
       </div>
       
@@ -1592,34 +1813,33 @@
             <div class="drop-area-title-gruesa">Motricidad gruesa (arrástralos aquí):</div>
           </div>
           <div id="dragdrop-msj" class="dragdrop-msj"></div>
+          <div class="dragdrop-controls">
+            <button class="dragdrop-reset-btn" onclick="resetDragDrop()">Reiniciar actividad</button>
+          </div>
         </div>
       </div>
       
       <div id="puzzleContainer" style="display: none;">
-        <div style="text-align: center;">
+        <div class="puzzle-container">
           <h3 style="color: var(--secondary); margin-bottom: 20px;">Rompecabezas de motricidad fina</h3>
           <p style="margin-bottom: 20px;">Arrastra las piezas para completar la imagen.</p>
-          <div style="position: relative; width: 300px; height: 300px; margin: 0 auto; border: 2px solid var(--secondary); border-radius: 10px;">
-            <div id="puzzle-area" style="position: absolute; width: 100%; height: 100%; background-image: url('https://picsum.photos/seed/motricidad/300/300.jpg'); background-size: cover; border-radius: 8px;"></div>
-          </div>
-          <div id="puzzle-pieces" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient); border-radius: 5px; cursor: grab;">1</div>
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient-2); border-radius: 5px; cursor: grab;">2</div>
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient-3); border-radius: 5px; cursor: grab;">3</div>
-            <div class="puzzle-piece" draggable="true" style="width: 60px; height: 60px; background: var(--gradient-4); border-radius: 5px; cursor: grab;">4</div>
-          </div>
+          <div class="puzzle-area" id="puzzle-area"></div>
+          <div class="puzzle-pieces" id="puzzle-pieces"></div>
           <div id="puzzle-msj" style="font-weight:bold; margin-top:15px;"></div>
+          <div class="puzzle-controls">
+            <button class="puzzle-reset-btn" onclick="resetPuzzle()">Reiniciar rompecabezas</button>
+          </div>
         </div>
       </div>
       
       <div id="drawingContainer" style="display: none;">
-        <div style="text-align: center;">
+        <div class="drawing-container">
           <h3 style="color: var(--secondary); margin-bottom: 20px;">Dibujo guiado</h3>
           <p style="margin-bottom: 20px;">Sigue las líneas punteadas para completar el dibujo.</p>
-          <canvas id="drawingCanvas" width="400" height="300" style="border: 2px solid var(--secondary); border-radius: 10px; cursor: crosshair; margin: 0 auto; display: block;"></canvas>
-          <div style="margin-top: 20px;">
-            <button class="activity-btn" onclick="clearCanvas()">Limpiar</button>
-            <button class="activity-btn" onclick="showNewDrawing()">Nuevo dibujo</button>
+          <canvas id="drawingCanvas" width="400" height="300"></canvas>
+          <div class="drawing-controls">
+            <button class="drawing-btn" onclick="clearCanvas()">Limpiar</button>
+            <button class="drawing-btn" onclick="showNewDrawing()">Nuevo dibujo</button>
           </div>
           <div id="drawing-msj" style="font-weight:bold; margin-top:15px;"></div>
         </div>
@@ -1764,7 +1984,7 @@
           {
             icono: "fas fa-bezier-curve",
             titulo: "Ensartar cuentas pequeñas",
-            descripcion: "Usa cordones y cuentas de tamaño mediano para crear collajes. Comienza con cuentas grandes y reduce gradualmente el tamaño. Mejora la precisión y paciencia."
+            descripcion: "Usa cordones y cuentas de tamaño mediano para crear collares. Comienza con cuentas grandes y reduce gradualmente el tamaño. Mejora la precisión y paciencia."
           },
           {
             icono: "fas fa-lock",
@@ -1827,6 +2047,12 @@
     // Variables globales
     let edadSeleccionada = null;
     let actividadActual = null;
+    let quizPreguntas = [];
+    let preguntaActual = 0;
+    let respuestasCorrectas = 0;
+    let memCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
     
     // Verificar si el usuario tiene acceso al curso y si completó el módulo 1
     document.addEventListener('DOMContentLoaded', function() {
@@ -1998,48 +2224,171 @@
       actividadActual = 'quiz';
       
       // Configurar preguntas según la edad
-      const preguntas = {
+      quizPreguntas = {
         3: [
-          { pregunta: "¿Qué actividad es adecuada para un niño de 3 años?", opciones: ["Escribir letras", "Hacer torres de bloques", "Recortar formas"], correcta: 1 },
-          { pregunta: "¿Cuál es un hito de motricidad fina a los 3 años?", opciones: ["Abrochar botones pequeños", "Usar cuchara", "Escribir el nombre"], correcta: 1 }
+          { 
+            pregunta: "¿Qué actividad es adecuada para un niño de 3 años?", 
+            opciones: ["Escribir letras", "Hacer torres de bloques", "Recortar formas"], 
+            correcta: 1,
+            explicacion: "A los 3 años, los niños pueden hacer torres de bloques, pero aún no están listos para escribir letras o recortar formas complejas."
+          },
+          { 
+            pregunta: "¿Cuál es un hito de motricidad fina a los 3 años?", 
+            opciones: ["Abrochar botones pequeños", "Usar cuchara", "Escribir el nombre"], 
+            correcta: 1,
+            explicacion: "A los 3 años, los niños pueden usar una cuchara, pero abrochar botones pequeños y escribir el nombre son habilidades que se desarrollan más tarde."
+          },
+          { 
+            pregunta: "¿Qué material es adecuado para un niño de 3 años?", 
+            opciones: ["Tijeras afiladas", "Crayones gruesos", "Lápices finos"], 
+            correcta: 1,
+            explicacion: "Los crayones gruesos son más fáciles de sostener para niños de 3 años, mientras que las tijeras afiladas y los lápices finos no son adecuados para esta edad."
+          }
         ],
         4: [
-          { pregunta: "¿Qué pueden hacer los niños de 4 años?", opciones: ["Recortar líneas rectas", "Escribir párrafos", "Hacer nudos complejos"], correcta: 0 },
-          { pregunta: "¿Qué habilidad se desarrolla a los 4 años?", opciones: ["Dominancia manual", "Caligrafía perfecta", "Cocinar solo"], correcta: 0 }
+          { 
+            pregunta: "¿Qué pueden hacer los niños de 4 años?", 
+            opciones: ["Recortar líneas rectas", "Escribir párrafos", "Hacer nudos complejos"], 
+            correcta: 0,
+            explicacion: "A los 4 años, los niños pueden recortar líneas rectas, pero escribir párrafos y hacer nudos complejos son habilidades que se desarrollan más tarde."
+          },
+          { 
+            pregunta: "¿Qué habilidad se desarrolla a los 4 años?", 
+            opciones: ["Dominancia manual", "Caligrafía perfecta", "Cocinar solo"], 
+            correcta: 0,
+            explicacion: "A los 4 años, los niños desarrollan la dominancia manual (preferencia por usar una mano), pero la caligrafía perfecta y cocinar solo son habilidades que se desarrollan más tarde."
+          },
+          { 
+            pregunta: "¿Qué actividad ayuda a la motricidad fina a los 4 años?", 
+            opciones: ["Ver televisión", "Ensartar cuentas", "Correr largas distancias"], 
+            correcta: 1,
+            explicacion: "Ensartar cuentas es una excelente actividad para desarrollar la motricidad fina a los 4 años, mientras que ver televisión y correr no desarrollan específicamente estas habilidades."
+          }
         ],
         5: [
-          { pregunta: "¿Qué es característico de los 5 años?", opciones: ["Escribir algunas letras", "Solo garabatear", "No usar tijeras"], correcta: 0 },
-          { pregunta: "¿Qué prepara a los niños de 5 años para la escuela?", opciones: ["Ver televisión", "Escribir su nombre", "Jugar videojuegos"], correcta: 1 }
+          { 
+            pregunta: "¿Qué es característico de los 5 años?", 
+            opciones: ["Escribir algunas letras", "Solo garabatear", "No usar tijeras"], 
+            correcta: 0,
+            explicacion: "A los 5 años, los niños pueden escribir algunas letras, mientras que solo garabatear y no usar tijeras son características de edades más tempranas."
+          },
+          { 
+            pregunta: "¿Qué prepara a los niños de 5 años para la escuela?", 
+            opciones: ["Ver televisión", "Escribir su nombre", "Jugar videojuegos"], 
+            correcta: 1,
+            explicacion: "Escribir su nombre es una habilidad importante que prepara a los niños de 5 años para la escuela, mientras que ver televisión y jugar videojuegos no contribuyen directamente a esta preparación."
+          },
+          { 
+            pregunta: "¿Qué actividad desarrolla la coordinación ojo-mano a los 5 años?", 
+            opciones: ["Escuchar música", "Recortar formas", "Dormir la siesta"], 
+            correcta: 1,
+            explicacion: "Recortar formas es una excelente actividad para desarrollar la coordinación ojo-mano a los 5 años, mientras que escuchar música y dormir la siesta no desarrollan específicamente esta habilidad."
+          }
         ]
       };
       
-      const preguntaActual = preguntas[edadSeleccionada][Math.floor(Math.random() * preguntas[edadSeleccionada].length)];
+      // Mezclar preguntas
+      const preguntasEdad = [...quizPreguntas[edadSeleccionada]];
+      for (let i = preguntasEdad.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [preguntasEdad[i], preguntasEdad[j]] = [preguntasEdad[j], preguntasEdad[i]];
+      }
       
-      document.getElementById('quizQuestion').textContent = preguntaActual.pregunta;
+      // Tomar solo 3 preguntas
+      quizPreguntas = preguntasEdad.slice(0, 3);
+      preguntaActual = 0;
+      respuestasCorrectas = 0;
+      
+      // Mostrar primera pregunta
+      mostrarPreguntaQuiz();
+    }
+    
+    function mostrarPreguntaQuiz() {
+      const pregunta = quizPreguntas[preguntaActual];
+      document.getElementById('quizQuestion').textContent = pregunta.pregunta;
+      
       const optionsContainer = document.getElementById('quizOptions');
       optionsContainer.innerHTML = '';
       
-      preguntaActual.opciones.forEach((opcion, index) => {
+      pregunta.opciones.forEach((opcion, index) => {
         const btn = document.createElement('div');
         btn.className = 'quiz-btn';
         btn.textContent = opcion;
-        btn.onclick = () => respuestaQuiz(index === preguntaActual.correcta);
+        btn.onclick = () => verificarRespuestaQuiz(index);
         optionsContainer.appendChild(btn);
       });
+      
+      // Ocultar feedback y botón siguiente
+      document.getElementById('quiz-feedback').style.display = 'none';
+      document.getElementById('quizNextBtn').style.display = 'none';
+      document.getElementById('quiz-score').style.display = 'none';
     }
     
-    function respuestaQuiz(esCorrecta) {
+    function verificarRespuestaQuiz(indiceSeleccionado) {
+      const pregunta = quizPreguntas[preguntaActual];
+      const esCorrecta = indiceSeleccionado === pregunta.correcta;
+      
+      // Deshabilitar todos los botones
+      const botones = document.querySelectorAll('.quiz-btn');
+      botones.forEach((btn, index) => {
+        btn.onclick = null;
+        if (index === pregunta.correcta) {
+          btn.classList.add('correct');
+        } else if (index === indiceSeleccionado && !esCorrecta) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      // Mostrar feedback
       const feedback = document.getElementById('quiz-feedback');
       feedback.style.display = 'block';
       
-      if(esCorrecta) {
-        feedback.textContent = "¡Correcto! Sigue así para fortalecer tus conocimientos.";
-        feedback.style.background = "rgba(45, 206, 137, 0.2)";
+      if (esCorrecta) {
+        feedback.textContent = "¡Correcto! " + pregunta.explicacion;
+        feedback.style.background = "rgba(107, 207, 127, 0.2)";
         feedback.style.color = "var(--success)";
+        respuestasCorrectas++;
       } else {
-        feedback.textContent = "Intenta de nuevo. Recuerda leer bien la información del módulo.";
-        feedback.style.background = "rgba(245, 54, 92, 0.2)";
-        feedback.style.color = "var(--danger)";
+        feedback.textContent = "Incorrecto. " + pregunta.explicacion;
+        feedback.style.background = "rgba(255, 107, 107, 0.2)";
+        feedback.style.color = "var(--primary)";
+      }
+      
+      // Mostrar botón siguiente o finalizar
+      const nextBtn = document.getElementById('quizNextBtn');
+      if (preguntaActual < quizPreguntas.length - 1) {
+        nextBtn.textContent = "Siguiente pregunta";
+        nextBtn.style.display = "inline-block";
+      } else {
+        nextBtn.textContent = "Ver resultados";
+        nextBtn.style.display = "inline-block";
+      }
+    }
+    
+    function nextQuestion() {
+      preguntaActual++;
+      
+      if (preguntaActual < quizPreguntas.length) {
+        mostrarPreguntaQuiz();
+      } else {
+        // Mostrar resultados finales
+        const porcentaje = Math.round((respuestasCorrectas / quizPreguntas.length) * 100);
+        const scoreDiv = document.getElementById('quiz-score');
+        scoreDiv.style.display = 'block';
+        
+        if (porcentaje >= 80) {
+          scoreDiv.textContent = `¡Excelente! Has acertado ${respuestasCorrectas} de ${quizPreguntas.length} preguntas (${porcentaje}%)`;
+          scoreDiv.style.color = "var(--success)";
+        } else if (porcentaje >= 50) {
+          scoreDiv.textContent = `Bien hecho. Has acertado ${respuestasCorrectas} de ${quizPreguntas.length} preguntas (${porcentaje}%)`;
+          scoreDiv.style.color = "var(--warning)";
+        } else {
+          scoreDiv.textContent = `Sigue practicando. Has acertado ${respuestasCorrectas} de ${quizPreguntas.length} preguntas (${porcentaje}%)`;
+          scoreDiv.style.color = "var(--primary)";
+        }
+        
+        // Ocultar botón siguiente
+        document.getElementById('quizNextBtn').style.display = 'none';
       }
     }
     
@@ -2048,49 +2397,114 @@
       document.getElementById('memoryContainer').style.display = 'block';
       actividadActual = 'memory';
       
-      // Iniciar juego de memoria
-      const icons = ['✂️','✂️','🧵','🧵','🖍️','🖍️','🧩','🧩'];
-      let cards = icons.map(i => ({icon: i, id: Math.random()})).sort(() => Math.random() - 0.5);
-      let container = document.getElementById('mem-cards');
-      container.innerHTML = '';
-      let flipped = [];
-      let matched = [];
+      // Inicializar juego de memoria
+      inicializarJuegoMemoria();
+    }
+    
+    function inicializarJuegoMemoria() {
+      // Definir pares de cartas según la edad
+      let paresCartas = [];
+      if (edadSeleccionada === 3) {
+        paresCartas = ['🖍️', '🧩', '🧵', '🖐️'];
+      } else if (edadSeleccionada === 4) {
+        paresCartas = ['✂️', '🖍️', '🧩', '🧵', '🖐️', '🔤'];
+      } else {
+        paresCartas = ['✂️', '🖍️', '🧩', '🧵', '🖐️', '🔤', '📝', '🔢'];
+      }
       
-      cards.forEach((c, i) => {
-        let div = document.createElement('div');
-        div.className = 'mem-card';
-        div.dataset.index = i;
-        div.textContent = '';
-        div.onclick = function() {
-          if (flipped.length < 2 && !div.classList.contains('flipped') && !matched.includes(i)) {
-            div.textContent = c.icon;
-            div.classList.add('flipped');
-            flipped.push({i, icon: c.icon});
-            
-            if (flipped.length == 2) {
-              setTimeout(function() {
-                let [f1, f2] = flipped;
-                if (f1.icon == f2.icon && f1.i != f2.i) {
-                  matched.push(f1.i, f2.i);
-                  if (matched.length == cards.length) {
-                    document.getElementById('memoria-msj').textContent = '¡Excelente! Completaste el juego de memoria 🎉';
-                    document.getElementById('memoria-msj').style.color = "var(--success)";
-                  }
-                } else {
-                  document.querySelectorAll('.mem-card.flipped').forEach(d => {
-                    if (!matched.includes(parseInt(d.dataset.index))) {
-                      d.textContent = '';
-                      d.classList.remove('flipped');
-                    }
-                  });
-                }
-                flipped = [];
-              }, 900);
-            }
-          }
-        };
-        container.appendChild(div);
+      // Crear array con pares
+      memCards = [];
+      paresCartas.forEach(simbolo => {
+        memCards.push(simbolo, simbolo); // Añadir cada símbolo dos veces
       });
+      
+      // Mezclar cartas
+      for (let i = memCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [memCards[i], memCards[j]] = [memCards[j], memCards[i]];
+      }
+      
+      // Crear elementos DOM para las cartas
+      const memCardsContainer = document.getElementById('mem-cards');
+      memCardsContainer.innerHTML = '';
+      
+      memCards.forEach((simbolo, indice) => {
+        const carta = document.createElement('div');
+        carta.className = 'mem-card';
+        carta.dataset.indice = indice;
+        carta.dataset.simbolo = simbolo;
+        
+        // Crear frente y dorso de la carta
+        const frente = document.createElement('div');
+        frente.className = 'mem-card-front';
+        frente.innerHTML = '?';
+        
+        const dorso = document.createElement('div');
+        dorso.className = 'mem-card-back';
+        dorso.innerHTML = simbolo;
+        
+        carta.appendChild(frente);
+        carta.appendChild(dorso);
+        
+        // Añadir evento click
+        carta.addEventListener('click', () => voltearCarta(carta));
+        
+        memCardsContainer.appendChild(carta);
+      });
+      
+      // Reiniciar variables de control
+      flippedCards = [];
+      matchedPairs = 0;
+      document.getElementById('memoria-msj').textContent = '';
+    }
+    
+    function voltearCarta(carta) {
+      // Si la carta ya está volteada o emparejada, no hacer nada
+      if (carta.classList.contains('flipped') || carta.classList.contains('matched')) {
+        return;
+      }
+      
+      // Si ya hay dos cartas volteadas, no hacer nada
+      if (flippedCards.length >= 2) {
+        return;
+      }
+      
+      // Voltear la carta
+      carta.classList.add('flipped');
+      flippedCards.push(carta);
+      
+      // Si hay dos cartas volteadas, verificar si coinciden
+      if (flippedCards.length === 2) {
+        setTimeout(verificarPareja, 1000);
+      }
+    }
+    
+    function verificarPareja() {
+      const [carta1, carta2] = flippedCards;
+      
+      if (carta1.dataset.simbolo === carta2.dataset.simbolo) {
+        // Las cartas coinciden
+        carta1.classList.add('matched');
+        carta2.classList.add('matched');
+        matchedPairs++;
+        
+        // Verificar si se han encontrado todos los pares
+        if (matchedPairs === memCards.length / 2) {
+          document.getElementById('memoria-msj').textContent = '¡Felicidades! Has completado el juego de memoria 🎉';
+          document.getElementById('memoria-msj').style.color = 'var(--success)';
+        }
+      } else {
+        // Las cartas no coinciden, volverlas a su estado original
+        carta1.classList.remove('flipped');
+        carta2.classList.remove('flipped');
+      }
+      
+      // Limpiar el array de cartas volteadas
+      flippedCards = [];
+    }
+    
+    function resetMemory() {
+      inicializarJuegoMemoria();
     }
     
     function showDragDrop() {
@@ -2127,6 +2541,7 @@
         item.addEventListener('dragstart', function(e) {
           dragged = item;
           item.classList.add('dragging');
+          e.dataTransfer.effectAllowed = 'move';
         });
         
         item.addEventListener('dragend', function(e) {
@@ -2137,6 +2552,7 @@
       [finaDrop, gruesaDrop].forEach(dropArea => {
         dropArea.addEventListener('dragover', function(e) {
           e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
         });
         
         dropArea.addEventListener('drop', function(e) {
@@ -2157,7 +2573,7 @@
               dragged.innerHTML += " <i class='fas fa-check'></i>";
               
               msj.textContent = "¡Bien hecho! " + dragged.textContent + " es una actividad de " + (esFina ? "motricidad fina" : "motricidad gruesa") + ".";
-              msj.style.background = "rgba(45, 206, 137, 0.2)";
+              msj.style.background = "rgba(107, 207, 127, 0.2)";
               msj.style.color = "var(--success)";
               
               // Verificar si todos los items han sido clasificados correctamente
@@ -2167,12 +2583,16 @@
               }
             } else {
               msj.textContent = "Esa actividad corresponde a " + (esFina ? "motricidad fina" : "motricidad gruesa") + ". Intenta con otra.";
-              msj.style.background = "rgba(245, 54, 92, 0.2)";
-              msj.style.color = "var(--danger)";
+              msj.style.background = "rgba(255, 107, 107, 0.2)";
+              msj.style.color = "var(--primary)";
             }
           }
         });
       });
+    }
+    
+    function resetDragDrop() {
+      showDragDrop();
     }
     
     function showPuzzle() {
@@ -2180,46 +2600,124 @@
       document.getElementById('puzzleContainer').style.display = 'block';
       actividadActual = 'puzzle';
       
-      // Configurar puzzle simple
-      const puzzlePieces = document.querySelectorAll('.puzzle-piece');
+      // Inicializar rompecabezas
+      inicializarRompecabezas();
+    }
+    
+    function inicializarRompecabezas() {
       const puzzleArea = document.getElementById('puzzle-area');
-      const puzzleMsj = document.getElementById('puzzle-msj');
+      const puzzlePieces = document.getElementById('puzzle-pieces');
       
-      let draggedPiece = null;
-      let piecesPlaced = 0;
+      // Configurar imagen de fondo según la edad
+      let imagenUrl;
+      if (edadSeleccionada === 3) {
+        imagenUrl = 'https://picsum.photos/seed/motricidad3/300/300.jpg';
+      } else if (edadSeleccionada === 4) {
+        imagenUrl = 'https://picsum.photos/seed/motricidad4/300/300.jpg';
+      } else {
+        imagenUrl = 'https://picsum.photos/seed/motricidad5/300/300.jpg';
+      }
       
-      puzzlePieces.forEach(piece => {
-        piece.addEventListener('dragstart', function(e) {
-          draggedPiece = this;
-          this.style.opacity = '0.5';
+      puzzleArea.style.backgroundImage = `url(${imagenUrl})`;
+      
+      // Limpiar piezas anteriores
+      puzzlePieces.innerHTML = '';
+      
+      // Definir número de piezas según la edad
+      let numPiezas;
+      if (edadSeleccionada === 3) {
+        numPiezas = 4;
+      } else if (edadSeleccionada === 4) {
+        numPiezas = 6;
+      } else {
+        numPiezas = 9;
+      }
+      
+      // Crear piezas del rompecabezas
+      const colores = ['var(--gradient)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)'];
+      
+      for (let i = 0; i < numPiezas; i++) {
+        const pieza = document.createElement('div');
+        pieza.className = 'puzzle-piece';
+        pieza.draggable = true;
+        pieza.dataset.numero = i + 1;
+        pieza.textContent = i + 1;
+        pieza.style.background = colores[i % colores.length];
+        
+        // Añadir eventos de arrastre
+        pieza.addEventListener('dragstart', function(e) {
+          this.classList.add('dragging');
+          e.dataTransfer.setData('text/plain', i);
         });
         
-        piece.addEventListener('dragend', function(e) {
-          this.style.opacity = '1';
+        pieza.addEventListener('dragend', function(e) {
+          this.classList.remove('dragging');
         });
-      });
+        
+        puzzlePieces.appendChild(pieza);
+      }
       
-      puzzleArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-      });
+      // Configurar área de destino
+      puzzleArea.innerHTML = '';
       
-      puzzleArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        if (draggedPiece) {
-          puzzleArea.appendChild(draggedPiece);
-          draggedPiece.style.position = 'absolute';
-          draggedPiece.style.left = (e.offsetX - 30) + 'px';
-          draggedPiece.style.top = (e.offsetY - 30) + 'px';
-          draggedPiece.draggable = false;
-          draggedPiece.style.cursor = 'default';
-          piecesPlaced++;
+      // Crear zonas de colocación
+      const filas = edadSeleccionada === 3 ? 2 : edadSeleccionada === 4 ? 2 : 3;
+      const columnas = edadSeleccionada === 3 ? 2 : edadSeleccionada === 4 ? 3 : 3;
+      
+      for (let fila = 0; fila < filas; fila++) {
+        for (let columna = 0; columna < columnas; columna++) {
+          const zona = document.createElement('div');
+          zona.className = 'puzzle-zone';
+          zona.style.position = 'absolute';
+          zona.style.width = '100px';
+          zona.style.height = '100px';
+          zona.style.left = `${columna * 100}px`;
+          zona.style.top = `${fila * 100}px`;
+          zona.style.border = '2px dashed rgba(255,255,255,0.5)';
+          zona.style.borderRadius = '5px';
+          zona.dataset.numero = fila * columnas + columna + 1;
           
-          if (piecesPlaced === puzzlePieces.length) {
-            puzzleMsj.textContent = '¡Felicidades! Has completado el rompecabezas 🎉';
-            puzzleMsj.style.color = 'var(--success)';
-          }
+          // Añadir eventos de soltado
+          zona.addEventListener('dragover', function(e) {
+            e.preventDefault();
+          });
+          
+          zona.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const numeroPieza = parseInt(e.dataTransfer.getData('text/plain'));
+            const numeroZona = parseInt(this.dataset.numero);
+            
+            if (numeroPieza === numeroZona) {
+              // Colocar la pieza en la zona correcta
+              const pieza = document.querySelector(`.puzzle-piece[data-numero="${numeroPieza}"]`);
+              this.appendChild(pieza);
+              pieza.style.position = 'absolute';
+              pieza.style.left = '0';
+              pieza.style.top = '0';
+              pieza.style.width = '100%';
+              pieza.style.height = '100%';
+              pieza.classList.add('correct');
+              pieza.draggable = false;
+              
+              // Verificar si se ha completado el rompecabezas
+              const piezasCorrectas = document.querySelectorAll('.puzzle-piece.correct').length;
+              if (piezasCorrectas === numPiezas) {
+                document.getElementById('puzzle-msj').textContent = '¡Felicidades! Has completado el rompecabezas 🎉';
+                document.getElementById('puzzle-msj').style.color = 'var(--success)';
+              }
+            }
+          });
+          
+          puzzleArea.appendChild(zona);
         }
-      });
+      }
+      
+      // Limpiar mensaje
+      document.getElementById('puzzle-msj').textContent = '';
+    }
+    
+    function resetPuzzle() {
+      inicializarRompecabezas();
     }
     
     function showDrawing() {
@@ -2227,12 +2725,19 @@
       document.getElementById('drawingContainer').style.display = 'block';
       actividadActual = 'drawing';
       
+      // Inicializar lienzo de dibujo
+      inicializarLienzo();
+    }
+    
+    function inicializarLienzo() {
       const canvas = document.getElementById('drawingCanvas');
       const ctx = canvas.getContext('2d');
       const drawingMsj = document.getElementById('drawing-msj');
       
       // Limpiar canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Dibujar figura punteada según la edad
       ctx.strokeStyle = '#ddd';
@@ -2279,32 +2784,37 @@
       
       // Configurar dibujo
       let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      
       ctx.strokeStyle = '#FF6B6B';
       ctx.lineWidth = 3;
       ctx.setLineDash([]);
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
       
-      canvas.addEventListener('mousedown', startDrawing);
-      canvas.addEventListener('mousemove', draw);
-      canvas.addEventListener('mouseup', stopDrawing);
-      canvas.addEventListener('mouseout', stopDrawing);
-      
-      // Touch events para móviles
-      canvas.addEventListener('touchstart', handleTouch);
-      canvas.addEventListener('touchmove', handleTouch);
-      canvas.addEventListener('touchend', stopDrawing);
-      
+      // Funciones de dibujo
       function startDrawing(e) {
         isDrawing = true;
         const rect = canvas.getBoundingClientRect();
-        ctx.beginPath();
-        ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
       }
       
       function draw(e) {
         if (!isDrawing) return;
+        
         const rect = canvas.getBoundingClientRect();
-        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        const currentX = e.clientX - rect.left;
+        const currentY = e.clientY - rect.top;
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(currentX, currentY);
         ctx.stroke();
+        
+        lastX = currentX;
+        lastY = currentY;
       }
       
       function stopDrawing() {
@@ -2315,65 +2825,49 @@
         }
       }
       
-      function handleTouch(e) {
+      // Eventos del mouse
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseout', stopDrawing);
+      
+      // Eventos táctiles para móviles
+      canvas.addEventListener('touchstart', function(e) {
         e.preventDefault();
         const touch = e.touches[0];
-        const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+        const mouseEvent = new MouseEvent('mousedown', {
           clientX: touch.clientX,
           clientY: touch.clientY
         });
         canvas.dispatchEvent(mouseEvent);
-      }
+      });
       
-      window.clearCanvas = function() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Redibujar la figura punteada
-        ctx.strokeStyle = '#ddd';
-        ctx.lineWidth = 3;
-        ctx.setLineDash([5, 5]);
-        
-        if (edadSeleccionada === 3) {
-          ctx.beginPath();
-          ctx.arc(200, 150, 80, 0, 2 * Math.PI);
-          ctx.stroke();
-        } else if (edadSeleccionada === 4) {
-          ctx.beginPath();
-          ctx.rect(120, 70, 160, 160);
-          ctx.stroke();
-        } else {
-          // Redibujar estrella
-          ctx.beginPath();
-          const spikes = 5;
-          const outerRadius = 80;
-          const innerRadius = 40;
-          let rot = Math.PI / 2 * 3;
-          let x = 200;
-          let y = 150;
-          let step = Math.PI / spikes;
-          
-          ctx.moveTo(x, y - outerRadius);
-          for (let i = 0; i < spikes; i++) {
-            x = 200 + Math.cos(rot) * outerRadius;
-            y = 150 + Math.sin(rot) * outerRadius;
-            ctx.lineTo(x, y);
-            rot += step;
-            
-            x = 200 + Math.cos(rot) * innerRadius;
-            y = 150 + Math.sin(rot) * innerRadius;
-            ctx.lineTo(x, y);
-            rot += step;
-          }
-          ctx.lineTo(200, 150 - outerRadius);
-          ctx.closePath();
-          ctx.stroke();
-        }
-        
-        drawingMsj.textContent = '';
-      };
+      canvas.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent('mousemove', {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+      });
       
-      window.showNewDrawing = function() {
-        showDrawing();
-      };
+      canvas.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        const mouseEvent = new MouseEvent('mouseup', {});
+        canvas.dispatchEvent(mouseEvent);
+      });
+      
+      // Limpiar mensaje
+      drawingMsj.textContent = '';
+    }
+    
+    function clearCanvas() {
+      inicializarLienzo();
+    }
+    
+    function showNewDrawing() {
+      inicializarLienzo();
     }
     
     function hideAllActivities() {
