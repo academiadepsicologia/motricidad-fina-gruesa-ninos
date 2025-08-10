@@ -1092,6 +1092,22 @@
       margin-top: 30px;
       text-align: center;
     }
+    .puzzle-intro {
+      background: rgba(255, 231, 109, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-left: 5px solid var(--accent);
+    }
+    .puzzle-intro h3 {
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    .puzzle-intro p {
+      color: var(--dark);
+      line-height: 1.6;
+    }
     .puzzle-area {
       position: relative;
       width: 300px;
@@ -1167,6 +1183,47 @@
     .drawing-container {
       margin-top: 30px;
       text-align: center;
+    }
+    .drawing-intro {
+      background: rgba(78, 205, 196, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-left: 5px solid var(--secondary);
+    }
+    .drawing-intro h3 {
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    .drawing-intro p {
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .drawing-selector {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .drawing-option {
+      background: white;
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    .drawing-option:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    .drawing-option.active {
+      background: var(--secondary);
+      color: white;
     }
     #drawingCanvas {
       border: 2px solid var(--secondary);
@@ -1805,6 +1862,11 @@
             <div class="drag-item" draggable="true" data-fina="true">Abotonar camisa</div>
             <div class="drag-item" draggable="true" data-fina="false">Correr</div>
             <div class="drag-item" draggable="true" data-fina="true">Escribir</div>
+            <div class="drag-item" draggable="true" data-fina="true">Doblar papel</div>
+            <div class="drag-item" draggable="true" data-fina="false">Saltar la cuerda</div>
+            <div class="drag-item" draggable="true" data-fina="true">Usar pinzas</div>
+            <div class="drag-item" draggable="true" data-fina="false">Bailar</div>
+            <div class="drag-item" draggable="true" data-fina="true">Hacer nudos</div>
           </div>
           <div class="drop-area" id="fina-drop">
             <div class="drop-area-title">Motricidad fina (arrástralos aquí):</div>
@@ -1821,6 +1883,10 @@
       
       <div id="puzzleContainer" style="display: none;">
         <div class="puzzle-container">
+          <div class="puzzle-intro">
+            <h3>¡Los rompecabezas son divertidos y educativos!</h3>
+            <p>Los rompecabezas ayudan a los niños a desarrollar habilidades importantes como la concentración, la paciencia y la resolución de problemas. Al completar un rompecabezas, los niños mejoran su coordinación ojo-mano y su capacidad para reconocer formas y patrones. ¡Anima a tu hijo/a a resolver rompecabezas regularmente!</p>
+          </div>
           <h3 style="color: var(--secondary); margin-bottom: 20px;">Rompecabezas de motricidad fina</h3>
           <p style="margin-bottom: 20px;">Arrastra las piezas para completar la imagen.</p>
           <div class="puzzle-area" id="puzzle-area"></div>
@@ -1834,8 +1900,15 @@
       
       <div id="drawingContainer" style="display: none;">
         <div class="drawing-container">
+          <div class="drawing-intro">
+            <h3>¡El dibujo desarrolla la creatividad y la motricidad fina!</h3>
+            <p>Dibujar ayuda a los niños a mejorar su coordinación ojo-mano, su control muscular y su precisión. Además, fomenta la expresión creativa y la autoconfianza. Asegúrate de proporcionar materiales adecuados para la edad de tu hijo/a y celebra sus creaciones.</p>
+          </div>
           <h3 style="color: var(--secondary); margin-bottom: 20px;">Dibujo guiado</h3>
           <p style="margin-bottom: 20px;">Sigue las líneas punteadas para completar el dibujo.</p>
+          <div class="drawing-selector" id="drawing-selector">
+            <!-- Las opciones de dibujo se cargarán dinámicamente -->
+          </div>
           <canvas id="drawingCanvas" width="400" height="300"></canvas>
           <div class="drawing-controls">
             <button class="drawing-btn" onclick="clearCanvas()">Limpiar</button>
@@ -2044,6 +2117,40 @@
       }
     };
     
+    // Figuras para dibujo guiado por edad
+    const figurasPorEdad = {
+      3: [
+        { nombre: "Círculo", icono: "far fa-circle" },
+        { nombre: "Línea recta", icono: "fas fa-minus" },
+        { nombre: "Cruz", icono: "fas fa-plus" },
+        { nombre: "Corazón", icono: "far fa-heart" },
+        { nombre: "Estrella simple", icono: "far fa-star" },
+        { nombre: "Sol", icono: "far fa-sun" },
+        { nombre: "Cara feliz", icono: "far fa-smile" },
+        { nombre: "Luna", icono: "far fa-moon" }
+      ],
+      4: [
+        { nombre: "Cuadrado", icono: "far fa-square" },
+        { nombre: "Triángulo", icono: "fas fa-play" },
+        { nombre: "Casa", icono: "fas fa-home" },
+        { nombre: "Árbol", icono: "fas fa-tree" },
+        { nombre: "Flor", icono: "fas fa-seedling" },
+        { nombre: "Barco", icono: "fas fa-ship" },
+        { nombre: "Perro", icono: "fas fa-dog" },
+        { nombre: "Gato", icono: "fas fa-cat" }
+      ],
+      5: [
+        { nombre: "Rombo", icono: "fas fa-gem" },
+        { nombre: "Hexágono", icono: "fas fa-stop" },
+        { nombre: "Coche", icono: "fas fa-car" },
+        { nombre: "Avión", icono: "fas fa-plane" },
+        { nombre: "Pájaro", icono: "fas fa-crow" },
+        { nombre: "Mariposa", icono: "fas fa-bug" },
+        { nombre: "Persona", icono: "fas fa-child" },
+        { nombre: "Reloj", icono: "far fa-clock" }
+      ]
+    };
+    
     // Variables globales
     let edadSeleccionada = null;
     let actividadActual = null;
@@ -2053,6 +2160,7 @@
     let memCards = [];
     let flippedCards = [];
     let matchedPairs = 0;
+    let currentDrawing = 0;
     
     // Verificar si el usuario tiene acceso al curso y si completó el módulo 1
     document.addEventListener('DOMContentLoaded', function() {
@@ -2243,6 +2351,36 @@
             opciones: ["Tijeras afiladas", "Crayones gruesos", "Lápices finos"], 
             correcta: 1,
             explicacion: "Los crayones gruesos son más fáciles de sostener para niños de 3 años, mientras que las tijeras afiladas y los lápices finos no son adecuados para esta edad."
+          },
+          {
+            pregunta: "¿A qué edad comienza a desarrollarse la pinza digital?",
+            opciones: ["6-9 meses", "12-18 meses", "2-3 años"],
+            correcta: 0,
+            explicacion: "La pinza digital (agarre con pulgar e índice) comienza a desarrollarse entre los 6 y 9 meses de edad, lo que es fundamental para la motricidad fina posterior."
+          },
+          {
+            pregunta: "¿Qué actividad ayuda a fortalecer los músculos de la mano en niños de 3 años?",
+            opciones: ["Ver televisión", "Rasgar papel", "Escuchar música"],
+            correcta: 1,
+            explicacion: "Rasgar papel es una excelente actividad para fortalecer los músculos de la mano en niños de 3 años, preparándolos para actividades más complejas como usar tijeras."
+          },
+          {
+            pregunta: "¿Cuánto tiempo deben durar las actividades de motricidad fina a los 3 años?",
+            opciones: ["30-45 minutos", "5-10 minutos", "1-2 horas"],
+            correcta: 1,
+            explicacion: "A los 3 años, las actividades de motricidad fina deben ser cortas, de 5-10 minutos, ya que la atención y la resistencia de los niños son limitadas a esta edad."
+          },
+          {
+            pregunta: "¿Qué habilidad de motricidad fina se desarrolla primero?",
+            opciones: ["Escribir", "Agarre palmar", "Recortar con precisión"],
+            correcta: 1,
+            explicacion: "El agarre palmar se desarrolla primero, desde los primeros meses de vida, mientras que escribir y recortar con precisión son habilidades que se adquieren más tarde."
+          },
+          {
+            pregunta: "¿Cómo se debe sostener un lápiz correctamente a los 3 años?",
+            opciones: ["Con toda la mano", "Con pinza digital", "Con dos dedos"],
+            correcta: 0,
+            explicacion: "A los 3 años, los niños suelen sostener el lápiz con toda la mano (agarre palmar). La pinza digital se desarrolla gradualmente entre los 3 y 5 años."
           }
         ],
         4: [
@@ -2263,6 +2401,36 @@
             opciones: ["Ver televisión", "Ensartar cuentas", "Correr largas distancias"], 
             correcta: 1,
             explicacion: "Ensartar cuentas es una excelente actividad para desarrollar la motricidad fina a los 4 años, mientras que ver televisión y correr no desarrollan específicamente estas habilidades."
+          },
+          {
+            pregunta: "¿Qué tipo de tijeras son adecuadas para niños de 4 años?",
+            opciones: ["Tijeras de adulto", "Tijeras de seguridad con punta redonda", "Tijeras de cocina"],
+            correcta: 1,
+            explicacion: "Las tijeras de seguridad con punta redonda son las adecuadas para niños de 4 años, ya que previenen accidentes y están diseñadas para manos pequeñas."
+          },
+          {
+            pregunta: "¿Qué figura geométrica suelen aprender a dibujar primero los niños de 4 años?",
+            opciones: ["Hexágono", "Círculo", "Rombo"],
+            correcta: 1,
+            explicacion: "Los niños de 4 años suelen aprender a dibujar primero el círculo, ya que es un movimiento continuo más fácil de realizar que las figuras con ángulos."
+          },
+          {
+            pregunta: "¿Cómo se llama la habilidad de coordinar lo que se ve con el movimiento de las manos?",
+            opciones: ["Percepción auditiva", "Coordinación ojo-mano", "Equilibrio"],
+            correcta: 1,
+            explicacion: "La coordinación ojo-mano es la habilidad de coordinar la información visual con los movimientos de las manos, fundamental para la motricidad fina."
+          },
+          {
+            pregunta: "¿Qué actividad puede ayudar a un niño de 4 años a desarrollar la fuerza en sus manos?",
+            opciones: ["Usar plastilina", "Ver dibujos animados", "Escuchar cuentos"],
+            correcta: 0,
+            explicacion: "Usar plastilina o masilla ayuda a desarrollar la fuerza en las manos de los niños de 4 años, ya que requiere amasar, estirar y moldear el material."
+          },
+          {
+            pregunta: "¿A qué edad suelen empezar a mostrar preferencia por usar una mano (dominancia)?",
+            opciones: ["2-3 años", "4-5 años", "6-7 años"],
+            correcta: 1,
+            explicacion: "La mayoría de los niños empiezan a mostrar una clara preferencia por usar una mano (dominancia manual) entre los 4 y 5 años de edad."
           }
         ],
         5: [
@@ -2283,6 +2451,36 @@
             opciones: ["Escuchar música", "Recortar formas", "Dormir la siesta"], 
             correcta: 1,
             explicacion: "Recortar formas es una excelente actividad para desarrollar la coordinación ojo-mano a los 5 años, mientras que escuchar música y dormir la siesta no desarrollan específicamente esta habilidad."
+          },
+          {
+            pregunta: "¿Cómo se llama el agarre correcto del lápiz para escribir?",
+            opciones: ["Agarre palmar", "Pinza trípode", "Agarre con puño"],
+            correcta: 1,
+            explicacion: "La pinza trípode, donde el lápiz se sostiene con el pulgar y el índice apoyado sobre el dedo medio, es el agarre correcto para escribir."
+          },
+          {
+            pregunta: "¿Qué habilidad de motricidad fina es importante para atarse los cordones?",
+            opciones: ["Fuerza en las piernas", "Coordinación bilateral", "Percepción de colores"],
+            correcta: 1,
+            explicacion: "La coordinación bilateral, la capacidad de usar ambas manos juntas de manera coordinada, es fundamental para atarse los cordones de los zapatos."
+          },
+          {
+            pregunta: "¿Qué actividad puede ayudar a mejorar la precisión de los movimientos de los dedos?",
+            opciones: ["Jugar con bloques grandes", "Ensartar cuentas pequeñas", "Correr en el parque"],
+            correcta: 1,
+            explicacion: "Ensartar cuentas pequeñas requiere movimientos precisos de los dedos y mejora la coordinación ojo-mano, desarrollando la motricidad fina."
+          },
+          {
+            pregunta: "¿A qué edad pueden la mayoría de los niños abrochar botones pequeños sin ayuda?",
+            opciones: ["3-4 años", "5-6 años", "7-8 años"],
+            correcta: 1,
+            explicacion: "La mayoría de los niños pueden abrochar botones pequeños sin ayuda entre los 5 y 6 años, cuando han desarrollado suficiente precisión y coordinación en sus dedos."
+          },
+          {
+            pregunta: "¿Qué tipo de actividades preparan mejor para la escritura?",
+            opciones: ["Actividades que fortalecen los músculos de las manos", "Saltar y correr", "Ver películas educativas"],
+            correcta: 0,
+            explicacion: "Las actividades que fortalecen los músculos de las manos, como recortar, modelar con plastilina o ensartar cuentas, preparan mejor para la escritura al desarrollar la fuerza y control necesarios."
           }
         ]
       };
@@ -2294,8 +2492,8 @@
         [preguntasEdad[i], preguntasEdad[j]] = [preguntasEdad[j], preguntasEdad[i]];
       }
       
-      // Tomar solo 3 preguntas
-      quizPreguntas = preguntasEdad.slice(0, 3);
+      // Tomar solo 5 preguntas
+      quizPreguntas = preguntasEdad.slice(0, 5);
       preguntaActual = 0;
       respuestasCorrectas = 0;
       
@@ -2532,6 +2730,11 @@
         <div class="drag-item" draggable="true" data-fina="true">Abotonar camisa</div>
         <div class="drag-item" draggable="true" data-fina="false">Correr</div>
         <div class="drag-item" draggable="true" data-fina="true">Escribir</div>
+        <div class="drag-item" draggable="true" data-fina="true">Doblar papel</div>
+        <div class="drag-item" draggable="true" data-fina="false">Saltar la cuerda</div>
+        <div class="drag-item" draggable="true" data-fina="true">Usar pinzas</div>
+        <div class="drag-item" draggable="true" data-fina="false">Bailar</div>
+        <div class="drag-item" draggable="true" data-fina="true">Hacer nudos</div>
       `;
       
       // Re-seleccionar items después de restaurar
@@ -2608,71 +2811,50 @@
       const puzzleArea = document.getElementById('puzzle-area');
       const puzzlePieces = document.getElementById('puzzle-pieces');
       
-      // Configurar imagen de fondo según la edad
+      // Limpiar piezas anteriores
+      puzzlePieces.innerHTML = '';
+      puzzleArea.innerHTML = '';
+      
+      // Definir número de piezas según la edad
+      let numPiezas;
+      let filas, columnas;
+      
+      if (edadSeleccionada === 3) {
+        numPiezas = 4;
+        filas = 2;
+        columnas = 2;
+      } else if (edadSeleccionada === 4) {
+        numPiezas = 6;
+        filas = 2;
+        columnas = 3;
+      } else {
+        numPiezas = 9;
+        filas = 3;
+        columnas = 3;
+      }
+      
+      // Crear imagen de fondo según la edad
       let imagenUrl;
       if (edadSeleccionada === 3) {
-        imagenUrl = 'https://picsum.photos/seed/motricidad3/300/300.jpg';
+        imagenUrl = 'https://picsum.photos/seed/animales3/300/300.jpg';
       } else if (edadSeleccionada === 4) {
-        imagenUrl = 'https://picsum.photos/seed/motricidad4/300/300.jpg';
+        imagenUrl = 'https://picsum.photos/seed/naturaleza4/300/300.jpg';
       } else {
-        imagenUrl = 'https://picsum.photos/seed/motricidad5/300/300.jpg';
+        imagenUrl = 'https://picsum.photos/seed/aventura5/300/300.jpg';
       }
       
       puzzleArea.style.backgroundImage = `url(${imagenUrl})`;
       
-      // Limpiar piezas anteriores
-      puzzlePieces.innerHTML = '';
-      
-      // Definir número de piezas según la edad
-      let numPiezas;
-      if (edadSeleccionada === 3) {
-        numPiezas = 4;
-      } else if (edadSeleccionada === 4) {
-        numPiezas = 6;
-      } else {
-        numPiezas = 9;
-      }
-      
-      // Crear piezas del rompecabezas
-      const colores = ['var(--gradient)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)'];
-      
-      for (let i = 0; i < numPiezas; i++) {
-        const pieza = document.createElement('div');
-        pieza.className = 'puzzle-piece';
-        pieza.draggable = true;
-        pieza.dataset.numero = i + 1;
-        pieza.textContent = i + 1;
-        pieza.style.background = colores[i % colores.length];
-        
-        // Añadir eventos de arrastre
-        pieza.addEventListener('dragstart', function(e) {
-          this.classList.add('dragging');
-          e.dataTransfer.setData('text/plain', i);
-        });
-        
-        pieza.addEventListener('dragend', function(e) {
-          this.classList.remove('dragging');
-        });
-        
-        puzzlePieces.appendChild(pieza);
-      }
-      
-      // Configurar área de destino
-      puzzleArea.innerHTML = '';
-      
       // Crear zonas de colocación
-      const filas = edadSeleccionada === 3 ? 2 : edadSeleccionada === 4 ? 2 : 3;
-      const columnas = edadSeleccionada === 3 ? 2 : edadSeleccionada === 4 ? 3 : 3;
-      
       for (let fila = 0; fila < filas; fila++) {
         for (let columna = 0; columna < columnas; columna++) {
           const zona = document.createElement('div');
           zona.className = 'puzzle-zone';
           zona.style.position = 'absolute';
-          zona.style.width = '100px';
-          zona.style.height = '100px';
-          zona.style.left = `${columna * 100}px`;
-          zona.style.top = `${fila * 100}px`;
+          zona.style.width = `${300 / columnas}px`;
+          zona.style.height = `${300 / filas}px`;
+          zona.style.left = `${columna * (300 / columnas)}px`;
+          zona.style.top = `${fila * (300 / filas)}px`;
           zona.style.border = '2px dashed rgba(255,255,255,0.5)';
           zona.style.borderRadius = '5px';
           zona.dataset.numero = fila * columnas + columna + 1;
@@ -2696,6 +2878,8 @@
               pieza.style.top = '0';
               pieza.style.width = '100%';
               pieza.style.height = '100%';
+              pieza.style.borderRadius = '0';
+              pieza.style.margin = '0';
               pieza.classList.add('correct');
               pieza.draggable = false;
               
@@ -2704,12 +2888,45 @@
               if (piezasCorrectas === numPiezas) {
                 document.getElementById('puzzle-msj').textContent = '¡Felicidades! Has completado el rompecabezas 🎉';
                 document.getElementById('puzzle-msj').style.color = 'var(--success)';
+                
+                // Mostrar mensaje motivacional
+                setTimeout(() => {
+                  document.getElementById('puzzle-msj').innerHTML = '¡Excelente trabajo! Los rompecabezas ayudan a desarrollar importantes habilidades en los niños. ¡Anima a tu hijo/a a resolver más rompecabezas! 🧩✨';
+                }, 2000);
               }
             }
           });
           
           puzzleArea.appendChild(zona);
         }
+      }
+      
+      // Crear piezas del rompecabezas
+      const colores = ['var(--gradient)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)'];
+      
+      for (let i = 0; i < numPiezas; i++) {
+        const pieza = document.createElement('div');
+        pieza.className = 'puzzle-piece';
+        pieza.draggable = true;
+        pieza.dataset.numero = i + 1;
+        pieza.textContent = i + 1;
+        pieza.style.background = colores[i % colores.length];
+        pieza.style.width = `${300 / columnas - 10}px`;
+        pieza.style.height = `${300 / filas - 10}px`;
+        pieza.style.borderRadius = '5px';
+        pieza.style.margin = '5px';
+        
+        // Añadir eventos de arrastre
+        pieza.addEventListener('dragstart', function(e) {
+          this.classList.add('dragging');
+          e.dataTransfer.setData('text/plain', i + 1);
+        });
+        
+        pieza.addEventListener('dragend', function(e) {
+          this.classList.remove('dragging');
+        });
+        
+        puzzlePieces.appendChild(pieza);
       }
       
       // Limpiar mensaje
@@ -2725,7 +2942,39 @@
       document.getElementById('drawingContainer').style.display = 'block';
       actividadActual = 'drawing';
       
+      // Inicializar selector de dibujos
+      inicializarSelectorDibujos();
+      
       // Inicializar lienzo de dibujo
+      inicializarLienzo();
+    }
+    
+    function inicializarSelectorDibujos() {
+      const selector = document.getElementById('drawing-selector');
+      const figuras = figurasPorEdad[edadSeleccionada];
+      
+      selector.innerHTML = '';
+      
+      figuras.forEach((figura, index) => {
+        const opcion = document.createElement('div');
+        opcion.className = 'drawing-option';
+        if (index === 0) {
+          opcion.classList.add('active');
+        }
+        opcion.innerHTML = `<i class="${figura.icono}"></i> ${figura.nombre}`;
+        opcion.onclick = () => seleccionarDibujo(index);
+        selector.appendChild(opcion);
+      });
+      
+      currentDrawing = 0;
+    }
+    
+    function seleccionarDibujo(indice) {
+      const opciones = document.querySelectorAll('.drawing-option');
+      opciones.forEach(opcion => opcion.classList.remove('active'));
+      opciones[indice].classList.add('active');
+      
+      currentDrawing = indice;
       inicializarLienzo();
     }
     
@@ -2739,47 +2988,480 @@
       ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Dibujar figura punteada según la edad
+      // Dibujar figura punteada según la edad y la selección
       ctx.strokeStyle = '#ddd';
       ctx.lineWidth = 3;
       ctx.setLineDash([5, 5]);
       
-      if (edadSeleccionada === 3) {
-        // Dibujar círculo punteado
-        ctx.beginPath();
-        ctx.arc(200, 150, 80, 0, 2 * Math.PI);
-        ctx.stroke();
-      } else if (edadSeleccionada === 4) {
-        // Dibujar cuadrado punteado
-        ctx.beginPath();
-        ctx.rect(120, 70, 160, 160);
-        ctx.stroke();
-      } else {
-        // Dibujar estrella punteada
-        ctx.beginPath();
-        const spikes = 5;
-        const outerRadius = 80;
-        const innerRadius = 40;
-        let rot = Math.PI / 2 * 3;
-        let x = 200;
-        let y = 150;
-        let step = Math.PI / spikes;
-        
-        ctx.moveTo(x, y - outerRadius);
-        for (let i = 0; i < spikes; i++) {
-          x = 200 + Math.cos(rot) * outerRadius;
-          y = 150 + Math.sin(rot) * outerRadius;
-          ctx.lineTo(x, y);
-          rot += step;
+      const figuras = figurasPorEdad[edadSeleccionada];
+      const figuraActual = figuras[currentDrawing];
+      
+      // Dibujar según la figura seleccionada
+      switch(figuraActual.nombre) {
+        // Figuras para 3 años
+        case "Círculo":
+          ctx.beginPath();
+          ctx.arc(200, 150, 80, 0, 2 * Math.PI);
+          ctx.stroke();
+          break;
+        case "Línea recta":
+          ctx.beginPath();
+          ctx.moveTo(100, 150);
+          ctx.lineTo(300, 150);
+          ctx.stroke();
+          break;
+        case "Cruz":
+          ctx.beginPath();
+          ctx.moveTo(200, 100);
+          ctx.lineTo(200, 200);
+          ctx.moveTo(150, 150);
+          ctx.lineTo(250, 150);
+          ctx.stroke();
+          break;
+        case "Corazón":
+          ctx.beginPath();
+          ctx.moveTo(200, 200);
+          ctx.bezierCurveTo(200, 180, 170, 150, 150, 150);
+          ctx.bezierCurveTo(120, 150, 120, 180, 120, 180);
+          ctx.bezierCurveTo(120, 200, 160, 230, 200, 250);
+          ctx.bezierCurveTo(240, 230, 280, 200, 280, 180);
+          ctx.bezierCurveTo(280, 180, 280, 150, 250, 150);
+          ctx.bezierCurveTo(230, 150, 200, 180, 200, 200);
+          ctx.stroke();
+          break;
+        case "Estrella simple":
+          ctx.beginPath();
+          const spikes = 5;
+          const outerRadius = 70;
+          const innerRadius = 35;
+          let rot = Math.PI / 2 * 3;
+          let x = 200;
+          let y = 150;
+          let step = Math.PI / spikes;
           
-          x = 200 + Math.cos(rot) * innerRadius;
-          y = 150 + Math.sin(rot) * innerRadius;
-          ctx.lineTo(x, y);
-          rot += step;
-        }
-        ctx.lineTo(200, 150 - outerRadius);
-        ctx.closePath();
-        ctx.stroke();
+          ctx.moveTo(x, y - outerRadius);
+          for (let i = 0; i < spikes; i++) {
+            x = 200 + Math.cos(rot) * outerRadius;
+            y = 150 + Math.sin(rot) * outerRadius;
+            ctx.lineTo(x, y);
+            rot += step;
+            
+            x = 200 + Math.cos(rot) * innerRadius;
+            y = 150 + Math.sin(rot) * innerRadius;
+            ctx.lineTo(x, y);
+            rot += step;
+          }
+          ctx.lineTo(200, 150 - outerRadius);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case "Sol":
+          // Círculo central
+          ctx.beginPath();
+          ctx.arc(200, 150, 40, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Rayos
+          for (let i = 0; i < 8; i++) {
+            const angle = (i * Math.PI) / 4;
+            ctx.beginPath();
+            ctx.moveTo(200 + Math.cos(angle) * 50, 150 + Math.sin(angle) * 50);
+            ctx.lineTo(200 + Math.cos(angle) * 80, 150 + Math.sin(angle) * 80);
+            ctx.stroke();
+          }
+          break;
+        case "Cara feliz":
+          // Círculo
+          ctx.beginPath();
+          ctx.arc(200, 150, 70, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Ojos
+          ctx.beginPath();
+          ctx.arc(170, 130, 10, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.arc(230, 130, 10, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Sonrisa
+          ctx.beginPath();
+          ctx.arc(200, 160, 40, 0, Math.PI);
+          ctx.stroke();
+          break;
+        case "Luna":
+          ctx.beginPath();
+          ctx.arc(200, 150, 70, 0.2 * Math.PI, 1.8 * Math.PI);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.arc(170, 130, 50, 0.5 * Math.PI, 1.5 * Math.PI);
+          ctx.stroke();
+          break;
+          
+        // Figuras para 4 años
+        case "Cuadrado":
+          ctx.beginPath();
+          ctx.rect(120, 70, 160, 160);
+          ctx.stroke();
+          break;
+        case "Triángulo":
+          ctx.beginPath();
+          ctx.moveTo(200, 70);
+          ctx.lineTo(120, 230);
+          ctx.lineTo(280, 230);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case "Casa":
+          // Base
+          ctx.beginPath();
+          ctx.rect(120, 150, 160, 100);
+          ctx.stroke();
+          
+          // Techo
+          ctx.beginPath();
+          ctx.moveTo(200, 70);
+          ctx.lineTo(100, 150);
+          ctx.lineTo(300, 150);
+          ctx.closePath();
+          ctx.stroke();
+          
+          // Puerta
+          ctx.beginPath();
+          ctx.rect(180, 200, 40, 50);
+          ctx.stroke();
+          break;
+        case "Árbol":
+          // Tronco
+          ctx.beginPath();
+          ctx.rect(180, 180, 40, 70);
+          ctx.stroke();
+          
+          // Copa
+          ctx.beginPath();
+          ctx.arc(200, 130, 70, 0, 2 * Math.PI);
+          ctx.stroke();
+          break;
+        case "Flor":
+          // Tallo
+          ctx.beginPath();
+          ctx.moveTo(200, 230);
+          ctx.lineTo(200, 150);
+          ctx.stroke();
+          
+          // Pétalos
+          for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 * Math.PI) / 5;
+            ctx.beginPath();
+            ctx.arc(200 + Math.cos(angle) * 30, 150 + Math.sin(angle) * 30, 20, 0, 2 * Math.PI);
+            ctx.stroke();
+          }
+          
+          // Centro
+          ctx.beginPath();
+          ctx.arc(200, 150, 15, 0, 2 * Math.PI);
+          ctx.stroke();
+          break;
+        case "Barco":
+          // Casco
+          ctx.beginPath();
+          ctx.moveTo(100, 200);
+          ctx.lineTo(300, 200);
+          ctx.lineTo(250, 250);
+          ctx.lineTo(150, 250);
+          ctx.closePath();
+          ctx.stroke();
+          
+          // Vela
+          ctx.beginPath();
+          ctx.moveTo(200, 200);
+          ctx.lineTo(200, 100);
+          ctx.lineTo(250, 150);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case "Perro":
+          // Cuerpo
+          ctx.beginPath();
+          ctx.ellipse(200, 180, 60, 40, 0, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Cabeza
+          ctx.beginPath();
+          ctx.arc(260, 150, 30, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Orejas
+          ctx.beginPath();
+          ctx.moveTo(240, 130);
+          ctx.lineTo(250, 110);
+          ctx.lineTo(260, 130);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(260, 130);
+          ctx.lineTo(270, 110);
+          ctx.lineTo(280, 130);
+          ctx.stroke();
+          
+          // Patas
+          ctx.beginPath();
+          ctx.moveTo(160, 210);
+          ctx.lineTo(160, 240);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(240, 210);
+          ctx.lineTo(240, 240);
+          ctx.stroke();
+          break;
+        case "Gato":
+          // Cuerpo
+          ctx.beginPath();
+          ctx.ellipse(200, 180, 60, 40, 0, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Cabeza
+          ctx.beginPath();
+          ctx.arc(260, 150, 30, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Orejas
+          ctx.beginPath();
+          ctx.moveTo(240, 130);
+          ctx.lineTo(235, 110);
+          ctx.lineTo(250, 120);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(280, 130);
+          ctx.lineTo(285, 110);
+          ctx.lineTo(270, 120);
+          ctx.stroke();
+          
+          // Cola
+          ctx.beginPath();
+          ctx.moveTo(140, 180);
+          ctx.quadraticCurveTo(100, 150, 120, 120);
+          ctx.stroke();
+          break;
+          
+        // Figuras para 5 años
+        case "Rombo":
+          ctx.beginPath();
+          ctx.moveTo(200, 70);
+          ctx.lineTo(280, 150);
+          ctx.lineTo(200, 230);
+          ctx.lineTo(120, 150);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case "Hexágono":
+          ctx.beginPath();
+          const sides = 6;
+          const radius = 80;
+          for (let i = 0; i < sides; i++) {
+            const angle = (i * 2 * Math.PI) / sides - Math.PI / 2;
+            const x = 200 + radius * Math.cos(angle);
+            const y = 150 + radius * Math.sin(angle);
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case "Coche":
+          // Carrocería
+          ctx.beginPath();
+          ctx.rect(120, 150, 160, 60);
+          ctx.stroke();
+          
+          // Techo
+          ctx.beginPath();
+          ctx.rect(150, 120, 100, 30);
+          ctx.stroke();
+          
+          // Ruedas
+          ctx.beginPath();
+          ctx.arc(160, 220, 20, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.arc(240, 220, 20, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Ventanas
+          ctx.beginPath();
+          ctx.rect(160, 130, 30, 20);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.rect(210, 130, 30, 20);
+          ctx.stroke();
+          break;
+        case "Avión":
+          // Fuselaje
+          ctx.beginPath();
+          ctx.ellipse(200, 150, 100, 30, 0, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Alas
+          ctx.beginPath();
+          ctx.moveTo(180, 150);
+          ctx.lineTo(150, 120);
+          ctx.lineTo(150, 180);
+          ctx.closePath();
+          ctx.stroke();
+          
+          // Cola
+          ctx.beginPath();
+          ctx.moveTo(280, 150);
+          ctx.lineTo(310, 130);
+          ctx.lineTo(310, 170);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case "Pájaro":
+          // Cuerpo
+          ctx.beginPath();
+          ctx.ellipse(200, 150, 40, 25, 0, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Cabeza
+          ctx.beginPath();
+          ctx.arc(230, 140, 20, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Pico
+          ctx.beginPath();
+          ctx.moveTo(250, 140);
+          ctx.lineTo(270, 135);
+          ctx.lineTo(250, 145);
+          ctx.closePath();
+          ctx.stroke();
+          
+          // Alas
+          ctx.beginPath();
+          ctx.moveTo(180, 140);
+          ctx.quadraticCurveTo(150, 120, 160, 160);
+          ctx.stroke();
+          
+          // Ojo
+          ctx.beginPath();
+          ctx.arc(235, 135, 3, 0, 2 * Math.PI);
+          ctx.stroke();
+          break;
+        case "Mariposa":
+          // Cuerpo
+          ctx.beginPath();
+          ctx.moveTo(200, 230);
+          ctx.lineTo(200, 130);
+          ctx.stroke();
+          
+          // Alas superiores
+          ctx.beginPath();
+          ctx.ellipse(170, 150, 40, 30, -Math.PI/4, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.ellipse(230, 150, 40, 30, Math.PI/4, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Alas inferiores
+          ctx.beginPath();
+          ctx.ellipse(180, 190, 30, 20, -Math.PI/6, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.ellipse(220, 190, 30, 20, Math.PI/6, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Antenas
+          ctx.beginPath();
+          ctx.moveTo(200, 130);
+          ctx.lineTo(190, 110);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(200, 130);
+          ctx.lineTo(210, 110);
+          ctx.stroke();
+          break;
+        case "Persona":
+          // Cabeza
+          ctx.beginPath();
+          ctx.arc(200, 80, 30, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Cuerpo
+          ctx.beginPath();
+          ctx.moveTo(200, 110);
+          ctx.lineTo(200, 180);
+          ctx.stroke();
+          
+          // Brazos
+          ctx.beginPath();
+          ctx.moveTo(200, 130);
+          ctx.lineTo(160, 160);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(200, 130);
+          ctx.lineTo(240, 160);
+          ctx.stroke();
+          
+          // Piernas
+          ctx.beginPath();
+          ctx.moveTo(200, 180);
+          ctx.lineTo(170, 230);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(200, 180);
+          ctx.lineTo(230, 230);
+          ctx.stroke();
+          break;
+        case "Reloj":
+          // Círculo exterior
+          ctx.beginPath();
+          ctx.arc(200, 150, 70, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Centro
+          ctx.beginPath();
+          ctx.arc(200, 150, 5, 0, 2 * Math.PI);
+          ctx.stroke();
+          
+          // Marcas
+          for (let i = 0; i < 12; i++) {
+            const angle = (i * Math.PI) / 6;
+            const x1 = 200 + Math.cos(angle) * 60;
+            const y1 = 150 + Math.sin(angle) * 60;
+            const x2 = 200 + Math.cos(angle) * 50;
+            const y2 = 150 + Math.sin(angle) * 50;
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+          }
+          
+          // Manecillas
+          ctx.beginPath();
+          ctx.moveTo(200, 150);
+          ctx.lineTo(200, 120);
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.moveTo(200, 150);
+          ctx.lineTo(230, 150);
+          ctx.stroke();
+          break;
       }
       
       // Configurar dibujo
@@ -2867,6 +3549,16 @@
     }
     
     function showNewDrawing() {
+      // Avanzar al siguiente dibujo
+      const figuras = figurasPorEdad[edadSeleccionada];
+      currentDrawing = (currentDrawing + 1) % figuras.length;
+      
+      // Actualizar selector
+      const opciones = document.querySelectorAll('.drawing-option');
+      opciones.forEach(opcion => opcion.classList.remove('active'));
+      opciones[currentDrawing].classList.add('active');
+      
+      // Inicializar lienzo con el nuevo dibujo
       inicializarLienzo();
     }
     
