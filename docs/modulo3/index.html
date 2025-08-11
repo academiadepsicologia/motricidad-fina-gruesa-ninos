@@ -514,7 +514,7 @@
       }
     }
     
-    /* Secciones de contenido con acordeón animado */
+    /* Secciones de contenido con estilo limpio */
     .content-section {
       background: white;
       border-radius: 25px;
@@ -567,289 +567,62 @@
       }
     }
     
-    /* Acordeón con animaciones */
-    .accordion {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .accordion-item {
-      background: linear-gradient(135deg, #F0F9FF 0%, #E6F7FF 100%);
-      border-radius: 20px;
-      margin-bottom: 20px;
-      overflow: hidden;
-      border-left: 6px solid var(--secondary);
-      transition: all 0.4s ease;
-      animation: slideInLeft 0.8s ease both;
-    }
-    
-    .accordion-item:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .accordion-item:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    
-    .accordion-item:hover {
-      transform: translateX(10px);
-      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.2);
-    }
-    
-    .accordion-header {
-      padding: 25px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .accordion-header::after {
-      content: '\f107';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      position: absolute;
-      right: 25px;
-      font-size: 1.5rem;
-      color: var(--secondary);
-      transition: transform 0.3s ease;
-    }
-    
-    .accordion-item.active .accordion-header::after {
-      transform: rotate(180deg);
-    }
-    
-    .accordion-header:hover {
-      background: rgba(78, 205, 196, 0.1);
-    }
-    
-    .accordion-header i {
-      margin-right: 20px;
-      color: var(--secondary);
-      font-size: 2rem;
-      animation: iconFloat 3s ease-in-out infinite;
-    }
-    
-    @keyframes iconFloat {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    
-    .accordion-header strong {
-      font-size: 1.3rem;
-      color: var(--dark);
-    }
-    
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-      padding: 0 25px;
-    }
-    
-    .accordion-content p {
-      padding: 20px 0;
+    /* Estilo para secciones de contenido */
+    .content-text {
       color: #6c757d;
       line-height: 1.8;
       font-size: 1.1rem;
+      margin-bottom: 20px;
     }
     
-    .accordion-item.active .accordion-content {
-      max-height: 500px;
+    .content-text:last-child {
+      margin-bottom: 0;
     }
     
-    .accordion-item.active .accordion-header {
-      background: rgba(78, 205, 196, 0.1);
-    }
-    
-    /* NUEVO DISEÑO PARA EJERCICIOS PRÁCTICOS PARA FAMILIAS */
+    /* Ejercicios prácticos para familias - Estilo limpio como módulo 2 */
     .practical-exercises {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
       margin-top: 30px;
     }
     
-    .exercise-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      transition: all 0.4s ease;
-      position: relative;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+    .exercise-item {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
     }
     
-    .exercise-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    .exercise-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
     
-    .exercise-image {
-      height: 180px;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .exercise-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .exercise-card:hover .exercise-image img {
-      transform: scale(1.05);
-    }
-    
-    .exercise-age {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: var(--gradient);
-      color: white;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      z-index: 2;
-    }
-    
-    .exercise-content {
-      padding: 25px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .exercise-title {
-      font-size: 1.3rem;
+    .exercise-item h3 {
       color: var(--primary);
-      margin-bottom: 15px;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      font-weight: 600;
       display: flex;
       align-items: center;
     }
     
-    .exercise-title i {
+    .exercise-item h3 i {
       margin-right: 10px;
-      font-size: 1.5rem;
-    }
-    
-    .exercise-description {
-      color: #6c757d;
-      margin-bottom: 20px;
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-    
-    .exercise-benefits {
-      background: rgba(78, 205, 196, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .exercise-benefits h4 {
-      color: var(--secondary);
-      font-size: 1rem;
-      margin-bottom: 8px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-    }
-    
-    .exercise-benefits h4 i {
-      margin-right: 8px;
-      font-size: 1rem;
-    }
-    
-    .exercise-benefits ul {
-      list-style-type: none;
-      padding-left: 25px;
-    }
-    
-    .exercise-benefits li {
-      position: relative;
-      padding: 3px 0;
-      color: #6c757d;
-      font-size: 0.9rem;
-    }
-    
-    .exercise-benefits li::before {
-      content: '•';
-      position: absolute;
-      left: -15px;
-      color: var(--secondary);
-      font-weight: bold;
-    }
-    
-    .exercise-materials {
-      background: rgba(255, 107, 107, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .exercise-materials h4 {
       color: var(--primary);
-      font-size: 1rem;
-      margin-bottom: 8px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
     }
     
-    .exercise-materials h4 i {
-      margin-right: 8px;
-      font-size: 1rem;
-    }
-    
-    .exercise-materials p {
+    .exercise-item p {
       color: #6c757d;
+      margin-bottom: 10px;
+    }
+    
+    .exercise-item .materials {
       font-size: 0.9rem;
+      color: var(--secondary);
+      font-style: italic;
     }
     
-    .exercise-instructions {
-      background: rgba(255, 230, 109, 0.2);
-      border-radius: 10px;
-      padding: 15px;
-      border-left: 4px solid var(--accent);
-    }
-    
-    .exercise-instructions h4 {
-      color: var(--warning);
-      font-size: 1rem;
-      margin-bottom: 8px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-    }
-    
-    .exercise-instructions h4 i {
-      margin-right: 8px;
-      font-size: 1rem;
-    }
-    
-    .exercise-instructions ol {
-      padding-left: 20px;
-      color: #6c757d;
-    }
-    
-    .exercise-instructions li {
-      padding: 3px 0;
-      font-size: 0.9rem;
-    }
-    
-    /* Tips mejorados */
+    /* Tips estilo módulo 2 */
     .tips {
       background: rgba(94, 114, 228, 0.1);
       border-radius: 12px;
@@ -858,6 +631,7 @@
       border-left: 4px solid var(--primary);
       position: relative;
     }
+    
     .tips::before {
       content: '\f05a';
       font-family: 'Font Awesome 5 Free';
@@ -869,189 +643,103 @@
       color: var(--primary);
       opacity: 0.3;
     }
-    .tips-title {
-      font-weight: 600;
+    
+    .tips h3 {
       color: var(--primary);
       margin-bottom: 10px;
+      font-weight: 600;
     }
     
-    /* NUEVAS ACTIVIDADES INTERACTIVAS MEJORADAS */
-    .interactive-activities {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-    
-    .activity-card {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      transition: all 0.4s ease;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 30px;
-      animation: fadeInUp 1s ease 0.4s both;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .activity-card:nth-child(2) {
-      animation-delay: 0.6s;
-    }
-    
-    .activity-card:nth-child(3) {
-      animation-delay: 0.8s;
-    }
-    
-    .activity-card:nth-child(4) {
-      animation-delay: 1s;
-    }
-    
-    .activity-card:nth-child(5) {
-      animation-delay: 1.2s;
-    }
-    
-    .activity-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background: var(--gradient-5);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    
-    .activity-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .activity-card:hover {
-      transform: translateY(-15px) rotate(2deg);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-    
-    .activity-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      background: var(--gradient-5);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: bounceIcon 2s ease-in-out infinite;
-    }
-    
-    .activity-card:nth-child(2) .activity-icon {
-      background: var(--gradient-3);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation-delay: 0.5s;
-    }
-    
-    .activity-card:nth-child(3) .activity-icon {
-      background: var(--gradient-2);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation-delay: 1s;
-    }
-    
-    .activity-card:nth-child(4) .activity-icon {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation-delay: 1.5s;
-    }
-    
-    .activity-card:nth-child(5) .activity-icon {
-      background: var(--gradient-4);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation-delay: 2s;
-    }
-    
-    .activity-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .activity-description {
+    .tips p {
       color: #6c757d;
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 20px;
-      flex-grow: 1;
+      line-height: 1.6;
     }
     
-    .activity-features {
-      background: rgba(78, 205, 196, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-      text-align: left;
+    /* Actividades interactivas - Estilo limpio como módulo 2 */
+    .interactive-activities {
+      margin-top: 30px;
     }
     
-    .activity-features h4 {
+    .activity-item {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--secondary);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .activity-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .activity-item h3 {
       color: var(--secondary);
-      font-size: 1rem;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: 600;
       display: flex;
       align-items: center;
     }
     
-    .activity-features h4 i {
-      margin-right: 8px;
-      font-size: 1rem;
-    }
-    
-    .activity-features ul {
-      list-style-type: none;
-      padding-left: 25px;
-    }
-    
-    .activity-features li {
-      position: relative;
-      padding: 3px 0;
-      color: #6c757d;
-      font-size: 0.9rem;
-    }
-    
-    .activity-features li::before {
-      content: '•';
-      position: absolute;
-      left: -15px;
+    .activity-item h3 i {
+      margin-right: 10px;
       color: var(--secondary);
-      font-weight: bold;
     }
     
-    .activity-btn {
-      margin-top: auto;
-      background: var(--gradient-2);
+    .activity-item p {
+      color: #6c757d;
+      margin-bottom: 0;
+    }
+    
+    /* FAQ estilo módulo 2 */
+    .faq-list {
+      list-style: none;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .faq-question {
+      background: var(--gradient);
       color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 12px 25px;
+      padding: 15px 20px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     
-    .activity-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-answer {
+      background: white;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 200px;
+    }
+    
+    .faq-answer p {
+      color: #6c757d;
+      line-height: 1.6;
     }
     
     /* Modal para actividades interactivas */
@@ -1115,49 +803,6 @@
       font-weight: 700;
       font-family: 'Montserrat', sans-serif;
       text-align: center;
-    }
-    
-    /* Contenedores para actividades interactivas */
-    #sequenceContainer, #obstacleContainer, #throwContainer, #walkContainer, #circuitContainer, #rhythmContainer, #sportsContainer {
-      display: none;
-    }
-    
-    /* FAQ mejorado */
-    .faq-list {
-      list-style: none;
-    }
-    .faq-item {
-      margin-bottom: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-    .faq-question {
-      background: var(--gradient);
-      color: white;
-      padding: 15px 20px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .faq-question i {
-      transition: transform 0.3s ease;
-    }
-    .faq-answer {
-      background: white;
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-    .faq-item.active .faq-question i {
-      transform: rotate(180deg);
-    }
-    .faq-item.active .faq-answer {
-      padding: 20px;
-      max-height: 200px;
     }
     
     /* Navegación entre módulos */
@@ -1347,51 +992,32 @@
       box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
     }
     
-    /* Estilos para actividades interactivas mejoradas */
-    .interactive-activity {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    /* Estilos para juegos interactivos */
+    .game-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .game-area {
       position: relative;
+      width: 100%;
+      height: 300px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
       overflow: hidden;
     }
     
-    .interactive-activity::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: var(--gradient-2);
-    }
-    
-    .interactive-activity h3 {
-      color: var(--secondary);
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .interactive-activity p {
-      color: #6c757d;
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-    }
-    
-    .interactive-activity-controls {
+    .game-controls {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-top: 20px;
+      margin: 20px 0;
       flex-wrap: wrap;
     }
     
-    .interactive-activity-btn {
-      background: var(--gradient-2);
+    .game-btn {
+      background: var(--gradient-3);
       color: white;
       border: none;
       border-radius: 30px;
@@ -1402,12 +1028,12 @@
       font-family: 'Montserrat', sans-serif;
     }
     
-    .interactive-activity-btn:hover {
+    .game-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
     }
     
-    .interactive-activity-feedback {
+    .game-feedback {
       margin-top: 20px;
       padding: 15px;
       border-radius: 10px;
@@ -1434,529 +1060,6 @@
       border: 1px solid var(--info);
     }
     
-    /* Mejoras en juegos interactivos */
-    .interactive-game-area {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      background: rgba(78, 205, 196, 0.1);
-      border-radius: 15px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    
-    .interactive-game-character {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: var(--gradient);
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-    
-    .interactive-game-obstacle {
-      position: absolute;
-      width: 40px;
-      height: 80px;
-      background: var(--warning);
-      border-radius: 10px;
-      z-index: 1;
-    }
-    
-    .interactive-game-target {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background: var(--warning);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: white;
-      z-index: 1;
-    }
-    
-    .interactive-game-ball {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background: var(--gradient);
-      border-radius: 50%;
-      cursor: grab;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-    
-    .interactive-game-ball:active {
-      cursor: grabbing;
-    }
-    
-    .interactive-game-path {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--dark);
-      transform: translateY(-50%);
-      z-index: 1;
-    }
-    
-    /* Juego de circuitos de motricidad */
-    .circuit-builder {
-      margin-top: 30px;
-      text-align: center;
-    }
-    
-    .circuit-area {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      background: rgba(78, 205, 196, 0.1);
-      border-radius: 15px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    
-    .circuit-grid {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-      gap: 2px;
-      padding: 10px;
-    }
-    
-    .circuit-cell {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .circuit-cell:hover {
-      background: rgba(255, 255, 255, 0.8);
-    }
-    
-    .circuit-cell.active {
-      background: var(--gradient-2);
-    }
-    
-    .circuit-station {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: white;
-      z-index: 3;
-      transition: all 0.3s ease;
-    }
-    
-    .circuit-station.jump {
-      background: var(--gradient);
-    }
-    
-    .circuit-station.balance {
-      background: var(--gradient-3);
-    }
-    
-    .circuit-station.crawl {
-      background: var(--gradient-2);
-    }
-    
-    .circuit-station.throw {
-      background: var(--gradient-4);
-    }
-    
-    .circuit-station.run {
-      background: var(--gradient-5);
-    }
-    
-    .circuit-controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    
-    .circuit-btn {
-      background: var(--gradient-3);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 12px 25px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .circuit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
-    }
-    
-    .circuit-station-selector {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    
-    .station-type {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 3px solid transparent;
-    }
-    
-    .station-type:hover {
-      transform: scale(1.1);
-    }
-    
-    .station-type.selected {
-      border-color: var(--dark);
-      transform: scale(1.1);
-    }
-    
-    .station-type.jump {
-      background: var(--gradient);
-    }
-    
-    .station-type.balance {
-      background: var(--gradient-3);
-    }
-    
-    .station-type.crawl {
-      background: var(--gradient-2);
-    }
-    
-    .station-type.throw {
-      background: var(--gradient-4);
-    }
-    
-    .station-type.run {
-      background: var(--gradient-5);
-    }
-    
-    /* Juego de coordinación rítmica */
-    .rhythm-game {
-      margin-top: 30px;
-      text-align: center;
-    }
-    
-    .rhythm-area {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      background: rgba(78, 205, 196, 0.1);
-      border-radius: 15px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    
-    .rhythm-track {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 0 20px;
-    }
-    
-    .rhythm-target {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--warning);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: white;
-      position: relative;
-    }
-    
-    .rhythm-indicator {
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 10px;
-      background: var(--primary);
-      border-radius: 50%;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    
-    .rhythm-indicator.active {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-10px);
-    }
-    
-    .rhythm-character {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 100px;
-      background: var(--gradient);
-      border-radius: 30px 30px 0 0;
-      transition: all 0.3s ease;
-    }
-    
-    .rhythm-controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    
-    .rhythm-btn {
-      background: var(--gradient-3);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 12px 25px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .rhythm-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
-    }
-    
-    .rhythm-speed-control {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-    }
-    
-    .rhythm-speed-control label {
-      font-weight: 600;
-      color: var(--secondary);
-    }
-    
-    .rhythm-speed-slider {
-      width: 200px;
-      height: 8px;
-      border-radius: 4px;
-      background: rgba(78, 205, 196, 0.3);
-      outline: none;
-      -webkit-appearance: none;
-    }
-    
-    .rhythm-speed-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--gradient-3);
-      cursor: pointer;
-    }
-    
-    .rhythm-speed-slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--gradient-3);
-      cursor: pointer;
-      border: none;
-    }
-    
-    /* Juego de deportes adaptados */
-    .sports-game {
-      margin-top: 30px;
-      text-align: center;
-    }
-    
-    .sports-area {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      background: rgba(78, 205, 196, 0.1);
-      border-radius: 15px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    
-    .sports-field {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(76, 175, 80, 0.2);
-      border-radius: 15px;
-    }
-    
-    .sports-field.soccer {
-      background: rgba(76, 175, 80, 0.2);
-    }
-    
-    .sports-field.basketball {
-      background: rgba(255, 193, 7, 0.2);
-    }
-    
-    .sports-field.athletics {
-      background: rgba(3, 169, 244, 0.2);
-    }
-    
-    .sports-character {
-      position: absolute;
-      bottom: 20px;
-      left: 50px;
-      width: 50px;
-      height: 80px;
-      background: var(--gradient);
-      border-radius: 25px 25px 0 0;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-    
-    .sports-ball {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-    
-    .sports-ball.soccer {
-      background: white;
-      border: 2px solid #333;
-    }
-    
-    .sports-ball.basketball {
-      background: var(--orange);
-      border: 2px solid #333;
-    }
-    
-    .sports-target {
-      position: absolute;
-      transition: all 0.3s ease;
-      z-index: 1;
-    }
-    
-    .sports-target.soccer {
-      width: 100px;
-      height: 80px;
-      background: white;
-      border: 3px solid #333;
-      border-radius: 5px;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    .sports-target.basketball {
-      width: 80px;
-      height: 80px;
-      background: white;
-      border: 3px solid #333;
-      border-radius: 50%;
-      right: 20px;
-      top: 20px;
-    }
-    
-    .sports-target.athletics {
-      width: 10px;
-      height: 200px;
-      background: white;
-      border: 2px solid #333;
-      right: 50px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    .sports-controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    
-    .sports-btn {
-      background: var(--gradient-3);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 12px 25px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .sports-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
-    }
-    
-    .sports-selector {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    
-    .sport-type {
-      background: white;
-      border: 2px solid var(--secondary);
-      border-radius: 30px;
-      padding: 10px 20px;
-      font-weight: 600;
-      color: var(--secondary);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .sport-type:hover {
-      background: var(--secondary);
-      color: white;
-    }
-    
-    .sport-type.selected {
-      background: var(--secondary);
-      color: white;
-    }
-    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
@@ -1969,10 +1072,6 @@
       
       .section-title {
         font-size: 2rem;
-      }
-      
-      .practical-exercises {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
     }
     
@@ -2010,29 +1109,6 @@
       .btn {
         width: 100%;
       }
-      
-      .interactive-activities {
-        grid-template-columns: 1fr;
-      }
-      
-      .activity-modal-content {
-        width: 95%;
-        padding: 30px 20px;
-      }
-      
-      .practical-exercises {
-        grid-template-columns: 1fr;
-      }
-      
-      .circuit-grid {
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-      }
-      
-      .sports-selector {
-        flex-direction: column;
-        align-items: center;
-      }
     }
     
     @media (max-width: 576px) {
@@ -2069,24 +1145,6 @@
       .age-buttons {
         flex-direction: column;
         align-items: center;
-      }
-      
-      .circuit-grid {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-      }
-      
-      .circuit-station-selector {
-        flex-wrap: wrap;
-      }
-      
-      .rhythm-track {
-        height: 80px;
-      }
-      
-      .rhythm-target {
-        width: 60px;
-        height: 60px;
       }
     }
   </style>
@@ -2179,342 +1237,75 @@
     <!-- Sección: ¿Qué es la motricidad gruesa? -->
     <section class="content-section">
       <h2 class="section-title">¿Qué es la motricidad gruesa?</h2>
-      <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <i class="fas fa-running"></i>
-            <strong>Motricidad gruesa:</strong> movimientos grandes del cuerpo.
-          </div>
-          <div class="accordion-content">
-            <p id="definicionMotricidad">
-              La motricidad gruesa se refiere a la capacidad de usar los músculos grandes del cuerpo para realizar movimientos como caminar, correr, saltar, lanzar y atrapar. Estas habilidades son fundamentales para la autonomía de los niños y su interacción con el entorno. Se desarrolla progresivamente desde los primeros años de vida y es esencial para el crecimiento físico y la salud general.
-            </p>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <i class="fas fa-brain"></i>
-            <strong>Desarrollo neurológico:</strong> conexión cerebro-movimiento.
-          </div>
-          <div class="accordion-content">
-            <p id="desarrolloNeurologico">
-              El desarrollo de la motricidad gruesa está directamente relacionado con la maduración del sistema nervioso. A medida que el cerebro del niño crece, se establecen conexiones neuronales que permiten un mayor control sobre los movimientos del cuerpo. Este proceso es crucial para el desarrollo cognitivo, ya que las áreas del cerebro responsables del movimiento también están involucradas en el pensamiento y el aprendizaje.
-            </p>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <i class="fas fa-chart-line"></i>
-            <strong>Etapas de desarrollo:</strong> evolución de las habilidades motoras gruesas.
-          </div>
-          <div class="accordion-content">
-            <p id="etapasDesarrollo">
-              El desarrollo de la motricidad gruesa sigue un proceso progresivo. A los 3 años, los niños comienzan a subir escaleras alternando pies, saltan con ambos pies y corren de manera un poco torpe. A los 4 años, ya pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota, y mantienen mejor el equilibrio. A los 5 años, suben y bajan escaleras sin apoyo, patean una pelota con dirección y comienzan a aprender a andar en bicicleta con ruedines.
-            </p>
-          </div>
-        </div>
-      </div>
+      <p class="content-text" id="definicionMotricidad">
+        La motricidad gruesa se refiere a la capacidad de usar los músculos grandes del cuerpo para realizar movimientos como caminar, correr, saltar, lanzar y atrapar. Estas habilidades son fundamentales para la autonomía de los niños y su interacción con el entorno. Se desarrolla progresivamente desde los primeros años de vida y es esencial para el crecimiento físico y la salud general.
+      </p>
+      <p class="content-text" id="desarrolloNeurologico">
+        El desarrollo de la motricidad gruesa está directamente relacionado con la maduración del sistema nervioso. A medida que el cerebro del niño crece, se establecen conexiones neuronales que permiten un mayor control sobre los movimientos del cuerpo. Este proceso es crucial para el desarrollo cognitivo, ya que las áreas del cerebro responsables del movimiento también están involucradas en el pensamiento y el aprendizaje.
+      </p>
+      <p class="content-text" id="etapasDesarrollo">
+        El desarrollo de la motricidad gruesa sigue un proceso progresivo. A los 3 años, los niños comienzan a subir escaleras alternando pies, saltan con ambos pies y corren de manera un poco torpe. A los 4 años, ya pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota, y mantienen mejor el equilibrio. A los 5 años, suben y bajan escaleras sin apoyo, patean una pelota con dirección y comienzan a aprender a andar en bicicleta con ruedines.
+      </p>
     </section>
     
     <!-- Sección: Importancia de la motricidad gruesa -->
     <section class="content-section">
       <h2 class="section-title">Importancia de la motricidad gruesa</h2>
-      <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <i class="fas fa-heartbeat"></i>
-            <strong>Salud física:</strong> base para un desarrollo saludable.
-          </div>
-          <div class="accordion-content">
-            <p id="saludFisica">
-              La motricidad gruesa es fundamental para la salud física de los niños. Fomenta el desarrollo muscular, mejora la resistencia cardiovascular, fortalece los huesos y ayuda a mantener un peso saludable. Los niños con buenas habilidades motrices gruesas suelen tener más energía, mejor postura y menor riesgo de enfermedades relacionadas con el sedentarismo.
-            </p>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <i class="fas fa-child"></i>
-            <strong>Autonomía e independencia:</strong> habilidades para la vida diaria.
-          </div>
-          <div class="accordion-content">
-            <p id="autonomiaIndependencia">
-              Las habilidades de motricidad gruesa permiten a los niños realizar tareas cotidianas de forma independiente, como subir escaleras, vestirse, jugar en el parque o participar en actividades deportivas. Esta autonomía no solo aumenta su confianza y autoestima, sino que también fomenta su sentido de responsabilidad y capacidad para cuidar de sí mismos.
-            </p>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <i class="fas fa-users"></i>
-            <strong>Interacción social:</strong> base para las relaciones con otros.
-          </div>
-          <div class="accordion-content">
-            <p id="interaccionSocial">
-              La motricidad gruesa es esencial para la interacción social. A través del juego físico, los niños aprenden a compartir, turnarse, cooperar y competir de manera saludable. Estas habilidades sociales son fundamentales para establecer amistades, trabajar en equipo y desenvolverse en diferentes entornos sociales. Los niños con buenas habilidades motrices suelen participar más activamente en juegos grupales y actividades deportivas.
-            </p>
-          </div>
-        </div>
-      </div>
+      <p class="content-text" id="saludFisica">
+        La motricidad gruesa es fundamental para la salud física de los niños. Fomenta el desarrollo muscular, mejora la resistencia cardiovascular, fortalece los huesos y ayuda a mantener un peso saludable. Los niños con buenas habilidades motrices gruesas suelen tener más energía, mejor postura y menor riesgo de enfermedades relacionadas con el sedentarismo.
+      </p>
+      <p class="content-text" id="autonomiaIndependencia">
+        Las habilidades de motricidad gruesa permiten a los niños realizar tareas cotidianas de forma independiente, como subir escaleras, vestirse, jugar en el parque o participar en actividades deportivas. Esta autonomía no solo aumenta su confianza y autoestima, sino que también fomenta su sentido de responsabilidad y capacidad para cuidar de sí mismos.
+      </p>
+      <p class="content-text" id="interaccionSocial">
+        La motricidad gruesa es esencial para la interacción social. A través del juego físico, los niños aprenden a compartir, turnarse, cooperar y competir de manera saludable. Estas habilidades sociales son fundamentales para establecer amistades, trabajar en equipo y desenvolverse en diferentes entornos sociales. Los niños con buenas habilidades motrices suelen participar más activamente en juegos grupales y actividades deportivas.
+      </p>
     </section>
     
-    <!-- Sección: Ejercicios prácticos para familias (NUEVO DISEÑO) -->
+    <!-- Sección: Ejercicios prácticos para familias (Estilo limpio módulo 2) -->
     <section class="content-section">
       <h2 class="section-title">Ejercicios prácticos para familias</h2>
+      
       <div class="practical-exercises" id="practicalExercises">
-        <!-- Las tarjetas de ejercicios se cargarán dinámicamente según la edad -->
+        <!-- Los ejercicios se cargarán dinámicamente según la edad -->
       </div>
+      
       <div class="tips">
-        <h3 class="tips-title">Consejo profesional</h3>
+        <h3>Consejo profesional</h3>
         <p id="consejoProfesional">
-          Dedica 30-45 minutos diarios a actividades de motricidad gruesa. La constancia es más importante que la duración. 
-          Celebra cada logro, por pequeño que parezca. Recuerda que cada niño tiene su propio ritmo de desarrollo.
+          Dedica 15-20 minutos diarios a estas actividades. La constancia es más importante que la duración. Celebra cada logro, por pequeño que parezca. Recuerda que cada niño tiene su propio ritmo de desarrollo.
         </p>
       </div>
     </section>
     
-    <!-- Sección: Actividades interactivas mejoradas -->
+    <!-- Sección: Actividades interactivas (Estilo limpio módulo 2) -->
     <section class="content-section">
       <h2 class="section-title">Actividades interactivas</h2>
       
       <div class="interactive-activities">
-        <div class="activity-card">
-          <div class="activity-icon">
-            <i class="fas fa-random"></i>
-          </div>
-          <h3 class="activity-title">Secuencia de movimientos</h3>
-          <p class="activity-description">Repite secuencias de movimientos para mejorar la coordinación y la memoria motriz</p>
-          <div class="activity-features">
-            <h4><i class="fas fa-star"></i> Beneficios:</h4>
-            <ul>
-              <li>Mejora la memoria motriz</li>
-              <li>Desarrolla la coordinación</li>
-              <li>Fomenta la atención</li>
-            </ul>
-          </div>
-          <button class="activity-btn" onclick="showActivityModal('sequence')">Comenzar actividad</button>
+        <div class="activity-item" onclick="showActivityModal('circuit')">
+          <h3><i class="fas fa-route"></i>Constructor de circuitos</h3>
+          <p>Diseña y completa circuitos de motricidad con diferentes estaciones de movimiento</p>
         </div>
         
-        <div class="activity-card">
-          <div class="activity-icon">
-            <i class="fas fa-project-diagram"></i>
-          </div>
-          <h3 class="activity-title">Creador de circuitos</h3>
-          <p class="activity-description">Diseña y completa circuitos de motricidad gruesa con diferentes estaciones de movimiento</p>
-          <div class="activity-features">
-            <h4><i class="fas fa-star"></i> Beneficios:</h4>
-            <ul>
-              <li>Desarrolla la planificación motriz</li>
-              <li>Mejora la agilidad</li>
-              <li>Fortalece diferentes grupos musculares</li>
-            </ul>
-          </div>
-          <button class="activity-btn" onclick="showActivityModal('circuit')">Comenzar actividad</button>
+        <div class="activity-item" onclick="showActivityModal('obstacles')">
+          <h3><i class="fas fa-mountain"></i>Parque de obstáculos</h3>
+          <p>Navega por un parque de obstáculos mejorando el equilibrio y la agilidad</p>
         </div>
         
-        <div class="activity-card">
-          <div class="activity-icon">
-            <i class="fas fa-music"></i>
-          </div>
-          <h3 class="activity-title">Coordinación rítmica</h3>
-          <p class="activity-description">Sincroniza movimientos de motricidad gruesa con ritmos musicales para mejorar la coordinación</p>
-          <div class="activity-features">
-            <h4><i class="fas fa-star"></i> Beneficios:</h4>
-            <ul>
-              <li>Mejora la coordinación rítmica</li>
-              <li>Desarrolla la audición motriz</li>
-              <li>Fomenta la expresión corporal</li>
-            </ul>
-          </div>
-          <button class="activity-btn" onclick="showActivityModal('rhythm')">Comenzar actividad</button>
+        <div class="activity-item" onclick="showActivityModal('throwing')">
+          <h3><i class="fas fa-baseball-ball"></i>Lanzamiento preciso</h3>
+          <p>Practica diferentes tipos de lanzamientos para mejorar la coordinación</p>
         </div>
         
-        <div class="activity-card">
-          <div class="activity-icon">
-            <i class="fas fa-football-ball"></i>
-          </div>
-          <h3 class="activity-title">Deportes adaptados</h3>
-          <p class="activity-description">Practica versiones simplificadas de deportes como fútbol, baloncesto y atletismo adaptadas a cada edad</p>
-          <div class="activity-features">
-            <h4><i class="fas fa-star"></i> Beneficios:</h4>
-            <ul>
-              <li>Desarrolla habilidades deportivas básicas</li>
-              <li>Mejora la coordinación ojo-mano</li>
-              <li>Fomenta el trabajo en equipo</li>
-            </ul>
-          </div>
-          <button class="activity-btn" onclick="showActivityModal('sports')">Comenzar actividad</button>
+        <div class="activity-item" onclick="showActivityModal('balance')">
+          <h3><i class="fas fa-balance-scale"></i>Desafío del equilibrio</h3>
+          <p>Completa desafíos de equilibrio para mejorar la estabilidad y el control corporal</p>
         </div>
         
-        <div class="activity-card">
-          <div class="activity-icon">
-            <i class="fas fa-child"></i>
-          </div>
-          <h3 class="activity-title">Juegos tradicionales</h3>
-          <p class="activity-description">Versiones digitales de juegos tradicionales que desarrollan la motricidad gruesa como la rayuela o el elástico</p>
-          <div class="activity-features">
-            <h4><i class="fas fa-star"></i> Beneficios:</h4>
-            <ul>
-              <li>Conecta con tradiciones culturales</li>
-              <li>Desarrolla habilidades motrices específicas</li>
-              <li>Fomenta la socialización</li>
-            </ul>
-          </div>
-          <button class="activity-btn" onclick="showActivityModal('traditional')">Comenzar actividad</button>
-        </div>
-      </div>
-      
-      <!-- Modal para actividades interactivas -->
-      <div id="activityModal" class="activity-modal">
-        <div class="activity-modal-content">
-          <span class="close-activity-modal" id="closeActivityModal">&times;</span>
-          <h3 class="activity-modal-title" id="activityModalTitle">Actividad Interactiva</h3>
-          
-          <div id="activityModalContent">
-            <!-- El contenido se cargará dinámicamente según la actividad seleccionada -->
-          </div>
-        </div>
-      </div>
-      
-      <!-- Contenedores para actividades interactivas -->
-      <div id="sequenceContainer">
-        <div class="sequence-game">
-          <h3 style="color: var(--secondary); margin-bottom: 20px;">Secuencia de movimientos</h3>
-          <p style="margin-bottom: 20px;">Observa la secuencia y luego repítela en el orden correcto.</p>
-          <div class="sequence-display" id="sequence-display">
-            <!-- Los movimientos se cargarán dinámicamente -->
-          </div>
-          <div class="sequence-controls">
-            <button class="sequence-btn" onclick="generateSequence()">Nueva secuencia</button>
-            <button class="sequence-btn" onclick="checkSequence()">Verificar respuesta</button>
-          </div>
-          <div id="sequence-msj" style="font-weight:bold; margin-top:15px;"></div>
-        </div>
-      </div>
-      
-      <div id="circuitContainer">
-        <div class="circuit-builder">
-          <h3 style="color: var(--secondary); margin-bottom: 20px;">Creador de circuitos de motricidad</h3>
-          <p style="margin-bottom: 20px;">Diseña tu propio circuito de motricidad gruesa seleccionando diferentes estaciones de movimiento.</p>
-          
-          <div class="circuit-station-selector">
-            <div class="station-type jump selected" data-type="jump" title="Saltar">
-              <i class="fas fa-arrow-up"></i>
-            </div>
-            <div class="station-type balance" data-type="balance" title="Equilibrarse">
-              <i class="fas fa-balance-scale"></i>
-            </div>
-            <div class="station-type crawl" data-type="crawl" title="Gatear">
-              <i class="fas fa-arrows-alt-h"></i>
-            </div>
-            <div class="station-type throw" data-type="throw" title="Lanzar">
-              <i class="fas fa-baseball-ball"></i>
-            </div>
-            <div class="station-type run" data-type="run" title="Correr">
-              <i class="fas fa-running"></i>
-            </div>
-          </div>
-          
-          <div class="circuit-area">
-            <div class="circuit-grid" id="circuitGrid">
-              <!-- Las celdas se generarán dinámicamente -->
-            </div>
-          </div>
-          
-          <div class="circuit-controls">
-            <button class="circuit-btn" onclick="clearCircuit()">Limpiar circuito</button>
-            <button class="circuit-btn" onclick="completeCircuit()">Completar circuito</button>
-          </div>
-          
-          <div id="circuit-msj" class="interactive-activity-feedback"></div>
-        </div>
-      </div>
-      
-      <div id="rhythmContainer">
-        <div class="rhythm-game">
-          <h3 style="color: var(--secondary); margin-bottom: 20px;">Coordinación rítmica</h3>
-          <p style="margin-bottom: 20px;">Sincroniza tus movimientos con el ritmo para mejorar la coordinación.</p>
-          
-          <div class="rhythm-speed-control">
-            <label for="rhythmSpeed">Velocidad del ritmo:</label>
-            <input type="range" id="rhythmSpeed" class="rhythm-speed-slider" min="1" max="5" value="3">
-          </div>
-          
-          <div class="rhythm-area">
-            <div class="rhythm-track">
-              <div class="rhythm-target" data-movement="jump">
-                <i class="fas fa-arrow-up"></i>
-                <div class="rhythm-indicator"></div>
-              </div>
-              <div class="rhythm-target" data-movement="balance">
-                <i class="fas fa-balance-scale"></i>
-                <div class="rhythm-indicator"></div>
-              </div>
-              <div class="rhythm-target" data-movement="throw">
-                <i class="fas fa-baseball-ball"></i>
-                <div class="rhythm-indicator"></div>
-              </div>
-              <div class="rhythm-target" data-movement="run">
-                <i class="fas fa-running"></i>
-                <div class="rhythm-indicator"></div>
-              </div>
-            </div>
-            <div class="rhythm-character" id="rhythmCharacter"></div>
-          </div>
-          
-          <div class="rhythm-controls">
-            <button class="rhythm-btn" onclick="startRhythmGame()">Iniciar juego</button>
-            <button class="rhythm-btn" onclick="stopRhythmGame()">Detener juego</button>
-          </div>
-          
-          <div id="rhythm-msj" class="interactive-activity-feedback"></div>
-        </div>
-      </div>
-      
-      <div id="sportsContainer">
-        <div class="sports-game">
-          <h3 style="color: var(--secondary); margin-bottom: 20px;">Deportes adaptados</h3>
-          <p style="margin-bottom: 20px;">Practica versiones simplificadas de deportes adaptadas a tu edad.</p>
-          
-          <div class="sports-selector">
-            <div class="sport-type soccer selected" data-sport="soccer">Fútbol</div>
-            <div class="sport-type basketball" data-sport="basketball">Baloncesto</div>
-            <div class="sport-type athletics" data-sport="athletics">Atletismo</div>
-          </div>
-          
-          <div class="sports-area">
-            <div class="sports-field soccer" id="sportsField">
-              <div class="sports-character" id="sportsCharacter"></div>
-              <div class="sports-ball soccer" id="sportsBall"></div>
-              <div class="sports-target soccer" id="sportsTarget"></div>
-            </div>
-          </div>
-          
-          <div class="sports-controls">
-            <button class="sports-btn" onclick="moveSportsCharacter('left')">Izquierda</button>
-            <button class="sports-btn" onclick="moveSportsCharacter('jump')">Saltar</button>
-            <button class="sports-btn" onclick="moveSportsCharacter('right')">Derecha</button>
-            <button class="sports-btn" onclick="kickBall()">Patear/Lanzar</button>
-          </div>
-          
-          <div id="sports-msj" class="interactive-activity-feedback"></div>
-        </div>
-      </div>
-      
-      <div id="traditionalContainer">
-        <div class="interactive-activity">
-          <h3 style="color: var(--secondary); margin-bottom: 20px;">Juegos tradicionales</h3>
-          <p style="margin-bottom: 20px;">Versión digital de juegos tradicionales para desarrollar la motricidad gruesa.</p>
-          
-          <div class="interactive-game-area" id="traditionalGameArea">
-            <!-- El contenido se cargará dinámicamente según el juego seleccionado -->
-          </div>
-          
-          <div class="interactive-activity-controls">
-            <button class="interactive-activity-btn" onclick="selectTraditionalGame('hopscotch')">Rayuela</button>
-            <button class="interactive-activity-btn" onclick="selectTraditionalGame('elastic')">El elástico</button>
-            <button class="interactive-activity-btn" onclick="selectTraditionalGame('chairs')">Las sillas</button>
-          </div>
-          
-          <div id="traditional-msj" class="interactive-activity-feedback"></div>
+        <div class="activity-item" onclick="showActivityModal('sports')">
+          <h3><i class="fas fa-futbol"></i>Mini deportes</h3>
+          <p>Practica versiones adaptadas de deportes populares para niños</p>
         </div>
       </div>
     </section>
@@ -2582,6 +1373,18 @@
     </footer>
   </div>
   
+  <!-- Modal para actividades interactivas -->
+  <div id="activityModal" class="activity-modal">
+    <div class="activity-modal-content">
+      <span class="close-activity-modal" id="closeActivityModal">&times;</span>
+      <h3 class="activity-modal-title" id="activityModalTitle">Actividad Interactiva</h3>
+      
+      <div id="activityModalContent">
+        <!-- El contenido se cargará dinámicamente según la actividad seleccionada -->
+      </div>
+    </div>
+  </div>
+  
   <!-- Modal de acceso denegado -->
   <div id="accesoDenegadoModal" class="modal">
     <div class="modal-content">
@@ -2605,94 +1408,34 @@
         interaccionSocial: "A los 3 años, los niños empiezan a participar en juegos grupales simples, aunque todavía les cuesta compartir y turnarse. Las actividades de motricidad gruesa en grupo les ayudan a aprender normas sociales básicas y a desarrollar habilidades de comunicación mientras juegan.",
         ejerciciosPracticos: [
           {
-            id: "saltos-colchoneta",
             titulo: "Saltos en colchonetas",
             descripcion: "Coloca colchonetas en el suelo y anima al niño a saltar de una a otra. Esta actividad fortalece los músculos de las piernas y mejora el equilibrio.",
-            imagen: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Fortalece los músculos de las piernas",
-              "Mejora el equilibrio y la coordinación",
-              "Desarrolla la conciencia espacial"
-            ],
-            materiales: "Colchonetas, almohadones o superficies blandas",
-            instrucciones: [
-              "Coloca varias colchonetas en el suelo formando un camino",
-              "Anima al niño a saltar de una colchoneta a otra",
-              "Asegúrate de que haya suficiente espacio entre ellas",
-              "Celebra cada salto exitoso con aplausos y palabras de aliento"
-            ]
+            materiales: "Colchonetas o almohadones",
+            icono: "fas fa-child"
           },
           {
-            id: "carreras-cortas",
             titulo: "Carreras cortas",
             descripcion: "Organiza carreras cortas en un espacio seguro. Esta actividad desarrolla la velocidad, la coordinación y la conciencia espacial.",
-            imagen: "https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Desarrolla la velocidad y la agilidad",
-              "Mejora la coordinación general",
-              "Fomenta la conciencia espacial"
-            ],
             materiales: "Espacio abierto y seguro",
-            instrucciones: [
-              "Marca una línea de salida y una de meta",
-              "Asegúrate de que el terreno esté libre de obstáculos",
-              "Organiza carreras cortas de 10-15 metros",
-              "Anima al niño a correr con entusiasmo pero sin presión"
-            ]
+            icono: "fas fa-running"
           },
           {
-            id: "subir-escaleras",
             titulo: "Subir escaleras con apoyo",
             descripcion: "Practica subir escaleras con apoyo, alternando pies cuando sea posible. Esta actividad fortalece las piernas y mejora la coordinación.",
-            imagen: "https://images.unsplash.com/photo-1596428253078-819a9e5a8f9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Fortalece los músculos de las piernas",
-              "Mejora la coordinación y el equilibrio",
-              "Desarrolla la planificación motora"
-            ],
-            materiales: "Escaleras seguras con barandilla",
-            instrucciones: [
-              "Permanece cerca del niño mientras sube las escaleras",
-              "Anímalo a sostener la barandilla para mayor seguridad",
-              "Enséñale a alternar los pies si es capaz",
-              "Celebra cada escalón subido con entusiasmo"
-            ]
+            materiales: "Escaleras con barandilla",
+            icono: "fas fa-sort-amount-up"
           },
           {
-            id: "lanzar-pelotas",
             titulo: "Lanzar pelotas grandes",
             descripcion: "Usa pelotas grandes y suaves para practicar lanzar y rodar. Esta actividad desarrolla la coordinación ojo-mano y la fuerza de los brazos.",
-            imagen: "https://images.unsplash.com/photo-1534750209976-4ffb7b1d2f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora la coordinación ojo-mano",
-              "Desarrolla la fuerza de los brazos",
-              "Fomenta la precisión y el control"
-            ],
-            materiales: "Pelotas grandes y suaves de diferentes texturas",
-            instrucciones: [
-              "Comienza sentados frente a frente a una corta distancia",
-              "Enseña al niño a sostener la pelota con ambas manos",
-              "Anímalo a lanzar la pelota hacia ti",
-              "Aumenta gradualmente la distancia a medida que mejora"
-            ]
+            materiales: "Pelotas grandes y suaves",
+            icono: "fas fa-circle"
           },
           {
-            id: "baile-libre",
             titulo: "Baile libre",
             descripcion: "Pon música y anima al niño a bailar libremente. Esta actividad mejora el ritmo, la coordinación y la expresión corporal.",
-            imagen: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora el ritmo y la coordinación",
-              "Fomenta la expresión corporal",
-              "Desarrolla la audición motriz"
-            ],
-            materiales: "Reproductor de música y espacio despejado",
-            instrucciones: [
-              "Selecciona música con ritmos variados y alegres",
-              "Anima al niño a moverse libremente al ritmo",
-              "Imita sus movimientos y baila junto a él",
-              "Varía la velocidad y el estilo de la música"
-            ]
+            materiales: "Reproductor de música",
+            icono: "fas fa-music"
           }
         ],
         consejoProfesional: "A los 3 años, enfócate en actividades divertidas y breves (10-15 minutos). Usa equipos grandes y seguros. Celebra el esfuerzo y la participación, no solo los resultados. Recuerda que el juego es la principal forma de aprendizaje a esta edad.",
@@ -2710,94 +1453,34 @@
         interaccionSocial: "A los 4 años, los niños comienzan a entender mejor las reglas de los juegos y a participar en actividades grupales más estructuradas. Aprenden a turnarse, compartir y cooperar, habilidades sociales fundamentales que se desarrollan a través del juego físico.",
         ejerciciosPracticos: [
           {
-            id: "saltos-un-pie",
             titulo: "Saltos en un pie",
             descripcion: "Anima al niño a saltar en un pie, luego en el otro. Esta actividad mejora el equilibrio y la fuerza de las piernas.",
-            imagen: "https://images.unsplash.com/photo-1535530995731-6462cf516ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora el equilibrio estático y dinámico",
-              "Fortalece los músculos de las piernas",
-              "Desarrolla la coordinación y la concentración"
-            ],
             materiales: "Espacio plano y seguro",
-            instrucciones: [
-              "Comienza sosteniendo la mano del niño para mayor estabilidad",
-              "Anímalo a saltar en un pie manteniendo el equilibrio",
-              "Cuenta cuántos saltos puede hacer seguidos",
-              "Cambie de pie y repita el ejercicio"
-            ]
+            icono: "fas fa-child"
           },
           {
-            id: "carreras-obstaculos",
             titulo: "Carreras con obstáculos",
             descripcion: "Crea un circuito simple con obstáculos como cojines o cajas. Esta actividad desarrolla la agilidad, la coordinación y la planificación motriz.",
-            imagen: "https://images.unsplash.com/photo-1579631542044-a8d5a6b3f9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Desarrolla la agilidad y la coordinación",
-              "Mejora la planificación motora",
-              "Fomenta la resolución de problemas"
-            ],
-            materiales: "Cojines, cajas, sillas u otros objetos seguros",
-            instrucciones: [
-              "Diseña un circuito simple con 3-4 obstáculos",
-              "Enseña al niño cómo superar cada obstáculo",
-              "Anímalo a completar el circuito de principio a fin",
-              "Aumenta la dificultad gradualmente a medida que mejora"
-            ]
+            materiales: "Cojines, cajas u objetos seguros",
+            icono: "fas fa-running"
           },
           {
-            id: "subir-bajar-escaleras",
             titulo: "Subir y bajar escaleras",
             descripcion: "Practica subir y bajar escaleras alternando pies sin apoyo. Esta actividad fortalece las piernas y mejora la coordinación.",
-            imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Fortalece los músculos de las piernas",
-              "Mejora la coordinación y el equilibrio",
-              "Desarrolla la independencia y la confianza"
-            ],
-            materiales: "Escaleras seguras con barandilla",
-            instrucciones: [
-              "Permanece cerca del niño mientras sube y baja las escaleras",
-              "Anímalo a alternar los pies sin necesidad de apoyo",
-              "Enséñale a sostener la barandilla solo para mayor seguridad",
-              "Celebra su progreso y autonomía"
-            ]
+            materiales: "Escaleras con barandilla",
+            icono: "fas fa-sort-amount-up"
           },
           {
-            id: "lanzar-atrapar",
             titulo: "Lanzar y atrapar pelotas",
             descripcion: "Usa pelotas de diferentes tamaños para practicar lanzar y atrapar. Esta actividad mejora la coordinación ojo-mano y la precisión.",
-            imagen: "https://images.unsplash.com/photo-1599558947748-6c3e1c1e9211?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora la coordinación ojo-mano",
-              "Desarrolla la precisión y el control",
-              "Fomenta la concentración y la atención"
-            ],
-            materiales: "Pelotas de diferentes tamaños y texturas",
-            instrucciones: [
-              "Comienza con pelotas grandes y suaves",
-              "Aumenta gradualmente el tamaño y la distancia",
-              "Enseña al niño a usar ambas manos para atrapar",
-              "Varía la altura y dirección de los lanzamientos"
-            ]
+            materiales: "Pelotas de diferentes tamaños",
+            icono: "fas fa-baseball-ball"
           },
           {
-            id: "bicicleta-ruedines",
             titulo: "Triciclo o bicicleta con ruedines",
             descripcion: "Enseña al niño a usar un triciclo o bicicleta con ruedines. Esta actividad desarrolla la coordinación, el equilibrio y la fuerza de las piernas.",
-            imagen: "https://images.unsplash.com/photo-1556989252-47d468511a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Desarrolla la coordinación y el equilibrio",
-              "Fortalece los músculos de las piernas",
-              "Mejora la planificación motora y la orientación espacial"
-            ],
-            materiales: "Triciclo o bicicleta con ruedines adecuada a su tamaño",
-            instrucciones: [
-              "Asegúrate de que la bicicleta sea del tamaño adecuado",
-              "Comienza en un espacio plano y seguro",
-              "Enseña al niño a pedalear y a dirigir",
-              "Usa siempre casco y equipo de protección"
-            ]
+            materiales: "Triciclo o bicicleta con ruedines",
+            icono: "fas fa-bicycle"
           }
         ],
         consejoProfesional: "A los 4 años, las actividades pueden durar entre 15-20 minutos. Introduce juegos con reglas simples y estructura. Ofrece desafíos gradualmente más complejos y celebra los progresos. Recuerda que el juego sigue siendo la principal forma de aprendizaje.",
@@ -2815,94 +1498,34 @@
         interaccionSocial: "A los 5 años, los niños pueden participar en juegos con reglas complejas y deportes organizados. Entienden conceptos como competencia justa, trabajo en equipo y deportividad. Estas habilidades sociales se desarrollan fundamentalmente a través de actividades físicas grupales.",
         ejerciciosPracticos: [
           {
-            id: "saltos-coordinados",
             titulo: "Saltos coordinados",
             descripcion: "Practica diferentes tipos de saltos: con pies juntos, alternando pies, hacia adelante y hacia atrás. Esta actividad mejora la coordinación, el equilibrio y la fuerza.",
-            imagen: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora la coordinación y el equilibrio",
-              "Fortalece los músculos de las piernas",
-              "Desarrolla la agilidad y la potencia"
-            ],
-            materiales: "Espacio plano y seguro, posible uso de una cuerda o pequeña barra",
-            instrucciones: [
-              "Enseña diferentes tipos de saltos: juntos, separados, adelante, atrás",
-              "Crea patrones de saltos que el niño debe repetir",
-              "Usa una cuerda o pequeña barra para saltar",
-              "Aumenta la dificultad combinando diferentes tipos de saltos"
-            ]
+            materiales: "Espacio plano y seguro",
+            icono: "fas fa-child"
           },
           {
-            id: "circuitos-obstaculos",
             titulo: "Circuitos de obstáculos",
             descripcion: "Crea circuitos con diversos desafíos como saltar, gatear, equilibrarse y lanzar. Esta actividad desarrolla la planificación motriz, la agilidad y la coordinación.",
-            imagen: "https://images.unsplash.com/photo-1579631542044-a8d5a6b3f9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Desarrolla la planificación motora",
-              "Mejora la agilidad y la coordinación",
-              "Fomenta la resolución de problemas y la persistencia"
-            ],
-            materiales: "Diversos objetos seguros: cojines, cajas, cuerdas, aros, pelotas",
-            instrucciones: [
-              "Diseña un circuito con 5-6 estaciones diferentes",
-              "Asigna una tarea motriz diferente a cada estación",
-              "Enseña al niño a completar todo el circuito en orden",
-              "Cronometra el tiempo y anímale a mejorarlo"
-            ]
+            materiales: "Diversos objetos seguros",
+            icono: "fas fa-mountain"
           },
           {
-            id: "deportes-simples",
             titulo: "Deportes simples",
             descripcion: "Introduce deportes simples como fútbol, básquet o atletismo adaptado. Estas actividades mejoran la coordinación, el trabajo en equipo y el seguimiento de reglas.",
-            imagen: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora la coordinación y las habilidades deportivas",
-              "Desarrolla el trabajo en equipo y la socialización",
-              "Enseña el seguimiento de reglas y la deportividad"
-            ],
-            materiales: "Pelotas, aros, conos u otros materiales deportivos básicos",
-            instrucciones: [
-              "Simplifica las reglas de los deportes para adaptarlas a su edad",
-              "Enfócate en la diversión y la participación, no en la competencia",
-              "Enseña conceptos básicos como trabajo en equipo y fair play",
-              "Varía los deportes para mantener su interés"
-            ]
+            materiales: "Pelotas, conos u otros materiales deportivos",
+            icono: "fas fa-futbol"
           },
           {
-            id: "bicicleta-sin-ruedines",
             titulo: "Bicicleta sin ruedines",
             descripcion: "Enseña al niño a andar en bicicleta sin ruedines. Esta actividad desarrolla el equilibrio, la coordinación y la confianza en sí mismo.",
-            imagen: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Desarrolla el equilibrio y la coordinación",
-              "Fortalece los músculos de las piernas y el core",
-              "Mejora la confianza y la autoestima"
-            ],
-            materiales: "Bicicleta adecuada a su tamaño, casco y equipo de protección",
-            instrucciones: [
-              "Comienza en un espacio plano y amplio",
-              "Retira los pedales para que aprenda a equilibrarse",
-              "Sostén la bicicleta mientras aprende a mantener el equilibrio",
-              "Una vez que domine el equilibrio, vuelve a poner los pedales"
-            ]
+            materiales: "Bicicleta sin ruedines",
+            icono: "fas fa-bicycle"
           },
           {
-            id: "natacion-basica",
             titulo: "Natación básica",
             descripcion: "Enseña al niño a flotar y moverse en el agua. Esta actividad mejora la coordinación general, la fuerza y la confianza en el agua.",
-            imagen: "https://images.unsplash.com/photo-1560996344-408a5ee7dbfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            beneficios: [
-              "Mejora la coordinación general y la fuerza",
-              "Desarrolla la confianza y la superación del miedo",
-              "Fortalece todos los grupos musculares de forma equilibrada"
-            ],
-            materiales: "Piscina poco profunda, flotadores si es necesario, toalla",
-            instrucciones: [
-              "Comienza en la parte poco profunda de la piscina",
-              "Enseña al niño a flotar boca arriba con tu ayuda",
-              "Practica movimientos básicos de brazos y piernas",
-              "Usa juegos y divertidas actividades para hacerlo ameno"
-            ]
+            materiales: "Piscina poco profunda",
+            icono: "fas fa-swimmer"
           }
         ],
         consejoProfesional: "A los 5 años, las actividades pueden durar entre 20-30 minutos. Introduce deportes simples y actividades estructuradas que preparen para la escuela. Usa refuerzos positivos y enfócate en el disfrute y la participación, no solo en el rendimiento.",
@@ -2915,21 +1538,6 @@
     // Variables globales
     let edadSeleccionada = null;
     let actividadActual = null;
-    let sequenceMovements = [];
-    let userSequence = [];
-    let characterPosition = 50;
-    let obstacles = [];
-    let walkPosition = 20;
-    let movementPosition = { x: 50, y: 20 };
-    let selectedStationType = 'jump';
-    let circuitStations = [];
-    let rhythmInterval = null;
-    let rhythmSpeed = 3;
-    let currentRhythmTarget = 0;
-    let selectedSport = 'soccer';
-    let sportsCharacterPosition = 50;
-    let sportsBallPosition = { x: 50, y: 20 };
-    let selectedTraditionalGame = null;
     
     // Verificar si el usuario tiene acceso al curso y si completó el módulo 2
     document.addEventListener('DOMContentLoaded', function() {
@@ -2992,16 +1600,7 @@
         });
       });
       
-      // Configurar acordeones interactivos
-      const accordionHeaders = document.querySelectorAll('.accordion-header');
-      accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-          const item = header.parentElement;
-          item.classList.toggle('active');
-        });
-      });
-      
-      // FAQ interactiva
+      // Configurar FAQ interactiva
       document.querySelectorAll('.faq-question').forEach(question => {
         question.addEventListener('click', () => {
           const faqItem = question.parentElement;
@@ -3015,13 +1614,11 @@
       
       closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
-        hideAllActivities();
       });
       
       window.addEventListener('click', (e) => {
         if (e.target === modal) {
           modal.style.display = 'none';
-          hideAllActivities();
         }
       });
       
@@ -3079,7 +1676,7 @@
       // Actualizar subtítulo del hero
       document.getElementById('heroSubtitle').textContent = contenido.titulo;
       
-      // Actualizar contenido de acordeones
+      // Actualizar contenido de las secciones
       document.getElementById('definicionMotricidad').textContent = contenido.definicionMotricidad;
       document.getElementById('desarrolloNeurologico').textContent = contenido.desarrolloNeurologico;
       document.getElementById('etapasDesarrollo').textContent = contenido.etapasDesarrollo;
@@ -3087,47 +1684,22 @@
       document.getElementById('autonomiaIndependencia').textContent = contenido.autonomiaIndependencia;
       document.getElementById('interaccionSocial').textContent = contenido.interaccionSocial;
       
-      // Actualizar ejercicios prácticos para familias (NUEVO DISEÑO)
+      // Actualizar ejercicios prácticos
       const practicalExercises = document.getElementById('practicalExercises');
       practicalExercises.innerHTML = '';
       
       contenido.ejerciciosPracticos.forEach((ejercicio, index) => {
-        const exerciseCard = document.createElement('div');
-        exerciseCard.className = 'exercise-card';
-        exerciseCard.style.animationDelay = `${index * 0.2}s`;
+        const exerciseItem = document.createElement('div');
+        exerciseItem.className = 'exercise-item';
+        exerciseItem.style.animationDelay = `${index * 0.2}s`;
         
-        // Crear el contenido HTML con el nuevo diseño
-        exerciseCard.innerHTML = `
-          <div class="exercise-image">
-            <img src="${ejercicio.imagen}" alt="${ejercicio.titulo}">
-            <div class="exercise-age">${edad} años</div>
-          </div>
-          <div class="exercise-content">
-            <h3 class="exercise-title">
-              <i class="fas fa-star"></i>
-              ${ejercicio.titulo}
-            </h3>
-            <p class="exercise-description">${ejercicio.descripcion}</p>
-            <div class="exercise-benefits">
-              <h4><i class="fas fa-heart"></i> Beneficios:</h4>
-              <ul>
-                ${ejercicio.beneficios.map(beneficio => `<li>${beneficio}</li>`).join('')}
-              </ul>
-            </div>
-            <div class="exercise-materials">
-              <h4><i class="fas fa-tools"></i> Materiales necesarios:</h4>
-              <p>${ejercicio.materiales}</p>
-            </div>
-            <div class="exercise-instructions">
-              <h4><i class="fas fa-list-ol"></i> Instrucciones:</h4>
-              <ol>
-                ${ejercicio.instrucciones.map(instruccion => `<li>${instruccion}</li>`).join('')}
-              </ol>
-            </div>
-          </div>
+        exerciseItem.innerHTML = `
+          <h3><i class="${ejercicio.icono}"></i>${ejercicio.titulo}</h3>
+          <p>${ejercicio.descripcion}</p>
+          <p class="materials"><strong>Materiales:</strong> ${ejercicio.materiales}</p>
         `;
         
-        practicalExercises.appendChild(exerciseCard);
+        practicalExercises.appendChild(exerciseItem);
       });
       
       // Actualizar consejo profesional
@@ -3148,40 +1720,27 @@
       // Limpiar contenido anterior
       modalContent.innerHTML = '';
       
-      // Ocultar todos los contenedores de actividades
-      hideAllActivities();
-      
       // Configurar título según la actividad
       switch(activityType) {
-        case 'sequence':
-          modalTitle.textContent = 'Secuencia de movimientos';
-          modalContent.appendChild(document.getElementById('sequenceContainer'));
-          document.getElementById('sequenceContainer').style.display = 'block';
-          generateSequence();
-          break;
         case 'circuit':
-          modalTitle.textContent = 'Creador de circuitos de motricidad';
-          modalContent.appendChild(document.getElementById('circuitContainer'));
-          document.getElementById('circuitContainer').style.display = 'block';
-          initCircuitBuilder();
+          modalTitle.textContent = 'Constructor de circuitos';
+          modalContent.appendChild(createCircuitGame());
           break;
-        case 'rhythm':
-          modalTitle.textContent = 'Coordinación rítmica';
-          modalContent.appendChild(document.getElementById('rhythmContainer'));
-          document.getElementById('rhythmContainer').style.display = 'block';
-          initRhythmGame();
+        case 'obstacles':
+          modalTitle.textContent = 'Parque de obstáculos';
+          modalContent.appendChild(createObstaclesGame());
+          break;
+        case 'throwing':
+          modalTitle.textContent = 'Lanzamiento preciso';
+          modalContent.appendChild(createThrowingGame());
+          break;
+        case 'balance':
+          modalTitle.textContent = 'Desafío del equilibrio';
+          modalContent.appendChild(createBalanceGame());
           break;
         case 'sports':
-          modalTitle.textContent = 'Deportes adaptados';
-          modalContent.appendChild(document.getElementById('sportsContainer'));
-          document.getElementById('sportsContainer').style.display = 'block';
-          initSportsGame();
-          break;
-        case 'traditional':
-          modalTitle.textContent = 'Juegos tradicionales';
-          modalContent.appendChild(document.getElementById('traditionalContainer'));
-          document.getElementById('traditionalContainer').style.display = 'block';
-          initTraditionalGame();
+          modalTitle.textContent = 'Mini deportes';
+          modalContent.appendChild(createSportsGame());
           break;
       }
       
@@ -3189,1315 +1748,332 @@
       modal.style.display = 'flex';
     }
     
-    // Funciones para actividades interactivas
-    function generateSequence() {
-      // Definir movimientos según la edad
-      let movements;
-      if (edadSeleccionada === 3) {
-        movements = [
-          { icon: 'fas fa-child', name: 'saltar', color: '#FF6B6B' },
-          { icon: 'fas fa-running', name: 'correr', color: '#4ECDC4' },
-          { icon: 'fas fa-hand-paper', name: 'girar', color: '#FFE66D' }
-        ];
-      } else if (edadSeleccionada === 4) {
-        movements = [
-          { icon: 'fas fa-child', name: 'saltar', color: '#FF6B6B' },
-          { icon: 'fas fa-running', name: 'correr', color: '#4ECDC4' },
-          { icon: 'fas fa-hand-paper', name: 'girar', color: '#FFE66D' },
-          { icon: 'fas fa-arrows-alt-h', name: 'lateral', color: '#9C88FF' }
-        ];
-      } else {
-        movements = [
-          { icon: 'fas fa-child', name: 'saltar', color: '#FF6B6B' },
-          { icon: 'fas fa-running', name: 'correr', color: '#4ECDC4' },
-          { icon: 'fas fa-hand-paper', name: 'girar', color: '#FFE66D' },
-          { icon: 'fas fa-arrows-alt-h', name: 'lateral', color: '#9C88FF' },
-          { icon: 'fas fa-sort-amount-up', name: 'agacharse', color: '#FF7EB9' }
-        ];
-      }
+    // Funciones para crear los juegos interactivos
+    function createCircuitGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
       
-      // Generar secuencia aleatoria
-      const sequenceLength = edadSeleccionada === 3 ? 3 : edadSeleccionada === 4 ? 4 : 5;
-      sequenceMovements = [];
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; top: 20px; left: 20px; width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-child"></i>
+        </div>
+        <div style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: var(--gradient-3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-running"></i>
+        </div>
+        <div style="position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px; background: var(--gradient-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-arrows-alt-h"></i>
+        </div>
+        <div style="position: absolute; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--gradient-4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-sort-amount-up"></i>
+        </div>
+      `;
       
-      for (let i = 0; i < sequenceLength; i++) {
-        const randomIndex = Math.floor(Math.random() * movements.length);
-        sequenceMovements.push(movements[randomIndex]);
-      }
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="completeCircuit()">Completar circuito</button>
+        <button class="game-btn" onclick="resetCircuit()">Reiniciar</button>
+      `;
       
-      // Mostrar secuencia
-      const sequenceDisplay = document.getElementById('sequence-display');
-      sequenceDisplay.innerHTML = '';
+      const feedback = document.createElement('div');
+      feedback.id = 'circuitFeedback';
+      feedback.className = 'game-feedback';
       
-      sequenceMovements.forEach((movement, index) => {
-        const item = document.createElement('div');
-        item.className = 'sequence-item';
-        item.style.background = movement.color;
-        item.innerHTML = `<i class="${movement.icon}"></i>`;
-        sequenceDisplay.appendChild(item);
-      });
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
       
-      // Limpiar secuencia del usuario
-      userSequence = [];
-      document.getElementById('sequence-msj').textContent = '';
+      return gameContainer;
     }
     
-    function checkSequence() {
-      // Verificar si la secuencia del usuario coincide
-      const isCorrect = userSequence.length === sequenceMovements.length && 
-                       userSequence.every((movement, index) => movement === sequenceMovements[index].name);
+    function createObstaclesGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
       
-      const msjElement = document.getElementById('sequence-msj');
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50px; width: 50px; height: 50px; background: var(--gradient); border-radius: 50%; transition: all 0.3s ease;" id="obstacleCharacter"></div>
+        <div style="position: absolute; bottom: 0; left: 150px; width: 40px; height: 80px; background: var(--warning); border-radius: 10px;"></div>
+        <div style="position: absolute; bottom: 0; left: 250px; width: 40px; height: 80px; background: var(--warning); border-radius: 10px;"></div>
+        <div style="position: absolute; bottom: 0; left: 350px; width: 40px; height: 80px; background: var(--warning); border-radius: 10px;"></div>
+      `;
       
-      if (isCorrect) {
-        msjElement.textContent = '¡Excelente! Has repetido la secuencia correctamente.';
-        msjElement.style.color = 'var(--success)';
-      } else {
-        msjElement.textContent = 'Inténtalo de nuevo. Observa bien la secuencia.';
-        msjElement.style.color = 'var(--primary)';
-      }
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="moveCharacter('left')">Izquierda</button>
+        <button class="game-btn" onclick="moveCharacter('jump')">Saltar</button>
+        <button class="game-btn" onclick="moveCharacter('right')">Derecha</button>
+      `;
+      
+      const feedback = document.createElement('div');
+      feedback.id = 'obstaclesFeedback';
+      feedback.className = 'game-feedback';
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      
+      return gameContainer;
     }
     
-    // Funciones para el creador de circuitos
-    function initCircuitBuilder() {
-      // Generar cuadrícula para el circuito
-      const circuitGrid = document.getElementById('circuitGrid');
-      circuitGrid.innerHTML = '';
+    function createThrowingGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
       
-      const gridCols = window.innerWidth <= 768 ? (window.innerWidth <= 576 ? 4 : 6) : 8;
-      const gridRows = window.innerWidth <= 768 ? (window.innerWidth <= 576 ? 3 : 4) : 5;
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50px; width: 40px; height: 40px; background: var(--gradient); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;" id="throwBall"></div>
+        <div style="position: absolute; top: 50%; right: 50px; transform: translateY(-50%); width: 80px; height: 80px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+          <i class="fas fa-bullseye"></i>
+        </div>
+      `;
       
-      for (let i = 0; i < gridCols * gridRows; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'circuit-cell';
-        cell.dataset.index = i;
-        cell.addEventListener('click', () => addCircuitStation(i));
-        circuitGrid.appendChild(cell);
-      }
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="throwBall()">Lanzar</button>
+        <button class="game-btn" onclick="resetThrow()">Reiniciar</button>
+      `;
       
-      // Configurar selector de estaciones
-      const stationTypes = document.querySelectorAll('.station-type');
-      stationTypes.forEach(station => {
-        station.addEventListener('click', function() {
-          stationTypes.forEach(s => s.classList.remove('selected'));
-          this.classList.add('selected');
-          selectedStationType = this.dataset.type;
-        });
-      });
+      const feedback = document.createElement('div');
+      feedback.id = 'throwingFeedback';
+      feedback.className = 'game-feedback';
       
-      // Limpiar estaciones existentes
-      circuitStations = [];
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
       
-      // Limpiar mensaje
-      const msjElement = document.getElementById('circuit-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
+      return gameContainer;
     }
     
-    function addCircuitStation(index) {
-      const cell = document.querySelector(`.circuit-cell[data-index="${index}"]`);
+    function createBalanceGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
       
-      // Verificar si ya hay una estación en esta celda
-      const existingStation = circuitStations.find(s => s.cellIndex === index);
-      if (existingStation) {
-        // Eliminar estación existente
-        const stationElement = document.querySelector(`.circuit-station[data-index="${index}"]`);
-        if (stationElement) {
-          stationElement.remove();
-        }
-        circuitStations = circuitStations.filter(s => s.cellIndex !== index);
-        cell.classList.remove('active');
-        return;
-      }
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 40px; height: 60px; background: var(--gradient); border-radius: 20px 20px 0 0; transition: all 0.5s ease;" id="balanceCharacter"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 4px; background: var(--dark);"></div>
+      `;
       
-      // Crear nueva estación
-      const station = document.createElement('div');
-      station.className = `circuit-station ${selectedStationType}`;
-      station.dataset.index = index;
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="balanceLeft()">Izquierda</button>
+        <button class="game-btn" onclick="balanceJump()">Saltar</button>
+        <button class="game-btn" onclick="balanceRight()">Derecha</button>
+      `;
       
-      // Configurar icono según el tipo
-      let icon = '';
-      switch(selectedStationType) {
-        case 'jump':
-          icon = 'fas fa-arrow-up';
-          break;
-        case 'balance':
-          icon = 'fas fa-balance-scale';
-          break;
-        case 'crawl':
-          icon = 'fas fa-arrows-alt-h';
-          break;
-        case 'throw':
-          icon = 'fas fa-baseball-ball';
-          break;
-        case 'run':
-          icon = 'fas fa-running';
-          break;
-      }
+      const feedback = document.createElement('div');
+      feedback.id = 'balanceFeedback';
+      feedback.className = 'game-feedback';
       
-      station.innerHTML = `<i class="${icon}"></i>`;
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
       
-      // Posicionar la estación en la celda
-      const circuitArea = document.querySelector('.circuit-area');
-      const cellRect = cell.getBoundingClientRect();
-      const areaRect = circuitArea.getBoundingClientRect();
-      
-      station.style.left = `${cellRect.left - areaRect.left + cellRect.width / 2 - 30}px`;
-      station.style.top = `${cellRect.top - areaRect.top + cellRect.height / 2 - 30}px`;
-      
-      // Agregar estación al área
-      circuitArea.appendChild(station);
-      
-      // Guardar información de la estación
-      circuitStations.push({
-        cellIndex: index,
-        type: selectedStationType,
-        element: station
-      });
-      
-      // Marcar celda como activa
-      cell.classList.add('active');
+      return gameContainer;
     }
     
-    function clearCircuit() {
-      // Eliminar todas las estaciones
-      circuitStations.forEach(station => {
-        station.element.remove();
-      });
+    function createSportsGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
       
-      // Limpiar array de estaciones
-      circuitStations = [];
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(76, 175, 80, 0.2)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50px; width: 50px; height: 80px; background: var(--gradient); border-radius: 25px 25px 0 0; transition: all 0.3s ease;" id="sportsCharacter"></div>
+        <div style="position: absolute; bottom: 30px; left: 110px; width: 30px; height: 30px; background: white; border: 2px solid #333; border-radius: 50%; transition: all 0.3s ease;" id="sportsBall"></div>
+        <div style="position: absolute; top: 50%; right: 50px; transform: translateY(-50%); width: 100px; height: 80px; background: white; border: 3px solid #333; border-radius: 5px;"></div>
+      `;
       
-      // Desmarcar todas las celdas
-      document.querySelectorAll('.circuit-cell').forEach(cell => {
-        cell.classList.remove('active');
-      });
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="moveSports('left')">Izquierda</button>
+        <button class="game-btn" onclick="moveSports('kick')">Patear</button>
+        <button class="game-btn" onclick="moveSports('right')">Derecha</button>
+      `;
       
-      // Limpiar mensaje
-      const msjElement = document.getElementById('circuit-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
+      const feedback = document.createElement('div');
+      feedback.id = 'sportsFeedback';
+      feedback.className = 'game-feedback';
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      
+      return gameContainer;
     }
     
+    // Funciones para los juegos
     function completeCircuit() {
-      const msjElement = document.getElementById('circuit-msj');
-      
-      if (circuitStations.length === 0) {
-        msjElement.textContent = 'Agrega al menos una estación al circuito.';
-        msjElement.className = 'interactive-activity-feedback feedback-error';
-        msjElement.style.display = 'block';
-        return;
-      }
-      
-      // Verificar si hay una variedad de estaciones
-      const stationTypes = [...new Set(circuitStations.map(s => s.type))];
-      
-      if (stationTypes.length < 2) {
-        msjElement.textContent = 'Agrega diferentes tipos de estaciones para crear un circuito completo.';
-        msjElement.className = 'interactive-activity-feedback feedback-info';
-        msjElement.style.display = 'block';
-        return;
-      }
-      
-      // Mostrar mensaje de éxito
-      msjElement.textContent = `¡Excelente! Has creado un circuito con ${circuitStations.length} estaciones. Ahora puedes practicarlo en casa.`;
-      msjElement.className = 'interactive-activity-feedback feedback-success';
-      msjElement.style.display = 'block';
-      
-      // Sugerir cómo practicar el circuito
-      setTimeout(() => {
-        msjElement.innerHTML = `
-          <strong>¡Circuito completado!</strong><br>
-          Para practicarlo en casa, necesitarás:<br>
-          - Espacio seguro y despejado<br>
-          - Objetos para simular las estaciones (cojines, cajas, pelotas, etc.)<br>
-          - Supervisión de un adulto<br><br>
-          <em>Recuerda realizar cada ejercicio durante 1-2 minutos antes de pasar a la siguiente estación.</em>
-        `;
-      }, 3000);
+      const feedback = document.getElementById('circuitFeedback');
+      feedback.textContent = '¡Excelente! Has completado el circuito de motricidad.';
+      feedback.className = 'game-feedback feedback-success';
+      feedback.style.display = 'block';
     }
     
-    // Funciones para el juego de coordinación rítmica
-    function initRhythmGame() {
-      // Configurar control de velocidad
-      const rhythmSpeedSlider = document.getElementById('rhythmSpeed');
-      rhythmSpeedSlider.addEventListener('input', function() {
-        rhythmSpeed = parseInt(this.value);
-      });
-      
-      // Limpiar intervalo existente
-      if (rhythmInterval) {
-        clearInterval(rhythmInterval);
-        rhythmInterval = null;
-      }
-      
-      // Resetear indicadores
-      document.querySelectorAll('.rhythm-indicator').forEach(indicator => {
-        indicator.classList.remove('active');
-      });
-      
-      // Limpiar mensaje
-      const msjElement = document.getElementById('rhythm-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
-      
-      // Resetear personaje
-      const character = document.getElementById('rhythmCharacter');
-      character.style.bottom = '20px';
-      character.style.left = '50%';
-      character.style.transform = 'translateX(-50%)';
+    function resetCircuit() {
+      const feedback = document.getElementById('circuitFeedback');
+      feedback.style.display = 'none';
     }
     
-    function startRhythmGame() {
-      // Detener juego existente
-      if (rhythmInterval) {
-        clearInterval(rhythmInterval);
-      }
+    function moveCharacter(direction) {
+      const character = document.getElementById('obstacleCharacter');
+      const gameArea = character.parentElement;
+      const areaWidth = gameArea.offsetWidth;
       
-      // Resetear indicadores
-      document.querySelectorAll('.rhythm-indicator').forEach(indicator => {
-        indicator.classList.remove('active');
-      });
+      let currentLeft = parseInt(character.style.left) || 50;
       
-      // Limpiar mensaje
-      const msjElement = document.getElementById('rhythm-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
-      
-      // Obtener objetivos
-      const targets = document.querySelectorAll('.rhythm-target');
-      
-      // Iniciar juego
-      currentRhythmTarget = 0;
-      
-      // Mostrar mensaje de inicio
-      msjElement.textContent = '¡Prepárate! Sigue el ritmo y realiza los movimientos cuando se iluminen.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-      
-      // Ocultar mensaje después de 3 segundos
-      setTimeout(() => {
-        msjElement.style.display = 'none';
-      }, 3000);
-      
-      // Iniciar intervalo según la velocidad
-      const intervalTime = 2000 - (rhythmSpeed - 1) * 300;
-      
-      rhythmInterval = setInterval(() => {
-        // Ocultar indicador anterior
-        if (currentRhythmTarget > 0) {
-          targets[currentRhythmTarget - 1].querySelector('.rhythm-indicator').classList.remove('active');
-        }
-        
-        // Mostrar indicador actual
-        targets[currentRhythmTarget].querySelector('.rhythm-indicator').classList.add('active');
-        
-        // Realizar movimiento del personaje
-        performRhythmMovement(targets[currentRhythmTarget].dataset.movement);
-        
-        // Avanzar al siguiente objetivo
-        currentRhythmTarget = (currentRhythmTarget + 1) % targets.length;
-      }, intervalTime);
-    }
-    
-    function performRhythmMovement(movement) {
-      const character = document.getElementById('rhythmCharacter');
-      
-      switch(movement) {
-        case 'jump':
-          // Saltar
-          character.style.bottom = '120px';
-          setTimeout(() => {
-            character.style.bottom = '20px';
-          }, 500);
-          break;
-          
-        case 'balance':
-          // Equilibrarse (levantar un brazo)
-          character.style.transform = 'translateX(-50%) rotate(-15deg)';
-          setTimeout(() => {
-            character.style.transform = 'translateX(-50%) rotate(15deg)';
-            setTimeout(() => {
-              character.style.transform = 'translateX(-50%) rotate(0deg)';
-            }, 500);
-          }, 500);
-          break;
-          
-        case 'throw':
-          // Lanzar (simular movimiento de lanzamiento)
-          character.style.transform = 'translateX(-50%) rotate(-30deg)';
-          setTimeout(() => {
-            character.style.transform = 'translateX(-50%) rotate(30deg)';
-            setTimeout(() => {
-              character.style.transform = 'translateX(-50%) rotate(0deg)';
-            }, 500);
-          }, 500);
-          break;
-          
-        case 'run':
-          // Correr (moverse de lado a lado)
-          const currentPosition = parseInt(character.style.left) || 50;
-          const newPosition = currentPosition === 50 ? 70 : 50;
-          character.style.left = `${newPosition}%`;
-          break;
-      }
-    }
-    
-    function stopRhythmGame() {
-      // Detener intervalo
-      if (rhythmInterval) {
-        clearInterval(rhythmInterval);
-        rhythmInterval = null;
-      }
-      
-      // Ocultar indicadores
-      document.querySelectorAll('.rhythm-indicator').forEach(indicator => {
-        indicator.classList.remove('active');
-      });
-      
-      // Mostrar mensaje
-      const msjElement = document.getElementById('rhythm-msj');
-      msjElement.textContent = 'Juego detenido. ¡Buen trabajo practicando la coordinación rítmica!';
-      msjElement.className = 'interactive-activity-feedback feedback-success';
-      msjElement.style.display = 'block';
-      
-      // Resetear personaje
-      const character = document.getElementById('rhythmCharacter');
-      character.style.bottom = '20px';
-      character.style.left = '50%';
-      character.style.transform = 'translateX(-50%)';
-    }
-    
-    // Funciones para el juego de deportes adaptados
-    function initSportsGame() {
-      // Configurar selector de deportes
-      const sportTypes = document.querySelectorAll('.sport-type');
-      sportTypes.forEach(sport => {
-        sport.addEventListener('click', function() {
-          sportTypes.forEach(s => s.classList.remove('selected'));
-          this.classList.add('selected');
-          selectedSport = this.dataset.sport;
-          changeSport(selectedSport);
-        });
-      });
-      
-      // Inicializar posiciones
-      sportsCharacterPosition = 50;
-      sportsBallPosition = { x: 50, y: 20 };
-      
-      // Actualizar elementos
-      updateSportsElements();
-      
-      // Limpiar mensaje
-      const msjElement = document.getElementById('sports-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
-    }
-    
-    function changeSport(sport) {
-      // Actualizar campo de juego
-      const sportsField = document.getElementById('sportsField');
-      sportsField.className = `sports-field ${sport}`;
-      
-      // Actualizar pelota
-      const sportsBall = document.getElementById('sportsBall');
-      sportsBall.className = `sports-ball ${sport}`;
-      
-      // Actualizar objetivo
-      const sportsTarget = document.getElementById('sportsTarget');
-      sportsTarget.className = `sports-target ${sport}`;
-      
-      // Resetear posiciones
-      sportsCharacterPosition = 50;
-      sportsBallPosition = { x: 50, y: 20 };
-      
-      // Actualizar elementos
-      updateSportsElements();
-      
-      // Limpiar mensaje
-      const msjElement = document.getElementById('sports-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
-    }
-    
-    function updateSportsElements() {
-      // Actualizar personaje
-      const character = document.getElementById('sportsCharacter');
-      character.style.left = `${sportsCharacterPosition}px`;
-      
-      // Actualizar pelota
-      const ball = document.getElementById('sportsBall');
-      ball.style.left = `${sportsBallPosition.x}px`;
-      ball.style.bottom = `${sportsBallPosition.y}px`;
-    }
-    
-    function moveSportsCharacter(direction) {
-      const character = document.getElementById('sportsCharacter');
-      const sportsArea = document.querySelector('.sports-area');
-      const areaWidth = sportsArea.offsetWidth;
-      
-      if (direction === 'left' && sportsCharacterPosition > 20) {
-        sportsCharacterPosition -= 20;
-      } else if (direction === 'right' && sportsCharacterPosition < areaWidth - 70) {
-        sportsCharacterPosition += 20;
+      if (direction === 'left' && currentLeft > 20) {
+        character.style.left = (currentLeft - 30) + 'px';
+      } else if (direction === 'right' && currentLeft < areaWidth - 70) {
+        character.style.left = (currentLeft + 30) + 'px';
       } else if (direction === 'jump') {
-        // Saltar
         character.style.bottom = '120px';
         setTimeout(() => {
           character.style.bottom = '20px';
         }, 500);
       }
       
-      // Actualizar posición del personaje
-      character.style.left = `${sportsCharacterPosition}px`;
-      
-      // Actualizar posición de la pelota para que siga al personaje
-      if (selectedSport === 'soccer' || selectedSport === 'basketball') {
-        sportsBallPosition.x = sportsCharacterPosition + 10;
-        const ball = document.getElementById('sportsBall');
-        ball.style.left = `${sportsBallPosition.x}px`;
+      // Verificar si llegó al final
+      if (currentLeft >= areaWidth - 100) {
+        const feedback = document.getElementById('obstaclesFeedback');
+        feedback.textContent = '¡Felicidades! Has superado todos los obstáculos.';
+        feedback.className = 'game-feedback feedback-success';
+        feedback.style.display = 'block';
       }
     }
     
-    function kickBall() {
+    function throwBall() {
+      const ball = document.getElementById('throwBall');
+      const gameArea = ball.parentElement;
+      const areaWidth = gameArea.offsetWidth;
+      
+      ball.style.transition = 'all 1s ease-out';
+      ball.style.left = (areaWidth - 100) + 'px';
+      ball.style.bottom = '150px';
+      
+      setTimeout(() => {
+        const feedback = document.getElementById('throwingFeedback');
+        feedback.textContent = '¡Buen lanzamiento! Sigue practicando para mejorar tu precisión.';
+        feedback.className = 'game-feedback feedback-success';
+        feedback.style.display = 'block';
+        
+        setTimeout(() => {
+          resetThrow();
+        }, 2000);
+      }, 1000);
+    }
+    
+    function resetThrow() {
+      const ball = document.getElementById('throwBall');
+      ball.style.transition = 'all 0.3s ease';
+      ball.style.left = '50px';
+      ball.style.bottom = '20px';
+      
+      const feedback = document.getElementById('throwingFeedback');
+      feedback.style.display = 'none';
+    }
+    
+    function balanceLeft() {
+      const character = document.getElementById('balanceCharacter');
+      let currentLeft = parseInt(character.style.left) || 50;
+      
+      if (currentLeft > 20) {
+        character.style.left = (currentLeft - 20) + 'px';
+        character.style.transform = 'translateX(-50%) rotate(-10deg)';
+        
+        setTimeout(() => {
+          character.style.transform = 'translateX(-50%) rotate(0deg)';
+        }, 300);
+      }
+    }
+    
+    function balanceRight() {
+      const character = document.getElementById('balanceCharacter');
+      const gameArea = character.parentElement;
+      const areaWidth = gameArea.offsetWidth;
+      let currentLeft = parseInt(character.style.left) || 50;
+      
+      if (currentLeft < areaWidth - 60) {
+        character.style.left = (currentLeft + 20) + 'px';
+        character.style.transform = 'translateX(-50%) rotate(10deg)';
+        
+        setTimeout(() => {
+          character.style.transform = 'translateX(-50%) rotate(0deg)';
+        }, 300);
+      }
+    }
+    
+    function balanceJump() {
+      const character = document.getElementById('balanceCharacter');
+      character.style.bottom = '100px';
+      
+      setTimeout(() => {
+        character.style.bottom = '20px';
+      }, 500);
+      
+      const feedback = document.getElementById('balanceFeedback');
+      feedback.textContent = '¡Buen equilibrio! Sigue practicando.';
+      feedback.className = 'game-feedback feedback-success';
+      feedback.style.display = 'block';
+      
+      setTimeout(() => {
+        feedback.style.display = 'none';
+      }, 2000);
+    }
+    
+    function moveSports(direction) {
+      const character = document.getElementById('sportsCharacter');
       const ball = document.getElementById('sportsBall');
-      const target = document.getElementById('sportsTarget');
-      const ballRect = ball.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
+      const gameArea = character.parentElement;
+      const areaWidth = gameArea.offsetWidth;
       
-      // Calcular distancia entre la pelota y el objetivo
-      const distance = Math.sqrt(
-        Math.pow(ballRect.left - targetRect.left, 2) + 
-        Math.pow(ballRect.top - targetRect.top, 2)
-      );
+      let currentLeft = parseInt(character.style.left) || 50;
       
-      // Animar la pelota según el deporte
-      if (selectedSport === 'soccer') {
-        // Patear la pelota hacia el objetivo
+      if (direction === 'left' && currentLeft > 20) {
+        character.style.left = (currentLeft - 30) + 'px';
+        ball.style.left = (currentLeft - 30 + 60) + 'px';
+      } else if (direction === 'right' && currentLeft < areaWidth - 70) {
+        character.style.left = (currentLeft + 30) + 'px';
+        ball.style.left = (currentLeft + 30 + 60) + 'px';
+      } else if (direction === 'kick') {
         ball.style.transition = 'all 1s ease-out';
-        ball.style.left = `${targetRect.left - ballRect.left + ballRect.width / 2}px`;
-        ball.style.bottom = '50px';
-        
-        // Verificar si es gol
-        setTimeout(() => {
-          if (distance < 150) {
-            showSportsFeedback('¡Gol! Excelente tiro.', 'success');
-          } else {
-            showSportsFeedback('Casi! Inténtalo de nuevo.', 'info');
-          }
-          
-          // Resetear pelota
-          setTimeout(() => {
-            ball.style.transition = 'all 0.3s ease';
-            sportsBallPosition = { x: sportsCharacterPosition + 10, y: 20 };
-            updateSportsElements();
-          }, 1500);
-        }, 1000);
-      } else if (selectedSport === 'basketball') {
-        // Lanzar la pelota hacia el objetivo
-        ball.style.transition = 'all 1s ease-out';
-        ball.style.left = `${targetRect.left - ballRect.left + ballRect.width / 2}px`;
-        ball.style.bottom = '150px';
-        
-        // Verificar si es canasta
-        setTimeout(() => {
-          if (distance < 100) {
-            showSportsFeedback('¡Canasta! Excelente lanzamiento.', 'success');
-          } else {
-            showSportsFeedback('Casi! Inténtalo de nuevo.', 'info');
-          }
-          
-          // Resetear pelota
-          setTimeout(() => {
-            ball.style.transition = 'all 0.3s ease';
-            sportsBallPosition = { x: sportsCharacterPosition + 10, y: 20 };
-            updateSportsElements();
-          }, 1500);
-        }, 1000);
-      } else if (selectedSport === 'athletics') {
-        // Simular lanzamiento de jabalina
-        ball.style.transition = 'all 1s ease-out';
-        ball.style.left = `${targetRect.left - ballRect.left + ballRect.width / 2}px`;
+        ball.style.left = (areaWidth - 100) + 'px';
         ball.style.bottom = '100px';
         
-        // Verificar si es buen lanzamiento
         setTimeout(() => {
-          if (distance < 120) {
-            showSportsFeedback('¡Excelente lanzamiento!', 'success');
-          } else {
-            showSportsFeedback('Buen intento. Sigue practicando.', 'info');
-          }
+          const feedback = document.getElementById('sportsFeedback');
+          feedback.textContent = '¡Gol! Excelente jugada.';
+          feedback.className = 'game-feedback feedback-success';
+          feedback.style.display = 'block';
           
-          // Resetear pelota
           setTimeout(() => {
             ball.style.transition = 'all 0.3s ease';
-            sportsBallPosition = { x: sportsCharacterPosition + 10, y: 20 };
-            updateSportsElements();
-          }, 1500);
+            ball.style.left = (currentLeft + 60) + 'px';
+            ball.style.bottom = '30px';
+            feedback.style.display = 'none';
+          }, 2000);
         }, 1000);
       }
-    }
-    
-    function showSportsFeedback(message, type) {
-      const msjElement = document.getElementById('sports-msj');
-      msjElement.textContent = message;
-      msjElement.className = `interactive-activity-feedback feedback-${type}`;
-      msjElement.style.display = 'block';
-      
-      // Ocultar mensaje después de 3 segundos
-      setTimeout(() => {
-        msjElement.style.display = 'none';
-      }, 3000);
-    }
-    
-    // Funciones para juegos tradicionales
-    function initTraditionalGame() {
-      // Limpiar área de juego
-      const gameArea = document.getElementById('traditionalGameArea');
-      gameArea.innerHTML = '';
-      
-      // Limpiar mensaje
-      const msjElement = document.getElementById('traditional-msj');
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
-      
-      // Mostrar mensaje para seleccionar un juego
-      msjElement.textContent = 'Selecciona un juego tradicional para comenzar.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-    }
-    
-    function selectTraditionalGame(game) {
-      selectedTraditionalGame = game;
-      const gameArea = document.getElementById('traditionalGameArea');
-      const msjElement = document.getElementById('traditional-msj');
-      
-      // Limpiar área de juego
-      gameArea.innerHTML = '';
-      
-      // Limpiar mensaje
-      msjElement.textContent = '';
-      msjElement.style.display = 'none';
-      
-      // Configurar juego seleccionado
-      switch(game) {
-        case 'hopscotch':
-          setupHopscotchGame();
-          break;
-        case 'elastic':
-          setupElasticGame();
-          break;
-        case 'chairs':
-          setupChairsGame();
-          break;
-      }
-    }
-    
-    function setupHopscotchGame() {
-      const gameArea = document.getElementById('traditionalGameArea');
-      
-      // Crear contenedor para el juego
-      const gameContainer = document.createElement('div');
-      gameContainer.className = 'interactive-activity';
-      gameContainer.style.padding = '20px';
-      
-      // Crear título
-      const title = document.createElement('h3');
-      title.textContent = 'Rayuela Digital';
-      title.style.color = 'var(--secondary)';
-      title.style.marginBottom = '20px';
-      gameContainer.appendChild(title);
-      
-      // Crear área de juego
-      const hopscotchArea = document.createElement('div');
-      hopscotchArea.style.position = 'relative';
-      hopscotchArea.style.width = '100%';
-      hopscotchArea.style.height = '300px';
-      hopscotchArea.style.background = 'rgba(78, 205, 196, 0.1)';
-      hopscotchArea.style.borderRadius = '15px';
-      hopscotchArea.style.marginBottom = '20px';
-      hopscotchArea.style.overflow = 'hidden';
-      
-      // Crear casillas de la rayuela
-      const hopscotchBoxes = [
-        { number: 1, x: 20, y: 250 },
-        { number: 2, x: 120, y: 250 },
-        { number: 3, x: 220, y: 250 },
-        { number: 4, x: 120, y: 150 },
-        { number: 5, x: 220, y: 150 },
-        { number: 6, x: 20, y: 50 },
-        { number: 7, x: 120, y: 50 },
-        { number: 8, x: 220, y: 50 },
-        { number: 9, x: 320, y: 50 },
-        { number: 10, x: 320, y: 150 }
-      ];
-      
-      hopscotchBoxes.forEach(box => {
-        const boxElement = document.createElement('div');
-        boxElement.style.position = 'absolute';
-        boxElement.style.left = `${box.x}px`;
-        boxElement.style.top = `${box.y}px`;
-        boxElement.style.width = '80px';
-        boxElement.style.height = '80px';
-        boxElement.style.background = 'white';
-        boxElement.style.border = '2px solid var(--secondary)';
-        boxElement.style.borderRadius = '10px';
-        boxElement.style.display = 'flex';
-        boxElement.style.alignItems = 'center';
-        boxElement.style.justifyContent = 'center';
-        boxElement.style.fontSize = '1.5rem';
-        boxElement.style.fontWeight = 'bold';
-        boxElement.style.color = 'var(--secondary)';
-        boxElement.style.cursor = 'pointer';
-        boxElement.style.transition = 'all 0.3s ease';
-        boxElement.textContent = box.number;
-        
-        boxElement.addEventListener('click', () => {
-          hopscotchBoxClick(box.number);
-        });
-        
-        boxElement.addEventListener('mouseenter', () => {
-          boxElement.style.background = 'var(--secondary)';
-          boxElement.style.color = 'white';
-        });
-        
-        boxElement.addEventListener('mouseleave', () => {
-          if (!boxElement.classList.contains('active')) {
-            boxElement.style.background = 'white';
-            boxElement.style.color = 'var(--secondary)';
-          }
-        });
-        
-        hopscotchArea.appendChild(boxElement);
-      });
-      
-      // Crear personaje
-      const character = document.createElement('div');
-      character.id = 'hopscotch-character';
-      character.style.position = 'absolute';
-      character.style.width = '40px';
-      character.style.height = '60px';
-      character.style.background = 'var(--gradient)';
-      character.style.borderRadius = '20px 20px 0 0';
-      character.style.bottom = '20px';
-      character.style.left = '20px';
-      character.style.transition = 'all 0.5s ease';
-      hopscotchArea.appendChild(character);
-      
-      gameContainer.appendChild(hopscotchArea);
-      
-      // Crear controles
-      const controls = document.createElement('div');
-      controls.className = 'interactive-activity-controls';
-      controls.style.justifyContent = 'center';
-      
-      const resetBtn = document.createElement('button');
-      resetBtn.className = 'interactive-activity-btn';
-      resetBtn.textContent = 'Reiniciar juego';
-      resetBtn.addEventListener('click', resetHopscotchGame);
-      controls.appendChild(resetBtn);
-      
-      gameContainer.appendChild(controls);
-      
-      // Agregar contenedor al área de juego
-      gameArea.appendChild(gameContainer);
-      
-      // Mostrar instrucciones
-      const msjElement = document.getElementById('traditional-msj');
-      msjElement.textContent = 'Haz clic en las casillas en orden numérico para completar la rayuela.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-      
-      // Inicializar juego
-      window.hopscotchCurrentBox = 1;
-      window.hopscotchCompletedBoxes = [];
-    }
-    
-    function hopscotchBoxClick(boxNumber) {
-      const character = document.getElementById('hopscotch-character');
-      const msjElement = document.getElementById('traditional-msj');
-      
-      // Verificar si es la casilla correcta
-      if (boxNumber === window.hopscotchCurrentBox) {
-        // Mover personaje a la casilla
-        const boxes = {
-          1: { x: 40, y: 250 },
-          2: { x: 140, y: 250 },
-          3: { x: 240, y: 250 },
-          4: { x: 140, y: 150 },
-          5: { x: 240, y: 150 },
-          6: { x: 40, y: 50 },
-          7: { x: 140, y: 50 },
-          8: { x: 240, y: 50 },
-          9: { x: 340, y: 50 },
-          10: { x: 340, y: 150 }
-        };
-        
-        const box = boxes[boxNumber];
-        character.style.left = `${box.x}px`;
-        character.style.bottom = `${300 - box.y - 60}px`;
-        
-        // Marcar casilla como completada
-        const boxElement = document.querySelector(`[style*="${box.x}px"][style*="${box.y}px"]`);
-        if (boxElement) {
-          boxElement.classList.add('active');
-          boxElement.style.background = 'var(--success)';
-          boxElement.style.color = 'white';
-        }
-        
-        // Agregar a casillas completadas
-        window.hopscotchCompletedBoxes.push(boxNumber);
-        
-        // Avanzar a la siguiente casilla
-        window.hopscotchCurrentBox++;
-        
-        // Verificar si se completó el juego
-        if (window.hopscotchCurrentBox > 10) {
-          msjElement.textContent = '¡Felicidades! Has completado la rayuela.';
-          msjElement.className = 'interactive-activity-feedback feedback-success';
-          msjElement.style.display = 'block';
-        } else {
-          msjElement.textContent = `¡Bien hecho! Ahora ve a la casilla ${window.hopscotchCurrentBox}.`;
-          msjElement.className = 'interactive-activity-feedback feedback-success';
-          msjElement.style.display = 'block';
-        }
-      } else {
-        // Mostrar mensaje de error
-        msjElement.textContent = `Esa no es la casilla correcta. Debes ir a la casilla ${window.hopscotchCurrentBox}.`;
-        msjElement.className = 'interactive-activity-feedback feedback-error';
-        msjElement.style.display = 'block';
-      }
-    }
-    
-    function resetHopscotchGame() {
-      // Reiniciar variables
-      window.hopscotchCurrentBox = 1;
-      window.hopscotchCompletedBoxes = [];
-      
-      // Reiniciar personaje
-      const character = document.getElementById('hopscotch-character');
-      character.style.left = '20px';
-      character.style.bottom = '20px';
-      
-      // Reiniciar casillas
-      document.querySelectorAll('.interactive-activity div[style*="position: absolute"]').forEach(box => {
-        if (box.textContent && !isNaN(parseInt(box.textContent))) {
-          box.classList.remove('active');
-          box.style.background = 'white';
-          box.style.color = 'var(--secondary)';
-        }
-      });
-      
-      // Mostrar mensaje
-      const msjElement = document.getElementById('traditional-msj');
-      msjElement.textContent = 'Juego reiniciado. Haz clic en las casillas en orden numérico.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-    }
-    
-    function setupElasticGame() {
-      const gameArea = document.getElementById('traditionalGameArea');
-      
-      // Crear contenedor para el juego
-      const gameContainer = document.createElement('div');
-      gameContainer.className = 'interactive-activity';
-      gameContainer.style.padding = '20px';
-      
-      // Crear título
-      const title = document.createElement('h3');
-      title.textContent = 'El Elástico Digital';
-      title.style.color = 'var(--secondary)';
-      title.style.marginBottom = '20px';
-      gameContainer.appendChild(title);
-      
-      // Crear área de juego
-      const elasticArea = document.createElement('div');
-      elasticArea.style.position = 'relative';
-      elasticArea.style.width = '100%';
-      elasticArea.style.height = '300px';
-      elasticArea.style.background = 'rgba(78, 205, 196, 0.1)';
-      elasticArea.style.borderRadius = '15px';
-      elasticArea.style.marginBottom = '20px';
-      elasticArea.style.overflow = 'hidden';
-      
-      // Crear elástico (líneas)
-      const elasticLines = [
-        { y: 50, height: 5 },
-        { y: 100, height: 5 },
-        { y: 150, height: 5 },
-        { y: 200, height: 5 }
-      ];
-      
-      elasticLines.forEach((line, index) => {
-        const lineElement = document.createElement('div');
-        lineElement.style.position = 'absolute';
-        lineElement.style.left = '0';
-        lineElement.style.top = `${line.y}px`;
-        lineElement.style.width = '100%';
-        lineElement.style.height = `${line.height}px`;
-        lineElement.style.background = 'var(--warning)';
-        lineElement.style.borderRadius = '2px';
-        lineElement.dataset.level = index + 1;
-        elasticArea.appendChild(lineElement);
-      });
-      
-      // Crear personaje
-      const character = document.createElement('div');
-      character.id = 'elastic-character';
-      character.style.position = 'absolute';
-      character.style.width = '40px';
-      character.style.height = '60px';
-      character.style.background = 'var(--gradient)';
-      character.style.borderRadius = '20px 20px 0 0';
-      character.style.bottom = '20px';
-      character.style.left = '50%';
-      character.style.transform = 'translateX(-50%)';
-      character.style.transition = 'all 0.5s ease';
-      elasticArea.appendChild(character);
-      
-      gameContainer.appendChild(elasticArea);
-      
-      // Crear controles
-      const controls = document.createElement('div');
-      controls.className = 'interactive-activity-controls';
-      controls.style.justifyContent = 'center';
-      
-      const levels = ['Bajo', 'Medio', 'Alto', 'Muy alto'];
-      levels.forEach((level, index) => {
-        const levelBtn = document.createElement('button');
-        levelBtn.className = 'interactive-activity-btn';
-        levelBtn.textContent = `Nivel ${index + 1}: ${level}`;
-        levelBtn.addEventListener('click', () => {
-          elasticJump(index + 1);
-        });
-        controls.appendChild(levelBtn);
-      });
-      
-      const resetBtn = document.createElement('button');
-      resetBtn.className = 'interactive-activity-btn';
-      resetBtn.textContent = 'Reiniciar juego';
-      resetBtn.addEventListener('click', resetElasticGame);
-      controls.appendChild(resetBtn);
-      
-      gameContainer.appendChild(controls);
-      
-      // Agregar contenedor al área de juego
-      gameArea.appendChild(gameContainer);
-      
-      // Mostrar instrucciones
-      const msjElement = document.getElementById('traditional-msj');
-      msjElement.textContent = 'Selecciona un nivel para saltar el elástico. Comienza por el nivel más bajo.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-      
-      // Inicializar juego
-      window.elasticCurrentLevel = 0;
-    }
-    
-    function elasticJump(level) {
-      const character = document.getElementById('elastic-character');
-      const msjElement = document.getElementById('traditional-msj');
-      
-      // Verificar si es el nivel correcto
-      if (level === window.elasticCurrentLevel + 1) {
-        // Saltar al nivel
-        const jumpHeight = 50 + (level - 1) * 50;
-        character.style.bottom = `${jumpHeight}px`;
-        
-        // Volver a la posición original después del salto
-        setTimeout(() => {
-          character.style.bottom = '20px';
-          
-          // Actualizar nivel actual
-          window.elasticCurrentLevel = level;
-          
-          // Verificar si se completaron todos los niveles
-          if (level >= 4) {
-            msjElement.textContent = '¡Felicidades! Has completado todos los niveles del elástico.';
-            msjElement.className = 'interactive-activity-feedback feedback-success';
-            msjElement.style.display = 'block';
-          } else {
-            msjElement.textContent = `¡Excelente! Ahora intenta el nivel ${level + 1}.`;
-            msjElement.className = 'interactive-activity-feedback feedback-success';
-            msjElement.style.display = 'block';
-          }
-        }, 1000);
-      } else if (level > window.elasticCurrentLevel + 1) {
-        // Saltar un nivel sin completar el anterior
-        msjElement.textContent = `Debes completar el nivel ${window.elasticCurrentLevel + 1} antes de saltar al nivel ${level}.`;
-        msjElement.className = 'interactive-activity-feedback feedback-error';
-        msjElement.style.display = 'block';
-      } else {
-        // Repetir un nivel ya completado
-        msjElement.textContent = `Ya completaste el nivel ${level}. Intenta el nivel ${window.elasticCurrentLevel + 1}.`;
-        msjElement.className = 'interactive-activity-feedback feedback-info';
-        msjElement.style.display = 'block';
-      }
-    }
-    
-    function resetElasticGame() {
-      // Reiniciar variables
-      window.elasticCurrentLevel = 0;
-      
-      // Reiniciar personaje
-      const character = document.getElementById('elastic-character');
-      character.style.bottom = '20px';
-      
-      // Mostrar mensaje
-      const msjElement = document.getElementById('traditional-msj');
-      msjElement.textContent = 'Juego reiniciado. Comienza por el nivel 1.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-    }
-    
-    function setupChairsGame() {
-      const gameArea = document.getElementById('traditionalGameArea');
-      
-      // Crear contenedor para el juego
-      const gameContainer = document.createElement('div');
-      gameContainer.className = 'interactive-activity';
-      gameContainer.style.padding = '20px';
-      
-      // Crear título
-      const title = document.createElement('h3');
-      title.textContent = 'Las Sillas Musicales';
-      title.style.color = 'var(--secondary)';
-      title.style.marginBottom = '20px';
-      gameContainer.appendChild(title);
-      
-      // Crear área de juego
-      const chairsArea = document.createElement('div');
-      chairsArea.style.position = 'relative';
-      chairsArea.style.width = '100%';
-      chairsArea.style.height = '300px';
-      chairsArea.style.background = 'rgba(78, 205, 196, 0.1)';
-      chairsArea.style.borderRadius = '15px';
-      chairsArea.style.marginBottom = '20px';
-      chairsArea.style.overflow = 'hidden';
-      
-      // Crear sillas
-      const chairsCount = 5;
-      const chairs = [];
-      
-      for (let i = 0; i < chairsCount; i++) {
-        const chair = document.createElement('div');
-        chair.style.position = 'absolute';
-        chair.style.width = '60px';
-        chair.style.height = '60px';
-        chair.style.background = 'white';
-        chair.style.border = '2px solid var(--secondary)';
-        chair.style.borderRadius = '5px';
-        chair.style.display = 'flex';
-        chair.style.alignItems = 'center';
-        chair.style.justifyContent = 'center';
-        chair.style.fontSize = '1.5rem';
-        chair.style.color = 'var(--secondary)';
-        chair.style.cursor = 'pointer';
-        chair.style.transition = 'all 0.3s ease';
-        chair.innerHTML = '<i class="fas fa-chair"></i>';
-        
-        // Posicionar silla en círculo
-        const angle = (i / chairsCount) * Math.PI * 2;
-        const radius = 100;
-        const centerX = chairsArea.offsetWidth / 2;
-        const centerY = chairsArea.offsetHeight / 2;
-        const x = centerX + Math.cos(angle) * radius - 30;
-        const y = centerY + Math.sin(angle) * radius - 30;
-        
-        chair.style.left = `${x}px`;
-        chair.style.top = `${y}px`;
-        
-        chair.addEventListener('click', () => {
-          chairsGameClick(i);
-        });
-        
-        chairsArea.appendChild(chair);
-        chairs.push(chair);
-      }
-      
-      // Crear personajes
-      const charactersCount = chairsCount + 1;
-      const characters = [];
-      
-      for (let i = 0; i < charactersCount; i++) {
-        const character = document.createElement('div');
-        character.style.position = 'absolute';
-        character.style.width = '30px';
-        character.style.height = '40px';
-        character.style.background = i === 0 ? 'var(--gradient)' : 'var(--gradient-3)';
-        character.style.borderRadius = '15px 15px 0 0';
-        character.style.transition = 'all 0.5s ease';
-        character.dataset.index = i;
-        
-        // Posicionar personaje en círculo (más grande que las sillas)
-        const angle = (i / charactersCount) * Math.PI * 2;
-        const radius = 130;
-        const centerX = chairsArea.offsetWidth / 2;
-        const centerY = chairsArea.offsetHeight / 2;
-        const x = centerX + Math.cos(angle) * radius - 15;
-        const y = centerY + Math.sin(angle) * radius - 20;
-        
-        character.style.left = `${x}px`;
-        character.style.top = `${y}px`;
-        
-        chairsArea.appendChild(character);
-        characters.push(character);
-      }
-      
-      gameContainer.appendChild(chairsArea);
-      
-      // Crear controles
-      const controls = document.createElement('div');
-      controls.className = 'interactive-activity-controls';
-      controls.style.justifyContent = 'center';
-      
-      const startBtn = document.createElement('button');
-      startBtn.className = 'interactive-activity-btn';
-      startBtn.textContent = 'Iniciar música';
-      startBtn.addEventListener('click', startChairsMusic);
-      controls.appendChild(startBtn);
-      
-      const stopBtn = document.createElement('button');
-      stopBtn.className = 'interactive-activity-btn';
-      stopBtn.textContent = 'Detener música';
-      stopBtn.addEventListener('click', stopChairsMusic);
-      controls.appendChild(stopBtn);
-      
-      const resetBtn = document.createElement('button');
-      resetBtn.className = 'interactive-activity-btn';
-      resetBtn.textContent = 'Reiniciar juego';
-      resetBtn.addEventListener('click', resetChairsGame);
-      controls.appendChild(resetBtn);
-      
-      gameContainer.appendChild(controls);
-      
-      // Agregar contenedor al área de juego
-      gameArea.appendChild(gameContainer);
-      
-      // Mostrar instrucciones
-      const msjElement = document.getElementById('traditional-msj');
-      msjElement.textContent = 'Haz clic en "Iniciar música" y luego en "Detener música" para sentarte en una silla.';
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-      
-      // Inicializar juego
-      window.chairsGameActive = false;
-      window.chairsGameRound = 1;
-      window.chairsAvailable = chairsCount;
-    }
-    
-    function startChairsMusic() {
-      const msjElement = document.getElementById('traditional-msj');
-      
-      if (window.chairsGameActive) {
-        msjElement.textContent = 'La música ya está sonando. Haz clic en "Detener música" para parar.';
-        msjElement.className = 'interactive-activity-feedback feedback-info';
-        msjElement.style.display = 'block';
-        return;
-      }
-      
-      window.chairsGameActive = true;
-      
-      // Mover personajes en círculo
-      const characters = document.querySelectorAll('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="30px"]');
-      const chairsArea = document.querySelector('#traditionalGameArea .interactive-activity div[style*="position: relative"]');
-      
-      let angle = 0;
-      const moveInterval = setInterval(() => {
-        if (!window.chairsGameActive) {
-          clearInterval(moveInterval);
-          return;
-        }
-        
-        angle += 0.05;
-        const radius = 130;
-        const centerX = chairsArea.offsetWidth / 2;
-        const centerY = chairsArea.offsetHeight / 2;
-        
-        characters.forEach((character, index) => {
-          const characterAngle = angle + (index / characters.length) * Math.PI * 2;
-          const x = centerX + Math.cos(characterAngle) * radius - 15;
-          const y = centerY + Math.sin(characterAngle) * radius - 20;
-          
-          character.style.left = `${x}px`;
-          character.style.top = `${y}px`;
-        });
-      }, 50);
-      
-      window.chairsGameInterval = moveInterval;
-      
-      msjElement.textContent = '¡La música está sonando! Los personajes están bailando alrededor de las sillas.';
-      msjElement.className = 'interactive-activity-feedback feedback-success';
-      msjElement.style.display = 'block';
-    }
-    
-    function stopChairsMusic() {
-      const msjElement = document.getElementById('traditional-msj');
-      
-      if (!window.chairsGameActive) {
-        msjElement.textContent = 'La música no está sonando. Haz clic en "Iniciar música" para comenzar.';
-        msjElement.className = 'interactive-activity-feedback feedback-info';
-        msjElement.style.display = 'block';
-        return;
-      }
-      
-      window.chairsGameActive = false;
-      
-      // Detener movimiento
-      if (window.chairsGameInterval) {
-        clearInterval(window.chairsGameInterval);
-      }
-      
-      msjElement.textContent = '¡La música se detuvo! Haz clic en una silla disponible para sentarte.';
-      msjElement.className = 'interactive-activity-feedback feedback-warning';
-      msjElement.style.display = 'block';
-      
-      // Habilitar clic en sillas
-      const chairs = document.querySelectorAll('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="60px"]');
-      chairs.forEach(chair => {
-        chair.style.pointerEvents = 'auto';
-        chair.style.cursor = 'pointer';
-      });
-    }
-    
-    function chairsGameClick(chairIndex) {
-      if (window.chairsGameActive) {
-        return;
-      }
-      
-      const msjElement = document.getElementById('traditional-msj');
-      
-      // Obtener personaje principal (índice 0)
-      const mainCharacter = document.querySelector('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="30px"][data-index="0"]');
-      
-      // Verificar si la silla está disponible
-      const chair = document.querySelectorAll('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="60px"]')[chairIndex];
-      
-      if (chair.style.opacity === '0.5') {
-        msjElement.textContent = 'Esa silla ya está ocupada. Elige otra.';
-        msjElement.className = 'interactive-activity-feedback feedback-error';
-        msjElement.style.display = 'block';
-        return;
-      }
-      
-      // Mover personaje a la silla
-      const chairRect = chair.getBoundingClientRect();
-      const chairsArea = document.querySelector('#traditionalGameArea .interactive-activity div[style*="position: relative"]');
-      const areaRect = chairsArea.getBoundingClientRect();
-      
-      mainCharacter.style.left = `${chairRect.left - areaRect.left + 15}px`;
-      mainCharacter.style.top = `${chairRect.top - areaRect.top + 10}px`;
-      
-      // Marcar silla como ocupada
-      chair.style.opacity = '0.5';
-      chair.style.pointerEvents = 'none';
-      chair.style.cursor = 'default';
-      
-      // Reducir número de sillas disponibles
-      window.chairsAvailable--;
-      
-      // Verificar si se completó la ronda
-      if (window.chairsAvailable === 0) {
-        msjElement.textContent = '¡Ronda completada! Todas las sillas están ocupadas.';
-        msjElement.className = 'interactive-activity-feedback feedback-success';
-        msjElement.style.display = 'block';
-        
-        // Preparar siguiente ronda
-        setTimeout(() => {
-          prepareNextChairsRound();
-        }, 2000);
-      } else {
-        msjElement.textContent = `¡Bien hecho! Te sentaste en una silla. Quedan ${window.chairsAvailable} sillas disponibles.`;
-        msjElement.className = 'interactive-activity-feedback feedback-success';
-        msjElement.style.display = 'block';
-      }
-    }
-    
-    function prepareNextChairsRound() {
-      const msjElement = document.getElementById('traditional-msj');
-      
-      // Incrementar ronda
-      window.chairsGameRound++;
-      
-      // Eliminar una silla
-      const chairs = document.querySelectorAll('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="60px"]');
-      if (chairs.length > 1) {
-        // Eliminar la última silla
-        chairs[chairs.length - 1].remove();
-        window.chairsAvailable = chairs.length - 1;
-      }
-      
-      // Resetear posiciones de los personajes
-      const characters = document.querySelectorAll('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="30px"]');
-      const chairsArea = document.querySelector('#traditionalGameArea .interactive-activity div[style*="position: relative"]');
-      
-      characters.forEach((character, index) => {
-        const angle = (index / characters.length) * Math.PI * 2;
-        const radius = 130;
-        const centerX = chairsArea.offsetWidth / 2;
-        const centerY = chairsArea.offsetHeight / 2;
-        const x = centerX + Math.cos(angle) * radius - 15;
-        const y = centerY + Math.sin(angle) * radius - 20;
-        
-        character.style.left = `${x}px`;
-        character.style.top = `${y}px`;
-      });
-      
-      // Resetear sillas restantes
-      const remainingChairs = document.querySelectorAll('#traditionalGameArea .interactive-activity div[style*="position: absolute"][style*="60px"]');
-      remainingChairs.forEach(chair => {
-        chair.style.opacity = '1';
-        chair.style.pointerEvents = 'auto';
-        chair.style.cursor = 'pointer';
-      });
-      
-      msjElement.textContent = `Ronda ${window.chairsGameRound} lista. Hay ${window.chairsAvailable} sillas para ${characters.length} jugadores.`;
-      msjElement.className = 'interactive-activity-feedback feedback-info';
-      msjElement.style.display = 'block';
-    }
-    
-    function resetChairsGame() {
-      // Detener música si está activa
-      if (window.chairsGameActive) {
-        window.chairsGameActive = false;
-        if (window.chairsGameInterval) {
-          clearInterval(window.chairsGameInterval);
-        }
-      }
-      
-      // Reiniciar variables
-      window.chairsGameRound = 1;
-      window.chairsAvailable = 5;
-      
-      // Recrear el juego
-      setupChairsGame();
-    }
-    
-    function hideAllActivities() {
-      document.getElementById('sequenceContainer').style.display = 'none';
-      document.getElementById('circuitContainer').style.display = 'none';
-      document.getElementById('rhythmContainer').style.display = 'none';
-      document.getElementById('sportsContainer').style.display = 'none';
-      document.getElementById('traditionalContainer').style.display = 'none';
     }
     
     // Toggle para menú móvil
     document.getElementById('navbar-toggle').addEventListener('click', () => {
       document.getElementById('navbar-menu').classList.toggle('active');
-    });
-    
-    // Suavizado de scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
     });
     
     // Añadir animaciones CSS para los mensajes
