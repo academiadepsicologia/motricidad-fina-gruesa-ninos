@@ -579,7 +579,7 @@
       margin-bottom: 0;
     }
     
-    /* Ejercicios prácticos para familias - Estilo limpio como módulo 2 */
+    /* Ejercicios prácticos para familias - Estilo mejorado */
     .practical-exercises {
       margin-top: 30px;
     }
@@ -622,6 +622,56 @@
       font-style: italic;
     }
     
+    .exercise-item .home-implementation {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--secondary);
+    }
+    
+    .exercise-item .home-implementation h4 {
+      color: var(--secondary);
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .exercise-item .home-implementation h4 i {
+      margin-right: 8px;
+    }
+    
+    .exercise-item .home-implementation p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    .exercise-item .sound-context {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .exercise-item .sound-context h4 {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .exercise-item .sound-context h4 i {
+      margin-right: 8px;
+    }
+    
+    .exercise-item .sound-context p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
     /* Tips estilo módulo 2 */
     .tips {
       background: rgba(94, 114, 228, 0.1);
@@ -655,7 +705,7 @@
       line-height: 1.6;
     }
     
-    /* Actividades interactivas - Estilo limpio como módulo 2 */
+    /* Actividades interactivas - Estilo mejorado */
     .interactive-activities {
       margin-top: 30px;
     }
@@ -691,6 +741,19 @@
     .activity-item p {
       color: #6c757d;
       margin-bottom: 0;
+    }
+    
+    .activity-item .home-adaptation {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+    }
+    
+    .activity-item .home-adaptation i {
+      margin-right: 5px;
     }
     
     /* FAQ estilo módulo 2 */
@@ -1060,6 +1123,63 @@
       border: 1px solid var(--info);
     }
     
+    .home-activity-guide {
+      background: rgba(255, 230, 109, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .home-activity-guide h4 {
+      color: var(--dark);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .home-activity-guide h4 i {
+      margin-right: 10px;
+      color: var(--accent);
+    }
+    
+    .home-activity-guide ol {
+      padding-left: 20px;
+      color: var(--dark);
+    }
+    
+    .home-activity-guide li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .home-activity-guide .sound-tip {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .home-activity-guide .sound-tip h5 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .home-activity-guide .sound-tip h5 i {
+      margin-right: 8px;
+    }
+    
+    .home-activity-guide .sound-tip p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
@@ -1262,7 +1382,7 @@
       </p>
     </section>
     
-    <!-- Sección: Ejercicios prácticos para familias (Estilo limpio módulo 2) -->
+    <!-- Sección: Ejercicios prácticos para familias (Estilo mejorado) -->
     <section class="content-section">
       <h2 class="section-title">Ejercicios prácticos para familias</h2>
       
@@ -1278,7 +1398,7 @@
       </div>
     </section>
     
-    <!-- Sección: Actividades interactivas (Estilo limpio módulo 2) -->
+    <!-- Sección: Actividades interactivas (Estilo mejorado) -->
     <section class="content-section">
       <h2 class="section-title">Actividades interactivas</h2>
       
@@ -1286,26 +1406,41 @@
         <div class="activity-item" onclick="showActivityModal('circuit')">
           <h3><i class="fas fa-route"></i>Constructor de circuitos</h3>
           <p>Diseña y completa circuitos de motricidad con diferentes estaciones de movimiento</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Adaptable en casa con objetos cotidianos
+          </div>
         </div>
         
         <div class="activity-item" onclick="showActivityModal('obstacles')">
           <h3><i class="fas fa-mountain"></i>Parque de obstáculos</h3>
           <p>Navega por un parque de obstáculos mejorando el equilibrio y la agilidad</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Fácil de recrear en espacios interiores o exteriores
+          </div>
         </div>
         
         <div class="activity-item" onclick="showActivityModal('throwing')">
           <h3><i class="fas fa-baseball-ball"></i>Lanzamiento preciso</h3>
           <p>Practica diferentes tipos de lanzamientos para mejorar la coordinación</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Utiliza pelotas de diferentes tamaños y texturas
+          </div>
         </div>
         
         <div class="activity-item" onclick="showActivityModal('balance')">
           <h3><i class="fas fa-balance-scale"></i>Desafío del equilibrio</h3>
           <p>Completa desafíos de equilibrio para mejorar la estabilidad y el control corporal</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Usa líneas en el suelo o superficies inestables
+          </div>
         </div>
         
         <div class="activity-item" onclick="showActivityModal('sports')">
           <h3><i class="fas fa-futbol"></i>Mini deportes</h3>
           <p>Practica versiones adaptadas de deportes populares para niños</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Simplifica reglas y adapta espacios para jugar en familia
+          </div>
         </div>
       </div>
     </section>
@@ -1411,31 +1546,56 @@
             titulo: "Saltos en colchonetas",
             descripcion: "Coloca colchonetas en el suelo y anima al niño a saltar de una a otra. Esta actividad fortalece los músculos de las piernas y mejora el equilibrio.",
             materiales: "Colchonetas o almohadones",
-            icono: "fas fa-child"
+            icono: "fas fa-child",
+            implementacion: "En casa, puedes usar almohadas, cojines o incluso toallas dobladas para crear una superficie blanda donde el niño pueda saltar con seguridad. Asegúrate de que los objetos estén firmes y no resbalen.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al aterrizar suavemente. En casa, puedes animar al niño a imitar sonidos de animales mientras salta (como una rana: 'croac, croac') o contar en voz alta cada salto para reforzar la actividad auditivamente."
+            }
           },
           {
             titulo: "Carreras cortas",
             descripcion: "Organiza carreras cortas en un espacio seguro. Esta actividad desarrolla la velocidad, la coordinación y la conciencia espacial.",
             materiales: "Espacio abierto y seguro",
-            icono: "fas fa-running"
+            icono: "fas fa-running",
+            implementacion: "En casa, puedes usar el pasillo, el jardín o incluso una habitación despejada. Marca una línea de salida y otra de llegada con cinta adhesiva o tiza. Puedes convertirlo en un juego de persecución suave o una carrera de relevos con otros miembros de la familia.",
+            sonido: {
+              tieneSonido: false,
+              explicacion: ""
+            }
           },
           {
             titulo: "Subir escaleras con apoyo",
             descripcion: "Practica subir escaleras con apoyo, alternando pies cuando sea posible. Esta actividad fortalece las piernas y mejora la coordinación.",
             materiales: "Escaleras con barandilla",
-            icono: "fas fa-sort-amount-up"
+            icono: "fas fa-sort-amount-up",
+            implementacion: "En casa, utiliza las escaleras de tu domicilio, siempre con supervisión. Anima al niño a contar cada escalón o a nombrar un color u objeto en cada paso. Puedes convertirlo en un juego diciendo 'subimos como gigantes' o 'bajamos como ratones'.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al subir o bajar los escalones. En casa, puedes añadir un componente rítmico cantando una canción o marcando un ritmo con palmadas mientras suben o bajan. También pueden imitar el sonido de un tren ('chucu-chucu') al subir escaleras."
+            }
           },
           {
             titulo: "Lanzar pelotas grandes",
             descripcion: "Usa pelotas grandes y suaves para practicar lanzar y rodar. Esta actividad desarrolla la coordinación ojo-mano y la fuerza de los brazos.",
             materiales: "Pelotas grandes y suaves",
-            icono: "fas fa-circle"
+            icono: "fas fa-circle",
+            implementacion: "En casa, puedes usar pelotas inflables, pelotas de playa o incluso hacer una pelota con medias viejas rellenas de algodón. Siéntense en el suelo frente a frente y rueden la pelota uno al otro. Gradualmente, aumenta la distancia y anima al niño a lanzarla suavemente.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de la pelota al ser lanzada o al rodar por el suelo. En casa, puedes añadir sonidos como '¡lanza!' o '¡atrapa!' para marcar la acción. También pueden imitar el sonido de la pelota al rebotar ('boing, boing') cuando la lancen al suelo."
+            }
           },
           {
             titulo: "Baile libre",
             descripcion: "Pon música y anima al niño a bailar libremente. Esta actividad mejora el ritmo, la coordinación y la expresión corporal.",
             materiales: "Reproductor de música",
-            icono: "fas fa-music"
+            icono: "fas fa-music",
+            implementacion: "En casa, utiliza cualquier dispositivo para reproducir música infantil o tus canciones favoritas. Crea un espacio despejado donde el niño pueda moverse sin obstáculos. Anímalo a imitar tus movimientos o a crear los suyos propios. Pueden usar pañuelos o cintas para añadir un elemento visual.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de la música y el ritmo. En casa, puedes añadir elementos como palmadas, golpecitos con los pies o incluso instrumentos musicales simples (como una pandereta o tambores caseros). También pueden cantar juntos mientras bailan para reforzar la conexión auditiva y motora."
+            }
           }
         ],
         consejoProfesional: "A los 3 años, enfócate en actividades divertidas y breves (10-15 minutos). Usa equipos grandes y seguros. Celebra el esfuerzo y la participación, no solo los resultados. Recuerda que el juego es la principal forma de aprendizaje a esta edad.",
@@ -1456,31 +1616,56 @@
             titulo: "Saltos en un pie",
             descripcion: "Anima al niño a saltar en un pie, luego en el otro. Esta actividad mejora el equilibrio y la fuerza de las piernas.",
             materiales: "Espacio plano y seguro",
-            icono: "fas fa-child"
+            icono: "fas fa-child",
+            implementacion: "En casa, puedes dibujar círculos con tiza en el suelo o usar papel adhesivo para marcar dónde debe apoyar el pie. Comienza con saltos cortos y aumenta gradualmente la distancia. Puedes convertirlo en un juego de 'las estatuas' donde debe mantenerse en un pie cuando la música se detiene.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el del pie al aterrizar después de cada salto. En casa, puedes añadir un componente rítmico contando cada salto o usando una canción con un ritmo marcado. También pueden imitar sonidos de animales que se mueven en un solo pie, como las cigüeñas."
+            }
           },
           {
             titulo: "Carreras con obstáculos",
             descripcion: "Crea un circuito simple con obstáculos como cojines o cajas. Esta actividad desarrolla la agilidad, la coordinación y la planificación motriz.",
             materiales: "Cojines, cajas u objetos seguros",
-            icono: "fas fa-running"
+            icono: "fas fa-running",
+            implementacion: "En casa, puedes usar almohadas, sillas bajas, cajas de cartón vacías o incluso cuerdas tendidas en el suelo para crear un circuito. Asegúrate de que todos los objetos sean estables y seguros. Anima al niño a pasar por encima, alrededor o a través de los obstáculos siguiendo tus instrucciones.",
+            sonido: {
+              tieneSonido: false,
+              explicacion: ""
+            }
           },
           {
             titulo: "Subir y bajar escaleras",
             descripcion: "Practica subir y bajar escaleras alternando pies sin apoyo. Esta actividad fortalece las piernas y mejora la coordinación.",
             materiales: "Escaleras con barandilla",
-            icono: "fas fa-sort-amount-up"
+            icono: "fas fa-sort-amount-up",
+            implementacion: "En casa, utiliza las escaleras de tu domicilio con supervisión. Anima al niño a alternar los pies al subir y bajar, como si fuera un juego. Puedes contar los escalones o nombrar un color u objeto en cada peldaño. Gradualmente, reduce la ayuda que le proporcionas.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al contactar con cada escalón. En casa, puedes añadir un componente rítmico cantando una canción o marcando un ritmo con palmadas mientras suben o bajan. También pueden imitar diferentes sonidos según cómo suban (como elefantes lentos o conejos rápidos)."
+            }
           },
           {
             titulo: "Lanzar y atrapar pelotas",
             descripcion: "Usa pelotas de diferentes tamaños para practicar lanzar y atrapar. Esta actividad mejora la coordinación ojo-mano y la precisión.",
             materiales: "Pelotas de diferentes tamaños",
-            icono: "fas fa-baseball-ball"
+            icono: "fas fa-baseball-ball",
+            implementacion: "En casa, puedes usar pelotas de tenis, pelotas de espuma o incluso medias rellenas y atadas. Comienza con pelotas grandes y suaves, y gradualmente introduce pelotas más pequeñas y pesadas. Siéntense frente a frente a una corta distancia y aumenta la distancia a medida que mejore la habilidad.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de la pelota al ser lanzada y atrapada. En casa, puedes añadir palabras clave como '¡lanza!' y '¡atrapa!' para marcar cada acción. También pueden imitar el sonido de la pelota al rebotar o al ser atrapada ('¡plaf!' cuando la atrapan)."
+            }
           },
           {
             titulo: "Triciclo o bicicleta con ruedines",
             descripcion: "Enseña al niño a usar un triciclo o bicicleta con ruedines. Esta actividad desarrolla la coordinación, el equilibrio y la fuerza de las piernas.",
             materiales: "Triciclo o bicicleta con ruedines",
-            icono: "fas fa-bicycle"
+            icono: "fas fa-bicycle",
+            implementacion: "En casa, asegúrate de que el triciclo o bicicleta sea del tamaño adecuado para el niño. Comienza en un espacio plano y abierto, como un pasillo o jardín. Enseña primero a pedalear y luego a dirigir. Usa palabras de aliento y celebra cada logro, por pequeño que sea.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pedales al girar y las ruedas al moverse. En casa, puedes añadir sonidos de motor ('brrrum, brrrum') o campanillas para hacer la actividad más divertida. También pueden contar cuántas veces pedalean o imitar el sonido de la bocina cuando giran."
+            }
           }
         ],
         consejoProfesional: "A los 4 años, las actividades pueden durar entre 15-20 minutos. Introduce juegos con reglas simples y estructura. Ofrece desafíos gradualmente más complejos y celebra los progresos. Recuerda que el juego sigue siendo la principal forma de aprendizaje.",
@@ -1501,31 +1686,56 @@
             titulo: "Saltos coordinados",
             descripcion: "Practica diferentes tipos de saltos: con pies juntos, alternando pies, hacia adelante y hacia atrás. Esta actividad mejora la coordinación, el equilibrio y la fuerza.",
             materiales: "Espacio plano y seguro",
-            icono: "fas fa-child"
+            icono: "fas fa-child",
+            implementacion: "En casa, puedes usar tiza o cinta adhesiva para marcar diferentes zonas de salto en el suelo. Crea un patrón con círculos, cuadrados o líneas y anima al niño a saltar de una marca a otra siguiendo diferentes secuencias. Puedes aumentar la dificultad añadiendo obstáculos bajos o pidiendo que gire en el aire antes de aterrizar.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al aterrizar después de cada salto. En casa, puedes añadir un componente rítmico contando cada salto o usando una canción con un ritmo marcado. También pueden imitar sonidos de animales que saltan, como las ranas ('croac') o los canguros ('boing')."
+            }
           },
           {
             titulo: "Circuitos de obstáculos",
             descripcion: "Crea circuitos con diversos desafíos como saltar, gatear, equilibrarse y lanzar. Esta actividad desarrolla la planificación motriz, la agilidad y la coordinación.",
             materiales: "Diversos objetos seguros",
-            icono: "fas fa-mountain"
+            icono: "fas fa-mountain",
+            implementacion: "En casa, puedes crear un circuito con objetos cotidianos: sillas para pasar por debajo, cuerdas para saltar, cojines para saltar encima, cajas para pasar a través de ellas, y una pelota para lanzar a una caja o canasta. Diseña un recorrido con diferentes estaciones y usa tarjetas con dibujos o palabras para indicar qué hacer en cada una.",
+            sonido: {
+              tieneSonido: false,
+              explicacion: ""
+            }
           },
           {
             titulo: "Deportes simples",
             descripcion: "Introduce deportes simples como fútbol, básquet o atletismo adaptado. Estas actividades mejoran la coordinación, el trabajo en equipo y el seguimiento de reglas.",
             materiales: "Pelotas, conos u otros materiales deportivos",
-            icono: "fas fa-futbol"
+            icono: "fas fa-futbol",
+            implementacion: "En casa, puedes adaptar deportes conocidos usando materiales simples. Para fútbol, usa una pelota ligera y dos objetos como conos o botellas vacías como porterías. Para básquet, usa una pelota pequeña y una caja o cesta como aro. Simplifica las reglas y enfócate en la diversión y la participación más que en la competencia.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado varía según el deporte: el balón al ser pateado en fútbol, al rebotar en básquet, etc. En casa, puedes añadir sonidos de animación como '¡gol!' cuando anotan o '¡encesta!' en básquet. También pueden imitar sonidos de multitudes o comentaristas deportivos para hacer el juego más emocionante."
+            }
           },
           {
             titulo: "Bicicleta sin ruedines",
             descripcion: "Enseña al niño a andar en bicicleta sin ruedines. Esta actividad desarrolla el equilibrio, la coordinación y la confianza en sí mismo.",
             materiales: "Bicicleta sin ruedines",
-            icono: "fas fa-bicycle"
+            icono: "fas fa-bicycle",
+            implementacion: "En casa, elige una bicicleta adecuada para la altura del niño (debe poder tocar el suelo con ambos pies sentado en el sillín). Comienza en un espacio plano y abierto, como un parque o calle sin tráfico. Quítale los pedales inicialmente para que aprenda a equilibrarse impulsándose con los pies. Una vez que domine el equilibrio, vuelve a poner los pedales.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de las ruedas al moverse y los pedales al girar. En casa, puedes añadir sonidos de animación como '¡rueda!' o '¡más rápido!' para motivar al niño. También pueden imitar el sonido de la bocina o de una moto mientras pedalean para hacer la actividad más divertida."
+            }
           },
           {
             titulo: "Natación básica",
             descripcion: "Enseña al niño a flotar y moverse en el agua. Esta actividad mejora la coordinación general, la fuerza y la confianza en el agua.",
             materiales: "Piscina poco profunda",
-            icono: "fas fa-swimmer"
+            icono: "fas fa-swimmer",
+            implementacion: "En casa, si tienes acceso a una piscina, comienza en la parte poco profunda donde el niño pueda tocar el fondo. Enséñale a soplar burbujas bajo el agua, a flotar boca arriba con tu apoyo y a mover los brazos y piernas para desplazarse. Usa juguetes acuáticos para hacer la actividad más divertida. Si no tienes piscina, una bañera grande puede servir para actividades acuáticas básicas.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el del agua al moverse y el de la respiración controlada. En casa, puedes añadir juegos con sonidos como 'glug glug' al meter la cabeza bajo el agua o 'splash' al salpicar. También pueden contar cuántos segundos pueden contener la respiración bajo el agua o imitar sonidos de animales acuáticos mientras nadan."
+            }
           }
         ],
         consejoProfesional: "A los 5 años, las actividades pueden durar entre 20-30 minutos. Introduce deportes simples y actividades estructuradas que preparen para la escuela. Usa refuerzos positivos y enfócate en el disfrute y la participación, no solo en el rendimiento.",
@@ -1693,10 +1903,25 @@
         exerciseItem.className = 'exercise-item';
         exerciseItem.style.animationDelay = `${index * 0.2}s`;
         
+        let soundHTML = '';
+        if (ejercicio.sonido.tieneSonido) {
+          soundHTML = `
+            <div class="sound-context">
+              <h4><i class="fas fa-volume-up"></i> Contexto del sonido</h4>
+              <p>${ejercicio.sonido.explicacion}</p>
+            </div>
+          `;
+        }
+        
         exerciseItem.innerHTML = `
           <h3><i class="${ejercicio.icono}"></i>${ejercicio.titulo}</h3>
           <p>${ejercicio.descripcion}</p>
           <p class="materials"><strong>Materiales:</strong> ${ejercicio.materiales}</p>
+          <div class="home-implementation">
+            <h4><i class="fas fa-home"></i> Implementación en casa</h4>
+            <p>${ejercicio.implementacion}</p>
+          </div>
+          ${soundHTML}
         `;
         
         practicalExercises.appendChild(exerciseItem);
@@ -1782,9 +2007,29 @@
       feedback.id = 'circuitFeedback';
       feedback.className = 'game-feedback';
       
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Reúne objetos cotidianos como cojines, sillas, cajas o cuerdas.</li>
+          <li>Diseña un circuito con diferentes estaciones: una para saltar, otra para pasar por debajo, otra para equilibrarse, etc.</li>
+          <li>Demuestra cada estación antes de que el niño intente el circuito completo.</li>
+          <li>Asegúrate de que el espacio sea seguro y sin obstáculos peligrosos.</li>
+          <li>Usa instrucciones verbales claras y sencillas para cada estación.</li>
+          <li>Celebra cada logro y anímale a completar todo el circuito.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade sonidos para cada estación: "¡salta!" para la estación de salto, "¡agáchate!" para pasar por debajo, "¡equilíbrate!" para la estación de equilibrio. Esto ayuda al niño a asociar cada acción con una instrucción verbal.</p>
+        </div>
+      `;
+      
       gameContainer.appendChild(gameArea);
       gameContainer.appendChild(controls);
       gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
       
       return gameContainer;
     }
@@ -1815,9 +2060,29 @@
       feedback.id = 'obstaclesFeedback';
       feedback.className = 'game-feedback';
       
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Crea un camino con obstáculos usando cojines, cajas de cartón o juguetes blandos.</li>
+          <li>Asegúrate de que los obstáculos sean estables y seguros para que el niño no se caiga.</li>
+          <li>Enséñale al niño a esquivar los obstáculos saltando o rodeándolos.</li>
+          <li>Comienza con pocos obstáculos y aumenta gradualmente la dificultad.</li>
+          <li>Puedes usar una cuerda o cinta para marcar el camino que debe seguir.</li>
+          <li>Conviértelo en un juego de aventuras donde debe superar diferentes desafíos.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade instrucciones verbales como "¡salta!" o "¡alrededor!" para guiar al niño. También pueden imitar sonidos de diferentes animales mientras superan los obstáculos, como un conejo al saltar o un cangrejo al pasar por debajo.</p>
+        </div>
+      `;
+      
       gameContainer.appendChild(gameArea);
       gameContainer.appendChild(controls);
       gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
       
       return gameContainer;
     }
@@ -1847,9 +2112,29 @@
       feedback.id = 'throwingFeedback';
       feedback.className = 'game-feedback';
       
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Reúne diferentes objetos que puedan lanzarse: pelotas pequeñas, pelotas de papel, almohadones pequeños.</li>
+          <li>Crea un blanco usando una caja, cesta o dibujando un círculo en el suelo o pared.</li>
+          <li>Comienza a corta distancia y aumenta gradualmente la distancia al blanco.</li>
+          <li>Enséñe la técnica correcta: sostener el objeto con la mano, llevar el brazo hacia atrás y lanzar hacia adelante.</li>
+          <li>Varía la posición del blanco (alto, bajo, izquierda, derecha) para mejorar la precisión.</li>
+          <li>Celebre cada acierto, sin importar la distancia o precisión.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade palabras clave como "¡lanza!" antes de cada tiro y "¡bien!" o "¡casi!" después. También pueden imitar el sonido del objeto al volar ("woosh") o al golpear el blanco ("¡plaf!"). Esto ayuda al niño a asociar la acción con el resultado.</p>
+        </div>
+      `;
+      
       gameContainer.appendChild(gameArea);
       gameContainer.appendChild(controls);
       gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
       
       return gameContainer;
     }
@@ -1878,9 +2163,29 @@
       feedback.id = 'balanceFeedback';
       feedback.className = 'game-feedback';
       
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Crea una línea recta en el suelo usando cinta adhesiva, tiza o una cuerda.</li>
+          <li>Pídele al niño que camine sobre la línea sin salirse.</li>
+          <li>Para aumentar la dificultad, haz que la línea sea curva o en zigzag.</li>
+          <li>Otra opción es usar una tabla de equilibrio o una superficie ligeramente elevada y ancha.</li>
+          <li>Añade desafíos como caminar hacia atrás, de lado o con los ojos cerrados (con supervisión).</li>
+          <li>Puedes crear un juego donde debe recoger objetos colocados a los lados de la línea sin salirse.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade un ritmo con palmadas o usando un tambor mientras camina sobre la línea. También pueden contar cuántos pasos puede dar sin salirse o imitar sonidos de diferentes animales según cómo caminen (como un elefante lento o un pájaro rápido).</p>
+        </div>
+      `;
+      
       gameContainer.appendChild(gameArea);
       gameContainer.appendChild(controls);
       gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
       
       return gameContainer;
     }
@@ -1910,9 +2215,29 @@
       feedback.id = 'sportsFeedback';
       feedback.className = 'game-feedback';
       
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Adapta deportes simples usando materiales cotidianos: una pelota ligera y dos objetos como porterías.</li>
+          <li>Simplifica las reglas para que sean comprensibles para el niño.</li>
+          <li>Enfócate en la diversión y la participación más que en la competencia.</li>
+          <li>Enséñe habilidades básicas como patear, lanzar o atrapar la pelota.</li>
+          <li>Comienza con distancias cortas y aumenta gradualmente la dificultad.</li>
+          <li>Juegue juntos y modele el comportamiento deportivo adecuado, como felicitar al oponente.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade sonidos de animación como "¡patea!" cuando golpee la pelota o "¡gol!" cuando anote. También pueden imitar sonidos de multitudes o comentaristas deportivos para hacer el juego más emocionante. Esto ayuda al niño a asociar las acciones deportivas con respuestas positivas.</p>
+        </div>
+      `;
+      
       gameContainer.appendChild(gameArea);
       gameContainer.appendChild(controls);
       gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
       
       return gameContainer;
     }
