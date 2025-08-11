@@ -1465,6 +1465,298 @@
       display: none;
     }
     
+    /* Estilos para actividades interactivas mejoradas */
+    .interactive-activity {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .interactive-activity::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--gradient-2);
+    }
+    
+    .interactive-activity h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .interactive-activity p {
+      color: #6c757d;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .interactive-activity-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .interactive-activity-btn {
+      background: var(--gradient-2);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .interactive-activity-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+    }
+    
+    .interactive-activity-feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    
+    .feedback-success {
+      background: rgba(107, 207, 127, 0.1);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+    
+    .feedback-error {
+      background: rgba(255, 107, 107, 0.1);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    
+    .feedback-info {
+      background: rgba(93, 173, 226, 0.1);
+      color: var(--info);
+      border: 1px solid var(--info);
+    }
+    
+    /* Mejoras en juegos interactivos */
+    .interactive-game-area {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .interactive-game-character {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    
+    .interactive-game-obstacle {
+      position: absolute;
+      width: 40px;
+      height: 80px;
+      background: var(--warning);
+      border-radius: 10px;
+      z-index: 1;
+    }
+    
+    .interactive-game-target {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: var(--warning);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      z-index: 1;
+    }
+    
+    .interactive-game-ball {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: var(--gradient);
+      border-radius: 50%;
+      cursor: grab;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    
+    .interactive-game-ball:active {
+      cursor: grabbing;
+    }
+    
+    .interactive-game-path {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--dark);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    
+    /* Mejoras en el juego de simulación de movimientos */
+    .movement-simulator {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .movement-simulator-display {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .movement-simulator-character {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 100px;
+      background: var(--gradient);
+      border-radius: 30px 30px 0 0;
+      transition: all 0.5s ease;
+    }
+    
+    .movement-simulator-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 300px;
+      margin: 20px auto;
+    }
+    
+    .movement-simulator-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .movement-simulator-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
+    }
+    
+    .movement-simulator-btn i {
+      font-size: 1.5rem;
+    }
+    
+    .movement-simulator-feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    
+    /* Mejoras en el juego de seguimiento de instrucciones */
+    .instruction-game {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .instruction-display {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .instruction-text {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .instruction-timer {
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-left: 20px;
+    }
+    
+    .instruction-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .instruction-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .instruction-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
+    }
+    
+    .instruction-feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .hero-title {
@@ -1564,6 +1856,10 @@
       .activity-visual {
         flex-direction: column;
         align-items: center;
+      }
+      
+      .movement-simulator-controls {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -1788,6 +2084,15 @@
           <p class="activity-description">Practica diferentes formas de caminar y moverte</p>
           <button class="activity-btn" onclick="showActivityModal('walk')">Comenzar simulador</button>
         </div>
+        
+        <div class="activity-card">
+          <div class="activity-icon">
+            <i class="fas fa-child"></i>
+          </div>
+          <h3 class="activity-title">Simulador de movimientos</h3>
+          <p class="activity-description">Practica diferentes movimientos corporales</p>
+          <button class="activity-btn" onclick="showActivityModal('movement')">Comenzar simulador</button>
+        </div>
       </div>
       
       <!-- Modal para actividades interactivas -->
@@ -1866,6 +2171,37 @@
             <button class="walk-btn" onclick="walkJump()">Saltar</button>
           </div>
           <div id="walk-msj" style="font-weight:bold; margin-top:15px;"></div>
+        </div>
+      </div>
+      
+      <div id="movementContainer">
+        <div class="movement-simulator">
+          <h3 style="color: var(--secondary); margin-bottom: 20px;">Simulador de movimientos</h3>
+          <p style="margin-bottom: 20px;">Usa los botones para realizar diferentes movimientos corporales.</p>
+          <div class="movement-simulator-display" id="movement-display">
+            <div class="movement-simulator-character" id="movement-character"></div>
+          </div>
+          <div class="movement-simulator-controls">
+            <button class="movement-simulator-btn" onclick="moveSimulator('jump')">
+              <i class="fas fa-arrow-up"></i>
+            </button>
+            <button class="movement-simulator-btn" onclick="moveSimulator('left')">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="movement-simulator-btn" onclick="moveSimulator('right')">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="movement-simulator-btn" onclick="moveSimulator('squat')">
+              <i class="fas fa-arrow-down"></i>
+            </button>
+            <button class="movement-simulator-btn" onclick="moveSimulator('twist')">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="movement-simulator-btn" onclick="moveSimulator('reset')">
+              <i class="fas fa-undo"></i>
+            </button>
+          </div>
+          <div id="movement-msj" class="movement-simulator-feedback"></div>
         </div>
       </div>
     </section>
@@ -2048,9 +2384,9 @@
       },
       5: {
         titulo: "¡Domina el movimiento! Actividades especializadas para niños de 5 años.",
-        definicionMotricidad: "La motricidad gruesa en niños de 5 años se caracteriza por movimientos precisos y coordinados. Pueden saltar en un pie con facilidad, patear una pelota con dirección, y comienzan a aprender a andar en bicicleta sin ruedines. Estas habilidades les permiten participar en deportes organizados y actividades físicas más complejas.",
+        definicionMotricidad: "La motricidad gruesa en niños de 5 años se caracteriza por movimientos precisos y coordinados. Pueden saltar en un solo pie con facilidad, patear una pelota con dirección, y comienzan a aprender a andar en bicicleta sin ruedines. Estas habilidades les permiten participar en deportes organizados y actividades físicas más complejas.",
         desarrolloNeurologico: "A los 5 años, el cerebro muestra madurez en las áreas motoras. La mielinización de las vías nerviosas está casi completa, permitiendo un control refinado de los movimientos y mayor velocidad de procesamiento. Esto facilita el aprendizaje de habilidades motoras más complejas.",
-        etapasDesarrollo: "A los 5 años, los niños pueden saltar en un pie con facilidad, patear una pelota con dirección, subir y bajar escaleras sin apoyo y comienzan a aprender a andar en bicicleta sin ruedines. Están desarrollando la capacidad de combinar movimientos complejos de manera fluida.",
+        etapasDesarrollo: "A los 5 años, los niños pueden saltar en un solo pie con facilidad, patear una pelota con dirección, subir y bajar escaleras sin apoyo y comienzan a aprender a andar en bicicleta sin ruedines. Están desarrollando la capacidad de combinar movimientos complejos de manera fluida.",
         saludFisica: "A los 5 años, la motricidad gruesa contribuye significativamente a la salud física general. Las actividades físicas regulares mejoran la fuerza, la resistencia, la flexibilidad y la coordinación. Los niños activos tienen menor riesgo de obesidad y mejores indicadores de salud general.",
         autonomiaIndependencia: "Los niños de 5 años pueden realizar la mayoría de las tareas físicas de forma independiente, como vestirse completamente, subir y bajar escaleras sin ayuda, y participar en deportes organizados. Esta autonomía completa fomenta su autoconfianza y preparación para la escuela.",
         interaccionSocial: "A los 5 años, los niños pueden participar en juegos con reglas complejas y deportes organizados. Entienden conceptos como competencia justa, trabajo en equipo y deportividad. Estas habilidades sociales se desarrollan fundamentalmente a través de actividades físicas grupales.",
@@ -2106,6 +2442,7 @@
     let characterPosition = 50;
     let obstacles = [];
     let walkPosition = 20;
+    let movementPosition = { x: 50, y: 20 };
     
     // Verificar si el usuario tiene acceso al curso y si completó el módulo 2
     document.addEventListener('DOMContentLoaded', function() {
@@ -2191,11 +2528,13 @@
       
       closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
+        hideAllActivities();
       });
       
       window.addEventListener('click', (e) => {
         if (e.target === modal) {
           modal.style.display = 'none';
+          hideAllActivities();
         }
       });
       
@@ -2306,6 +2645,9 @@
       // Limpiar contenido anterior
       modalContent.innerHTML = '';
       
+      // Ocultar todos los contenedores de actividades
+      hideAllActivities();
+      
       // Configurar título según la actividad
       switch(activityType) {
         case 'sequence':
@@ -2332,6 +2674,12 @@
           document.getElementById('walkContainer').style.display = 'block';
           initWalkSimulator();
           break;
+        case 'movement':
+          modalTitle.textContent = 'Simulador de movimientos';
+          modalContent.appendChild(document.getElementById('movementContainer'));
+          document.getElementById('movementContainer').style.display = 'block';
+          initMovementSimulator();
+          break;
       }
       
       // Mostrar modal
@@ -2339,10 +2687,6 @@
     }
     
     // Funciones para actividades interactivas
-    function showSequence() {
-      showActivityModal('sequence');
-    }
-    
     function generateSequence() {
       // Definir movimientos según la edad
       let movements;
@@ -2411,10 +2755,6 @@
       }
     }
     
-    function showObstacle() {
-      showActivityModal('obstacle');
-    }
-    
     function initObstacleGame() {
       // Reiniciar posición del personaje
       characterPosition = 50;
@@ -2472,10 +2812,6 @@
         document.getElementById('obstacle-msj').textContent = '¡Felicidades! Has superado todos los obstáculos.';
         document.getElementById('obstacle-msj').style.color = 'var(--success)';
       }
-    }
-    
-    function showThrow() {
-      showActivityModal('throw');
     }
     
     function initThrowGame() {
@@ -2540,10 +2876,6 @@
       initThrowGame();
     }
     
-    function showWalk() {
-      showActivityModal('walk');
-    }
-    
     function initWalkSimulator() {
       // Reiniciar posición del personaje
       walkPosition = 20;
@@ -2600,11 +2932,116 @@
       document.getElementById('walk-msj').style.color = 'var(--secondary)';
     }
     
+    function initMovementSimulator() {
+      // Reiniciar posición del personaje
+      movementPosition = { x: 50, y: 20 };
+      const character = document.getElementById('movement-character');
+      character.style.left = '50%';
+      character.style.bottom = '20px';
+      character.style.transform = 'translateX(-50%)';
+      
+      // Limpiar mensaje
+      const msjElement = document.getElementById('movement-msj');
+      msjElement.textContent = '';
+      msjElement.style.display = 'none';
+    }
+    
+    function moveSimulator(action) {
+      const character = document.getElementById('movement-character');
+      const display = document.getElementById('movement-display');
+      const displayRect = display.getBoundingClientRect();
+      const msjElement = document.getElementById('movement-msj');
+      
+      switch(action) {
+        case 'jump':
+          // Simular salto
+          character.style.bottom = '120px';
+          setTimeout(() => {
+            character.style.bottom = '20px';
+          }, 500);
+          
+          msjElement.textContent = '¡Excelente salto! Estás desarrollando fuerza en las piernas.';
+          msjElement.className = 'movement-simulator-feedback feedback-success';
+          msjElement.style.display = 'block';
+          break;
+          
+        case 'left':
+          // Mover a la izquierda
+          if (movementPosition.x > 10) {
+            movementPosition.x -= 10;
+            character.style.left = movementPosition.x + '%';
+          }
+          
+          msjElement.textContent = 'Buen movimiento lateral. Practica el equilibrio.';
+          msjElement.className = 'movement-simulator-feedback feedback-info';
+          msjElement.style.display = 'block';
+          break;
+          
+        case 'right':
+          // Mover a la derecha
+          if (movementPosition.x < 90) {
+            movementPosition.x += 10;
+            character.style.left = movementPosition.x + '%';
+          }
+          
+          msjElement.textContent = 'Buen movimiento lateral. Practica el equilibrio.';
+          msjElement.className = 'movement-simulator-feedback feedback-info';
+          msjElement.style.display = 'block';
+          break;
+          
+        case 'squat':
+          // Simular agacharse
+          character.style.height = '50px';
+          character.style.borderRadius = '25px 25px 0 0';
+          setTimeout(() => {
+            character.style.height = '100px';
+            character.style.borderRadius = '30px 30px 0 0';
+          }, 1000);
+          
+          msjElement.textContent = '¡Bien hecho! Estás fortaleciendo los músculos de las piernas.';
+          msjElement.className = 'movement-simulator-feedback feedback-success';
+          msjElement.style.display = 'block';
+          break;
+          
+        case 'twist':
+          // Simular giro
+          character.style.transform = 'translateX(-50%) rotate(180deg)';
+          setTimeout(() => {
+            character.style.transform = 'translateX(-50%) rotate(360deg)';
+          }, 500);
+          
+          msjElement.textContent = 'Buen giro. Estás mejorando tu coordinación.';
+          msjElement.className = 'movement-simulator-feedback feedback-info';
+          msjElement.style.display = 'block';
+          break;
+          
+        case 'reset':
+          // Reiniciar posición
+          movementPosition = { x: 50, y: 20 };
+          character.style.left = '50%';
+          character.style.bottom = '20px';
+          character.style.transform = 'translateX(-50%)';
+          character.style.height = '100px';
+          character.style.borderRadius = '30px 30px 0 0';
+          
+          msjElement.textContent = 'Posición reiniciada. ¡Sigue practicando!';
+          msjElement.className = 'movement-simulator-feedback feedback-info';
+          msjElement.style.display = 'block';
+          break;
+      }
+      
+      // Ocultar mensaje después de 3 segundos
+      setTimeout(() => {
+        msjElement.style.display = 'none';
+      }, 3000);
+    }
+    
     function hideAllActivities() {
       document.getElementById('sequenceContainer').style.display = 'none';
       document.getElementById('obstacleContainer').style.display = 'none';
       document.getElementById('throwContainer').style.display = 'none';
       document.getElementById('walkContainer').style.display = 'none';
+      document.getElementById('movementContainer').style.display = 'none';
     }
     
     // Toggle para menú móvil
