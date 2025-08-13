@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Curso Motricidad Fina y Gruesa en Niños</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Curso Motricidad Fina y Gruesa en Niños</title>
+  <meta name="description" content="Curso especializado basado en psicología del desarrollo para potenciar habilidades motrices en niños de 3 a 5 años">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -85,7 +86,7 @@
       width: 60px;
       height: 60px;
       background: var(--secondary);
-      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      border-radius: 30% 70% 70% 30%;
       animation-delay: 2s;
     }
     
@@ -121,13 +122,10 @@
     
     @keyframes float {
       0%, 100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0);
       }
-      33% {
-        transform: translateY(-30px) rotate(120deg);
-      }
-      66% {
-        transform: translateY(30px) rotate(240deg);
+      50% {
+        transform: translateY(-30px);
       }
     }
     
@@ -139,7 +137,7 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       animation: slideDown 0.8s ease;
     }
@@ -172,11 +170,6 @@
       display: flex;
       align-items: center;
       font-family: 'Montserrat', sans-serif;
-      transition: all 0.3s ease;
-    }
-    
-    .navbar-logo:hover {
-      transform: scale(1.05);
     }
     
     .navbar-logo i {
@@ -187,10 +180,10 @@
     
     @keyframes spin {
       from {
-        transform: rotate(0deg);
+        transform: rotate(360deg);
       }
       to {
-        transform: rotate(360deg);
+        transform: rotate(0deg);
       }
     }
     
@@ -252,7 +245,7 @@
       padding: 0 20px;
     }
     
-    /* Hero section con animaciones */
+    /* Hero section */
     .hero {
       background: white;
       border-radius: 25px;
@@ -274,43 +267,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -150px;
-      right: -150px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, var(--primary) 0%, var(--pink) 70%, transparent 100%);
-      border-radius: 50%;
-      z-index: 0;
-      opacity: 0.15;
-      animation: pulse 4s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-    
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -100px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, var(--secondary) 0%, var(--teal) 70%, transparent 100%);
-      border-radius: 50%;
-      z-index: 0;
-      opacity: 0.15;
-      animation: pulse 4s ease-in-out infinite 2s;
     }
     
     .hero-title {
@@ -375,7 +331,6 @@
       height: 140px;
       position: relative;
       animation: float 4s ease-in-out infinite;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
     }
     
     .psychology-illustration:nth-child(2) {
@@ -404,7 +359,7 @@
       margin-bottom: 60px;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1s ease 0.2s both;
+      animation: fadeInUp 1s ease 0.4s both;
     }
     
     .importance-section::before {
@@ -416,7 +371,7 @@
       height: 10px;
       background: linear-gradient(90deg, var(--primary), var(--purple), var(--green));
       border-radius: 25px 25px 0 0;
-      animation: gradientShift 3s ease infinite;
+      animation: gradientShift 3s ease infinite 1s;
     }
     
     @keyframes gradientShift {
@@ -478,21 +433,20 @@
       transition: all 0.4s ease;
       border-left: 6px solid var(--primary);
       position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       animation: slideInUp 0.8s ease both;
     }
     
     .importance-card:nth-child(2) {
       animation-delay: 0.2s;
-      border-left-color: var(--purple);
       background: linear-gradient(135deg, #F9F0FF 0%, #F5F0FF 100%);
+      border-left-color: var(--purple);
     }
     
     .importance-card:nth-child(3) {
       animation-delay: 0.4s;
-      border-left-color: var(--green);
       background: linear-gradient(135deg, #F0FFF9 0%, #E6FFF5 100%);
+      border-left-color: var(--green);
     }
     
     .importance-card:hover {
@@ -529,12 +483,8 @@
     }
     
     @keyframes bounceIcon {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     
     .importance-title {
@@ -557,14 +507,13 @@
       right: 20px;
       background: var(--primary);
       color: white;
-      border-radius: 50%;
+      border-radius: 30px;
       width: 35px;
       height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 1.1rem;
       box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
     }
     
@@ -587,7 +536,7 @@
       margin-bottom: 60px;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1s ease 0.4s both;
+      animation: fadeInUp 1s ease 0.6s both;
     }
     
     .age-section::before {
@@ -599,7 +548,7 @@
       height: 10px;
       background: linear-gradient(90deg, var(--secondary), var(--orange), var(--yellow));
       border-radius: 25px 25px 0 0;
-      animation: gradientShift 3s ease infinite 1s;
+      animation: gradientShift 3s ease infinite 2s;
     }
     
     .age-grid {
@@ -617,20 +566,20 @@
       transition: all 0.4s ease;
       border-left: 6px solid var(--secondary);
       position: relative;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       animation: slideInUp 0.8s ease both;
     }
     
     .age-card:nth-child(2) {
       animation-delay: 0.2s;
-      border-left-color: var(--orange);
       background: linear-gradient(135deg, #FFF9F5 0%, #FFF2EE 100%);
+      border-left-color: var(--orange);
     }
     
     .age-card:nth-child(3) {
       animation-delay: 0.4s;
-      border-left-color: var(--yellow);
       background: linear-gradient(135deg, #FFFBF0 0%, #FFF8E6 100%);
+      border-left-color: var(--yellow);
     }
     
     .age-card:hover {
@@ -694,6 +643,7 @@
       border-radius: 5px;
       transition: width 1.5s ease;
       position: relative;
+      overflow: hidden;
     }
     
     .age-progress-bar::after {
@@ -729,7 +679,7 @@
       margin-bottom: 60px;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1s ease 0.6s both;
+      animation: fadeInUp 1s ease 0.8s both;
     }
     
     .benefits-section::before {
@@ -741,7 +691,7 @@
       height: 10px;
       background: linear-gradient(90deg, var(--info), var(--kid-blue), var(--kid-green));
       border-radius: 25px 25px 0 0;
-      animation: gradientShift 3s ease infinite 2s;
+      animation: gradientShift 3s ease infinite 3s;
     }
     
     .benefits-grid {
@@ -752,11 +702,10 @@
     }
     
     .benefit-item {
-      background: linear-gradient(135deg, #F0F9FF 0%, #E6F7FF 100%);
+      background: linear-gradient(135deg, #F0FFF4 0%, #E6FFEF 100%);
       border-radius: 16px;
       padding: 25px;
-      display: flex;
-      align-items: center;
+      text-align: center;
       transition: all 0.4s ease;
       border-left: 5px solid var(--info);
       position: relative;
@@ -784,8 +733,7 @@
     .benefit-icon {
       font-size: 2.5rem;
       color: var(--info);
-      margin-right: 20px;
-      flex-shrink: 0;
+      margin-bottom: 20px;
       display: inline-block;
       padding: 15px;
       background: rgba(93, 173, 226, 0.1);
@@ -813,7 +761,7 @@
     .benefit-text {
       color: var(--dark);
       font-weight: 600;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
     
     .benefit-stat {
@@ -823,9 +771,13 @@
       background: var(--info);
       color: white;
       border-radius: 30px;
-      padding: 8px 15px;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
       font-size: 0.9rem;
-      font-weight: 700;
       box-shadow: 0 4px 10px rgba(93, 173, 226, 0.3);
     }
     
@@ -877,13 +829,12 @@
       position: relative;
       border-left: 6px solid var(--success);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      transition: all 0.4s ease;
       animation: slideInUp 0.8s ease both;
     }
     
     .testimonial-card:nth-child(2) {
       animation-delay: 0.2s;
-      background: linear-gradient(135deg, #F0FFF7 0%, #E6FFF5 100%);
+      background: linear-gradient(135deg, #F0FFF7 0%, #FFF5F5 100%);
       border-left-color: var(--kid-green);
     }
     
@@ -922,18 +873,6 @@
       color: white;
       font-weight: 700;
       margin-right: 20px;
-      font-size: 1.3rem;
-      box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
-    }
-    
-    .testimonial-card:nth-child(2) .testimonial-avatar {
-      background: var(--kid-green);
-      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
-    }
-    
-    .testimonial-card:nth-child(3) .testimonial-avatar {
-      background: var(--kid-blue);
-      box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
     }
     
     .testimonial-info {
@@ -941,10 +880,10 @@
     }
     
     .testimonial-name {
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 8px;
-      font-size: 1.2rem;
       font-family: 'Montserrat', sans-serif;
     }
     
@@ -987,52 +926,35 @@
       z-index: 2;
     }
     
-    .cta-visual {
-      background: linear-gradient(135deg, var(--gradient-4) 0%, var(--gradient) 100%);
-      padding: 60px 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cta-visual::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: pulse 5s ease-in-out infinite;
-    }
-    
     .cta-title {
       font-size: 2.5rem;
       color: var(--primary);
-      margin-bottom: 20px;
-      font-weight: 800;
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
       font-family: 'Montserrat', sans-serif;
       line-height: 1.2;
     }
     
     .cta-subtitle {
       font-size: 1.2rem;
-      color: #6c757d;
-      margin-bottom: 30px;
+      color: var(--secondary);
+      margin-bottom: 40px;
       font-weight: 500;
-      line-height: 1.6;
-      font-family: 'Quicksand', sans-serif;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
     }
     
     .cta-features {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      margin-bottom: 30px;
+      gap: 20px;
+      margin-bottom: 40px;
     }
     
     .cta-feature {
@@ -1042,8 +964,8 @@
     }
     
     .cta-feature i {
-      color: var(--secondary);
       font-size: 1.5rem;
+      color: var(--primary);
       width: 30px;
       text-align: center;
     }
@@ -1057,8 +979,6 @@
     .price-display {
       text-align: center;
       margin-bottom: 30px;
-      position: relative;
-      z-index: 2;
     }
     
     .price-label {
@@ -1147,6 +1067,30 @@
       color: var(--warning);
     }
     
+    .cta-visual {
+      background: linear-gradient(135deg, var(--gradient-4) 0%, var(--gradient) 100%);
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-visual::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 5s ease-in-out infinite;
+    }
+    
     .cta-decoration {
       position: absolute;
       bottom: -50px;
@@ -1186,7 +1130,7 @@
       font-weight: 500;
     }
     
-    /* Modal de acceso */
+    /* Modal de acceso al curso */
     .modal {
       display: none;
       position: fixed;
@@ -1239,22 +1183,8 @@
       color: var(--primary);
     }
     
-    .modal-title {
-      font-size: 2rem;
-      color: var(--dark);
-      margin-bottom: 25px;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .modal-description {
-      color: #6c757d;
-      margin-bottom: 40px;
-      font-size: 1.1rem;
-    }
-    
     .access-form {
-      margin-bottom: 30px;
+      margin-top: 30px;
     }
     
     .form-group {
@@ -1302,7 +1232,7 @@
     
     .access-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
     }
     
     .error-message {
@@ -1330,150 +1260,186 @@
       text-decoration: underline;
     }
     
-    /* Responsive mejorado */
-    @media (max-width: 992px) {
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      
-      .importance-grid,
-      .age-grid,
-      .testimonials-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-      
-      .cta-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .cta-visual {
-        order: -1;
-        padding: 40px 30px;
-      }
-      
-      .cta-content {
-        padding: 40px 30px;
-      }
-      
-      .cta-title {
-        font-size: 2.2rem;
-      }
+    /* Navegación mejorada */
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
     }
     
-    @media (max-width: 768px) {
-      .navbar-menu {
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: var(--gradient);
-        padding: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transform: translateY(-150%);
-        transition: transform 0.4s ease;
-        z-index: 100;
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Progress indicator
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      
+      const progressBar = document.getElementById('progressBar');
+      if (progressBar) {
+        progressBar.style.width = `${scrollPercent}%`;
       }
       
-      .navbar-menu.active {
-        transform: translateY(0);
+      const percentageDisplay = document.getElementById('percentageDisplay');
+      if (percentageDisplay) {
+        percentageDisplay.textContent = `${Math.round(scrollPercent)}%`;
       }
-      
-      .navbar-menu li {
-        margin: 12px 0;
-      }
-      
-      .navbar-toggle {
-        display: block;
-      }
-      
-      .hero-title {
-        font-size: 2.3rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .price-amount {
-        font-size: 3.5rem;
-      }
-      
-      .psychology-illustrations {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-      }
-      
-      .psychology-illustration {
-        width: 120px;
-        height: 120px;
-      }
-      
-      .cta-title {
-        font-size: 2rem;
-      }
-      
-      .cta-button {
-        padding: 16px 35px;
-        font-size: 1.1rem;
-      }
+    });
+    
+    // Carousel de testimonios
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.testimonial-card');
+    const totalSlides = slides.length;
+    
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(${100 * (i - index)}%)`;
+      });
     }
     
-    @media (max-width: 576px) {
-      .hero {
-        padding: 50px 25px;
-      }
-      
-      .importance-section,
-      .age-section,
-      .benefits-section,
-      .testimonials-section,
-      .cta-section {
-        padding: 0;
-        margin-bottom: 40px;
-      }
-      
-      .cta-content,
-      .cta-visual {
-        padding: 30px 20px;
-      }
-      
-      .section-title {
-        font-size: 1.7rem;
-      }
-      
-      .cta-title {
-        font-size: 1.8rem;
-      }
-      
-      .cta-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .price-amount {
-        font-size: 3rem;
-      }
-      
-      .modal-content {
-        padding: 40px 25px;
-      }
-      
-      .cta-features {
-        gap: 12px;
-      }
-      
-      .cta-feature-text {
-        font-size: 1rem;
-      }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
     }
+    
+    // Iniciar carrusel automático
+    setInterval(nextSlide, 5000);
+    
+    // Calculadora de hitos por edad
+    const ageForm = document.getElementById('ageCalculator');
+    const resultDiv = document.getElementById('result');
+    
+    if (ageForm) {
+      ageForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const age = parseInt(document.getElementById('childAge').value);
+        let milestones = '';
+        
+        if (isNaN(age)) {
+          alert('Por favor ingresa una edad válida.');
+          return;
+        }
+        
+        switch(true) {
+          case age === 3:
+            milestones = `
+              <h4>Habilidades típicas para 3 años:</h4>
+              <ul style="text-align: left;">
+                <li>Puede correr y saltar</li>
+                <li>Empuja triciclos o bicicletas con ruedas</li>
+                <li>Manipula objetos pequeños con precisión</li>
+                <li>Imita gestos complejos</li>
+                <li>Participa en juegos grupales simples</li>
+              </ul>
+            `;
+            break;
+            
+          case age === 4:
+            milestones = `
+              <h4>Habilidades típicas para 4 años:</h4>
+              <ul style="text-align: left;">
+                <li>Camina hacia atrás</li>
+                <li>Salta sobre un pie</li>
+                <li>Dibuja figuras geométricas</li>
+                <li>Resuelve problemas simples</li>
+                <li>Juega con reglas básicas</li>
+              </ul>
+            `;
+            break;
+            
+          case age === 5:
+            milestones = `
+              <h4>Habilidades típicas para 5 años:</h4>
+              <ul style="text-align: left;">
+                <li>Corre y salta con agilidad</li>
+                <li>Escribe letras mayúsculas</li>
+                <li>Realiza tareas complejas con ambas manos</li>
+                <li>Participa en deportes organizados</li>
+                <li>Controla emociones básicas</li>
+              </ul>
+            `;
+            break;
+            
+          default:
+            milestones = `<p>Por favor ingrese una edad entre 3 y 5 años.</p>`;
+        }
+        
+        resultDiv.innerHTML = milestones;
+        resultDiv.style.display = 'block';
+      });
+    }
+    
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const header = item.querySelector('.faq-header');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon');
+      
+      header.addEventListener('click', () => {
+        const isOpen = content.style.maxHeight;
+        
+        // Cerrar todos los demás items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.querySelector('.faq-content').style.maxHeight = null;
+            otherItem.querySelector('.faq-icon').textContent = '+';
+          }
+        });
+        
+        // Alternar estado del item actual
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.textContent = '-';
+        } else {
+          content.style.maxHeight = null;
+          icon.textContent = '+';
+        }
+      });
+    });
+    
+    // Progress bar
+    const progressBar = document.createElement('div');
+    progressBar.id = 'progressBar';
+    progressBar.style.height = '4px';
+    progressBar.style.background = '#FFE66D';
+    progressBar.style.position = 'fixed';
+    progressBar.style.top = '0';
+    progressBar.style.left = '0';
+    progressBar.style.zIndex = '9999';
+    document.body.appendChild(progressBar);
+    
+    const percentageDisplay = document.createElement('div');
+    percentageDisplay.id = 'percentageDisplay';
+    percentageDisplay.style.position = 'fixed';
+    percentageDisplay.style.top = '10px';
+    percentageDisplay.style.right = '20px';
+    percentageDisplay.style.fontSize = '14px';
+    percentageDisplay.style.fontWeight = 'bold';
+    percentageDisplay.style.color = '#333';
+    percentageDisplay.style.zIndex = '10000';
+    document.body.appendChild(percentageDisplay);
   </style>
 </head>
 <body>
+
   <!-- Formas animadas de fondo -->
   <div class="floating-shapes">
     <div class="shape"></div>
@@ -1482,8 +1448,8 @@
     <div class="shape"></div>
     <div class="shape"></div>
   </div>
-  
-  <!-- Navbar -->
+
+  <!-- Navbar con animación -->
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-logo">
@@ -1501,14 +1467,15 @@
       </button>
     </div>
   </nav>
-  
+
   <!-- Contenedor principal -->
   <div class="container">
+
     <!-- Hero section -->
     <section class="hero">
       <h1 class="hero-title">Desarrollo Psicomotriz Infantil</h1>
       <p class="hero-subtitle">
-        El curso especializado basado en la psicología del desarrollo para potenciar las habilidades motrices de niños de 3 a 5 años
+        El curso especializado basado en la psicología del desarrollo para potenciar habilidades motrices en niños de 3 a 5 años
       </p>
       
       <!-- Ilustraciones animadas -->
@@ -1523,6 +1490,7 @@
             <path d="M40,40 L30,50 M60,40 L70,50" stroke="#FF7EB9" stroke-width="2"/>
             <path d="M50,55 C45,60 45,65 50,70 C55,65 55,60 50,55 Z" fill="#4dabf7"/>
             <circle cx="50" cy="35" r="3" fill="#333"/>
+            <path d="M35,25 L50,20 L65,25" stroke="#FFE66D" stroke-width="2" fill="none"/>
           </svg>
         </div>
         <div class="psychology-illustration">
@@ -1540,48 +1508,43 @@
             <circle cx="62" cy="23" r="1.2" fill="#333"/>
             <circle cx="68" cy="23" r="1.2" fill="#333"/>
             <path d="M62,27 Q65,29 68,27" stroke="#333" stroke-width="1" fill="none"/>
-            <path d="M58,18 Q65,13 72,18 Q68,25 58,18" fill="#8b4513"/>
-            <rect x="45" y="50" width="15" height="3" fill="#FFE66D"/>
-            <circle cx="35" cy="65" r="3" fill="#FF6B6B"/>
-            <circle cx="65" cy="65" r="3" fill="#FF6B6B"/>
+            <path d="M58,18 Q65,13 72,18" stroke="#FFE66D" stroke-width="2" fill="none"/>
           </svg>
         </div>
         <div class="psychology-illustration">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <!-- Desarrollo cognitivo -->
-            <circle cx="50" cy="50" r="45" fill="#6BCF7F" opacity="0.1"/>
-            <path d="M30,30 L70,30 L70,70 L30,70 Z" fill="#fff" stroke="#6BCF7F" stroke-width="2"/>
-            <circle cx="40" cy="45" r="8" fill="#ffcc99"/>
-            <circle cx="60" cy="45" r="8" fill="#ffcc99"/>
-            <path d="M40,45 L35,55 M60,45 L65,55" stroke="#FF6B6B" stroke-width="2"/>
-            <path d="M50,55 C45,60 45,65 50,65 C55,65 55,60 50,55 Z" fill="#4dabf7"/>
-            <circle cx="50" cy="40" r="3" fill="#333"/>
+            <circle cx="50" cy="50" r="45" fill="#9C88FF" opacity="0.1"/>
+            <path d="M50,20 C35,20 25,30 25,45 C25,55 30,65 40,70 L45,75 L55,75 L65,70 C75,65 80,55 80,45 C80,30 70,20 50,20 Z" fill="#9C88FF"/>
+            <circle cx="40" cy="40" r="8" fill="#ffcc99"/>
+            <circle cx="60" cy="40" r="8" fill="#ffcc99"/>
+            <path d="M40,40 L30,50 M60,40 L70,50" stroke="#FF7EB9" stroke-width="2"/>
+            <path d="M50,55 C45,60 45,65 50,70 C55,65 55,60 50,55 Z" fill="#4dabf7"/>
+            <circle cx="50" cy="35" r="3" fill="#333"/>
             <path d="M35,25 L50,20 L65,25" stroke="#FFE66D" stroke-width="2" fill="none"/>
           </svg>
         </div>
         <div class="psychology-illustration">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <!-- Terapia de juego -->
-            <circle cx="50" cy="50" r="45" fill="#9C88FF" opacity="0.1"/>
-            <rect x="30" y="40" width="15" height="30" rx="5" fill="#ffcc99"/>
-            <circle cx="37" cy="30" r="8" fill="#ffcc99"/>
-            <circle cx="34" cy="28" r="1.5" fill="#333"/>
-            <circle cx="40" cy="28" r="1.5" fill="#333"/>
-            <path d="M34,33 Q37,35 40,33" stroke="#FF7EB9" stroke-width="1" fill="none"/>
-            <path d="M30,20 Q37,15 45,20 Q40,28 30,20" fill="#8b4513"/>
-            <rect x="55" y="45" width="15" height="25" rx="5" fill="#ffcc99"/>
-            <circle cx="62" cy="35" r="8" fill="#ffcc99"/>
-            <circle cx="59" cy="33" r="1.5" fill="#333"/>
-            <circle cx="65" cy="33" r="1.5" fill="#333"/>
-            <path d="M59,38 Q62,40 65,38" stroke="#FF7EB9" stroke-width="1" fill="none"/>
-            <path d="M55,25 Q62,20 70,25 Q65,33 55,25" fill="#8b4513"/>
-            <circle cx="45" cy="60" r="5" fill="#FFE66D"/>
-            <circle cx="55" cy="60" r="5" fill="#6bcf7f"/>
+            <circle cx="50" cy="50" r="45" fill="#FF7EB9" opacity="0.1"/>
+            <rect x="30" y="28" width="25" height="35" rx="5" fill="#ffcc99"/>
+            <circle cx="42" cy="18" r="10" fill="#ffcc99"/>
+            <circle cx="38" cy="16" r="1.5" fill="#333"/>
+            <circle cx="46" cy="16" r="1.5" fill="#333"/>
+            <path d="M38,21 Q42,23 46,21" stroke="#FF7EB9" stroke-width="1" fill="none"/>
+            <path d="M33,8 Q42,3 51,8 Q46,21 33,8" fill="#8b4513"/>
+            <rect x="55" y="28" width="20" height="40" rx="3" fill="#ffcc99"/>
+            <circle cx="65" cy="18" r="8" fill="#ffcc99"/>
+            <circle cx="62" cy="16" r="1.2" fill="#333"/>
+            <circle cx="68" cy="16" r="1.2" fill="#333"/>
+            <path d="M62,20 Q65,22 68,20" stroke="#333" stroke-width="1" fill="none"/>
+            <path d="M58,11 Q65,6 72,11" stroke="#FFE66D" stroke-width="2" fill="none"/>
           </svg>
         </div>
       </div>
     </section>
-    
+
     <!-- Sección de importancia -->
     <section class="importance-section" id="importancia">
       <h2 class="section-title">Fundamentos psicológicos del desarrollo motriz</h2>
@@ -1599,9 +1562,9 @@
         <div class="importance-card">
           <div class="importance-badge">2</div>
           <div class="importance-icon">
-            <i class="fas fa-clock"></i>
+            <i class="fas fa-users"></i>
           </div>
-          <h3 class="importance-title">Períodos sensibles</h3>
+          <h3 class="importance-title">Período sensible</h3>
           <p class="importance-text">
             La psicología del desarrollo identifica ventanas de oportunidad crítica entre los 3-5 años para la adquisición de habilidades motoras. Estimular adecuadamente en esta etapa previene dificultades posteriores.
           </p>
@@ -1618,8 +1581,8 @@
         </div>
       </div>
     </section>
-    
-    <!-- Sección de desarrollo por edad -->
+
+    <!-- Calculadora de Hitos por Edad -->
     <section class="age-section" id="desarrollo">
       <h2 class="section-title">Etapas del desarrollo psicomotor</h2>
       <div class="age-grid">
@@ -1629,7 +1592,11 @@
           </div>
           <h3 class="age-title">3 años: Etapa preoperacional</h3>
           <p class="age-text">
-            <strong>Desarrollo clave:</strong> Control postural básico, coordinación ojo-mano emergente, juego simbólico. Según Erikson, en esta etapa se desarrolla la autonomía vs. vergüenza/duda.
+            <strong>Desarrollo clave:</strong> Puede correr y saltar<br>
+            Empuja triciclos o bicicletas con ruedas<br>
+            Manipula objetos pequeños con precisión<br>
+            Imita gestos complejos<br>
+            Participa en juegos grupales simples
           </p>
           <div class="age-progress">
             <div class="age-progress-bar" style="width: 40%;"></div>
@@ -1641,7 +1608,11 @@
           </div>
           <h3 class="age-title">4 años: Pensamiento intuitivo</h3>
           <p class="age-text">
-            <strong>Desarrollo clave:</strong> Lateralidad definida, coordinación fina mejorada, juego cooperativo. Vygotsky enfatiza la importancia de la zona de desarrollo próximo en esta edad.
+            <strong>Desarrollo clave:</strong> Camina hacia atrás<br>
+            Salta sobre un pie<br>
+            Dibuja figuras geométricas<br>
+            Resuelve problemas simples<br>
+            Juega con reglas básicas
           </p>
           <div class="age-progress">
             <div class="age-progress-bar" style="width: 70%;"></div>
@@ -1653,7 +1624,11 @@
           </div>
           <h3 class="age-title">5 años: Transición operacional</h3>
           <p class="age-text">
-            <strong>Desarrollo clave:</strong> Habilidades motoras refinadas, mayor planificación motriz, autonomía completa. Bronfenbrenner destaca la influencia de los sistemas ambientales en este desarrollo.
+            <strong>Desarrollo clave:</strong> Corre y salta con agilidad<br>
+            Escribe letras mayúsculas<br>
+            Realiza tareas complejas con ambas manos<br>
+            Participa en deportes organizados<br>
+            Controla emociones básicas
           </p>
           <div class="age-progress">
             <div class="age-progress-bar" style="width: 90%;"></div>
@@ -1661,7 +1636,28 @@
         </div>
       </div>
     </section>
-    
+
+    <!-- Calculadora de Hitos por Edad -->
+    <section class="age-section" id="calculadora">
+      <h2 class="section-title">Calculadora de Hitos por Edad</h2>
+      <div class="age-grid">
+        <div class="age-card">
+          <div class="age-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="age-title">Ingresa la edad de tu hijo</h3>
+          <form id="ageCalculator">
+            <div class="form-group">
+              <label for="childAge">Edad del niño (años):</label>
+              <input type="number" id="childAge" placeholder="3, 4 o 5" min="3" max="5" required>
+            </div>
+            <button type="submit" class="access-button">Ver hitos esperados</button>
+          </form>
+          <div id="result" style="display: none;"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Sección de beneficios -->
     <section class="benefits-section" id="beneficios">
       <h2 class="section-title">Beneficios psicológicos comprobados</h2>
@@ -1722,78 +1718,159 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Sección de testimonios -->
     <section class="testimonials-section" id="testimonios">
       <h2 class="section-title">Experiencia de profesionales</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">
-            "Como psicóloga infantil, recomiendo este curso por su base científica sólida. He visto mejoras significativas en el desarrollo emocional y cognitivo de los niños que aplican estas técnicas."
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MC</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">María C.</div>
-              <div class="testimonial-role">Psicóloga infantil</div>
+      <div class="testimonials-carousel">
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "Como psicóloga infantil, recomiendo este curso por su base científica sólida. He visto mejoras significativas en el desarrollo emocional y cognitivo de los niños que aplican estas técnicas."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MC</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">María C.</div>
+                <div class="testimonial-role">Psicóloga infantil</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">
-            "El enfoque en la teoría del apego y el desarrollo emocional es excepcional. Mi hija ha desarrollado no solo habilidades motoras, sino también mayor seguridad y autonomía."
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">AL</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Ana L.</div>
-              <div class="testimonial-role">Terapeuta familiar</div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "El enfoque en la teoría del apego y el desarrollo emocional es excepcional. Mi hija ha desarrollado no solo habilidades motoras, sino también mayor seguridad y autonomía."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AL</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Ana L.</div>
+                <div class="testimonial-role">Terapeuta familiar</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">
-            "Como neurólogo pediátrico, valoro el enfoque en la neuroplasticidad. Las actividades están diseñadas para maximizar el desarrollo de conexiones neuronales en la etapa crítica."
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">RM</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Roberto M.</div>
-              <div class="testimonial-role">Neurólogo pediátrico</div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "Como neurólogo pediátrico, valoro el enfoque en la neuroplasticidad. Las actividades están diseñadas para maximizar el desarrollo de conexiones neuronales en la etapa crítica."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">RM</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Roberto M.</div>
+                <div class="testimonial-role">Neurólogo pediátrico</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
+
+    <!-- FAQ Section -->
+    <section class="age-section" id="faq">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <div class="age-grid">
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Cuánto tiempo debe dedicarse diariamente?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Se recomienda dedicar entre 30 y 60 minutos diarios, distribuidos en sesiones cortas de 10-15 minutos. La consistencia es más importante que la duración total.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Es necesario supervisión profesional?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Sí, especialmente durante los primeros meses. Un terapeuta puede evaluar el progreso, ajustar ejercicios según necesidades individuales y garantizar que las actividades sean seguras y apropiadas.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Qué materiales necesito?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Básicamente elementos cotidianos como pelotas, conos, cuerdas, bloques de construcción y papel. No se requieren materiales costosos ni especiales.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Cómo saber si mi hijo progresa?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Podrás observar mejoras en coordinación, equilibrio, fuerza muscular y confianza. También notarás mayor independencia en actividades cotidianas como vestirse o alimentarse.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Pueden participar hermanos?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Sí, absolutamente. Muchas actividades son adaptables para diferentes edades. Esto fomenta la interacción positiva entre hermanos y refuerza los lazos familiares.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Qué pasa si mi hijo no quiere participar?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Es normal que algunos días no estén interesados. Lo importante es no forzarlo. Puedes intentar otro momento del día o cambiar la actividad por algo más divertido que le guste.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Hay riesgos asociados?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Los riesgos son mínimos si se siguen las instrucciones. Es importante supervisar siempre las actividades, usar equipo protector cuando sea necesario y asegurarse de que el espacio esté libre de obstáculos.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleAccordion(this)">
+            <span>¿Puedo combinar este método con otras terapias?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-content">
+            <p>Sí, este programa complementa perfectamente otras terapias como terapia ocupacional, fisioterapia o logopedia. Consulta con tu terapeuta para crear un plan integrado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Sección CTA profesional -->
     <section class="cta-section" id="acceder">
       <div class="cta-container">
         <div class="cta-content">
           <h2 class="cta-title">Potencia el desarrollo integral de tu hijo</h2>
           <p class="cta-subtitle">
-            Accede al curso basado en la psicología del desarrollo con 5 módulos especializados, actividades terapéuticas y seguimiento profesional
+            Accede al curso basado en la psicología del desarrollo con 5 módulos especializados
           </p>
           
           <div class="cta-features">
@@ -1806,172 +1883,4 @@
               <span class="cta-feature-text">Actividades terapéuticas</span>
             </div>
             <div class="cta-feature">
-              <i class="fas fa-check-circle"></i>
-              <span class="cta-feature-text">Seguimiento profesional</span>
-            </div>
-            <div class="cta-feature">
-              <i class="fas fa-check-circle"></i>
-              <span class="cta-feature-text">Certificado de finalización</span>
-            </div>
-          </div>
-          
-          <a href="#" class="cta-button" id="acceder-curso">ACCEDER AL CURSO AHORA</a>
-        </div>
-        
-        <div class="cta-visual">
-          <div class="cta-decoration"></div>
-          <div class="cta-decoration-2"></div>
-          
-          <div class="price-badge">OFERTA LIMITADA</div>
-          
-          <div class="price-original">$97 USD</div>
-          
-          <div class="price-display">
-            <div class="price-label">Precio especial</div>
-            <div class="price-amount">
-              <span class="price-currency">$</span>67
-              <span class="price-period">USD</span>
-            </div>
-          </div>
-          
-          <div class="cta-guarantee">
-            <i class="fas fa-shield-alt"></i>
-            <span>Garantía de satisfacción de 30 días</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-      <p>Academia de Psicología Infantil &copy; 2025 - Todos los derechos reservados</p>
-      <p>Desarrollado por expertos en psicología del desarrollo</p>
-    </footer>
-  </div>
-  
-  <!-- Modal de acceso al curso -->
-  <div id="accesoModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" id="closeModal">&times;</span>
-      <h2 class="modal-title">Acceso al Curso</h2>
-      <p class="modal-description">Ingresa tu correo electrónico y la contraseña que recibiste al comprar el curso.</p>
-      
-      <form class="access-form" id="accessForm">
-        <div class="form-group">
-          <label for="email">Correo electrónico</label>
-          <input type="email" id="email" placeholder="tu@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" placeholder="Tu contraseña" required>
-        </div>
-        <button type="submit" class="access-button">Acceder al Curso</button>
-        <div class="error-message" id="errorMessage">Credenciales incorrectas. Por favor, intenta de nuevo.</div>
-      </form>
-      
-      <div class="purchase-info">
-        ¿No tienes acceso? <a href="#">Compra el curso aquí</a>
-      </div>
-    </div>
-  </div>
-  
-  <script>
-    // Animación de entrada
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.8s';
-    window.addEventListener('DOMContentLoaded', function() {
-      document.body.style.opacity = '1';
-    });
-    
-    // Modal de acceso
-    const modal = document.getElementById('accesoModal');
-    const accederBtn = document.getElementById('acceder-curso');
-    const closeModal = document.getElementById('closeModal');
-    const accessForm = document.getElementById('accessForm');
-    const errorMessage = document.getElementById('errorMessage');
-    
-    // Abrir modal al hacer clic en "ACCEDER AL CURSO AHORA"
-    accederBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      modal.style.display = 'flex';
-    });
-    
-    // Cerrar modal
-    closeModal.addEventListener('click', function() {
-      modal.style.display = 'none';
-      errorMessage.style.display = 'none';
-    });
-    
-    // Cerrar modal al hacer clic fuera del contenido
-    window.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        errorMessage.style.display = 'none';
-      }
-    });
-    
-    // Manejar envío del formulario de acceso
-    accessForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      
-      // Verificar credenciales (en un caso real, esto se haría en el servidor)
-      // Para este ejemplo, usaremos credenciales de demostración
-      if (email === 'demo@ejemplo.com' && password === 'curso2025') {
-        // Guardar token de acceso en localStorage
-        localStorage.setItem('cursoAcceso', 'autorizado');
-        
-        // Cerrar modal y redirigir al primer módulo
-        modal.style.display = 'none';
-        window.location.href = 'modulo1/index.html';
-      } else {
-        // Mostrar mensaje de error
-        errorMessage.style.display = 'block';
-      }
-    });
-    
-    // Toggle para menú móvil
-    document.getElementById('navbar-toggle').addEventListener('click', () => {
-      document.getElementById('navbar-menu').classList.toggle('active');
-    });
-    
-    // Suavizado de scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-    
-    // Animación de entrada para tarjetas
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '0';
-          entry.target.style.transform = 'translateY(30px)';
-          setTimeout(() => {
-            entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }, 100);
-        }
-      });
-    }, observerOptions);
-    document.querySelectorAll('.importance-card, .age-card, .benefit-item, .testimonial-card').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
-</body>
-</html>
+              <i class="fas fa-check-circle
