@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -237,6 +236,12 @@
       transform: translateY(-2px);
     }
     
+    .navbar-menu a.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
     .navbar-toggle {
       display: none;
       background: none;
@@ -244,6 +249,68 @@
       color: white;
       font-size: 1.8rem;
       cursor: pointer;
+    }
+    
+    /* Barra de progreso del módulo */
+    .module-progress {
+      background: white;
+      border-radius: 15px;
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .progress-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .progress-bar-container {
+      width: 300px;
+      height: 15px;
+      background: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+    
+    .progress-text {
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    .badges {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #e9ecef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #aaa;
+      transition: all 0.3s ease;
+    }
+    
+    .badge.earned {
+      background: var(--warning);
+      color: white;
+      box-shadow: 0 4px 8px rgba(255, 154, 86, 0.3);
     }
     
     /* Botón para volver al índice */
@@ -460,6 +527,34 @@
       animation-delay: 0.8s;
     }
     
+    .test-question:nth-child(6) {
+      animation-delay: 1.0s;
+    }
+    
+    .test-question:nth-child(7) {
+      animation-delay: 1.2s;
+    }
+    
+    .test-question:nth-child(8) {
+      animation-delay: 1.4s;
+    }
+    
+    .test-question:nth-child(9) {
+      animation-delay: 1.6s;
+    }
+    
+    .test-question:nth-child(10) {
+      animation-delay: 1.8s;
+    }
+    
+    .test-question:nth-child(11) {
+      animation-delay: 2.0s;
+    }
+    
+    .test-question:nth-child(12) {
+      animation-delay: 2.2s;
+    }
+    
     .test-question h3 {
       font-size: 1.5rem;
       color: var(--dark);
@@ -574,6 +669,38 @@
       font-size: 1.2rem;
       color: #6c757d;
       margin-top: 20px;
+    }
+    
+    .test-recommendations {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: left;
+    }
+    
+    .test-recommendations h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .test-recommendations ul {
+      list-style-type: none;
+    }
+    
+    .test-recommendations li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .test-recommendations li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
     }
     
     .test-button {
@@ -807,6 +934,419 @@
       background: rgba(255, 107, 107, 0.1);
     }
     
+    /* Timeline Interactivo */
+    .timeline-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+    
+    .timeline-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--secondary), var(--orange), var(--yellow));
+      border-radius: 25px 25px 0 0;
+      animation: gradientShift 3s ease infinite 2s;
+    }
+    
+    .timeline-container {
+      position: relative;
+      margin: 40px 0;
+    }
+    
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--gradient-2);
+      border-radius: 3px;
+      z-index: 1;
+    }
+    
+    .timeline-points {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .timeline-point {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: white;
+      border: 4px solid var(--secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-point:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+    }
+    
+    .timeline-point.active {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .timeline-popup {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    
+    .timeline-point:hover .timeline-popup,
+    .timeline-point.active .timeline-popup {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .timeline-popup h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .timeline-popup ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .timeline-popup li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+      font-size: 0.9rem;
+    }
+    
+    .timeline-popup li:before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+    
+    /* Checklist de Observación */
+    .checklist-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+    
+    .checklist-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--info), var(--kid-blue), var(--kid-green));
+      border-radius: 25px 25px 0 0;
+      animation: gradientShift 3s ease infinite 3s;
+    }
+    
+    .age-selector {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .age-tab {
+      padding: 12px 25px;
+      background: #f8f9fa;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .age-tab.active {
+      background: var(--info);
+      color: white;
+    }
+    
+    .checklist-content {
+      display: none;
+    }
+    
+    .checklist-content.active {
+      display: block;
+    }
+    
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .checklist-item {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .checklist-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .checklist-checkbox {
+      width: 25px;
+      height: 25px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .checklist-checkbox.checked {
+      background: var(--success);
+      border-color: var(--success);
+      color: white;
+    }
+    
+    .checklist-text {
+      font-size: 1rem;
+    }
+    
+    .checklist-results {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(93, 173, 226, 0.1);
+      border-radius: 15px;
+      text-align: center;
+      display: none;
+    }
+    
+    .checklist-results.show {
+      display: block;
+    }
+    
+    .checklist-score {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--info);
+      margin-bottom: 10px;
+    }
+    
+    .checklist-message {
+      font-size: 1.1rem;
+    }
+    
+    /* Mini-Juegos */
+    .game-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .game-title {
+      font-size: 1.8rem;
+      color: var(--purple);
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+    
+    .game-instructions {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6c757d;
+    }
+    
+    /* Memory Game */
+    .memory-game {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .memory-card {
+      aspect-ratio: 1;
+      background: var(--gradient-3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    
+    .memory-card.flipped {
+      transform: rotateY(180deg);
+    }
+    
+    .memory-card.matched {
+      background: var(--success);
+      cursor: default;
+    }
+    
+    .memory-card-front,
+    .memory-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+    
+    .memory-card-back {
+      transform: rotateY(180deg);
+      background: white;
+      color: var(--purple);
+    }
+    
+    /* Drag and Drop Game */
+    .drag-drop-game {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .drag-items {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .drag-item {
+      padding: 12px 20px;
+      background: var(--gradient-5);
+      color: white;
+      border-radius: 30px;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+    
+    .drag-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 126, 185, 0.3);
+    }
+    
+    .drag-item.dragging {
+      opacity: 0.5;
+      cursor: grabbing;
+    }
+    
+    .drop-zones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .drop-zone {
+      min-height: 200px;
+      background: #f8f9fa;
+      border: 3px dashed #ddd;
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .drop-zone.drag-over {
+      background: rgba(255, 126, 185, 0.1);
+      border-color: var(--pink);
+    }
+    
+    .drop-zone h4 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    .drop-zone-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .dropped-item {
+      padding: 10px 15px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .game-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .game-button {
+      padding: 10px 20px;
+      background: var(--purple);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .game-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(156, 136, 255, 0.3);
+    }
+    
     /* Sección de ciencia */
     .science-section {
       background: white;
@@ -816,7 +1356,7 @@
       margin-bottom: 60px;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1s ease 0.8s both;
+      animation: fadeInUp 1s ease 1s both;
     }
     
     .science-section::before {
@@ -1024,6 +1564,13 @@
       box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
     }
     
+    .btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
     .btn i {
       font-size: 1.3rem;
     }
@@ -1130,6 +1677,54 @@
       box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
     }
     
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      z-index: 10001;
+      animation: slideInRight 0.5s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .notification.success {
+      background: var(--success);
+    }
+    
+    .notification.info {
+      background: var(--info);
+    }
+    
+    .notification.warning {
+      background: var(--warning);
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideOutRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .navbar-menu {
@@ -1177,6 +1772,14 @@
       .btn {
         width: 100%;
       }
+      
+      .memory-game {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .drop-zones {
+        grid-template-columns: 1fr;
+      }
     }
     
     @media (max-width: 768px) {
@@ -1194,6 +1797,15 @@
       
       .modal-content {
         padding: 40px 25px;
+      }
+      
+      .timeline-points {
+        overflow-x: auto;
+        padding-bottom: 20px;
+      }
+      
+      .memory-game {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     
@@ -1221,6 +1833,14 @@
       .modal-content {
         padding: 40px 25px;
       }
+      
+      .memory-game {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .checklist-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -1243,10 +1863,10 @@
       <ul class="navbar-menu" id="navbar-menu">
         <li><a href="../index.html">Inicio</a></li>
         <li><a href="index.html">Módulo 1</a></li>
-        <li><a href="../modulo2/index.html">Módulo 2</a></li>
-        <li><a href="../modulo3/index.html">Módulo 3</a></li>
-        <li><a href="../modulo4/index.html">Módulo 4</a></li>
-        <li><a href="../modulo5/index.html">Módulo 5</a></li>
+        <li><a href="../modulo2/index.html" class="module-link" data-module="2">Módulo 2</a></li>
+        <li><a href="../modulo3/index.html" class="module-link" data-module="3">Módulo 3</a></li>
+        <li><a href="../modulo4/index.html" class="module-link" data-module="4">Módulo 4</a></li>
+        <li><a href="../modulo5/index.html" class="module-link" data-module="5">Módulo 5</a></li>
       </ul>
       <button class="navbar-toggle" id="navbar-toggle">
         <i class="fas fa-bars"></i>
@@ -1260,6 +1880,36 @@
     <a href="../index.html" class="back-button">
       <i class="fas fa-arrow-left"></i> Volver al índice
     </a>
+    
+    <!-- Barra de progreso del módulo -->
+    <div class="module-progress">
+      <div class="progress-info">
+        <i class="fas fa-tasks" style="font-size: 1.5rem; color: var(--primary);"></i>
+        <div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="moduleProgressBar" style="width: 0%;"></div>
+          </div>
+          <div class="progress-text" id="progressText">0% completado</div>
+        </div>
+      </div>
+      <div class="badges">
+        <div class="badge" id="quizBadge" title="Quiz completado">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="badge" id="theoryBadge" title="Teoría completada">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="badge" id="timelineBadge" title="Timeline completado">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="badge" id="checklistBadge" title="Checklist completado">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <div class="badge" id="gamesBadge" title="Juegos completados">
+          <i class="fas fa-gamepad"></i>
+        </div>
+      </div>
+    </div>
     
     <!-- Hero section mejorada -->
     <section class="hero">
@@ -1334,6 +1984,69 @@
             <div class="test-option">Son opuestas</div>
           </div>
         </div>
+        
+        <div class="test-question">
+          <h3>¿Qué es la motricidad fina?</h3>
+          <div class="test-options">
+            <div class="test-option">Movimientos grandes del cuerpo</div>
+            <div class="test-option" data-correct="true">Movimientos precisos de manos y dedos</div>
+            <div class="test-option">Movimientos de equilibrio</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué es la motricidad gruesa?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">Movimientos grandes del cuerpo</div>
+            <div class="test-option">Movimientos precisos de manos y dedos</div>
+            <div class="test-option">Movimientos de coordinación ojo-mano</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué habilidad se desarrolla primero en los niños?</h3>
+          <div class="test-options">
+            <div class="test-option">Motricidad fina</div>
+            <div class="test-option" data-correct="true">Motricidad gruesa</div>
+            <div class="test-option">Ambas se desarrollan al mismo tiempo</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué factor influye más en el desarrollo motor?</h3>
+          <div class="test-options">
+            <div class="test-option">Solo la genética</div>
+            <div class="test-option">Solo el ambiente</div>
+            <div class="test-option" data-correct="true">Interacción entre genética y ambiente</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿A qué edad un niño debería poder caminar sin apoyo?</h3>
+          <div class="test-options">
+            <div class="test-option">6-9 meses</div>
+            <div class="test-option" data-correct="true">12-15 meses</div>
+            <div class="test-option">18-24 meses</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué actividad ayuda a desarrollar la motricidad fina?</h3>
+          <div class="test-options">
+            <div class="test-option">Correr</div>
+            <div class="test-option" data-correct="true">Jugar con bloques pequeños</div>
+            <div class="test-option">Saltar la cuerda</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué es la lateralidad?</h3>
+          <div class="test-options">
+            <div class="test-option">La capacidad de caminar de lado</div>
+            <div class="test-option" data-correct="true">La preferencia por usar un lado del cuerpo</div>
+            <div class="test-option">La coordinación entre ambos lados del cuerpo</div>
+          </div>
+        </div>
       </div>
       
       <button class="test-button" id="checkTest">Verificar respuestas</button>
@@ -1341,12 +2054,13 @@
       <div class="test-results" id="testResults">
         <div class="test-score" id="testScore"></div>
         <div class="test-message" id="testMessage"></div>
+        <div class="test-recommendations" id="testRecommendations"></div>
         <button class="continue-to-content" id="continueToContent">Continuar al contenido</button>
       </div>
     </section>
     
     <!-- Sección: ¿Qué es la motricidad? -->
-    <section class="content-section">
+    <section class="content-section" id="motricidad-section">
       <h2 class="section-title">¿Qué es la motricidad?</h2>
       <div class="accordion">
         <div class="accordion-item">
@@ -1385,10 +2099,408 @@
           </div>
         </div>
       </div>
+      
+      <!-- Mini-Juego: Memory Game -->
+      <div class="game-section">
+        <h3 class="game-title">Juego: Memoria de Conceptos</h3>
+        <p class="game-instructions">Encuentra los pares de conceptos relacionados con la motricidad</p>
+        <div class="memory-game" id="memoryGame">
+          <!-- Las tarjetas se generarán con JavaScript -->
+        </div>
+        <div class="game-controls">
+          <button class="game-button" id="resetMemoryGame">Reiniciar juego</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Timeline Interactivo -->
+    <section class="timeline-section" id="timeline-section">
+      <h2 class="section-title">Timeline del Desarrollo Motor</h2>
+      <p style="text-align: center; margin-bottom: 30px; color: #6c757d;">
+        Haz clic en cada edad para ver los hitos del desarrollo motor
+      </p>
+      
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        <div class="timeline-points">
+          <div class="timeline-point" data-age="0">
+            0
+            <div class="timeline-popup">
+              <h4>Recién nacido</h4>
+              <ul>
+                <li>Reflejos primitivos</li>
+                <li>Movimientos involuntarios</li>
+                <li>Postura flexionada</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-point" data-age="1">
+            1
+            <div class="timeline-popup">
+              <h4>1 año</h4>
+              <ul>
+                <li>Se sienta sin apoyo</li>
+                <li>Gatea</li>
+                <li>Comienza a caminar</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-point" data-age="2">
+            2
+            <div class="timeline-popup">
+              <h4>2 años</h4>
+              <ul>
+                <li>Camina con seguridad</li>
+                <li>Sube escaleras</li>
+                <li>Corre con torpeza</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-point" data-age="3">
+            3
+            <div class="timeline-popup">
+              <h4>3 años</h4>
+              <ul>
+                <li>Corre y salta</li>
+                <li>Pedalea triciclo</li>
+                <li>Manipula objetos pequeños</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-point" data-age="4">
+            4
+            <div class="timeline-popup">
+              <h4>4 años</h4>
+              <ul>
+                <li>Camina hacia atrás</li>
+                <li>Salta sobre un pie</li>
+                <li>Dibuja figuras geométricas</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-point" data-age="5">
+            5
+            <div class="timeline-popup">
+              <h4>5 años</h4>
+              <ul>
+                <li>Corre y salta con agilidad</li>
+                <li>Escribe letras</li>
+                <li>Participa en deportes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-point" data-age="6">
+            6
+            <div class="timeline-popup">
+              <h4>6 años</h4>
+              <ul>
+                <li>Coordinación avanzada</li>
+                <li>Habilidades deportivas</li>
+                <li>Escritura fluida</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: ¿Por qué es importante? -->
+    <section class="content-section" id="importancia-section">
+      <h2 class="section-title">¿Por qué es importante la motricidad?</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-brain"></i>
+            <strong>Desarrollo cognitivo:</strong> base del aprendizaje
+          </div>
+          <div class="accordion-content">
+            <p>
+              El desarrollo motor está intrínsecamente ligado al desarrollo cognitivo. A través del movimiento, los niños exploran el mundo, construyen conocimiento y desarrollan habilidades de pensamiento. La manipulación de objetos y la experimentación con el entorno son fundamentales para el aprendizaje.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-heart"></i>
+            <strong>Autoestima:</strong> confianza y autonomía
+          </div>
+          <div class="accordion-content">
+            <p>
+              El dominio de las habilidades motoras proporciona a los niños un sentido de logro y competencia. Cada nueva habilidad adquirida refuerza su autoconfianza y autoestima, permitiéndoles sentirse más seguros e independientes en su entorno.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-users"></i>
+            <strong>Socialización:</strong> interacción y juego
+          </div>
+          <div class="accordion-content">
+            <p>
+              Las habilidades motoras son esenciales para la interacción social y el juego con otros niños. A través de actividades motrices compartidas, los niños aprenden normas sociales, cooperación, comunicación y desarrollan habilidades sociales fundamentales.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mini-Juego: Drag and Drop -->
+      <div class="game-section">
+        <h3 class="game-title">Juego: Clasifica las Actividades</h3>
+        <p class="game-instructions">Arrastra cada actividad a la categoría correspondiente</p>
+        <div class="drag-drop-game" id="dragDropGame">
+          <div class="drag-items" id="dragItems">
+            <div class="drag-item" draggable="true" data-category="fina">Escribir</div>
+            <div class="drag-item" draggable="true" data-category="fina">Recortar</div>
+            <div class="drag-item" draggable="true" data-category="fina">Abrochar botones</div>
+            <div class="drag-item" draggable="true" data-category="gruesa">Correr</div>
+            <div class="drag-item" draggable="true" data-category="gruesa">Saltar</div>
+            <div class="drag-item" draggable="true" data-category="gruesa">Lanzar pelota</div>
+          </div>
+          <div class="drop-zones">
+            <div class="drop-zone" data-category="fina">
+              <h4>Motricidad Fina</h4>
+              <div class="drop-zone-items" id="finaItems"></div>
+            </div>
+            <div class="drop-zone" data-category="gruesa">
+              <h4>Motricidad Gruesa</h4>
+              <div class="drop-zone-items" id="gruesaItems"></div>
+            </div>
+          </div>
+        </div>
+        <div class="game-controls">
+          <button class="game-button" id="resetDragDropGame">Reiniciar juego</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Checklist de Observación -->
+    <section class="checklist-section" id="checklist-section">
+      <h2 class="section-title">Checklist de Observación</h2>
+      <p style="text-align: center; margin-bottom: 30px; color: #6c757d;">
+        Selecciona la edad del niño y marca las habilidades que observa
+      </p>
+      
+      <div class="age-selector">
+        <div class="age-tab active" data-age="3">3 años</div>
+        <div class="age-tab" data-age="4">4 años</div>
+        <div class="age-tab" data-age="5">5 años</div>
+      </div>
+      
+      <div class="checklist-content active" id="age3Checklist">
+        <div class="checklist-grid">
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Camina hacia adelante y hacia atrás</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Sube escaleras alternando pies</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Corre con velocidad y control</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Salta con ambos pies juntos</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Patea una pelota en dirección</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Lanza una pelota sobre la cabeza</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Manipula objetos pequeños</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Construye torres de 6-8 bloques</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Dibuja figuras simples</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Abotona y desabotona ropa</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Usa tijeras para cortar papel</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Vierte líquidos sin derramar</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Se viste con mínima ayuda</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Mantiene el equilibrio en un pie</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Pedalea un triciclo</div>
+          </div>
+        </div>
+        <button class="test-button" id="checkAge3Results">Ver resultados</button>
+        <div class="checklist-results" id="age3Results">
+          <div class="checklist-score"></div>
+          <div class="checklist-message"></div>
+        </div>
+      </div>
+      
+      <div class="checklist-content" id="age4Checklist">
+        <div class="checklist-grid">
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Camina en línea recta</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Salta sobre un pie</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Corre cambiando de dirección</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Baja escaleras alternando pies</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Atrapa una pelota con ambas manos</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Patea una pelota con dirección</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Dibuja figuras reconocibles</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Construye torres de 10+ bloques</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Usa utensilios correctamente</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Corta siguiendo líneas</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Abrocha cremalleras</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Ata cordones con ayuda</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Escribe algunas letras</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Mantiene el equilibrio en un pie</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Pedalea un bicicleta con ruedas</div>
+          </div>
+        </div>
+        <button class="test-button" id="checkAge4Results">Ver resultados</button>
+        <div class="checklist-results" id="age4Results">
+          <div class="checklist-score"></div>
+          <div class="checklist-message"></div>
+        </div>
+      </div>
+      
+      <div class="checklist-content" id="age5Checklist">
+        <div class="checklist-grid">
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Camina hacia atrás</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Salta con alternancia de pies</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Corre con agilidad y velocidad</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Salta obstáculos bajos</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Atrapa una pelota con una mano</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Lanza con precisión</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Dibuja personas con detalles</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Escribe su nombre</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Corta formas complejas</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Ata cordones sin ayuda</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Usa cubiertos como adulto</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Viste y desviste solo</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Mantiene el equilibrio en un pie</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Monta bicicleta sin ruedas</div>
+          </div>
+          <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div class="checklist-text">Participa en deportes organizados</div>
+          </div>
+        </div>
+        <button class="test-button" id="checkAge5Results">Ver resultados</button>
+        <div class="checklist-results" id="age5Results">
+          <div class="checklist-score"></div>
+          <div class="checklist-message"></div>
+        </div>
+      </div>
     </section>
     
     <!-- Sección de ciencia -->
-    <section class="science-section">
+    <section class="science-section" id="science-section">
       <h2 class="science-title"><i class="fas fa-microscope"></i> Base científica del desarrollo motor</h2>
       <div class="science-content">
         <div class="science-quote">
@@ -1420,6 +2532,39 @@
           </div>
         </div>
       </div>
+      
+      <!-- Mini-Juego: Clasificación -->
+      <div class="game-section">
+        <h3 class="game-title">Juego: Clasificación de Etapas</h3>
+        <p class="game-instructions">Arrastra cada hito a la etapa de desarrollo correcta</p>
+        <div class="drag-drop-game" id="stagesGame">
+          <div class="drag-items" id="stagesDragItems">
+            <div class="drag-item" draggable="true" data-stage="1">Gatea</div>
+            <div class="drag-item" draggable="true" data-stage="1">Se sienta</div>
+            <div class="drag-item" draggable="true" data-stage="2">Camina</div>
+            <div class="drag-item" draggable="true" data-stage="2">Corre</div>
+            <div class="drag-item" draggable="true" data-stage="3">Salta</div>
+            <div class="drag-item" draggable="true" data-stage="3">Escribe</div>
+          </div>
+          <div class="drop-zones">
+            <div class="drop-zone" data-stage="1">
+              <h4>0-12 meses</h4>
+              <div class="drop-zone-items" id="stage1Items"></div>
+            </div>
+            <div class="drop-zone" data-stage="2">
+              <h4>1-3 años</h4>
+              <div class="drop-zone-items" id="stage2Items"></div>
+            </div>
+            <div class="drop-zone" data-stage="3">
+              <h4>3-6 años</h4>
+              <div class="drop-zone-items" id="stage3Items"></div>
+            </div>
+          </div>
+        </div>
+        <div class="game-controls">
+          <button class="game-button" id="resetStagesGame">Reiniciar juego</button>
+        </div>
+      </div>
     </section>
     
     <!-- Botón para completar módulo -->
@@ -1433,7 +2578,7 @@
         <i class="fas fa-arrow-left"></i>
         Volver al índice
       </a>
-      <a href="../modulo2/index.html" class="btn">
+      <a href="../modulo2/index.html" class="btn" id="nextModuleBtn">
         Siguiente módulo
         <i class="fas fa-arrow-right"></i>
       </a>
@@ -1485,6 +2630,9 @@
     });
     
     function inicializarModulo() {
+      // Verificar módulos completados para habilitar/deshabilitar navegación
+      verificarModulosCompletados();
+      
       // Configurar test previo con retroalimentación instantánea
       const testOptions = document.querySelectorAll('.test-option');
       testOptions.forEach(option => {
@@ -1539,24 +2687,55 @@
         // Configurar mensaje según puntuación
         const testScore = document.getElementById('testScore');
         const testMessage = document.getElementById('testMessage');
+        const testRecommendations = document.getElementById('testRecommendations');
         
         if (percentage >= 80) {
           testScore.textContent = `${percentage}% - ¡Excelente!`;
           testScore.className = 'test-score good';
           testMessage.textContent = 'Tienes muy buenos conocimientos sobre el tema. Este módulo te ayudará a profundizarlos aún más.';
+          
+          testRecommendations.innerHTML = `
+            <h4>Recomendaciones para ti:</h4>
+            <ul>
+              <li>Explora los módulos avanzados para especializarte</li>
+              <li>Practica las técnicas avanzadas de estimulación</li>
+              <li>Comparte tus conocimientos con otros profesionales</li>
+            </ul>
+          `;
         } else if (percentage >= 50) {
           testScore.textContent = `${percentage}% - ¡Bien hecho!`;
           testScore.className = 'test-score regular';
           testMessage.textContent = 'Tienes conocimientos básicos sobre el tema. Este módulo te ayudará a reforzarlos y aprender más.';
+          
+          testRecommendations.innerHTML = `
+            <h4>Recomendaciones para ti:</h4>
+            <ul>
+              <li>Presta especial atención a las secciones teóricas</li>
+              <li>Realiza los mini-juegos para reforzar conceptos</li>
+              <li>Utiliza el checklist para evaluar casos prácticos</li>
+            </ul>
+          `;
         } else {
           testScore.textContent = `${percentage}% - Sigue aprendiendo`;
           testScore.className = 'test-score low';
           testMessage.textContent = 'No te preocupes, este módulo está diseñado para enseñarte desde cero todo lo necesario sobre la motricidad infantil.';
+          
+          testRecommendations.innerHTML = `
+            <h4>Recomendaciones para ti:</h4>
+            <ul>
+              <li>Estudia detenidamente cada sección del módulo</li>
+              <li>Repite los mini-juegos hasta dominarlos</li>
+              <li>Consulta recursos adicionales recomendados</li>
+            </ul>
+          `;
         }
+        
+        // Marcar quiz como completado
+        updateProgress('quiz', true);
         
         // Botón para continuar al contenido
         document.getElementById('continueToContent').addEventListener('click', function() {
-          document.querySelector('.content-section').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('motricidad-section').scrollIntoView({ behavior: 'smooth' });
         });
       });
       
@@ -1566,45 +2745,533 @@
         header.addEventListener('click', function() {
           const item = header.parentElement;
           item.classList.toggle('active');
+          
+          // Marcar sección como completada al abrir todos los acordeones
+          const allItems = document.querySelectorAll('.accordion-item');
+          const openItems = document.querySelectorAll('.accordion-item.active');
+          
+          if (openItems.length === allItems.length) {
+            updateProgress('theory', true);
+          }
         });
       });
       
+      // Configurar timeline interactivo
+      const timelinePoints = document.querySelectorAll('.timeline-point');
+      timelinePoints.forEach(point => {
+        point.addEventListener('click', function() {
+          // Remover clase active de todos los puntos
+          timelinePoints.forEach(p => p.classList.remove('active'));
+          
+          // Agregar clase active al punto actual
+          this.classList.add('active');
+          
+          // Marcar timeline como completado
+          updateProgress('timeline', true);
+        });
+      });
+      
+      // Configurar checklist de observación
+      const ageTabs = document.querySelectorAll('.age-tab');
+      ageTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remover clase active de todas las pestañas
+          ageTabs.forEach(t => t.classList.remove('active'));
+          
+          // Remover clase active de todos los contenidos
+          document.querySelectorAll('.checklist-content').forEach(content => {
+            content.classList.remove('active');
+          });
+          
+          // Agregar clase active a la pestaña actual
+          this.classList.add('active');
+          
+          // Mostrar contenido correspondiente
+          const age = this.getAttribute('data-age');
+          document.getElementById(`age${age}Checklist`).classList.add('active');
+        });
+      });
+      
+      // Configurar checkboxes del checklist
+      const checklistCheckboxes = document.querySelectorAll('.checklist-checkbox');
+      checklistCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', function() {
+          this.classList.toggle('checked');
+        });
+      });
+      
+      // Configurar botones de resultados del checklist
+      document.getElementById('checkAge3Results').addEventListener('click', function() {
+        showChecklistResults(3);
+      });
+      
+      document.getElementById('checkAge4Results').addEventListener('click', function() {
+        showChecklistResults(4);
+      });
+      
+      document.getElementById('checkAge5Results').addEventListener('click', function() {
+        showChecklistResults(5);
+      });
+      
+      // Configurar mini-juego: Memory Game
+      inicializarMemoryGame();
+      
+      // Configurar mini-juego: Drag and Drop
+      inicializarDragDropGame();
+      
+      // Configurar mini-juego: Stages Game
+      inicializarStagesGame();
+      
       // Configurar botón de completar módulo
       document.getElementById('completeModule1').addEventListener('click', function() {
-        // Marcar módulo 1 como completado
-        localStorage.setItem('modulo1Completado', 'true');
+        // Verificar si todas las secciones están completadas
+        const progress = JSON.parse(localStorage.getItem('modulo1Progress') || '{}');
         
-        // Deshabilitar botón y cambiar texto
-        this.disabled = true;
-        this.innerHTML = '<i class="fas fa-check"></i> Módulo Completado';
-        
-        // Mostrar mensaje de éxito
-        const successMsg = document.createElement('div');
-        successMsg.style.cssText = `
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          background: var(--success);
-          color: var(--dark);
-          padding: 15px 20px;
-          border-radius: 10px;
-          box-shadow: 0 4px 10px rgba(107, 207, 127, 0.3);
-          z-index: 10001;
-          animation: pulse 2s ease-in-out infinite;
-        `;
-        successMsg.innerHTML = `
-          <i class="fas fa-check-circle"></i>
-          ¡Módulo 1 completado! Ahora puedes acceder al Módulo 2.
-        `;
-        document.body.appendChild(successMsg);
-        
-        setTimeout(() => {
-          successMsg.style.animation = 'slideOutRight 0.5s ease';
+        if (progress.quiz && progress.theory && progress.timeline && progress.checklist && progress.games) {
+          // Marcar módulo 1 como completado
+          localStorage.setItem('modulo1Completado', 'true');
+          
+          // Deshabilitar botón y cambiar texto
+          this.disabled = true;
+          this.innerHTML = '<i class="fas fa-check"></i> Módulo Completado';
+          
+          // Habilitar acceso al módulo 2
+          localStorage.setItem('modulo2Acceso', 'autorizado');
+          
+          // Mostrar mensaje de éxito
+          showNotification('¡Módulo 1 completado! Ahora puedes acceder al Módulo 2.', 'success');
+          
+          // Actualizar barra de progreso al 100%
+          updateProgressBar(100);
+          
+          // Actualizar navegación
           setTimeout(() => {
-            document.body.removeChild(successMsg);
-          }, 500);
-        }, 4000);
+            verificarModulosCompletados();
+          }, 1000);
+        } else {
+          showNotification('Debes completar todas las secciones antes de finalizar el módulo', 'warning');
+        }
       });
+    }
+    
+    // Función para verificar módulos completados y habilitar/deshabilitar navegación
+    function verificarModulosCompletados() {
+      // Verificar si el módulo 1 está completado
+      const modulo1Completado = localStorage.getItem('modulo1Completado') === 'true';
+      
+      // Habilitar/deshabilitar enlaces del navbar
+      const moduleLinks = document.querySelectorAll('.module-link');
+      
+      moduleLinks.forEach(link => {
+        const moduleNumber = parseInt(link.getAttribute('data-module'));
+        
+        if (moduleNumber === 2) {
+          if (modulo1Completado) {
+            link.classList.remove('disabled');
+          } else {
+            link.classList.add('disabled');
+          }
+        } else if (moduleNumber > 2) {
+          // Para módulos 3, 4 y 5, verificar si el módulo anterior está completado
+          const previousModuleCompleted = localStorage.getItem(`modulo${moduleNumber - 1}Completado`) === 'true';
+          
+          if (previousModuleCompleted) {
+            link.classList.remove('disabled');
+          } else {
+            link.classList.add('disabled');
+          }
+        }
+      });
+      
+      // Habilitar/deshabilitar botón de siguiente módulo
+      const nextModuleBtn = document.getElementById('nextModuleBtn');
+      if (nextModuleBtn) {
+        if (modulo1Completado) {
+          nextModuleBtn.disabled = false;
+        } else {
+          nextModuleBtn.disabled = true;
+        }
+      }
+    }
+    
+    // Función para actualizar el progreso del módulo
+    function updateProgress(section, completed) {
+      // Obtener progreso actual
+      let progress = JSON.parse(localStorage.getItem('modulo1Progress') || '{}');
+      
+      // Actualizar sección
+      progress[section] = completed;
+      
+      // Guardar progreso
+      localStorage.setItem('modulo1Progress', JSON.stringify(progress));
+      
+      // Calcular porcentaje de progreso
+      const sections = ['quiz', 'theory', 'timeline', 'checklist', 'games'];
+      const completedSections = sections.filter(s => progress[s]).length;
+      const percentage = Math.round((completedSections / sections.length) * 100);
+      
+      // Actualizar barra de progreso
+      updateProgressBar(percentage);
+      
+      // Actualizar badges
+      updateBadges(progress);
+      
+      // Mostrar notificación
+      if (completed) {
+        showNotification(`Sección completada: ${getSectionName(section)}`, 'success');
+      }
+    }
+    
+    // Función para actualizar la barra de progreso
+    function updateProgressBar(percentage) {
+      const progressBar = document.getElementById('moduleProgressBar');
+      const progressText = document.getElementById('progressText');
+      
+      if (progressBar) {
+        progressBar.style.width = `${percentage}%`;
+      }
+      
+      if (progressText) {
+        progressText.textContent = `${percentage}% completado`;
+      }
+    }
+    
+    // Función para actualizar los badges
+    function updateBadges(progress) {
+      const badges = {
+        quiz: document.getElementById('quizBadge'),
+        theory: document.getElementById('theoryBadge'),
+        timeline: document.getElementById('timelineBadge'),
+        checklist: document.getElementById('checklistBadge'),
+        games: document.getElementById('gamesBadge')
+      };
+      
+      Object.keys(badges).forEach(section => {
+        if (progress[section] && badges[section]) {
+          badges[section].classList.add('earned');
+        }
+      });
+    }
+    
+    // Función para obtener el nombre de una sección
+    function getSectionName(section) {
+      const names = {
+        quiz: 'Quiz inicial',
+        theory: 'Teoría',
+        timeline: 'Timeline',
+        checklist: 'Checklist',
+        games: 'Juegos educativos'
+      };
+      
+      return names[section] || section;
+    }
+    
+    // Función para mostrar resultados del checklist
+    function showChecklistResults(age) {
+      const checklistItems = document.querySelectorAll(`#age${age}Checklist .checklist-checkbox`);
+      const checkedItems = document.querySelectorAll(`#age${age}Checklist .checklist-checkbox.checked`);
+      
+      const totalItems = checklistItems.length;
+      const checkedCount = checkedItems.length;
+      const percentage = Math.round((checkedCount / totalItems) * 100);
+      
+      const resultsDiv = document.getElementById(`age${age}Results`);
+      const scoreDiv = resultsDiv.querySelector('.checklist-score');
+      const messageDiv = resultsDiv.querySelector('.checklist-message');
+      
+      scoreDiv.textContent = `${percentage}% (${checkedCount}/${totalItems} habilidades)`;
+      
+      if (percentage >= 80) {
+        messageDiv.textContent = 'El niño muestra un desarrollo motor adecuado para su edad.';
+      } else if (percentage >= 60) {
+        messageDiv.textContent = 'El niño muestra un desarrollo motor dentro de los rangos normales, con algunas áreas a fortalecer.';
+      } else {
+        messageDiv.textContent = 'Se recomienda estimulación adicional en las áreas marcadas como no observadas.';
+      }
+      
+      resultsDiv.classList.add('show');
+      
+      // Marcar checklist como completado
+      updateProgress('checklist', true);
+    }
+    
+    // Función para inicializar el Memory Game
+    function inicializarMemoryGame() {
+      const gameContainer = document.getElementById('memoryGame');
+      
+      // Pares de conceptos para el juego
+      const concepts = [
+        { icon: 'fas fa-running', text: 'Correr' },
+        { icon: 'fas fa-hand-paper', text: 'Motricidad' },
+        { icon: 'fas fa-child', text: 'Desarrollo' },
+        { icon: 'fas fa-brain', text: 'Cerebro' },
+        { icon: 'fas fa-walking', text: 'Caminar' },
+        { icon: 'fas fa-hand-sparkles', text: 'Destreza' }
+      ];
+      
+      // Duplicar conceptos para formar pares
+      const cards = [...concepts, ...concepts];
+      
+      // Mezclar cartas
+      cards.sort(() => Math.random() - 0.5);
+      
+      // Crear elementos del juego
+      cards.forEach((concept, index) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.concept = concept.text;
+        
+        card.innerHTML = `
+          <div class="memory-card-front">
+            <i class="fas fa-question"></i>
+          </div>
+          <div class="memory-card-back">
+            <i class="${concept.icon}"></i>
+          </div>
+        `;
+        
+        card.addEventListener('click', function() {
+          flipCard(this);
+        });
+        
+        gameContainer.appendChild(card);
+      });
+      
+      // Configurar botón de reinicio
+      document.getElementById('resetMemoryGame').addEventListener('click', function() {
+        // Reiniciar juego
+        gameContainer.innerHTML = '';
+        inicializarMemoryGame();
+      });
+      
+      // Variables para el juego
+      let flippedCards = [];
+      let matchedPairs = 0;
+      
+      // Función para voltear cartas
+      function flipCard(card) {
+        // Si la carta ya está volteada o emparejada, no hacer nada
+        if (card.classList.contains('flipped') || card.classList.contains('matched')) {
+          return;
+        }
+        
+        // Voltear la carta
+        card.classList.add('flipped');
+        flippedCards.push(card);
+        
+        // Si hay dos cartas volteadas, verificar si son un par
+        if (flippedCards.length === 2) {
+          const card1 = flippedCards[0];
+          const card2 = flippedCards[1];
+          
+          if (card1.dataset.concept === card2.dataset.concept) {
+            // Las cartas coinciden
+            setTimeout(() => {
+              card1.classList.add('matched');
+              card2.classList.add('matched');
+              flippedCards = [];
+              matchedPairs++;
+              
+              // Verificar si se han encontrado todos los pares
+              if (matchedPairs === concepts.length) {
+                setTimeout(() => {
+                  showNotification('¡Felicidades! Has completado el juego de memoria.', 'success');
+                  updateProgress('games', true);
+                }, 500);
+              }
+            }, 500);
+          } else {
+            // Las cartas no coinciden, voltearlas de nuevo
+            setTimeout(() => {
+              card1.classList.remove('flipped');
+              card2.classList.remove('flipped');
+              flippedCards = [];
+            }, 1000);
+          }
+        }
+      }
+    }
+    
+    // Función para inicializar el Drag and Drop Game
+    function inicializarDragDropGame() {
+      const dragItems = document.querySelectorAll('#dragItems .drag-item');
+      const dropZones = document.querySelectorAll('.drop-zone');
+      
+      // Configurar elementos arrastrables
+      dragItems.forEach(item => {
+        item.addEventListener('dragstart', function(e) {
+          e.dataTransfer.setData('text/plain', this.dataset.category);
+          this.classList.add('dragging');
+        });
+        
+        item.addEventListener('dragend', function() {
+          this.classList.remove('dragging');
+        });
+      });
+      
+      // Configurar zonas de destino
+      dropZones.forEach(zone => {
+        zone.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          this.classList.add('drag-over');
+        });
+        
+        zone.addEventListener('dragleave', function() {
+          this.classList.remove('drag-over');
+        });
+        
+        zone.addEventListener('drop', function(e) {
+          e.preventDefault();
+          this.classList.remove('drag-over');
+          
+          const category = e.dataTransfer.getData('text/plain');
+          const zoneCategory = this.dataset.category;
+          
+          if (category === zoneCategory) {
+            // Crear elemento en la zona de destino
+            const droppedItem = document.createElement('div');
+            droppedItem.className = 'dropped-item';
+            droppedItem.textContent = e.dataTransfer.getData('text/plain');
+            
+            // Agregar a la zona de destino
+            const itemsContainer = this.querySelector('.drop-zone-items');
+            itemsContainer.appendChild(droppedItem);
+            
+            // Eliminar elemento original
+            const originalItem = document.querySelector(`#dragItems .drag-item[data-category="${category}"]:not(.dragged)`);
+            if (originalItem) {
+              originalItem.classList.add('dragged');
+              originalItem.style.display = 'none';
+            }
+            
+            // Verificar si todos los elementos han sido clasificados correctamente
+            checkDragDropCompletion();
+          }
+        });
+      });
+      
+      // Configurar botón de reinicio
+      document.getElementById('resetDragDropGame').addEventListener('click', function() {
+        // Reiniciar juego
+        document.querySelectorAll('#dragItems .drag-item').forEach(item => {
+          item.classList.remove('dragged');
+          item.style.display = '';
+        });
+        
+        document.querySelectorAll('.drop-zone-items').forEach(container => {
+          container.innerHTML = '';
+        });
+      });
+      
+      // Función para verificar si el juego está completado
+      function checkDragDropCompletion() {
+        const totalItems = document.querySelectorAll('#dragItems .drag-item').length;
+        const draggedItems = document.querySelectorAll('#dragItems .drag-item.dragged').length;
+        
+        if (totalItems === draggedItems) {
+          showNotification('¡Felicidades! Has clasificado correctamente todas las actividades.', 'success');
+          updateProgress('games', true);
+        }
+      }
+    }
+    
+    // Función para inicializar el Stages Game
+    function inicializarStagesGame() {
+      const dragItems = document.querySelectorAll('#stagesDragItems .drag-item');
+      const dropZones = document.querySelectorAll('#stagesGame .drop-zone');
+      
+      // Configurar elementos arrastrables
+      dragItems.forEach(item => {
+        item.addEventListener('dragstart', function(e) {
+          e.dataTransfer.setData('text/plain', this.dataset.stage);
+          this.classList.add('dragging');
+        });
+        
+        item.addEventListener('dragend', function() {
+          this.classList.remove('dragging');
+        });
+      });
+      
+      // Configurar zonas de destino
+      dropZones.forEach(zone => {
+        zone.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          this.classList.add('drag-over');
+        });
+        
+        zone.addEventListener('dragleave', function() {
+          this.classList.remove('drag-over');
+        });
+        
+        zone.addEventListener('drop', function(e) {
+          e.preventDefault();
+          this.classList.remove('drag-over');
+          
+          const stage = e.dataTransfer.getData('text/plain');
+          const zoneStage = this.dataset.stage;
+          
+          if (stage === zoneStage) {
+            // Crear elemento en la zona de destino
+            const droppedItem = document.createElement('div');
+            droppedItem.className = 'dropped-item';
+            droppedItem.textContent = e.dataTransfer.getData('text/plain');
+            
+            // Agregar a la zona de destino
+            const itemsContainer = this.querySelector('.drop-zone-items');
+            itemsContainer.appendChild(droppedItem);
+            
+            // Eliminar elemento original
+            const originalItem = document.querySelector(`#stagesDragItems .drag-item[data-stage="${stage}"]:not(.dragged)`);
+            if (originalItem) {
+              originalItem.classList.add('dragged');
+              originalItem.style.display = 'none';
+            }
+            
+            // Verificar si todos los elementos han sido clasificados correctamente
+            checkStagesGameCompletion();
+          }
+        });
+      });
+      
+      // Configurar botón de reinicio
+      document.getElementById('resetStagesGame').addEventListener('click', function() {
+        // Reiniciar juego
+        document.querySelectorAll('#stagesDragItems .drag-item').forEach(item => {
+          item.classList.remove('dragged');
+          item.style.display = '';
+        });
+        
+        document.querySelectorAll('#stagesGame .drop-zone-items').forEach(container => {
+          container.innerHTML = '';
+        });
+      });
+      
+      // Función para verificar si el juego está completado
+      function checkStagesGameCompletion() {
+        const totalItems = document.querySelectorAll('#stagesDragItems .drag-item').length;
+        const draggedItems = document.querySelectorAll('#stagesDragItems .drag-item.dragged').length;
+        
+        if (totalItems === draggedItems) {
+          showNotification('¡Felicidades! Has clasificado correctamente todas las etapas.', 'success');
+        }
+      }
+    }
+    
+    // Función para mostrar notificaciones
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      // Eliminar notificación después de 3 segundos
+      setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.5s ease';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 500);
+      }, 3000);
     }
     
     // Toggle para menú móvil
