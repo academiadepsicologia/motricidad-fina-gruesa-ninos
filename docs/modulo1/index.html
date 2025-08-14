@@ -256,7 +256,7 @@
       background: white;
       border-radius: 15px;
       padding: 15px 20px;
-      margin-bottom: 30px;
+      margin: 20px 0 30px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       display: flex;
       align-items: center;
@@ -344,8 +344,8 @@
       background: white;
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-      padding: 70px 50px;
-      margin-bottom: 60px;
+      padding: 50px;
+      margin-bottom: 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -401,9 +401,9 @@
     }
     
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 2.8rem;
       color: var(--primary);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       font-weight: 800;
       position: relative;
       z-index: 1;
@@ -421,25 +421,33 @@
       }
     }
     
-    /* Iconos animados */
-    .animated-icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #6c757d;
+      margin-bottom: 30px;
       position: relative;
       z-index: 1;
     }
     
+    /* Iconos animados */
+    .animated-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+      gap: 40px;
+    }
+    
     .animated-icon {
-      font-size: 4rem;
+      font-size: 3rem;
       color: var(--primary);
-      margin-bottom: 25px;
       display: inline-block;
       padding: 20px;
       background: rgba(255, 107, 107, 0.1);
       border-radius: 50%;
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -471,7 +479,7 @@
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
       padding: 50px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease 0.2s both;
@@ -787,7 +795,7 @@
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
       padding: 50px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease 0.4s both;
@@ -940,7 +948,7 @@
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
       padding: 50px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease 0.6s both;
@@ -1060,7 +1068,7 @@
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
       padding: 50px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease 0.8s both;
@@ -1147,6 +1155,10 @@
       color: white;
     }
     
+    .checklist-checkbox.checked::after {
+      content: '✓';
+    }
+    
     .checklist-text {
       font-size: 1rem;
     }
@@ -1181,7 +1193,7 @@
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
       padding: 40px;
-      margin: 40px 0;
+      margin: 30px 0;
       position: relative;
       overflow: hidden;
     }
@@ -1353,7 +1365,7 @@
       border-radius: 25px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
       padding: 50px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease 1s both;
@@ -1811,11 +1823,11 @@
     
     @media (max-width: 576px) {
       .hero {
-        padding: 50px 25px;
+        padding: 30px 20px;
       }
       
       .hero-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       
       .hero-subtitle {
@@ -1840,6 +1852,16 @@
       
       .checklist-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .animated-icons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .progress-bar-container {
+        width: 200px;
       }
     }
   </style>
