@@ -162,6 +162,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 20px;
+      overflow: hidden;
     }
     
     .navbar-logo {
@@ -173,6 +174,7 @@
       align-items: center;
       font-family: 'Montserrat', sans-serif;
       transition: all 0.3s ease;
+      flex-shrink: 0;
     }
     
     .navbar-logo:hover {
@@ -197,10 +199,21 @@
     .navbar-menu {
       display: flex;
       list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE y Edge */
+    }
+    
+    .navbar-menu::-webkit-scrollbar {
+      display: none; /* Chrome, Safari y Opera */
     }
     
     .navbar-menu li {
       margin-left: 8px;
+      white-space: nowrap;
     }
     
     .navbar-menu a {
@@ -213,6 +226,7 @@
       position: relative;
       overflow: hidden;
       font-family: 'Montserrat', sans-serif;
+      display: inline-block;
     }
     
     .navbar-menu a::before {
@@ -249,6 +263,8 @@
       color: white;
       font-size: 1.8rem;
       cursor: pointer;
+      padding: 5px;
+      margin-left: 10px;
     }
     
     /* Barra de progreso del módulo */
@@ -1738,6 +1754,20 @@
     }
     
     /* Responsive mejorado */
+    @media (max-width: 1200px) {
+      .navbar-menu {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin-right: 15px;
+      }
+      
+      .navbar-menu::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    
     @media (max-width: 992px) {
       .navbar-menu {
         flex-direction: column;
@@ -1751,6 +1781,7 @@
         transform: translateY(-150%);
         transition: transform 0.4s ease;
         z-index: 100;
+        overflow-x: visible;
       }
       
       .navbar-menu.active {
@@ -1862,6 +1893,14 @@
       
       .progress-bar-container {
         width: 200px;
+      }
+      
+      .navbar-logo {
+        font-size: 1.5rem;
+      }
+      
+      .navbar-logo i {
+        font-size: 1.7rem;
       }
     }
   </style>
