@@ -1,309 +1,1643 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Modulo 1: Introducción a la Motricidad</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
---primary: #FF6B6B;
---secondary: #4ECDC4;
---accent: #FFE66D;
---light: #F7FFF7;
---dark: #2D3436;
---success: #6BCF7F;
---info: #5DADE2;
---warning: #FF9F43;
---purple: #9C88FF;
---pink: #FF7EB9;
---orange: #FF9A56;
---teal: #26D0CE;
---yellow: #FFD93D;
---kid-blue: #4dabf7;
---kid-pink: #ff7eb9;
---kid-green: #6bcf7f;
---kid-purple: #9c88ff;
---kid-orange: #ff9a56;
---kid-teal: #26d0ce;
---gradient: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
---gradient-2: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
---gradient-3: linear-gradient(135deg, #9C88FF 0%, #8C7AE6 100%);
---gradient-4: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 100%);
---gradient-5: linear-gradient(135deg, #FF7EB9 0%, #FF9A56 100%);
-}
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-background: linear-gradient(135deg, #F7FFF7 0%, #E8F8F5 100%);
-color: var(--dark);
-min-height: 100vh;
-line-height: 1.6;
-position: relative;
-overflow-x: hidden;
-}
-/* Animaciones de fondo */
-.floating-shapes {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: -1;
-overflow: hidden;
-}
-.shape {
-position: absolute;
-opacity: 0.1;
-animation: float 20s infinite ease-in-out;
-}
-.shape:nth-child(1) {
-top: 20%;
-left: 10%;
-width: 80px;
-height: 80px;
-background: var(--primary);
-border-radius: 50%;
-animation-delay: 0s;
-}
-.shape:nth-child(2) {
-top: 60%;
-left: 80%;
-width: 60px;
-height: 60px;
-background: var(--secondary);
-border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-animation-delay: 2s;
-}
-.shape:nth-child(3) {
-top: 80%;
-left: 20%;
-width: 100px;
-height: 100px;
-background: var(--accent);
-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-animation-delay: 4s;
-}
-.shape:nth-child(4) {
-top: 10%;
-left: 70%;
-width: 70px;
-height: 70px;
-background: var(--purple);
-border-radius: 50%;
-animation-delay: 6s;
-}
-.shape:nth-child(5) {
-top: 40%;
-left: 50%;
-width: 90px;
-height: 90px;
-background: var(--pink);
-border-radius: 50%;
-animation-delay: 8s;
-}
-@keyframes float {
-0%, 100% {
-transform: translateY(0) rotate(0deg);
-}
-33% {
-transform: translateY(-30px) rotate(120deg);
-}
-66% {
-transform: translateY(30px) rotate(240deg);
-}
-}
-/* Navbar mejorada */
-.navbar {
-background: var(--gradient);
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-padding: 15px 0;
-position: sticky;
-top: 0;
-z-index: 999;
-backdrop-filter: blur(10px);
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-animation: slideDown 0.8s ease;
-}
-@keyframes slideDown {
-from {
-transform: translateY(-100%);
-opacity: 0;
-}
-to {
-transform: translateY(0);
-opacity: 1;
-}
-}
-.navbar-container {
-max-width: 1200px;
-margin: 0 auto;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0 20px;
-}
-.navbar-logo {
-color: white;
-font-size: 1.8rem;
-font-weight: 700;
-text-decoration: none;
-display: flex;
-align-items: center;
-font-family: 'Montserrat', sans-serif;
-transition: all 0.3s ease;
-}
-.navbar-logo:hover {
-transform: scale(1.05);
-}
-.navbar-logo i {
-margin-right: 12px;
-font-size: 2rem;
-animation: spin 3s linear infinite;
-}
-@keyframes spin {
-from {
-transform: rotate(0deg);
-}
-to {
-transform: rotate(360deg);
-}
-}
-.navbar-menu {
-display: flex;
-list-style: none;
-}
-.navbar-menu li {
-margin-left: 8px;
-}
-.navbar-menu a {
-color: rgba(255, 255, 255, 0.9);
-text-decoration: none;
-font-weight: 600;
-padding: 12px 18px;
-border-radius: 30px;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
-font-family: 'Montserrat', sans-serif;
-}
-.navbar-menu a::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 0;
-height: 100%;
-background: rgba(255, 255, 255, 0.2);
-transition: all 0.3s ease;
-z-index: -1;
-}
-.navbar-menu a:hover::before {
-width: 100%;
-}
-.navbar-menu a:hover {
-color: white;
-transform: translateY(-2px);
-}
-.navbar-toggle {
-display: none;
-background: none;
-border: none;
-color: white;
-font-size: 1.8rem;
-cursor: pointer;
-}
-/* Botón para volver al índice */
-.back-button {
-display: inline-block;
-margin-bottom: 20px;
-padding: 10px 20px;
-background: var(--dark);
-color: white;
-font-size: 1rem;
-font-weight: 600;
-border-radius: 30px;
-text-decoration: none;
-transition: all 0.3s ease;
-}
-.back-button:hover {
-background: var(--primary);
-transform: translateY(-3px);
-}
-/* Contenedor principal */
-.container {
-max-width: 1200px;
-margin: 40px auto;
-padding: 0 20px;
-}
-/* Hero section mejorada */
-.hero {
-background: white;
-border-radius: 25px;
-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-padding: 70px 50px;
-margin-bottom: 60px;
-text-align: center;
-position: relative;
-overflow: hidden;
-animation: fadeInUp 1s ease;
-}
-@keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(60px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-.hero::before {
-content: '';
-position: absolute;
-top: -150px;
-right: -150px;
-width: 400px;
-height: 400px;
-background: radial-gradient(circle, var(--primary) 0%, var(--pink) 70%, transparent 100%);
-border-radius: 50%;
-z-index: 0;
-opacity: 0.15;
-animation: pulse 4s ease-in-out infinite;
-}
-@keyframes pulse {
-0%, 100% {
-transform: scale(1);
-}
-50% {
-transform: scale(1.1);
-}
-}
-.hero::after {
-content: '';
-position: absolute;
-bottom: -100px;
-left: -100px;
-width: 300px;
-height: 300px;
-background: radial-gradient(circle, var(--secondary) 0%, var(--teal) 70%, transparent 100%);
-border-radius: 50%;
-z-index: 0;
-opacity: 0.15;
-animation: pulse 4s ease-in-out infinite 2s;
-}
-.hero-title {
-font-size: 3.5rem;
-color: var(--primary);
-margin-bottom: 25px;
-font-weight: 800;
-position: relative;
-z-index: 1;
-font-family: 'Montserrat', sans-serif;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  <meta charset="UTF-8">
+  <title>Modulo 1: Introducción a la Motricidad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #FF6B6B;
+      --secondary: #4ECDC4;
+      --accent: #FFE66D;
+      --light: #F7FFF7;
+      --dark: #2D3436;
+      --success: #6BCF7F;
+      --info: #5DADE2;
+      --warning: #FF9F43;
+      --purple: #9C88FF;
+      --pink: #FF7EB9;
+      --orange: #FF9A56;
+      --teal: #26D0CE;
+      --yellow: #FFD93D;
+      --kid-blue: #4dabf7;
+      --kid-pink: #ff7eb9;
+      --kid-green: #6bcf7f;
+      --kid-purple: #9c88ff;
+      --kid-orange: #ff9a56;
+      --kid-teal: #26d0ce;
+      
+      --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
+      --gradient-2: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+      --gradient-3: linear-gradient(135deg, #9C88FF 0%, #8C7AE6 100%);
+      --gradient-4: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 100%);
+      --gradient-5: linear-gradient(135deg, #FF7EB9 0%, #FF9A56 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #F7FFF7 0%, #E8F8F5 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Animaciones de fondo */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    .shape:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation-delay: 0s;
+    }
+    
+    .shape:nth-child(2) {
+      top: 60%;
+      left: 80%;
+      width: 60px;
+      height: 60px;
+      background: var(--secondary);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation-delay: 2s;
+    }
+    
+    .shape:nth-child(3) {
+      top: 80%;
+      left: 20%;
+      width: 100px;
+      height: 100px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: 4s;
+    }
+    
+    .shape:nth-child(4) {
+      top: 10%;
+      left: 70%;
+      width: 70px;
+      height: 70px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation-delay: 6s;
+    }
+    
+    .shape:nth-child(5) {
+      top: 40%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation-delay: 8s;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      33% {
+        transform: translateY(-30px) rotate(120deg);
+      }
+      66% {
+        transform: translateY(30px) rotate(240deg);
+      }
+    }
+    
+    /* Navbar mejorada */
+    .navbar {
+      background: var(--gradient);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDown 0.8s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .navbar-logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .navbar-logo i {
+      margin-right: 12px;
+      font-size: 2rem;
+      animation: spin 3s linear infinite;
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .navbar-menu li {
+      margin-left: 8px;
+    }
+    
+    .navbar-menu a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .navbar-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    
+    .navbar-menu a:hover::before {
+      width: 100%;
+    }
+    
+    .navbar-menu a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    
+    /* Botón para volver al índice */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: var(--dark);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .back-button:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    /* Contenedor principal */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    /* Hero section mejorada */
+    .hero {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 70px 50px;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--primary) 0%, var(--pink) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--secondary) 0%, var(--teal) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite 2s;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes titleGlow {
+      from {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      }
+      to {
+        text-shadow: 2px 2px 20px rgba(255,107,107,0.5);
+      }
+    }
+    
+    /* Iconos animados */
+    .animated-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .animated-icon {
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      display: inline-block;
+      padding: 20px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounceIcon 2s ease-in-out infinite;
+    }
+    
+    .animated-icon:nth-child(2) {
+      color: var(--secondary);
+      animation-delay: 0.5s;
+    }
+    
+    .animated-icon:nth-child(3) {
+      color: var(--accent);
+      animation-delay: 1s;
+    }
+    
+    @keyframes bounceIcon {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    /* Test previo */
+    .test-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    .test-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .test-description {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.2rem;
+      color: #6c757d;
+    }
+    
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .test-question {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+      border-left: 6px solid var(--primary);
+      transition: all 0.4s ease;
+      animation: slideInLeft 0.8s ease both;
+    }
+    
+    .test-question:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .test-question:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    .test-question:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+    
+    .test-question:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+    
+    .test-question h3 {
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .test-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .test-option {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .test-option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .test-option.selected {
+      background: rgba(255, 107, 107, 0.1);
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+    
+    .test-option.correct {
+      background: rgba(107, 207, 127, 0.1);
+      border-color: var(--success);
+      animation: correctPulse 0.6s ease;
+    }
+    
+    .test-option.incorrect {
+      background: rgba(255, 107, 107, 0.1);
+      border-color: var(--primary);
+      animation: shake 0.5s ease;
+    }
+    
+    @keyframes correctPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-10px);
+      }
+      75% {
+        transform: translateX(10px);
+      }
+    }
+    
+    .test-results {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 40px;
+      display: none;
+      text-align: center;
+      animation: fadeInScale 0.5s ease;
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .test-score {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    
+    .test-score.good {
+      color: var(--success);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    .test-score.regular {
+      color: var(--warning);
+    }
+    
+    .test-score.low {
+      color: var(--primary);
+    }
+    
+    .test-message {
+      font-size: 1.2rem;
+      color: #6c757d;
+      margin-top: 20px;
+    }
+    
+    .test-button {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .test-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+    }
+    
+    .test-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .test-button:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .continue-to-content {
+      background: var(--gradient-2);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .continue-to-content:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .continue-to-content::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(78, 205, 196, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .continue-to-content:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    /* Sección: ¿Qué es la motricidad? */
+    .content-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+    
+    .content-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary), var(--purple), var(--green));
+      border-radius: 25px 25px 0 0;
+      animation: gradientShift 3s ease infinite 1s;
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+      animation: titleUnderline 2s ease-in-out infinite;
+    }
+    
+    @keyframes titleUnderline {
+      0%, 100% {
+        width: 80px;
+      }
+      50% {
+        width: 120px;
+      }
+    }
+    
+    /* Acordeón con animaciones */
+    .accordion {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .accordion-item {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      border-left: 6px solid var(--primary);
+      transition: all 0.4s ease;
+      animation: slideInLeft 0.8s ease both;
+    }
+    
+    .accordion-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .accordion-item:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      padding: 15px 0;
+      position: relative;
+    }
+    
+    .accordion-header i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-right: 20px;
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 15px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounceIcon 2s ease-in-out infinite;
+    }
+    
+    .accordion-header:nth-child(2) i {
+      color: var(--secondary);
+      animation-delay: 0.5s;
+    }
+    
+    .accordion-header:nth-child(3) i {
+      color: var(--accent);
+      animation-delay: 1s;
+    }
+    
+    @keyframes bounceIcon {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      padding: 0 25px;
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+    
+    .accordion-item.active .accordion-header {
+      background: rgba(255, 107, 107, 0.1);
+    }
+    
+    /* Sección de ciencia */
+    .science-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+    
+    .science-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--secondary), var(--orange), var(--yellow));
+      border-radius: 25px 25px 0 0;
+      animation: gradientShift 3s ease infinite 2s;
+    }
+    
+    .science-title {
+      font-size: 2.2rem;
+      color: var(--secondary);
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+      display: flex;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .science-title i {
+      margin-right: 15px;
+      font-size: 2.5rem;
+      color: var(--secondary);
+      animation: spin 10s linear infinite;
+    }
+    
+    .science-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .science-quote {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFE6F5 100%);
+      border-radius: 20px;
+      padding: 30px;
+      font-style: italic;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.1);
+      animation: slideInLeft 1s ease 0.2s both;
+    }
+    
+    .science-quote::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 5rem;
+      color: rgba(255, 107, 107, 0.2);
+    }
+    
+    .science-source {
+      text-align: right;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .science-fact {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFE6F5 100%);
+      border-radius: 20px;
+      padding: 25px;
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      animation: slideInLeft 1s ease both;
+    }
+    
+    .science-fact:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    
+    .science-fact:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    
+    .science-fact:hover {
+      transform: translateX(10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .science-fact i {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-right: 20px;
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 20px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounceIcon 2s ease-in-out infinite;
+    }
+    
+    .science-fact:nth-child(2) i {
+      color: var(--orange);
+      background: rgba(255, 154, 86, 0.1);
+      animation-delay: 0.5s;
+    }
+    
+    .science-fact:nth-child(3) i {
+      color: var(--yellow);
+      background: rgba(255, 217, 61, 0.1);
+      animation-delay: 1s;
+    }
+    
+    /* Botón de completar módulo */
+    .complete-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
+    }
+    
+    .complete-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(107, 207, 127, 0.4);
+    }
+    
+    .complete-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Navegación entre módulos */
+    .navigation {
+      display: flex;
+      gap: 30px;
+      margin-top: 60px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 18px 40px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      gap: 12px;
+      text-decoration: none;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-secondary {
+      background: var(--gradient-2);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
+    }
+    
+    .btn i {
+      font-size: 1.3rem;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 25px;
+      margin-top: 60px;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+    
+    .footer p {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    
+    /* Modal de acceso denegado */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      background-color: white;
+      padding: 50px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 550px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      position: relative;
+      animation: modalSlideIn 0.5s ease;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-modal:hover {
+      color: var(--primary);
+    }
+    
+    .modal-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    
+    .access-button {
+      width: 100%;
+      padding: 18px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+    }
+    
+    /* Responsive mejorado */
+    @media (max-width: 992px) {
+      .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--gradient);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 100;
+      }
+      
+      .navbar-menu.active {
+        transform: translateY(0);
+      }
+      
+      .navbar-menu li {
+        margin: 12px 0;
+      }
+      
+      .navbar-toggle {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .navigation {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .modal-content {
+        padding: 40px 25px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 50px 25px;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .content-section {
+        padding: 30px 20px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .modal-content {
+        padding: 40px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Formas animadas de fondo -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  
+  <!-- Navbar mejorada -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <i class="fas fa-brain"></i> Academia de Psicología Infantil
+      </a>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="index.html">Módulo 1</a></li>
+        <li><a href="../modulo2/index.html">Módulo 2</a></li>
+        <li><a href="../modulo3/index.html">Módulo 3</a></li>
+        <li><a href="../modulo4/index.html">Módulo 4</a></li>
+        <li><a href="../modulo5/index.html">Módulo 5</a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Botón para volver al índice -->
+    <a href="../index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Volver al índice
+    </a>
+    
+    <!-- Hero section mejorada -->
+    <section class="hero">
+      <h1 class="hero-title">Módulo 1: Introducción a la Motricidad</h1>
+      <p class="hero-subtitle">
+        Comienza tu viaje en el fascinante mundo del desarrollo motor infantil
+      </p>
+      
+      <!-- Iconos animados -->
+      <div class="animated-icons">
+        <div class="animated-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="animated-icon">
+          <i class="fas fa-child"></i>
+        </div>
+        <div class="animated-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Test previo -->
+    <section class="test-section">
+      <h2 class="test-title">Evalúa tus conocimientos previos</h2>
+      <p class="test-description">
+        Responde estas preguntas para evaluar tu conocimiento actual sobre la motricidad infantil
+      </p>
+      
+      <div class="test-container">
+        <div class="test-question">
+          <h3>¿Qué es la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">La capacidad de movimiento del cuerpo</div>
+            <div class="test-option">La inteligencia emocional</div>
+            <div class="test-option">El desarrollo del lenguaje</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿A qué edad se desarrolla principalmente la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option">En la adolescencia</div>
+            <div class="test-option" data-correct="true">En los primeros años de vida</div>
+            <div class="test-option">En la edad adulta</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué área del cerebro controla principalmente el movimiento?</h3>
+          <div class="test-options">
+            <div class="test-option">El lóbulo frontal</div>
+            <div class="test-option">El hipocampo</div>
+            <div class="test-option" data-correct="true">La corteza motora</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué teórico del desarrollo es fundamental para entender la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">Jean Piaget</div>
+            <div class="test-option">Sigmund Freud</div>
+            <div class="test-option">Carl Jung</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Cuál es la relación entre motricidad y cognición?</h3>
+          <div class="test-options">
+            <div class="test-option">No tienen relación</div>
+            <div class="test-option" data-correct="true">Están íntimamente relacionadas</div>
+            <div class="test-option">Son opuestas</div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="test-button" id="checkTest">Verificar respuestas</button>
+      
+      <div class="test-results" id="testResults">
+        <div class="test-score" id="testScore"></div>
+        <div class="test-message" id="testMessage"></div>
+        <button class="continue-to-content" id="continueToContent">Continuar al contenido</button>
+      </div>
+    </section>
+    
+    <!-- Sección: ¿Qué es la motricidad? -->
+    <section class="content-section">
+      <h2 class="section-title">¿Qué es la motricidad?</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-hand-paper"></i>
+            <strong>Motricidad:</strong> movimiento y control corporal
+          </div>
+          <div class="accordion-content">
+            <p>
+              La motricidad se refiere a la capacidad del ser humano para controlar y coordinar sus movimientos. Incluye tanto la motricidad gruesa (movimientos grandes como caminar, correr, saltar) como la motricidad fina (movimientos precisos con manos y dedos). Esta capacidad es fundamental para la autonomía y el desarrollo integral de la persona.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-brain"></i>
+            <strong>Base neurológica:</strong> conexiones cerebrales
+          </div>
+          <div class="accordion-content">
+            <p>
+              El desarrollo motor está directamente relacionado con la maduración del sistema nervioso. Desde el nacimiento, el cerebro establece conexiones neuronales que permiten un control cada vez mayor sobre los movimientos. Este proceso es especialmente intenso durante los primeros años de vida, cuando el cerebro tiene mayor plasticidad.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-clock"></i>
+            <strong>Evolución:</strong> desarrollo progresivo
+          </div>
+          <div class="accordion-content">
+            <p>
+              La motricidad se desarrolla de manera progresiva, siguiendo patrones predecibles pero con variaciones individuales. Comienza con reflejos primitivos en el recién nacido y evoluciona hacia movimientos voluntarios y coordinados. Cada etapa del desarrollo tiene sus propios hitos y características distintivas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección de ciencia -->
+    <section class="science-section">
+      <h2 class="science-title"><i class="fas fa-microscope"></i> Base científica del desarrollo motor</h2>
+      <div class="science-content">
+        <div class="science-quote">
+          "El movimiento es el lenguaje del niño. A través de él, explora el mundo, expresa sus emociones y desarrolla su cognición."
+          <div class="science-source">- Dr. Emmi Pikler, pediatra y experta en desarrollo infantil</div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-dna"></i>
+          <div>
+            <h3>Neuroplasticidad</h3>
+            <p>El cerebro infantil tiene una capacidad extraordinaria para crear nuevas conexiones neuronales en respuesta a las experiencias motoras. Cada movimiento que el niño realiza fortalece estas conexiones y mejora su control corporal.</p>
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-sync-alt"></i>
+          <div>
+            <h3>Integración sensoriomotora</h3>
+            <p>El desarrollo motor no ocurre de forma aislada. Está íntimamente conectado con la percepción sensorial. Los niños aprenden a través de la interacción constante entre lo que sienten, ven y hacen.</p>
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-chart-line"></i>
+          <div>
+            <h3>Secuencia de desarrollo</h3>
+            <p>El desarrollo motor sigue una secuencia céfalo-caudal (de la cabeza a los pies) y próximo-distal (del centro del cuerpo hacia las extremidades). Este patrón es universal y se observa en todas las culturas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Botón para completar módulo -->
+    <button class="complete-btn" id="completeModule1">
+      <i class="fas fa-check-circle"></i> Completar Módulo 1
+    </button>
+    
+    <!-- Navegación entre módulos -->
+    <div class="navigation">
+      <a href="../index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+        Volver al índice
+      </a>
+      <a href="../modulo2/index.html" class="btn">
+        Siguiente módulo
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Academia de Psicología Infantil &copy; 2023</p>
+      <p>Desarrollado por expertos en psicología del desarrollo infantil</p>
+    </footer>
+  </div>
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
+  <script>
+    // Verificar si el usuario tiene acceso al curso
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir a inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
+          }
+        });
+      } else {
+        // Si tiene acceso, inicializar el módulo
+        inicializarModulo();
+      }
+    });
+    
+    function inicializarModulo() {
+      // Configurar test previo con retroalimentación instantánea
+      const testOptions = document.querySelectorAll('.test-option');
+      testOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const selectedOption = document.querySelector('.test-option.selected');
+          if (selectedOption) {
+            selectedOption.classList.remove('selected');
+          }
+          
+          this.classList.add('selected');
+          
+          const isCorrect = this.getAttribute('data-correct') === 'true';
+          
+          if (isCorrect) {
+            this.classList.add('correct');
+          } else {
+            // Mostrar respuesta correcta
+            const parent = this.parentElement;
+            parent.querySelectorAll('.test-option').forEach(opt => {
+              if (opt.getAttribute('data-correct') === 'true') {
+                opt.classList.add('correct');
+              }
+            });
+          }
+        });
+      });
+      
+      // Verificar respuestas al hacer clic en el botón
+      document.getElementById('checkTest').addEventListener('click', function() {
+        let correctAnswers = 0;
+        const totalQuestions = document.querySelectorAll('.test-question').length;
+        
+        // Verificar cada pregunta
+        document.querySelectorAll('.test-question').forEach(question => {
+          const selectedOption = question.querySelector('.test-option.selected');
+          
+          if (selectedOption) {
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+              correctAnswers++;
+            }
+          }
+        });
+        
+        // Calcular porcentaje
+        const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+        
+        // Mostrar resultados
+        document.getElementById('testResults').style.display = 'block';
+        
+        // Configurar mensaje según puntuación
+        const testScore = document.getElementById('testScore');
+        const testMessage = document.getElementById('testMessage');
+        
+        if (percentage >= 80) {
+          testScore.textContent = `${percentage}% - ¡Excelente!`;
+          testScore.className = 'test-score good';
+          testMessage.textContent = 'Tienes muy buenos conocimientos sobre el tema. Este módulo te ayudará a profundizarlos aún más.';
+        } else if (percentage >= 50) {
+          testScore.textContent = `${percentage}% - ¡Bien hecho!`;
+          testScore.className = 'test-score regular';
+          testMessage.textContent = 'Tienes conocimientos básicos sobre el tema. Este módulo te ayudará a reforzarlos y aprender más.';
+        } else {
+          testScore.textContent = `${percentage}% - Sigue aprendiendo`;
+          testScore.className = 'test-score low';
+          testMessage.textContent = 'No te preocupes, este módulo está diseñado para enseñarte desde cero todo lo necesario sobre la motricidad infantil.';
+        }
+        
+        // Botón para continuar al contenido
+        document.getElementById('continueToContent').addEventListener('click', function() {
+          document.querySelector('.content-section').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      
+      // Configurar acordeones interactivos
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          const item = header.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Configurar botón de completar módulo
+      document.getElementById('completeModule1').addEventListener('click', function() {
+        // Marcar módulo 1 como completado
+        localStorage.setItem('modulo1Completado', 'true');
+        
+        // Deshabilitar botón y cambiar texto
+        this.disabled = true;
+        this.innerHTML = '<i class="fas fa-check"></i> Módulo Completado';
+        
+        // Mostrar mensaje de éxito
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--success);
+          color: var(--dark);
+          padding: 15px 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(107, 207, 127, 0.3);
+          z-index: 10001;
+          animation: pulse 2s ease-in-out infinite;
+        `;
+        successMsg.innerHTML = `
+          <i class="fas fa-check-circle"></i>
+          ¡Módulo 1 completado! Ahora puedes acceder al Módulo 2.
+        `;
+        document.body.appendChild(successMsg);
+        
+        setTimeout(() => {
+          successMsg.style.animation = 'slideOutRight 0.5s ease';
+          setTimeout(() => {
+            document.body.removeChild(successMsg);
+          }, 500);
+        }, 4000);
+      });
+    }
+    
+    // Toggle para menú móvil
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+      document.getElementById('navbar-menu').classList.toggle('active');
+    });
+    
+    // Añadir animaciones CSS para los mensajes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
