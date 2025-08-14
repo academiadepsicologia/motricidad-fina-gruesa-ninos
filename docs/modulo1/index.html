@@ -175,6 +175,10 @@
       transition: all 0.3s ease;
     }
     
+    .navbar-logo:hover {
+      transform: scale(1.05);
+    }
+    
     .navbar-logo i {
       margin-right: 12px;
       font-size: 2rem;
@@ -219,8 +223,7 @@
       width: 0;
       height: 100%;
       background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      transition: width 0.6s;
+      transition: all 0.3s ease;
       z-index: -1;
     }
     
@@ -240,6 +243,25 @@
       color: white;
       font-size: 1.8rem;
       cursor: pointer;
+    }
+    
+    /* Botón para volver al índice */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: var(--dark);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .back-button:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
     }
     
     /* Contenedor principal */
@@ -273,6 +295,43 @@
       }
     }
     
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--primary) 0%, var(--pink) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--secondary) 0%, var(--teal) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite 2s;
+    }
+    
     .hero-title {
       font-size: 3.5rem;
       color: var(--primary);
@@ -299,7 +358,8 @@
       display: flex;
       justify-content: center;
       margin-top: 40px;
-      gap: 40px;
+      position: relative;
+      z-index: 1;
     }
     
     .animated-icon {
@@ -643,8 +703,7 @@
       content: '';
       position: absolute;
       bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
       width: 80px;
       height: 4px;
       background: var(--gradient);
@@ -745,11 +804,6 @@
     
     .accordion-item.active .accordion-header {
       background: rgba(255, 107, 107, 0.1);
-    }
-    
-    .accordion-item.active .accordion-header i {
-      background: rgba(255, 107, 107, 0.1);
-      animation-delay: 0.5s;
     }
     
     /* Sección de ciencia */
@@ -883,42 +937,30 @@
     
     /* Botón de completar módulo */
     .complete-btn {
-      background: var(--gradient-4);
+      background: var(--success);
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 18px 40px;
-      font-size: 1.2rem;
+      padding: 15px 30px;
+      font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-      position: relative;
-      overflow: hidden;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
     }
     
     .complete-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 8px 25px rgba(107, 207, 127, 0.4);
     }
     
-    .complete-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-      z-index: -1;
-    }
-    
-    .complete-btn:hover::before {
-      width: 400px;
-      height: 400px;
+    .complete-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
     }
     
     /* Navegación entre módulos */
@@ -943,12 +985,9 @@
       font-family: 'Montserrat', sans-serif;
       position: relative;
       overflow: hidden;
+      z-index: 1;
       gap: 12px;
-    }
-    
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+      text-decoration: none;
     }
     
     .btn::before {
@@ -970,10 +1009,28 @@
       height: 400px;
     }
     
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-secondary {
+      background: var(--gradient-2);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
+    }
+    
+    .btn i {
+      font-size: 1.3rem;
+    }
+    
     /* Footer */
     .footer {
       background: var(--dark);
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       text-align: center;
       padding: 40px 20px;
       border-radius: 25px;
@@ -1005,10 +1062,23 @@
       background-color: white;
       padding: 50px;
       border-radius: 25px;
+      width: 90%;
+      max-width: 550px;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
       text-align: center;
       position: relative;
       animation: modalSlideIn 0.5s ease;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
     
     .close-modal {
@@ -1026,43 +1096,24 @@
       color: var(--primary);
     }
     
-    .access-form {
-      margin-top: 30px;
-    }
-    
-    .form-group {
-      margin-bottom: 25px;
-      text-align: left;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 600;
+    .modal-title {
+      font-size: 2rem;
       color: var(--dark);
+      margin-bottom: 25px;
+      font-weight: 700;
       font-family: 'Montserrat', sans-serif;
     }
     
-    .form-group input {
-      width: 100%;
-      padding: 18px;
-      border: 2px solid #e9ecef;
-      border-radius: 12px;
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 40px;
       font-size: 1.1rem;
-      transition: all 0.3s ease;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .form-group input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
     }
     
     .access-button {
       width: 100%;
       padding: 18px;
-      background: var(--gradient-4);
+      background: var(--gradient);
       color: white;
       border: none;
       border-radius: 12px;
@@ -1073,41 +1124,21 @@
       font-family: 'Montserrat', sans-serif;
     }
     
-    .error-message {
-      color: var(--primary);
-      margin-top: 20px;
-      font-weight: 600;
-      display: none;
-    }
-    
-    .purchase-info {
-      margin-top: 25px;
-      padding: 20px;
-      background: rgba(255, 107, 107, 0.1);
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-    
-    .purchase-info a {
-      color: var(--primary);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    
-    .purchase-info a:hover {
-      text-decoration: underline;
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
     }
     
     /* Responsive mejorado */
     @media (max-width: 992px) {
       .navbar-menu {
         flex-direction: column;
-        list-style: none;
         position: absolute;
         top: 80px;
         left: 0;
         width: 100%;
         background: var(--gradient);
+        padding: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-150%);
         transition: transform 0.4s ease;
@@ -1118,52 +1149,50 @@
         transform: translateY(0);
       }
       
+      .navbar-menu li {
+        margin: 12px 0;
+      }
+      
+      .navbar-toggle {
+        display: block;
+      }
+      
       .hero-title {
         font-size: 2.8rem;
       }
       
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
       .section-title {
         font-size: 2rem;
       }
       
-      .cta-button {
-        padding: 16px 35px;
-        font-size: 1.1rem;
+      .navigation {
+        flex-direction: column;
       }
       
-      .progress-indicator {
-        position: fixed;
-        top: 0;
-        left: 0;
+      .btn {
         width: 100%;
-        z-index: 10000;
       }
     }
     
     @media (max-width: 768px) {
-      .navbar-menu {
-        display: none;
-      }
-      
       .hero-title {
         font-size: 2.3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
       }
       
       .section-title {
         font-size: 2rem;
       }
       
-      .cta-button {
-        padding: 16px 35px;
-        font-size: 1.1rem;
-      }
-      
-      .progress-indicator {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 10000;
+      .modal-content {
+        padding: 40px 25px;
       }
     }
     
@@ -1172,25 +1201,19 @@
         padding: 50px 25px;
       }
       
-      .importance-section,
-      .age-section,
-      .benefits-section,
-      .testimonials-section,
-      .cta-section {
-        padding: 0;
-        margin-bottom: 40px;
+      .hero-title {
+        font-size: 2.2rem;
       }
       
-      .cta-content,
-      .cta-visual {
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .content-section {
         padding: 30px 20px;
       }
       
       .section-title {
-        font-size: 1.7rem;
-      }
-      
-      .cta-title {
         font-size: 1.8rem;
       }
       
@@ -1199,8 +1222,239 @@
       }
     }
   </style>
+</head>
+<body>
+  <!-- Formas animadas de fondo -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
   
-  <!-- Scripts -->
+  <!-- Navbar mejorada -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <i class="fas fa-brain"></i> Academia de Psicología Infantil
+      </a>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="index.html">Módulo 1</a></li>
+        <li><a href="../modulo2/index.html">Módulo 2</a></li>
+        <li><a href="../modulo3/index.html">Módulo 3</a></li>
+        <li><a href="../modulo4/index.html">Módulo 4</a></li>
+        <li><a href="../modulo5/index.html">Módulo 5</a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Botón para volver al índice -->
+    <a href="../index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Volver al índice
+    </a>
+    
+    <!-- Hero section mejorada -->
+    <section class="hero">
+      <h1 class="hero-title">Módulo 1: Introducción a la Motricidad</h1>
+      <p class="hero-subtitle">
+        Comienza tu viaje en el fascinante mundo del desarrollo motor infantil
+      </p>
+      
+      <!-- Iconos animados -->
+      <div class="animated-icons">
+        <div class="animated-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="animated-icon">
+          <i class="fas fa-child"></i>
+        </div>
+        <div class="animated-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Test previo -->
+    <section class="test-section">
+      <h2 class="test-title">Evalúa tus conocimientos previos</h2>
+      <p class="test-description">
+        Responde estas preguntas para evaluar tu conocimiento actual sobre la motricidad infantil
+      </p>
+      
+      <div class="test-container">
+        <div class="test-question">
+          <h3>¿Qué es la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">La capacidad de movimiento del cuerpo</div>
+            <div class="test-option">La inteligencia emocional</div>
+            <div class="test-option">El desarrollo del lenguaje</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿A qué edad se desarrolla principalmente la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option">En la adolescencia</div>
+            <div class="test-option" data-correct="true">En los primeros años de vida</div>
+            <div class="test-option">En la edad adulta</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué área del cerebro controla principalmente el movimiento?</h3>
+          <div class="test-options">
+            <div class="test-option">El lóbulo frontal</div>
+            <div class="test-option">El hipocampo</div>
+            <div class="test-option" data-correct="true">La corteza motora</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Qué teórico del desarrollo es fundamental para entender la motricidad?</h3>
+          <div class="test-options">
+            <div class="test-option" data-correct="true">Jean Piaget</div>
+            <div class="test-option">Sigmund Freud</div>
+            <div class="test-option">Carl Jung</div>
+          </div>
+        </div>
+        
+        <div class="test-question">
+          <h3>¿Cuál es la relación entre motricidad y cognición?</h3>
+          <div class="test-options">
+            <div class="test-option">No tienen relación</div>
+            <div class="test-option" data-correct="true">Están íntimamente relacionadas</div>
+            <div class="test-option">Son opuestas</div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="test-button" id="checkTest">Verificar respuestas</button>
+      
+      <div class="test-results" id="testResults">
+        <div class="test-score" id="testScore"></div>
+        <div class="test-message" id="testMessage"></div>
+        <button class="continue-to-content" id="continueToContent">Continuar al contenido</button>
+      </div>
+    </section>
+    
+    <!-- Sección: ¿Qué es la motricidad? -->
+    <section class="content-section">
+      <h2 class="section-title">¿Qué es la motricidad?</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-hand-paper"></i>
+            <strong>Motricidad:</strong> movimiento y control corporal
+          </div>
+          <div class="accordion-content">
+            <p>
+              La motricidad se refiere a la capacidad del ser humano para controlar y coordinar sus movimientos. Incluye tanto la motricidad gruesa (movimientos grandes como caminar, correr, saltar) como la motricidad fina (movimientos precisos con manos y dedos). Esta capacidad es fundamental para la autonomía y el desarrollo integral de la persona.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-brain"></i>
+            <strong>Base neurológica:</strong> conexiones cerebrales
+          </div>
+          <div class="accordion-content">
+            <p>
+              El desarrollo motor está directamente relacionado con la maduración del sistema nervioso. Desde el nacimiento, el cerebro establece conexiones neuronales que permiten un control cada vez mayor sobre los movimientos. Este proceso es especialmente intenso durante los primeros años de vida, cuando el cerebro tiene mayor plasticidad.
+            </p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <i class="fas fa-clock"></i>
+            <strong>Evolución:</strong> desarrollo progresivo
+          </div>
+          <div class="accordion-content">
+            <p>
+              La motricidad se desarrolla de manera progresiva, siguiendo patrones predecibles pero con variaciones individuales. Comienza con reflejos primitivos en el recién nacido y evoluciona hacia movimientos voluntarios y coordinados. Cada etapa del desarrollo tiene sus propios hitos y características distintivas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección de ciencia -->
+    <section class="science-section">
+      <h2 class="science-title"><i class="fas fa-microscope"></i> Base científica del desarrollo motor</h2>
+      <div class="science-content">
+        <div class="science-quote">
+          "El movimiento es el lenguaje del niño. A través de él, explora el mundo, expresa sus emociones y desarrolla su cognición."
+          <div class="science-source">- Dr. Emmi Pikler, pediatra y experta en desarrollo infantil</div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-dna"></i>
+          <div>
+            <h3>Neuroplasticidad</h3>
+            <p>El cerebro infantil tiene una capacidad extraordinaria para crear nuevas conexiones neuronales en respuesta a las experiencias motoras. Cada movimiento que el niño realiza fortalece estas conexiones y mejora su control corporal.</p>
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-sync-alt"></i>
+          <div>
+            <h3>Integración sensoriomotora</h3>
+            <p>El desarrollo motor no ocurre de forma aislada. Está íntimamente conectado con la percepción sensorial. Los niños aprenden a través de la interacción constante entre lo que sienten, ven y hacen.</p>
+          </div>
+        </div>
+        
+        <div class="science-fact">
+          <i class="fas fa-chart-line"></i>
+          <div>
+            <h3>Secuencia de desarrollo</h3>
+            <p>El desarrollo motor sigue una secuencia céfalo-caudal (de la cabeza a los pies) y próximo-distal (del centro del cuerpo hacia las extremidades). Este patrón es universal y se observa en todas las culturas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Botón para completar módulo -->
+    <button class="complete-btn" id="completeModule1">
+      <i class="fas fa-check-circle"></i> Completar Módulo 1
+    </button>
+    
+    <!-- Navegación entre módulos -->
+    <div class="navigation">
+      <a href="../index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+        Volver al índice
+      </a>
+      <a href="../modulo2/index.html" class="btn">
+        Siguiente módulo
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Academia de Psicología Infantil &copy; 2023</p>
+      <p>Desarrollado por expertos en psicología del desarrollo infantil</p>
+    </footer>
+  </div>
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
   <script>
     // Verificar si el usuario tiene acceso al curso
     document.addEventListener('DOMContentLoaded', function() {
@@ -1301,7 +1555,7 @@
         
         // Botón para continuar al contenido
         document.getElementById('continueToContent').addEventListener('click', function() {
-          document.querySelector('.modules-grid').scrollIntoView({ behavior: 'smooth' });
+          document.querySelector('.content-section').scrollIntoView({ behavior: 'smooth' });
         });
       });
       
@@ -1351,6 +1605,38 @@
         }, 4000);
       });
     }
+    
+    // Toggle para menú móvil
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+      document.getElementById('navbar-menu').classList.toggle('active');
+    });
+    
+    // Añadir animaciones CSS para los mensajes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
