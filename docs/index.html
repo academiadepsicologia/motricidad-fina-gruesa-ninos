@@ -1198,6 +1198,49 @@ transition: all 0.3s ease;
 background: var(--primary);
 transform: translateY(-3px);
 }
+/* Estilos para módulos bloqueados */
+.module-card.locked {
+opacity: 0.7;
+cursor: not-allowed;
+}
+.module-card.locked .module-button {
+background: #ccc;
+cursor: not-allowed;
+pointer-events: none;
+}
+.module-card.locked .module-icon::after {
+content: '\f023';
+font-family: 'Font Awesome 5 Free';
+font-weight: 900;
+position: absolute;
+top: 15px;
+right: 15px;
+color: #ccc;
+font-size: 1.5rem;
+}
+.module-card.completed .module-icon::after {
+content: '\f00c';
+font-family: 'Font Awesome 5 Free';
+font-weight: 900;
+position: absolute;
+top: 15px;
+right: 15px;
+color: var(--success);
+font-size: 1.5rem;
+}
+.module-progress {
+margin-top: 15px;
+height: 8px;
+background: #e9ecef;
+border-radius: 4px;
+overflow: hidden;
+}
+.module-progress-bar {
+height: 100%;
+background: var(--success);
+border-radius: 4px;
+transition: width 1s ease;
+}
 /* Responsive mejorado */
 @media (max-width: 992px) {
 .navbar-menu {
@@ -1429,7 +1472,7 @@ El curso especializado basado en la psicología del desarrollo para potenciar ha
 <a href="#" class="logout-button" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
 <h2 class="section-title">Módulos del Curso</h2>
 <div class="modules-grid">
-<div class="module-card" onclick="accessModule(1)">
+<div class="module-card" id="modulo1" onclick="accessModule(1)">
 <div class="module-icon">
 <i class="fas fa-brain"></i>
 </div>
@@ -1437,9 +1480,12 @@ El curso especializado basado en la psicología del desarrollo para potenciar ha
 <p class="module-description">
 Conoce las bases neurológicas y psicológicas del desarrollo motor en la infancia temprana.
 </p>
+<div class="module-progress">
+<div class="module-progress-bar" id="modulo1-progress" style="width: 0%;"></div>
+</div>
 <a href="#" class="module-button">Acceder al módulo</a>
 </div>
-<div class="module-card" onclick="accessModule(2)">
+<div class="module-card locked" id="modulo2" onclick="accessModule(2)">
 <div class="module-icon">
 <i class="fas fa-hand-paper"></i>
 </div>
@@ -1447,9 +1493,12 @@ Conoce las bases neurológicas y psicológicas del desarrollo motor en la infanc
 <p class="module-description">
 Técnicas y actividades para desarrollar habilidades de precisión y coordinación fina.
 </p>
+<div class="module-progress">
+<div class="module-progress-bar" id="modulo2-progress" style="width: 0%;"></div>
+</div>
 <a href="#" class="module-button">Acceder al módulo</a>
 </div>
-<div class="module-card" onclick="accessModule(3)">
+<div class="module-card locked" id="modulo3" onclick="accessModule(3)">
 <div class="module-icon">
 <i class="fas fa-running"></i>
 </div>
@@ -1457,9 +1506,12 @@ Técnicas y actividades para desarrollar habilidades de precisión y coordinaci�
 <p class="module-description">
 Ejercicios para potenciar el control corporal, equilibrio y coordinación general.
 </p>
+<div class="module-progress">
+<div class="module-progress-bar" id="modulo3-progress" style="width: 0%;"></div>
+</div>
 <a href="#" class="module-button">Acceder al módulo</a>
 </div>
-<div class="module-card" onclick="accessModule(4)">
+<div class="module-card locked" id="modulo4" onclick="accessModule(4)">
 <div class="module-icon">
 <i class="fas fa-gamepad"></i>
 </div>
@@ -1467,9 +1519,12 @@ Ejercicios para potenciar el control corporal, equilibrio y coordinación genera
 <p class="module-description">
 Actividades lúdicas diseñadas para estimular el desarrollo integral a través del juego.
 </p>
+<div class="module-progress">
+<div class="module-progress-bar" id="modulo4-progress" style="width: 0%;"></div>
+</div>
 <a href="#" class="module-button">Acceder al módulo</a>
 </div>
-<div class="module-card" onclick="accessModule(5)">
+<div class="module-card locked" id="modulo5" onclick="accessModule(5)">
 <div class="module-icon">
 <i class="fas fa-chart-line"></i>
 </div>
@@ -1477,6 +1532,9 @@ Actividades lúdicas diseñadas para estimular el desarrollo integral a través 
 <p class="module-description">
 Herramientas para medir el progreso y adaptar las intervenciones a cada niño.
 </p>
+<div class="module-progress">
+<div class="module-progress-bar" id="modulo5-progress" style="width: 0%;"></div>
+</div>
 <a href="#" class="module-button">Acceder al módulo</a>
 </div>
 </div>
@@ -1730,7 +1788,7 @@ Resiliencia
 </div>
 <div class="faq-item">
 <div class="faq-header" onclick="toggleAccordion(this)">
-<span>¿Es necesario supervisión profesional?</span>
+<span>¿Es necesaria supervisión profesional?</span>
 <span class="faq-icon">+</span>
 </div>
 <div class="faq-content">
@@ -2091,14 +2149,83 @@ document.body.removeChild(logoutMsg);
 // Función para acceder a un módulo específico
 function accessModule(moduleNumber) {
 // Verificar si el usuario ha iniciado sesión
-if (localStorage.getItem('cursoAcceso') === 'autorizado') {
-// Redirigir al módulo específico
-window.location.href = `modulo${moduleNumber}/index.html`;
-} else {
+if (localStorage.getItem('cursoAcceso') !== 'autorizado') {
 // Mostrar modal de acceso si no ha iniciado sesión
 modal.style.display = 'flex';
+return;
+}
+
+// Verificar si el módulo anterior ha sido completado
+if (moduleNumber > 1) {
+const previousModuleCompleted = localStorage.getItem(`modulo${moduleNumber - 1}Completado`) === 'true';
+if (!previousModuleCompleted) {
+// Mostrar mensaje de módulo bloqueado
+const lockedMsg = document.createElement('div');
+lockedMsg.style.cssText = `
+position: fixed;
+top: 20px;
+right: 20px;
+background: var(--warning);
+color: var(--dark);
+padding: 15px 20px;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(255, 154, 86, 0.3);
+z-index: 10001;
+animation: pulse 2s ease-in-out infinite;
+`;
+lockedMsg.innerHTML = `
+<i class="fas fa-lock"></i>
+Debes completar el Módulo ${moduleNumber - 1} antes de acceder al Módulo ${moduleNumber}.
+`;
+document.body.appendChild(lockedMsg);
+setTimeout(() => {
+lockedMsg.style.animation = 'slideOutRight 0.5s ease';
+setTimeout(() => {
+document.body.removeChild(lockedMsg);
+}, 500);
+}, 3000);
+return;
 }
 }
+
+// Redirigir al módulo específico
+window.location.href = `modulo${moduleNumber}/index.html`;
+}
+
+// Función para verificar el estado de los módulos al cargar la página
+function verificarEstadoModulos() {
+// Verificar si el usuario ha iniciado sesión
+if (localStorage.getItem('cursoAcceso') !== 'autorizado') {
+return;
+}
+
+// Mostrar sección de módulos
+document.getElementById('modulos').classList.add('active');
+document.getElementById('modulos').style.display = 'block';
+
+// Actualizar estado de cada módulo
+for (let i = 1; i <= 5; i++) {
+const moduloCard = document.getElementById(`modulo${i}`);
+const progressBar = document.getElementById(`modulo${i}-progress`);
+const moduloCompletado = localStorage.getItem(`modulo${i}Completado`) === 'true';
+
+if (moduloCompletado) {
+// Marcar módulo como completado
+moduloCard.classList.add('completed');
+if (progressBar) {
+progressBar.style.width = '100%';
+}
+} else if (i > 1) {
+// Verificar si el módulo anterior está completado
+const previousModuleCompleted = localStorage.getItem(`modulo${i - 1}Completado`) === 'true';
+if (previousModuleCompleted) {
+// Desbloquear módulo
+moduloCard.classList.remove('locked');
+}
+}
+}
+}
+
 // Toggle para el menú móvil
 const navbarToggle = document.getElementById('navbar-toggle');
 const navbarMenu = document.getElementById('navbar-menu');
@@ -2107,6 +2234,12 @@ navbarToggle.addEventListener('click', function() {
 navbarMenu.classList.toggle('active');
 });
 }
+
+// Verificar estado de los módulos al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+verificarEstadoModulos();
+});
+
 // Añadir animaciones CSS para los mensajes
 const style = document.createElement('style');
 style.textContent = `
