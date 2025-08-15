@@ -1041,6 +1041,7 @@
       padding: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       width: 250px;
+      max-width: 250px;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
@@ -1919,7 +1920,7 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="../index.html" class="navbar-logo">
-        <i class="fas fa-brain"></i> Academia de Psicología Infantil
+        <i class="fas fa-brain"></i> Academia de Psicología
       </a>
       <ul class="navbar-menu" id="navbar-menu">
         <li><a href="../index.html">Inicio</a></li>
@@ -2647,8 +2648,8 @@
     
     <!-- Footer -->
     <footer class="footer">
-      <p>Academia de Psicología Infantil &copy; 2023</p>
-      <p>Desarrollado por expertos en psicología del desarrollo infantil</p>
+      <p>Academia de Psicología &copy; 2023</p>
+      <p>Desarrollado por expertos en psicología del desarrollo</p>
     </footer>
   </div>
   
@@ -2822,10 +2823,25 @@
       timelinePoints.forEach(point => {
         point.addEventListener('click', function() {
           // Remover clase active de todos los puntos
-          timelinePoints.forEach(p => p.classList.remove('active'));
+          timelinePoints.forEach(p => {
+            p.classList.remove('active');
+            // Ocultar todos los popups
+            const popup = p.querySelector('.timeline-popup');
+            if (popup) {
+              popup.style.opacity = '0';
+              popup.style.visibility = 'hidden';
+            }
+          });
           
           // Agregar clase active al punto actual
           this.classList.add('active');
+          
+          // Mostrar popup del punto actual
+          const popup = this.querySelector('.timeline-popup');
+          if (popup) {
+            popup.style.opacity = '1';
+            popup.style.visibility = 'visible';
+          }
           
           // Marcar timeline como completado
           updateProgress('timeline', true);
