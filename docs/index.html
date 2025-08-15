@@ -686,69 +686,6 @@ box-shadow: 0 4px 10px rgba(77, 171, 247, 0.3);
 background: var(--kid-green);
 box-shadow: 0 4px 10px rgba(107, 207, 127, 0.3);
 }
-/* Sección de testimonios */
-.testimonials-section {
-background: white;
-border-radius: 25px;
-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-padding: 60px 50px;
-margin-bottom: 60px;
-position: relative;
-overflow: hidden;
-animation: fadeInUp 1s ease 0.8s both;
-}
-.testimonials-section::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 10px;
-background: linear-gradient(90deg, var(--success), var(--kid-green), var(--kid-blue));
-border-radius: 25px 25px 0 0;
-animation: gradientShift 3s ease infinite 3s;
-}
-.testimonials-carousel {
-position: relative;
-overflow: hidden;
-}
-.testimonials-grid {
-display: flex;
-transition: transform 0.5s ease;
-}
-.testimonial-card {
-min-width: 100%;
-background: linear-gradient(135deg, #F0FFF4 0%, #E6FFEF 100%);
-border-radius: 20px;
-padding: 35px;
-text-align: center;
-position: relative;
-border-left: 6px solid var(--success);
-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-animation: slideInUp 0.8s ease both;
-}
-.testimonial-card:nth-child(2) {
-animation-delay: 0.2s;
-background: linear-gradient(135deg, #F0FFF7 0%, #FFF5F5 100%);
-border-left-color: var(--kid-green);
-}
-.testimonial-card:nth-child(3) {
-animation-delay: 0.4s;
-background: linear-gradient(135deg, #F0F7FF 0%, #E6F0FF 100%);
-border-left-color: var(--kid-blue);
-}
-.testimonial-card:hover {
-transform: translateY(-10px) rotate(1deg);
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-.testimonial-rating {
-position: absolute;
-top: 20px;
-right: 20px;
-color: var(--warning);
-font-size: 1.2rem;
-animation: pulse 2s ease-in-out infinite;
-}
 /* Sección CTA profesional */
 .cta-section {
 background: white;
@@ -1056,10 +993,6 @@ margin-bottom: 60px;
 position: relative;
 overflow: hidden;
 animation: fadeInUp 1s ease 0.4s both;
-display: none;
-}
-.modules-section.active {
-display: block;
 }
 .modules-section::before {
 content: '';
@@ -1087,7 +1020,6 @@ transition: all 0.4s ease;
 border-left: 6px solid var(--primary);
 position: relative;
 box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-cursor: pointer;
 }
 .module-card:nth-child(2) {
 background: linear-gradient(135deg, #F0F7FF 0%, #E6F0FF 100%);
@@ -1138,108 +1070,6 @@ color: #6c757d;
 font-size: 1rem;
 line-height: 1.6;
 margin-bottom: 20px;
-}
-.module-button {
-display: inline-block;
-padding: 10px 20px;
-background: var(--primary);
-color: white;
-font-size: 1rem;
-font-weight: 600;
-border-radius: 30px;
-text-decoration: none;
-transition: all 0.3s ease;
-}
-.module-card:nth-child(2) .module-button {
-background: var(--kid-blue);
-}
-.module-card:nth-child(3) .module-button {
-background: var(--kid-green);
-}
-.module-card:nth-child(4) .module-button {
-background: var(--orange);
-}
-.module-card:nth-child(5) .module-button {
-background: var(--purple);
-}
-.module-button:hover {
-transform: translateY(-3px);
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-.back-button {
-display: inline-block;
-margin-bottom: 30px;
-padding: 10px 20px;
-background: var(--dark);
-color: white;
-font-size: 1rem;
-font-weight: 600;
-border-radius: 30px;
-text-decoration: none;
-transition: all 0.3s ease;
-}
-.back-button:hover {
-background: var(--primary);
-transform: translateY(-3px);
-}
-.logout-button {
-display: inline-block;
-margin-left: 20px;
-padding: 10px 20px;
-background: var(--warning);
-color: white;
-font-size: 1rem;
-font-weight: 600;
-border-radius: 30px;
-text-decoration: none;
-transition: all 0.3s ease;
-}
-.logout-button:hover {
-background: var(--primary);
-transform: translateY(-3px);
-}
-/* Estilos para módulos bloqueados */
-.module-card.locked {
-opacity: 0.7;
-cursor: not-allowed;
-}
-.module-card.locked .module-button {
-background: #ccc;
-cursor: not-allowed;
-pointer-events: none;
-}
-.module-card.locked .module-icon::after {
-content: '\f023';
-font-family: 'Font Awesome 5 Free';
-font-weight: 900;
-position: absolute;
-top: 15px;
-right: 15px;
-color: #ccc;
-font-size: 1.5rem;
-}
-.module-card.completed .module-icon::after {
-content: '\f00c';
-font-family: 'Font Awesome 5 Free';
-font-weight: 900;
-position: absolute;
-top: 15px;
-right: 15px;
-color: var(--success);
-font-size: 1.5rem;
-}
-.module-progress {
-margin-top: 15px;
-height: 8px;
-background: #e9ecef;
-border-radius: 4px;
-overflow: hidden;
-}
-.module-progress-bar {
-height: 100%;
-background: var(--success);
-border-radius: 4px;
-transition: width 1s ease;
 }
 /* Responsive mejorado */
 @media (max-width: 992px) {
@@ -1344,7 +1174,6 @@ padding: 50px 25px;
 .importance-section,
 .age-section,
 .benefits-section,
-.testimonials-section,
 .cta-section {
 padding: 0;
 margin-bottom: 40px;
@@ -1378,14 +1207,13 @@ padding: 40px 25px;
 <nav class="navbar">
 <div class="navbar-container">
 <a href="index.html" class="navbar-logo">
-<i class="fas fa-brain"></i> Academia de Psicología Infantil
+<i class="fas fa-brain"></i> Academia de Psicología
 </a>
 <ul class="navbar-menu" id="navbar-menu">
 <li><a href="#importancia">Importancia</a></li>
 <li><a href="#desarrollo">Desarrollo</a></li>
 <li><a href="#beneficios">Beneficios</a></li>
-<li><a href="#testimonios">Testimonios</a></li>
-<li><a href="#acceder">Acceder</a></li>
+<li><a href="#" id="navbar-acceder">Acceder</a></li>
 </ul>
 <button class="navbar-toggle" id="navbar-toggle">
 <i class="fas fa-bars"></i>
@@ -1468,11 +1296,9 @@ El curso especializado basado en la psicología del desarrollo para potenciar ha
 </section>
 <!-- Sección de Módulos -->
 <section class="modules-section" id="modulos">
-<a href="#" class="back-button" id="back-to-home"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
-<a href="#" class="logout-button" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
 <h2 class="section-title">Módulos del Curso</h2>
 <div class="modules-grid">
-<div class="module-card" id="modulo1" onclick="accessModule(1)">
+<div class="module-card" id="modulo1">
 <div class="module-icon">
 <i class="fas fa-brain"></i>
 </div>
@@ -1480,12 +1306,8 @@ El curso especializado basado en la psicología del desarrollo para potenciar ha
 <p class="module-description">
 Conoce las bases neurológicas y psicológicas del desarrollo motor en la infancia temprana.
 </p>
-<div class="module-progress">
-<div class="module-progress-bar" id="modulo1-progress" style="width: 0%;"></div>
 </div>
-<a href="#" class="module-button">Acceder al módulo</a>
-</div>
-<div class="module-card locked" id="modulo2" onclick="accessModule(2)">
+<div class="module-card" id="modulo2">
 <div class="module-icon">
 <i class="fas fa-hand-paper"></i>
 </div>
@@ -1493,12 +1315,8 @@ Conoce las bases neurológicas y psicológicas del desarrollo motor en la infanc
 <p class="module-description">
 Técnicas y actividades para desarrollar habilidades de precisión y coordinación fina.
 </p>
-<div class="module-progress">
-<div class="module-progress-bar" id="modulo2-progress" style="width: 0%;"></div>
 </div>
-<a href="#" class="module-button">Acceder al módulo</a>
-</div>
-<div class="module-card locked" id="modulo3" onclick="accessModule(3)">
+<div class="module-card" id="modulo3">
 <div class="module-icon">
 <i class="fas fa-running"></i>
 </div>
@@ -1506,12 +1324,8 @@ Técnicas y actividades para desarrollar habilidades de precisión y coordinaci�
 <p class="module-description">
 Ejercicios para potenciar el control corporal, equilibrio y coordinación general.
 </p>
-<div class="module-progress">
-<div class="module-progress-bar" id="modulo3-progress" style="width: 0%;"></div>
 </div>
-<a href="#" class="module-button">Acceder al módulo</a>
-</div>
-<div class="module-card locked" id="modulo4" onclick="accessModule(4)">
+<div class="module-card" id="modulo4">
 <div class="module-icon">
 <i class="fas fa-gamepad"></i>
 </div>
@@ -1519,12 +1333,8 @@ Ejercicios para potenciar el control corporal, equilibrio y coordinación genera
 <p class="module-description">
 Actividades lúdicas diseñadas para estimular el desarrollo integral a través del juego.
 </p>
-<div class="module-progress">
-<div class="module-progress-bar" id="modulo4-progress" style="width: 0%;"></div>
 </div>
-<a href="#" class="module-button">Acceder al módulo</a>
-</div>
-<div class="module-card locked" id="modulo5" onclick="accessModule(5)">
+<div class="module-card" id="modulo5">
 <div class="module-icon">
 <i class="fas fa-chart-line"></i>
 </div>
@@ -1532,10 +1342,6 @@ Actividades lúdicas diseñadas para estimular el desarrollo integral a través 
 <p class="module-description">
 Herramientas para medir el progreso y adaptar las intervenciones a cada niño.
 </p>
-<div class="module-progress">
-<div class="module-progress-bar" id="modulo5-progress" style="width: 0%;"></div>
-</div>
-<a href="#" class="module-button">Acceder al módulo</a>
 </div>
 </div>
 </section>
@@ -1709,70 +1515,6 @@ Resiliencia
 </div>
 </div>
 </section>
-<!-- Sección de testimonios -->
-<section class="testimonials-section" id="testimonios">
-<h2 class="section-title">Experiencia de profesionales</h2>
-<div class="testimonials-carousel">
-<div class="testimonials-grid">
-<div class="testimonial-card">
-<div class="testimonial-rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-</div>
-<p class="testimonial-text">
-"Como psicóloga infantil, recomiendo este curso por su base científica sólida. He visto mejoras significativas en el desarrollo emocional y cognitivo de los niños que aplican estas técnicas."
-</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">MC</div>
-<div class="testimonial-info">
-<div class="testimonial-name">María C.</div>
-<div class="testimonial-role">Psicóloga infantil</div>
-</div>
-</div>
-</div>
-<div class="testimonial-card">
-<div class="testimonial-rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-</div>
-<p class="testimonial-text">
-"El enfoque en la teoría del apego y el desarrollo emocional es excepcional. Mi hija ha desarrollado no solo habilidades motoras, sino también mayor seguridad y autonomía."
-</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">AL</div>
-<div class="testimonial-info">
-<div class="testimonial-name">Ana L.</div>
-<div class="testimonial-role">Terapeuta familiar</div>
-</div>
-</div>
-</div>
-<div class="testimonial-card">
-<div class="testimonial-rating">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-</div>
-<p class="testimonial-text">
-"Como neurólogo pediátrico, valoro el enfoque en la neuroplasticidad. Las actividades están diseñadas para maximizar el desarrollo de conexiones neuronales en la etapa crítica."
-</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">RM</div>
-<div class="testimonial-info">
-<div class="testimonial-name">Roberto M.</div>
-<div class="testimonial-role">Neurólogo pediátrico</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 <!-- FAQ Section -->
 <section class="age-section" id="faq">
 <h2 class="section-title">Preguntas Frecuentes</h2>
@@ -1886,7 +1628,7 @@ Accede al curso basado en la psicología del desarrollo con 5 módulos especiali
 </section>
 <!-- Footer -->
 <footer class="footer">
-<p>Academia de Psicología Infantil &copy; 2023 Todos los derechos reservados</p>
+<p>Academia de Psicología &copy; 2023 Todos los derechos reservados</p>
 <p>Desarrollado por expertos en psicología del desarrollo infantil</p>
 </footer>
 </div>
@@ -2046,11 +1788,18 @@ resultDiv.style.borderRadius = '12px';
 // Modal de acceso al curso
 const modal = document.getElementById('accesoModal');
 const accederCursoBtn = document.getElementById('acceder-curso');
+const navbarAccederBtn = document.getElementById('navbar-acceder');
 const closeModal = document.getElementById('closeModal');
 const accessForm = document.getElementById('accessForm');
 const errorMessage = document.getElementById('errorMessage');
 if (accederCursoBtn) {
 accederCursoBtn.addEventListener('click', function(e) {
+e.preventDefault();
+modal.style.display = 'flex';
+});
+}
+if (navbarAccederBtn) {
+navbarAccederBtn.addEventListener('click', function(e) {
 e.preventDefault();
 modal.style.display = 'flex';
 });
@@ -2077,155 +1826,30 @@ if (email === 'demo@demo.com' && password === 'demo123') {
 // Guardar el estado de acceso en localStorage
 localStorage.setItem('cursoAcceso', 'autorizado');
             
-// Credenciales correctas - redirigir a los módulos
-window.location.href = '#modulos';
-document.getElementById('modulos').classList.add('active');
-modal.style.display = 'none';
-// Ocultar otras secciones y mostrar solo los módulos
-document.querySelectorAll('section:not(.modules-section):not(.navbar)').forEach(section => {
-section.style.display = 'none';
-});
-// Mostrar sección de módulos
-document.getElementById('modulos').style.display = 'block';
+// Credenciales correctas - redirigir directamente al primer módulo
+window.location.href = 'modulo1/index.html';
 } else {
 // Credenciales incorrectas
 errorMessage.style.display = 'block';
 }
 });
 }
-// Función para volver al inicio desde la sección de módulos
-const backToHomeBtn = document.getElementById('back-to-home');
-if (backToHomeBtn) {
-backToHomeBtn.addEventListener('click', function(e) {
-e.preventDefault();
-// Ocultar sección de módulos
-document.getElementById('modulos').classList.remove('active');
-// Mostrar todas las secciones nuevamente
-document.querySelectorAll('section').forEach(section => {
-section.style.display = '';
-});
-});
-}
-// Función para cerrar sesión
-const logoutBtn = document.getElementById('logout-btn');
-if (logoutBtn) {
-logoutBtn.addEventListener('click', function(e) {
-e.preventDefault();
-// Eliminar el estado de acceso del localStorage
-localStorage.removeItem('cursoAcceso');
-// Ocultar sección de módulos
-document.getElementById('modulos').classList.remove('active');
-// Mostrar todas las secciones nuevamente
-document.querySelectorAll('section').forEach(section => {
-section.style.display = '';
-});
-// Mostrar mensaje de cierre de sesión
-const logoutMsg = document.createElement('div');
-logoutMsg.style.cssText = `
-position: fixed;
-top: 20px;
-right: 20px;
-background: var(--warning);
-color: var(--dark);
-padding: 15px 20px;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(255, 154, 86, 0.3);
-z-index: 10001;
-animation: pulse 2s ease-in-out infinite;
-`;
-logoutMsg.innerHTML = `
-<i class="fas fa-sign-out-alt"></i>
-Sesión cerrada correctamente.
-`;
-document.body.appendChild(logoutMsg);
-setTimeout(() => {
-logoutMsg.style.animation = 'slideOutRight 0.5s ease';
-setTimeout(() => {
-document.body.removeChild(logoutMsg);
-}, 500);
-}, 3000);
-});
-}
-// Función para acceder a un módulo específico
-function accessModule(moduleNumber) {
-// Verificar si el usuario ha iniciado sesión
-if (localStorage.getItem('cursoAcceso') !== 'autorizado') {
-// Mostrar modal de acceso si no ha iniciado sesión
-modal.style.display = 'flex';
-return;
-}
-
-// Verificar si el módulo anterior ha sido completado
-if (moduleNumber > 1) {
-const previousModuleCompleted = localStorage.getItem(`modulo${moduleNumber - 1}Completado`) === 'true';
-if (!previousModuleCompleted) {
-// Mostrar mensaje de módulo bloqueado
-const lockedMsg = document.createElement('div');
-lockedMsg.style.cssText = `
-position: fixed;
-top: 20px;
-right: 20px;
-background: var(--warning);
-color: var(--dark);
-padding: 15px 20px;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(255, 154, 86, 0.3);
-z-index: 10001;
-animation: pulse 2s ease-in-out infinite;
-`;
-lockedMsg.innerHTML = `
-<i class="fas fa-lock"></i>
-Debes completar el Módulo ${moduleNumber - 1} antes de acceder al Módulo ${moduleNumber}.
-`;
-document.body.appendChild(lockedMsg);
-setTimeout(() => {
-lockedMsg.style.animation = 'slideOutRight 0.5s ease';
-setTimeout(() => {
-document.body.removeChild(lockedMsg);
-}, 500);
-}, 3000);
-return;
-}
-}
-
-// Redirigir al módulo específico
-window.location.href = `modulo${moduleNumber}/index.html`;
-}
-
 // Función para verificar el estado de los módulos al cargar la página
 function verificarEstadoModulos() {
 // Verificar si el usuario ha iniciado sesión
 if (localStorage.getItem('cursoAcceso') !== 'autorizado') {
 return;
 }
-
-// Mostrar sección de módulos
-document.getElementById('modulos').classList.add('active');
-document.getElementById('modulos').style.display = 'block';
-
 // Actualizar estado de cada módulo
 for (let i = 1; i <= 5; i++) {
 const moduloCard = document.getElementById(`modulo${i}`);
-const progressBar = document.getElementById(`modulo${i}-progress`);
 const moduloCompletado = localStorage.getItem(`modulo${i}Completado`) === 'true';
-
 if (moduloCompletado) {
 // Marcar módulo como completado
 moduloCard.classList.add('completed');
-if (progressBar) {
-progressBar.style.width = '100%';
-}
-} else if (i > 1) {
-// Verificar si el módulo anterior está completado
-const previousModuleCompleted = localStorage.getItem(`modulo${i - 1}Completado`) === 'true';
-if (previousModuleCompleted) {
-// Desbloquear módulo
-moduloCard.classList.remove('locked');
 }
 }
 }
-}
-
 // Toggle para el menú móvil
 const navbarToggle = document.getElementById('navbar-toggle');
 const navbarMenu = document.getElementById('navbar-menu');
@@ -2234,12 +1858,10 @@ navbarToggle.addEventListener('click', function() {
 navbarMenu.classList.toggle('active');
 });
 }
-
 // Verificar estado de los módulos al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
 verificarEstadoModulos();
 });
-
 // Añadir animaciones CSS para los mensajes
 const style = document.createElement('style');
 style.textContent = `
