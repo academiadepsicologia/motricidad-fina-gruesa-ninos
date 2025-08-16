@@ -4855,4 +4855,1978 @@
         { nombre: "Óvalo", descripcion: "Óvalo alargado" },
         { nombre: "Rombo", descripcion: "Rombo con diagonales" },
         { nombre: "Pentágono", descripcion: "Pentágono regular" },
-        { nombre: "Hexágono", descrip
+        { nombre: "Hexágono", descripción: "Hexágono regular" },
+        { nombre: "Casa", descripón: "Casa con techo triangular" },
+        { nombre: "Árbol", descripción: "Árbol con copa redondeada" },
+        { nombre: "Flor", descripción: "Flor con pétalos" },
+        { nombre: "Barco", descripción: "Barco con vela" }
+      ],
+      5: [
+        { nombre: "Estrella de 8 puntas", descripción: "Estrella octogonal" },
+        { nombre: "Mariposa", descripción: "Mariposa simétrica" },
+        { nombre: "Coche", descripción: "Coche simple" },
+        { nombre: "Avión", descripción: "Avión con alas" },
+        { nombre: "Pájaro", descripción: "Pájaro en vuelo" },
+        { nombre: "Persona", descripción: "Figura humana simple" },
+        { nombre: "Gato", descripción: "Gato sentado" },
+        { nombre: "Perro", descripción: "Perro con orejas" }
+      ]
+    };
+    
+    // Variables globales
+    let edadSeleccionada = null;
+    let actividadActual = null;
+    let quizPreguntas = [];
+    let preguntaActual = 0;
+    let respuestasCorrectas = 0;
+    let memCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let currentDrawing = 0;
+    let currentPattern = 'lines';
+    let tracingScore = 0;
+    let assessmentAnswers = [];
+    let scheduledActivities = [];
+    let currentMonth = new Date();
+    let selectedDate = null;
+    let keyboardText = '';
+    
+    // Función para mostrar notificaciones
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.5s ease';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 500);
+      }, 3000);
+    }
+    
+    // Función para actualizar contenido según la edad
+    function actualizarContenidoEdad(edad) {
+      if (!contenidoPorEdad[edad]) return;
+      
+      const contenido = contenidoPorEdad[edad];
+      
+      // Actualizar subtítulo del hero
+      document.getElementById('heroSubtitle').textContent = contenido.titulo;
+      
+      // Actualizar contenido de acordeones
+      document.getElementById('definicionMotricidad').textContent = contenido.definicionMotricidad;
+      document.getElementById('desarrolloNeurologico').textContent = contenido.desarrolloNeurologico;
+      document.getElementById('etapasDesarrollo').textContent = contenido.etapasDesarrollo;
+      document.getElementById('baseAprendizaje').textContent = contenido.baseAprendizaje;
+      document.getElementById('autonomiaIndependencia').textContent = contenido.autonomiaIndependencia;
+      document.getElementById('desarrolloCognitivo').textContent = contenido.desarrolloCognitivo;
+      
+      // Actualizar contexto del simulador de trazos
+      document.getElementById('tracingContext').textContent = contenido.contextoTrazos;
+      
+      // Actualizar FAQ
+      document.getElementById('faqEdad').textContent = contenido.faqEdad;
+      document.getElementById('faqRecortar').textContent = contenido.faqRecortar;
+      document.getElementById('faqTecnologia').textContent = contenido.faqTecnologia;
+      
+      // Actualizar actividades interactivas
+      const actividadesInteractivas = document.querySelectorAll('.interactive-activities .activity-card');
+      actividadesInteractivas.forEach((card, index) => {
+        if (contenido.actividades[index]) {
+          const actividad = contenido.actividades[index];
+          card.querySelector('.activity-title').textContent = actividad.titulo;
+          card.querySelector('.activity-description').textContent = actividad.descripcion;
+        }
+      });
+    }
+    
+    // Función para actualizar actividades del banco según la edad
+    function actualizarActividadesBanco(edad) {
+      // Mostrar contenedor de actividades correspondiente a la edad
+      document.querySelectorAll('.activities-container').forEach(container => {
+        container.classList.remove('active');
+      });
+      document.getElementById(`activities-${edad}`).classList.add('active');
+      
+      // Actualizar pestaña activa
+      document.querySelectorAll('.age-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('data-age') == edad) {
+          tab.classList.add('active');
+        }
+      });
+    }
+    
+    // Función para inicializar el lienzo de trazos
+    function inicializarLienzoTrazos() {
+      const canvas = document.getElementById('tracingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Dibujar patrón según selección
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 5]);
+      
+      switch(currentPattern) {
+        case 'lines':
+          // Dibujar líneas rectas
+          for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.moveTo(50, 50 + i * 60);
+            ctx.lineTo(550, 50 + i * 60);
+            ctx.stroke();
+          }
+          break;
+        case 'curves':
+          // Dibujar curvas
+          for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.moveTo(50, 50 + i * 60);
+            ctx.quadraticCurveTo(300, 100 + i * 60, 550, 50 + i * 60);
+            ctx.stroke();
+          }
+          break;
+        case 'shapes':
+          // Dibujar formas simples
+          const shapes = ['circle', 'square', 'triangle'];
+          shapes.forEach((shape, i) => {
+            ctx.beginPath();
+            switch(shape) {
+              case 'circle':
+                ctx.arc(150 + i * 150, 150, 50, 0, Math.PI * 2);
+                break;
+              case 'square':
+                ctx.rect(100 + i * 150, 100, 100, 100);
+                break;
+              case 'triangle':
+                ctx.moveTo(150 + i * 150, 100);
+                ctx.lineTo(100 + i * 150, 200);
+                ctx.lineTo(200 + i * 150, 200);
+                ctx.closePath();
+                break;
+            }
+            ctx.stroke();
+          });
+          break;
+        case 'letters':
+          // Dibujar letras simples
+          const letters = ['O', 'I', 'L'];
+          ctx.font = '80px Arial';
+          letters.forEach((letter, i) => {
+            ctx.strokeText(letter, 100 + i * 150, 150);
+          });
+          break;
+        case 'numbers':
+          // Dibujar números
+          const numbers = ['1', '2', '3'];
+          ctx.font = '80px Arial';
+          numbers.forEach((number, i) => {
+            ctx.strokeText(number, 100 + i * 150, 150);
+          });
+          break;
+      }
+      
+      // Resetear línea para dibujo del usuario
+      ctx.setLineDash([]);
+      ctx.strokeStyle = '#4ECDC4';
+      ctx.lineWidth = 3;
+      
+      // Configurar eventos de dibujo
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      
+      canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        const rect = canvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+      });
+      
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        
+        lastX = x;
+        lastY = y;
+      });
+      
+      canvas.addEventListener('mouseup', () => {
+        isDrawing = false;
+      });
+      
+      canvas.addEventListener('mouseout', () => {
+        isDrawing = false;
+      });
+    }
+    
+    // Función para evaluar el trazo
+    function evaluarTrazo() {
+      // Simulación de evaluación de precisión
+      const precision = Math.floor(Math.random() * 30) + 70; // 70-100%
+      
+      document.getElementById('accuracyValue').textContent = `${precision}%`;
+      document.getElementById('accuracyFill').style.width = `${precision}%`;
+      
+      let feedback = '';
+      if (precision >= 90) {
+        feedback = '¡Excelente trabajo! Tu trazo es muy preciso.';
+      } else if (precision >= 80) {
+        feedback = 'Buen trabajo! Sigue practicando para mejorar la precisión.';
+      } else {
+        feedback = 'Sigue practicando. La precisión mejorará con la práctica constante.';
+      }
+      
+      document.getElementById('accuracyFeedback').textContent = feedback;
+    }
+    
+    // Función para mostrar quiz
+    function showQuiz() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor del quiz
+      document.getElementById('quizContainer').style.display = 'block';
+      
+      // Obtener dificultad seleccionada
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      
+      // Cargar preguntas según dificultad
+      cargarPreguntasQuiz(selectedDifficulty);
+      
+      // Mostrar primera pregunta
+      mostrarPreguntaQuiz();
+    }
+    
+    // Función para cargar preguntas del quiz
+    function cargarPreguntasQuiz(dificultad) {
+      const preguntasPorDificultad = {
+        easy: [
+          {
+            pregunta: "¿Qué es la motricidad fina?",
+            opciones: [
+              "Movimientos grandes del cuerpo",
+              "Coordinación de pequeños músculos de manos y dedos",
+              "Capacidad para correr y saltar",
+              "Habilidad para hablar y cantar"
+            ],
+            correcta: 1
+          },
+          {
+            pregunta: "¿A qué edad se desarrolla principalmente la motricidad fina?",
+            opciones: [
+              "0-2 años",
+              "3-5 años",
+              "6-8 años",
+              "9-12 años"
+            ],
+            correcta: 1
+          },
+          {
+            pregunta: "¿Cuál de estas actividades ayuda a desarrollar la motricidad fina?",
+            opciones: [
+              "Correr en el parque",
+              "Saltar la cuerda",
+              "Recortar papel con tijeras",
+              "Jugar al fútbol"
+            ],
+            correcta: 2
+          }
+        ],
+        medium: [
+          {
+            pregunta: "¿Qué habilidad se considera un hito de motricidad fina a los 4 años?",
+            opciones: [
+              "Correr sin tropezar",
+              "Recortar líneas rectas",
+              "Montar en bicicleta",
+              "Nadar sin ayuda"
+            ],
+            correcta: 1
+          },
+          {
+            pregunta: "¿Qué parte del cerebro está más relacionada con la motricidad fina?",
+            opciones: [
+              "Lóbulo frontal",
+              "Cerebelo",
+              "Lóbulo occipital",
+              "Tronco encefálico"
+            ],
+            correcta: 1
+          },
+          {
+            pregunta: "¿Qué actividad ayuda a desarrollar la pinza trípode?",
+            opciones: [
+              "Usar cuchara",
+              "Sostener lápiz correctamente",
+              "Abrochar botones",
+              "Todas las anteriores"
+            ],
+            correcta: 3
+          }
+        ],
+        hard: [
+          {
+            pregunta: "¿Qué trastorno del desarrollo afecta principalmente la motricidad fina?",
+            opciones: [
+              "TEA",
+              "Dispraxia",
+              "TDAH",
+              "Dislexia"
+            ],
+            correcta: 1
+          },
+          {
+            pregunta: "¿Qué técnica se usa para evaluar la motricidad fina en niños?",
+            opciones: [
+              "Escala de Bayley",
+              "Test de Denver",
+              "Escala de Brunet-Lézine",
+              "Todas las anteriores"
+            ],
+            correcta: 3
+          },
+          {
+            pregunta: "¿A qué edad se espera que un niño pueda escribir su nombre?",
+            opciones: [
+              "3 años",
+              "4 años",
+              "5 años",
+              "6 años"
+            ],
+            correcta: 2
+          }
+        ]
+      };
+      
+      quizPreguntas = preguntasPorDificultad[dificultad] || preguntasPorDificultad.easy;
+      preguntaActual = 0;
+      respuestasCorrectas = 0;
+    }
+    
+    // Función para mostrar pregunta del quiz
+    function mostrarPreguntaQuiz() {
+      if (preguntaActual >= quizPreguntas.length) {
+        mostrarResultadoQuiz();
+        return;
+      }
+      
+      const pregunta = quizPreguntas[preguntaActual];
+      document.getElementById('quizQuestion').textContent = pregunta.pregunta;
+      
+      const opcionesContainer = document.getElementById('quizOptions');
+      opcionesContainer.innerHTML = '';
+      
+      pregunta.opciones.forEach((opcion, index) => {
+        const boton = document.createElement('button');
+        boton.className = 'quiz-btn';
+        boton.textContent = opcion;
+        boton.onclick = () => verificarRespuestaQuiz(index);
+        opcionesContainer.appendChild(boton);
+      });
+      
+      document.getElementById('quiz-feedback').style.display = 'none';
+      document.getElementById('quizNextBtn').style.display = 'none';
+      document.getElementById('quiz-score').style.display = 'none';
+    }
+    
+    // Función para verificar respuesta del quiz
+    function verificarRespuestaQuiz(indice) {
+      const pregunta = quizPreguntas[preguntaActual];
+      const botones = document.querySelectorAll('.quiz-btn');
+      
+      // Deshabilitar botones
+      botones.forEach(boton => {
+        boton.disabled = true;
+        if (botones[indice] === boton) {
+          if (indice === pregunta.correcta) {
+            boton.classList.add('correct');
+            respuestasCorrectas++;
+          } else {
+            boton.classList.add('incorrect');
+            botones[pregunta.correcta].classList.add('correct');
+          }
+        }
+      });
+      
+      // Mostrar retroalimentación
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.textContent = indice === pregunta.correcta ? 
+        '¡Correcto! ' + obtenerExplicacionRespuesta(pregunta) : 
+        'Incorrecto. ' + obtenerExplicacionRespuesta(pregunta);
+      feedback.style.display = 'block';
+      
+      // Mostrar botón siguiente
+      document.getElementById('quizNextBtn').style.display = 'block';
+    }
+    
+    // Función para obtener explicación de respuesta
+    function obtenerExplicacionRespuesta(pregunta) {
+      const explicaciones = {
+        "¿Qué es la motricidad fina?": "La motricidad fina se refiere a la coordinación de pequeños músculos, generalmente de las manos y los dedos.",
+        "¿A qué edad se desarrolla principalmente la motricidad fina?": "El desarrollo principal ocurre entre los 3 y 5 años, cuando los niños adquieren habilidades como recortar y escribir.",
+        "¿Cuál de estas actividades ayuda a desarrollar la motricidad fina?": "Recortar papel con tijeras requiere coordinación ojo-mano y control de pequeños músculos.",
+        "¿Qué habilidad se considera un hito de motricidad fina a los 4 años?": "A los 4 años, los niños pueden recortar líneas rectas con tijeras.",
+        "¿Qué parte del cerebro está más relacionada con la motricidad fina?": "El lóbulo frontal controla el movimiento fino y la planificación motora.",
+        "¿Qué actividad ayuda a desarrollar la pinza trípode?": "Todas estas actividades requieren el uso de la pinza trípode.",
+        "¿Qué trastorno del desarrollo afecta principalmente la motricidad fina?": "La dispraxia es un trastorno que afecta la planificación y coordinación de movimientos.",
+        "¿Qué técnica se usa para evaluar la motricidad fina en niños?": "Todas estas escalas incluyen evaluación de la motricidad fina.",
+        "¿A qué edad se espera que un niño pueda escribir su nombre?": "A los 5 años, los niños comienzan a escribir letras simples y su nombre."
+      };
+      
+      return explicaciones[pregunta.pregunta] || "Esta habilidad es fundamental para el desarrollo infantil.";
+    }
+    
+    // Función para siguiente pregunta del quiz
+    function nextQuestion() {
+      preguntaActual++;
+      mostrarPreguntaQuiz();
+    }
+    
+    // Función para mostrar resultado del quiz
+    function mostrarResultadoQuiz() {
+      const porcentaje = Math.round((respuestasCorrectas / quizPreguntas.length) * 100);
+      
+      document.getElementById('quizQuestion').textContent = '¡Quiz completado!';
+      document.getElementById('quizOptions').innerHTML = '';
+      document.getElementById('quiz-feedback').style.display = 'none';
+      document.getElementById('quizNextBtn').style.display = 'none';
+      document.getElementById('quiz-score').style.display = 'block';
+      document.getElementById('quizScoreDisplay').textContent = `Puntuación: ${respuestasCorrectas}/${quizPreguntas.length} (${porcentaje}%)`;
+      
+      let mensaje = '';
+      if (porcentaje >= 80) {
+        mensaje = '¡Excelente! Tienes muy buenos conocimientos sobre motricidad fina.';
+      } else if (porcentaje >= 60) {
+        mensaje = 'Buen trabajo! Repasa algunos conceptos para mejorar.';
+      } else {
+        mensaje = 'Sigue estudiando. La motricidad fina es un tema importante.';
+      }
+      
+      document.getElementById('quiz-score').innerHTML = `<h3>${mensaje}</h3>`;
+    }
+    
+    // Función para mostrar juego de memoria
+    function showMemory() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor del juego de memoria
+      document.getElementById('memoryContainer').style.display = 'block';
+      
+      // Obtener dificultad seleccionada
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      
+      // Inicializar juego de memoria
+      inicializarJuegoMemoria(selectedDifficulty);
+    }
+    
+    // Función para inicializar juego de memoria
+    function inicializarJuegoMemoria(dificultad) {
+      const memCardsContainer = document.getElementById('mem-cards');
+      memCardsContainer.innerHTML = '';
+      
+      // Definir pares de cartas según dificultad
+      let pares = [];
+      if (dificultad === 'easy') {
+        pares = ['✂️', '✏️', '🖌️', '🧵', '🧩', '🔍'];
+      } else if (dificultad === 'medium') {
+        pares = ['✂️', '✏️', '🖌️', '🧵', '🧩', '🔍', '📏', '🔘'];
+      } else {
+        pares = ['✂️', '✏️', '🖌️', '🧵', '🧩', '🔍', '📏', '🔘', '🪡', '🧸'];
+      }
+      
+      // Duplicar pares y mezclar
+      memCards = [...pares, ...pares];
+      memCards.sort(() => Math.random() - 0.5);
+      
+      // Crear cartas
+      memCards.forEach((simbolo, index) => {
+        const carta = document.createElement('div');
+        carta.className = 'mem-card';
+        carta.dataset.index = index;
+        carta.dataset.simbolo = simbolo;
+        
+        carta.innerHTML = `
+          <div class="mem-card-front">?</div>
+          <div class="mem-card-back">${simbolo}</div>
+        `;
+        
+        carta.addEventListener('click', () => voltearCarta(carta));
+        memCardsContainer.appendChild(carta);
+      });
+      
+      // Reiniciar variables del juego
+      flippedCards = [];
+      matchedPairs = 0;
+      document.getElementById('memoria-msj').textContent = '';
+    }
+    
+    // Función para voltear carta en juego de memoria
+    function voltearCarta(carta) {
+      // Si ya está volteada o emparejada, no hacer nada
+      if (carta.classList.contains('flipped') || carta.classList.contains('matched')) {
+        return;
+      }
+      
+      // Si ya hay dos cartas volteadas, no voltear más
+      if (flippedCards.length >= 2) {
+        return;
+      }
+      
+      // Voltear carta
+      carta.classList.add('flipped');
+      flippedCards.push(carta);
+      
+      // Si hay dos cartas volteadas, verificar si son iguales
+      if (flippedCards.length === 2) {
+        setTimeout(() => {
+          if (flippedCards[0].dataset.simbolo === flippedCards[1].dataset.simbolo) {
+            // Son iguales
+            flippedCards.forEach(c => c.classList.add('matched'));
+            matchedPairs++;
+            
+            // Verificar si se completó el juego
+            if (matchedPairs === memCards.length / 2) {
+              document.getElementById('memoria-msj').textContent = '¡Felicidades! Has completado el juego de memoria.';
+            }
+          } else {
+            // No son iguales, voltearlas de nuevo
+            flippedCards.forEach(c => c.classList.remove('flipped'));
+          }
+          
+          flippedCards = [];
+        }, 1000);
+      }
+    }
+    
+    // Función para reiniciar juego de memoria
+    function resetMemory() {
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      inicializarJuegoMemoria(selectedDifficulty);
+    }
+    
+    // Función para mostrar actividad de arrastrar y soltar
+    function showDragDrop() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de arrastrar y soltar
+      document.getElementById('dragDropContainer').style.display = 'block';
+      
+      // Reiniciar actividad
+      resetDragDrop();
+    }
+    
+    // Función para reiniciar actividad de arrastrar y soltar
+    function resetDragDrop() {
+      // Mover todos los elementos al área de arrastre
+      const dragArea = document.getElementById('drag-area');
+      const dropArea = document.getElementById('fina-drop');
+      const dropAreaGruesa = document.getElementById('gruesa-drop');
+      
+      // Mover todos los elementos de vuelta al área de arrastre
+      document.querySelectorAll('.drag-item').forEach(item => {
+        dragArea.appendChild(item);
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('dragdrop-msj').style.display = 'none';
+      document.getElementById('dragdrop-msj').textContent = '';
+      
+      // Configurar eventos de arrastre
+      configurarEventosArrastre();
+    }
+    
+    // Función para configurar eventos de arrastre
+    function configurarEventosArrastre() {
+      const dragItems = document.querySelectorAll('.drag-item');
+      const dropAreas = document.querySelectorAll('.drop-area, .drop-area-gruesa');
+      
+      dragItems.forEach(item => {
+        item.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', item.dataset.fina);
+          item.classList.add('dragging');
+        });
+        
+        item.addEventListener('dragend', () => {
+          item.classList.remove('dragging');
+        });
+      });
+      
+      dropAreas.forEach(area => {
+        area.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          area.style.backgroundColor = 'rgba(78, 205, 196, 0.2)';
+        });
+        
+        area.addEventListener('dragleave', () => {
+          area.style.backgroundColor = '';
+        });
+        
+        area.addEventListener('drop', (e) => {
+          e.preventDefault();
+          area.style.backgroundColor = '';
+          
+          const esFina = e.dataTransfer.getData('text/plain') === 'true';
+          const esAreaFina = area.id === 'fina-drop';
+          
+          if (esFina === esAreaFina) {
+            // Clasificación correcta
+            area.appendChild(document.querySelector('.dragging'));
+            verificarCompletadoArrastre();
+          } else {
+            // Clasificación incorrecta
+            document.getElementById('dragdrop-msj').textContent = 'Clasificación incorrecta. Inténtalo de nuevo.';
+            document.getElementById('dragdrop-msj').style.display = 'block';
+            document.getElementById('dragdrop-msj').className = 'dragdrop-msj warning';
+          }
+        });
+      });
+    }
+    
+    // Función para verificar si se completó la actividad de arrastre
+    function verificarCompletadoArrastre() {
+      const dragArea = document.getElementById('drag-area');
+      const dropArea = document.getElementById('fina-drop');
+      const dropAreaGruesa = document.getElementById('gruesa-drop');
+      
+      if (dragArea.children.length === 0) {
+        // Todas las actividades clasificadas
+        const correctasFina = Array.from(dropArea.children).every(item => item.dataset.fina === 'true');
+        const correctasGruesa = Array.from(dropAreaGruesa.children).every(item => item.dataset.fina === 'false');
+        
+        if (correctasFina && correctasGruesa) {
+          document.getElementById('dragdrop-msj').textContent = '¡Excelente! Has clasificado correctamente todas las actividades.';
+          document.getElementById('dragdrop-msj').style.display = 'block';
+          document.getElementById('dragdrop-msj').className = 'dragdrop-msj success';
+        } else {
+          document.getElementById('dragdrop-msj').textContent = 'Hay algunas actividades clasificadas incorrectamente. Revísalo.';
+          document.getElementById('dragdrop-msj').style.display = 'block';
+          document.getElementById('dragdrop-msj').className = 'dragdrop-msj warning';
+        }
+      }
+    }
+    
+    // Función para mostrar rompecabezas
+    function showPuzzle() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor del rompecabezas
+      document.getElementById('puzzleContainer').style.display = 'block';
+      
+      // Obtener dificultad seleccionada
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      
+      // Inicializar rompecabezas
+      inicializarRompecabezas(selectedDifficulty);
+    }
+    
+    // Función para inicializar rompecabezas
+    function inicializarRompecabezas(dificultad) {
+      const puzzleArea = document.getElementById('puzzle-area');
+      const puzzlePieces = document.getElementById('puzzle-pieces');
+      
+      puzzleArea.innerHTML = '';
+      puzzlePieces.innerHTML = '';
+      
+      // Definir número de piezas según dificultad
+      let numPiezas = 4;
+      if (dificultad === 'medium') numPiezas = 6;
+      if (dificultad === 'hard') numPiezas = 9;
+      
+      // Crear piezas del rompecabezas
+      const piezas = [];
+      for (let i = 0; i < numPiezas; i++) {
+        const pieza = document.createElement('div');
+        pieza.className = 'puzzle-piece';
+        pieza.dataset.position = i;
+        pieza.textContent = i + 1;
+        pieza.draggable = true;
+        
+        pieza.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', i);
+          pieza.classList.add('dragging');
+        });
+        
+        pieza.addEventListener('dragend', () => {
+          pieza.classList.remove('dragging');
+        });
+        
+        piezas.push(pieza);
+        puzzlePieces.appendChild(pieza);
+      }
+      
+      // Configurar área del rompecabezas
+      puzzleArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+      
+      puzzleArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const position = parseInt(e.dataTransfer.getData('text/plain'));
+        const rect = puzzleArea.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calcular posición en la cuadrícula
+        const cols = dificultad === 'hard' ? 3 : 2;
+        const row = Math.floor(y / 100);
+        const col = Math.floor(x / 100);
+        const targetPosition = row * cols + col;
+        
+        // Verificar si la posición es correcta
+        if (position === targetPosition) {
+          // Colocar pieza en posición correcta
+          const pieza = piezas[position];
+          pieza.style.position = 'absolute';
+          pieza.style.left = `${col * 100}px`;
+          pieza.style.top = `${row * 100}px`;
+          pieza.classList.add('correct');
+          pieza.draggable = false;
+          
+          puzzleArea.appendChild(pieza);
+          
+          // Verificar si se completó el rompecabezas
+          verificarCompletadoRompecabezas();
+        }
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('puzzle-msj').textContent = '';
+    }
+    
+    // Función para verificar si se completó el rompecabezas
+    function verificarCompletadoRompecabezas() {
+      const puzzleArea = document.getElementById('puzzle-area');
+      const piezasCorrectas = puzzleArea.querySelectorAll('.puzzle-piece.correct').length;
+      
+      if (piezasCorrectas === puzzleArea.querySelectorAll('.puzzle-piece').length) {
+        document.getElementById('puzzle-msj').textContent = '¡Felicidades! Has completado el rompecabezas.';
+      }
+    }
+    
+    // Función para reiniciar rompecabezas
+    function resetPuzzle() {
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      inicializarRompecabezas(selectedDifficulty);
+    }
+    
+    // Función para mostrar dibujo guiado
+    function showDrawing() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de dibujo
+      document.getElementById('drawingContainer').style.display = 'block';
+      
+      // Obtener dificultad seleccionada
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      
+      // Inicializar dibujo
+      inicializarDibujo(selectedDifficulty);
+    }
+    
+    // Función para inicializar dibujo
+    function inicializarDibujo(dificultad) {
+      const drawingSelector = document.getElementById('drawing-selector');
+      const canvas = document.getElementById('drawingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar selector y canvas
+      drawingSelector.innerHTML = '';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Obtener figuras según edad y dificultad
+      const edad = edadSeleccionada || 3;
+      let figuras = figurasPorEdad[edad];
+      
+      if (dificultad === 'medium' && figuras.length > 4) {
+        figuras = figuras.slice(0, 6);
+      } else if (dificultad === 'hard') {
+        figuras = figuras.slice(-4);
+      } else {
+        figuras = figuras.slice(0, 4);
+      }
+      
+      // Crear botones de selección de figura
+      figuras.forEach((figura, index) => {
+        const boton = document.createElement('button');
+        boton.className = 'drawing-option';
+        if (index === 0) boton.classList.add('active');
+        boton.innerHTML = `<i class="${figura.icono}"></i> ${figura.nombre}`;
+        boton.onclick = () => seleccionarFigura(index);
+        drawingSelector.appendChild(boton);
+      });
+      
+      // Dibujar primera figura
+      currentDrawing = 0;
+      dibujarFigura(figuras[0]);
+      
+      // Configurar eventos de dibujo
+      configurarEventosDibujo();
+    }
+    
+    // Función para seleccionar figura
+    function seleccionarFigura(index) {
+      document.querySelectorAll('.drawing-option').forEach(boton => {
+        boton.classList.remove('active');
+      });
+      
+      document.querySelectorAll('.drawing-option')[index].classList.add('active');
+      currentDrawing = index;
+      
+      const edad = edadSeleccionada || 3;
+      const figuras = figurasPorEdad[edad];
+      dibujarFigura(figuras[index]);
+    }
+    
+    // Función para dibujar figura
+    function dibujarFigura(figura) {
+      const canvas = document.getElementById('drawingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Dibujar figura punteada
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 5]);
+      
+      switch(figura.nombre) {
+        case 'Círculo':
+          ctx.beginPath();
+          ctx.arc(200, 150, 80, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
+        case 'Cuadrado':
+          ctx.strokeRect(120, 70, 160, 160);
+          break;
+        case 'Triángulo':
+          ctx.beginPath();
+          ctx.moveTo(200, 70);
+          ctx.lineTo(120, 230);
+          ctx.lineTo(280, 230);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'Casa':
+          ctx.strokeRect(120, 150, 160, 120);
+          ctx.beginPath();
+          ctx.moveTo(100, 150);
+          ctx.lineTo(200, 70);
+          ctx.lineTo(300, 150);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'Árbol':
+          ctx.strokeRect(180, 200, 40, 80);
+          ctx.beginPath();
+          ctx.arc(200, 150, 50, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
+        case 'Sol':
+          ctx.beginPath();
+          ctx.arc(200, 150, 60, 0, Math.PI * 2);
+          ctx.stroke();
+          // Rayos
+          for (let i = 0; i < 8; i++) {
+            const angle = (i * Math.PI) / 4;
+            ctx.beginPath();
+            ctx.moveTo(200 + Math.cos(angle) * 60, 150 + Math.sin(angle) * 60);
+            ctx.lineTo(200 + Math.cos(angle) * 90, 150 + Math.sin(angle) * 90);
+            ctx.stroke();
+          }
+          break;
+      }
+      
+      // Resetear línea para dibujo del usuario
+      ctx.setLineDash([]);
+      ctx.strokeStyle = '#4ECDC4';
+      ctx.lineWidth = 3;
+    }
+    
+    // Función para configurar eventos de dibujo
+    function configurarEventosDibujo() {
+      const canvas = document.getElementById('drawingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      
+      canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        const rect = canvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+      });
+      
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        
+        lastX = x;
+        lastY = y;
+      });
+      
+      canvas.addEventListener('mouseup', () => {
+        isDrawing = false;
+      });
+      
+      canvas.addEventListener('mouseout', () => {
+        isDrawing = false;
+      });
+    }
+    
+    // Función para limpiar canvas de dibujo
+    function clearCanvas() {
+      const edad = edadSeleccionada || 3;
+      const figuras = figurasPorEdad[edad];
+      dibujarFigura(figuras[currentDrawing]);
+    }
+    
+    // Función para mostrar nuevo dibujo
+    function showNewDrawing() {
+      const edad = edadSeleccionada || 3;
+      const figuras = figurasPorEdad[edad];
+      currentDrawing = (currentDrawing + 1) % figuras.length;
+      
+      // Actualizar botón activo
+      document.querySelectorAll('.drawing-option').forEach((boton, index) => {
+        boton.classList.toggle('active', index === currentDrawing);
+      });
+      
+      dibujarFigura(figuras[currentDrawing]);
+    }
+    
+    // Función para mostrar actividad de escribir letras
+    function showWriting() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de escritura
+      document.getElementById('writingContainer').style.display = 'block';
+      
+      // Obtener dificultad seleccionada
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      
+      // Inicializar escritura
+      inicializarEscritura(selectedDifficulty);
+    }
+    
+    // Función para inicializar escritura
+    function inicializarEscritura(dificultad) {
+      const letterSelector = document.getElementById('letter-selector');
+      const canvas = document.getElementById('writingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar selector y canvas
+      letterSelector.innerHTML = '';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Obtener letras según edad y dificultad
+      const edad = edadSeleccionada || 3;
+      let letras = letrasPorEdad[edad];
+      
+      if (dificultad === 'medium' && letras.length > 4) {
+        letras = letras.slice(0, 6);
+      } else if (dificultad === 'hard') {
+        letras = letras.slice(-4);
+      } else {
+        letras = letras.slice(0, 4);
+      }
+      
+      // Crear botones de selección de letra
+      letras.forEach((letra, index) => {
+        const boton = document.createElement('button');
+        boton.className = 'letter-option';
+        if (index === 0) boton.classList.add('active');
+        boton.innerHTML = `${letra.letra}`;
+        boton.title = letra.descripcion;
+        boton.onclick = () => seleccionarLetra(index);
+        letterSelector.appendChild(boton);
+      });
+      
+      // Dibujar primera letra
+      currentDrawing = 0;
+      dibujarLetra(letras[0]);
+      
+      // Configurar eventos de escritura
+      configurarEventosEscritura();
+    }
+    
+    // Función para seleccionar letra
+    function seleccionarLetra(index) {
+      document.querySelectorAll('.letter-option').forEach(boton => {
+        boton.classList.remove('active');
+      });
+      
+      document.querySelectorAll('.letter-option')[index].classList.add('active');
+      currentDrawing = index;
+      
+      const edad = edadSeleccionada || 3;
+      const letras = letrasPorEdad[edad];
+      dibujarLetra(letras[index]);
+    }
+    
+    // Función para dibujar letra
+    function dibujarLetra(letra) {
+      const canvas = document.getElementById('writingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Dibujar letra punteada
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([8, 4]);
+      
+      ctx.font = '120px Arial';
+      ctx.strokeText(letra.letra, 150, 200);
+      
+      // Resetear línea para dibujo del usuario
+      ctx.setLineDash([]);
+      ctx.strokeStyle = '#9C88FF';
+      ctx.lineWidth = 3;
+    }
+    
+    // Función para configurar eventos de escritura
+    function configurarEventosEscritura() {
+      const canvas = document.getElementById('writingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      
+      canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        const rect = canvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+      });
+      
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        
+        lastX = x;
+        lastY = y;
+      });
+      
+      canvas.addEventListener('mouseup', () => {
+        isDrawing = false;
+      });
+      
+      canvas.addEventListener('mouseout', () => {
+        isDrawing = false;
+      });
+    }
+    
+    // Función para limpiar canvas de escritura
+    function clearWritingCanvas() {
+      const edad = edadSeleccionada || 3;
+      const letras = letrasPorEdad[edad];
+      dibujarLetra(letras[currentDrawing]);
+    }
+    
+    // Función para mostrar nueva letra
+    function showNewLetter() {
+      const edad = edadSeleccionada || 3;
+      const letras = letrasPorEdad[edad];
+      currentDrawing = (currentDrawing + 1) % letras.length;
+      
+      // Actualizar botón activo
+      document.querySelectorAll('.letter-option').forEach((boton, index) => {
+        boton.classList.toggle('active', index === currentDrawing);
+      });
+      
+      dibujarLetra(letras[currentDrawing]);
+    }
+    
+    // Función para mostrar actividad de recortar formas
+    function showCutting() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de recorte
+      document.getElementById('cuttingContainer').style.display = 'block';
+      
+      // Obtener dificultad seleccionada
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      
+      // Inicializar recorte
+      inicializarRecorte(selectedDifficulty);
+    }
+    
+    // Función para inicializar recorte
+    function inicializarRecorte(dificultad) {
+      const shapeSelector = document.getElementById('shape-selector');
+      const canvas = document.getElementById('cuttingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar selector y canvas
+      shapeSelector.innerHTML = '';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Obtener formas según edad y dificultad
+      const edad = edadSeleccionada || 3;
+      let formas = formasPorEdad[edad];
+      
+      if (dificultad === 'medium' && formas.length > 4) {
+        formas = formas.slice(0, 6);
+      } else if (dificultad === 'hard') {
+        formas = formas.slice(-4);
+      } else {
+        formas = formas.slice(0, 4);
+      }
+      
+      // Crear botones de selección de forma
+      formas.forEach((forma, index) => {
+        const boton = document.createElement('button');
+        boton.className = 'shape-option';
+        if (index === 0) boton.classList.add('active');
+        boton.innerHTML = `${forma.nombre}`;
+        boton.title = forma.descripcion;
+        boton.onclick = () => seleccionarForma(index);
+        shapeSelector.appendChild(boton);
+      });
+      
+      // Dibujar primera forma
+      currentDrawing = 0;
+      dibujarForma(formas[0]);
+      
+      // Limpiar mensaje
+      document.getElementById('cutting-msj').textContent = '';
+    }
+    
+    // Función para seleccionar forma
+    function seleccionarForma(index) {
+      document.querySelectorAll('.shape-option').forEach(boton => {
+        boton.classList.remove('active');
+      });
+      
+      document.querySelectorAll('.shape-option')[index].classList.add('active');
+      currentDrawing = index;
+      
+      const edad = edadSeleccionada || 3;
+      const formas = formasPorEdad[edad];
+      dibujarForma(formas[index]);
+    }
+    
+    // Función para dibujar forma
+    function dibujarForma(forma) {
+      const canvas = document.getElementById('cuttingCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpiar canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Dibujar forma con línea de puntos para recortar
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 5]);
+      
+      switch(forma.nombre) {
+        case 'Línea recta':
+          ctx.beginPath();
+          ctx.moveTo(50, 200);
+          ctx.lineTo(350, 200);
+          ctx.stroke();
+          break;
+        case 'Círculo':
+          ctx.beginPath();
+          ctx.arc(200, 150, 80, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
+        case 'Cuadrado':
+          ctx.strokeRect(120, 70, 160, 160);
+          break;
+        case 'Rectángulo':
+          ctx.strokeRect(100, 100, 200, 100);
+          break;
+        case 'Triángulo':
+          ctx.beginPath();
+          ctx.moveTo(200, 70);
+          ctx.lineTo(120, 230);
+          ctx.lineTo(280, 230);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'Corazón':
+          ctx.beginPath();
+          ctx.moveTo(200, 100);
+          ctx.bezierCurveTo(200, 70, 150, 70, 150, 100);
+          ctx.bezierCurveTo(150, 130, 200, 160, 200, 190);
+          ctx.bezierCurveTo(200, 160, 250, 130, 250, 100);
+          ctx.bezierCurveTo(250, 70, 200, 70, 200, 100);
+          ctx.stroke();
+          break;
+        case 'Estrella':
+          ctx.beginPath();
+          for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
+            const x = 200 + Math.cos(angle) * 80;
+            const y = 150 + Math.sin(angle) * 80;
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+            
+            const innerAngle = angle + Math.PI / 5;
+            const innerX = 200 + Math.cos(innerAngle) * 40;
+            const innerY = 150 + Math.sin(innerAngle) * 40;
+            ctx.lineTo(innerX, innerY);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'Sol':
+          ctx.beginPath();
+          ctx.arc(200, 150, 60, 0, Math.PI * 2);
+          ctx.stroke();
+          // Rayos
+          for (let i = 0; i < 8; i++) {
+            const angle = (i * Math.PI) / 4;
+            ctx.beginPath();
+            ctx.moveTo(200 + Math.cos(angle) * 60, 150 + Math.sin(angle) * 60);
+            ctx.lineTo(200 + Math.cos(angle) * 90, 150 + Math.sin(angle) * 90);
+            ctx.stroke();
+          }
+          break;
+        case 'Casa':
+          ctx.strokeRect(120, 150, 160, 120);
+          ctx.beginPath();
+          ctx.moveTo(100, 150);
+          ctx.lineTo(200, 70);
+          ctx.lineTo(300, 150);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'Árbol':
+          ctx.strokeRect(180, 200, 40, 80);
+          ctx.beginPath();
+          ctx.arc(200, 150, 50, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
+        case 'Flor':
+          // Centro
+          ctx.beginPath();
+          ctx.arc(200, 150, 20, 0, Math.PI * 2);
+          ctx.stroke();
+          // Pétalos
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3;
+            ctx.beginPath();
+            ctx.arc(200 + Math.cos(angle) * 40, 150 + Math.sin(angle) * 40, 20, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+          break;
+        case 'Barco':
+          ctx.beginPath();
+          ctx.moveTo(100, 200);
+          ctx.lineTo(300, 200);
+          ctx.lineTo(280, 180);
+          ctx.lineTo(120, 180);
+          ctx.closePath();
+          ctx.stroke();
+          // Vela
+          ctx.beginPath();
+          ctx.moveTo(200, 180);
+          ctx.lineTo(200, 120);
+          ctx.lineTo(220, 140);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+      }
+    }
+    
+    // Función para mostrar nueva forma de recorte
+    function newCuttingShape() {
+      const edad = edadSeleccionada || 3;
+      const formas = formasPorEdad[edad];
+      currentDrawing = (currentDrawing + 1) % formas.length;
+      
+      // Actualizar botón activo
+      document.querySelectorAll('.shape-option').forEach((boton, index) => {
+        boton.classList.toggle('active', index === currentDrawing);
+      });
+      
+      dibujarForma(formas[currentDrawing]);
+    }
+    
+    // Función para evaluar recorte
+    function evaluateCutting() {
+      document.getElementById('cutting-msj').textContent = '¡Buen trabajo! Practica el recorte siguiendo las líneas punteadas.';
+      document.getElementById('cutting-msj').style.color = 'var(--success)';
+    }
+    
+    // Función para mostrar actividad de abrochar botones
+    function showButtons() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de botones
+      document.getElementById('buttonContainer').style.display = 'block';
+      
+      // Inicializar actividad de botones
+      inicializarBotones();
+    }
+    
+    // Función para inicializar actividad de botones
+    function inicializarBotones() {
+      const buttonPieces = document.getElementById('button-pieces');
+      
+      // Limpiar piezas
+      buttonPieces.innerHTML = '';
+      
+      // Crear botones según dificultad
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      let numBotones = 3;
+      if (selectedDifficulty === 'medium') numBotones = 4;
+      if (selectedDifficulty === 'hard') numBotones = 5;
+      
+      for (let i = 0; i < numBotones; i++) {
+        const boton = document.createElement('div');
+        boton.className = 'button';
+        boton.textContent = '●';
+        boton.draggable = true;
+        
+        boton.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', i);
+          boton.classList.add('dragging');
+        });
+        
+        boton.addEventListener('dragend', () => {
+          boton.classList.remove('dragging');
+        });
+        
+        buttonPieces.appendChild(boton);
+      }
+      
+      // Configurar áreas de destino
+      const buttonHoles = document.querySelectorAll('.button-hole');
+      
+      buttonHoles.forEach((hole, index) => {
+        hole.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          hole.style.backgroundColor = 'rgba(255, 159, 67, 0.2)';
+        });
+        
+        hole.addEventListener('dragleave', () => {
+          hole.style.backgroundColor = '';
+        });
+        
+        hole.addEventListener('drop', (e) => {
+          e.preventDefault();
+          hole.style.backgroundColor = '';
+          
+          const buttonIndex = parseInt(e.dataTransfer.getData('text/plain'));
+          
+          if (buttonIndex === index) {
+            // Botón correcto
+            const boton = document.querySelector('.button.dragging');
+            boton.style.position = 'absolute';
+            boton.style.left = `${hole.offsetLeft - 5}px`;
+            boton.style.top = `${hole.offsetTop - 5}px`;
+            boton.classList.add('snapped');
+            boton.draggable = false;
+            
+            verificarCompletadoBotones();
+          } else {
+            // Botón incorrecto
+            document.getElementById('button-msj').textContent = 'Inténtalo de nuevo. Ese no es el lugar correcto.';
+            document.getElementById('button-msj').style.color = 'var(--warning)';
+          }
+        });
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('button-msj').textContent = '';
+    }
+    
+    // Función para verificar si se completó la actividad de botones
+    function verificarCompletadoBotones() {
+      const snappedButtons = document.querySelectorAll('.button.snapped').length;
+      const totalButtons = document.querySelectorAll('.button-hole').length;
+      
+      if (snappedButtons === totalButtons) {
+        document.getElementById('button-msj').textContent = '¡Excelente! Has abrochado todos los botones correctamente.';
+        document.getElementById('button-msj').style.color = 'var(--success)';
+      }
+    }
+    
+    // Función para reiniciar actividad de botones
+    function resetButtons() {
+      // Mover todos los botones de vuelta al área de piezas
+      const buttonPieces = document.getElementById('button-pieces');
+      document.querySelectorAll('.button').forEach(boton => {
+        boton.style.position = '';
+        boton.style.left = '';
+        boton.style.top = '';
+        boton.classList.remove('snapped');
+        boton.draggable = true;
+        buttonPieces.appendChild(boton);
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('button-msj').textContent = '';
+    }
+    
+    // Función para mostrar actividad de teclado
+    function showKeyboard() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de teclado
+      document.getElementById('keyboardContainer').style.display = 'block';
+      
+      // Inicializar teclado
+      inicializarTeclado();
+    }
+    
+    // Función para inicializar teclado
+    function inicializarTeclado() {
+      const keyboardKeys = document.querySelectorAll('.keyboard-key');
+      const keyboardDisplay = document.getElementById('keyboard-display');
+      
+      // Limpiar texto
+      keyboardText = '';
+      keyboardDisplay.textContent = 'Comienza a escribir...';
+      
+      // Configurar teclas
+      keyboardKeys.forEach(key => {
+        key.addEventListener('click', () => {
+          const keyValue = key.getAttribute('data-key');
+          keyboardText += keyValue;
+          keyboardDisplay.textContent = keyboardText;
+        });
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('keyboard-msj').textContent = '';
+    }
+    
+    // Función para limpiar teclado
+    function clearKeyboard() {
+      keyboardText = '';
+      document.getElementById('keyboard-display').textContent = 'Comienza a escribir...';
+    }
+    
+    // Función para evaluar teclado
+    function evaluateKeyboard() {
+      if (keyboardText.length > 0) {
+        document.getElementById('keyboard-msj').textContent = `¡Buen trabajo! Has escrito: "${keyboardText}"`;
+        document.getElementById('keyboard-msj').style.color = 'var(--success)';
+      } else {
+        document.getElementById('keyboard-msj').textContent = 'Escribe algo para evaluar.';
+        document.getElementById('keyboard-msj').style.color = 'var(--warning)';
+      }
+    }
+    
+    // Función para mostrar actividad de pegado
+    function showPasting() {
+      // Ocultar todas las actividades interactivas
+      document.querySelectorAll('[id$="Container"]').forEach(container => {
+        container.style.display = 'none';
+      });
+      
+      // Mostrar contenedor de pegado
+      document.getElementById('pastingContainer').style.display = 'block';
+      
+      // Inicializar pegado
+      inicializarPegado();
+    }
+    
+    // Función para inicializar pegado
+    function inicializarPegado() {
+      const pastingArea = document.getElementById('pasting-area');
+      const pastingPieces = document.getElementById('pasting-pieces');
+      
+      // Limpiar área y piezas
+      pastingArea.innerHTML = '';
+      pastingPieces.innerHTML = '';
+      
+      // Crear objetivos de pegado según dificultad
+      const selectedDifficulty = document.querySelector('.difficulty-option.selected').getAttribute('data-difficulty');
+      let numObjetivos = 4;
+      if (selectedDifficulty === 'medium') numObjetivos = 6;
+      if (selectedDifficulty === 'hard') numObjetivos = 8;
+      
+      // Crear objetivos
+      for (let i = 0; i < numObjetivos; i++) {
+        const target = document.createElement('div');
+        target.className = 'pasting-target';
+        target.style.left = `${50 + (i % 4) * 100}px`;
+        target.style.top = `${50 + Math.floor(i / 4) * 100}px`;
+        target.dataset.position = i;
+        pastingArea.appendChild(target);
+      }
+      
+      // Crear piezas para pegar
+      const colores = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#9C88FF', '#FF7EB9', '#FF9A56', '#26D0CE', '#6BCF7F'];
+      for (let i = 0; i < numObjetivos; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'pasting-piece';
+        piece.textContent = i + 1;
+        piece.style.background = colores[i % colores.length];
+        piece.dataset.position = i;
+        piece.draggable = true;
+        
+        piece.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', i);
+          piece.classList.add('dragging');
+        });
+        
+        piece.addEventListener('dragend', () => {
+          piece.classList.remove('dragging');
+        });
+        
+        pastingPieces.appendChild(piece);
+      }
+      
+      // Configurar área de pegado
+      pastingArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+      
+      pastingArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        
+        const pieceIndex = parseInt(e.dataTransfer.getData('text/plain'));
+        const rect = pastingArea.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Encontrar el objetivo más cercano
+        const targets = document.querySelectorAll('.pasting-target');
+        let closestTarget = null;
+        let minDistance = Infinity;
+        
+        targets.forEach(target => {
+          const targetRect = target.getBoundingClientRect();
+          const targetX = targetRect.left - rect.left + 30;
+          const targetY = targetRect.top - rect.top + 30;
+          const distance = Math.sqrt(Math.pow(x - targetX, 2) + Math.pow(y - targetY, 2));
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestTarget = target;
+          }
+        });
+        
+        // Verificar si está lo suficientemente cerca
+        if (minDistance < 50 && closestTarget) {
+          const targetPosition = parseInt(closestTarget.dataset.position);
+          
+          if (pieceIndex === targetPosition) {
+            // Pieza correcta
+            const piece = document.querySelector('.pasting-piece.dragging');
+            piece.style.position = 'absolute';
+            piece.style.left = `${closestTarget.offsetLeft}px`;
+            piece.style.top = `${closestTarget.offsetTop}px`;
+            piece.classList.add('pasted');
+            piece.draggable = false;
+            
+            verificarCompletadoPegado();
+          } else {
+            // Pieza incorrecta
+            document.getElementById('pasting-msj').textContent = 'Esa pieza no va ahí. Inténtalo de nuevo.';
+            document.getElementById('pasting-msj').style.color = 'var(--warning)';
+          }
+        }
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('pasting-msj').textContent = '';
+    }
+    
+    // Función para verificar si se completó la actividad de pegado
+    function verificarCompletadoPegado() {
+      const pastedPieces = document.querySelectorAll('.pasting-piece.pasted').length;
+      const totalPieces = document.querySelectorAll('.pasting-target').length;
+      
+      if (pastedPieces === totalPieces) {
+        document.getElementById('pasting-msj').textContent = '¡Excelente! Has completado el collage correctamente.';
+        document.getElementById('pasting-msj').style.color = 'var(--success)';
+      }
+    }
+    
+    // Función para reiniciar actividad de pegado
+    function resetPasting() {
+      // Mover todas las piezas de vuelta al área de piezas
+      const pastingPieces = document.getElementById('pasting-pieces');
+      document.querySelectorAll('.pasting-piece').forEach(piece => {
+        piece.style.position = '';
+        piece.style.left = '';
+        piece.style.top = '';
+        piece.classList.remove('pasted');
+        piece.draggable = true;
+        pastingPieces.appendChild(piece);
+      });
+      
+      // Limpiar mensaje
+      document.getElementById('pasting-msj').textContent = '';
+    }
+    
+    // Función para completar módulo
+    function completarModulo2() {
+      // Guardar progreso en localStorage
+      localStorage.setItem('modulo2Completado', 'true');
+      localStorage.setItem('modulo2FechaCompletado', new Date().toISOString());
+      
+      // Deshabilitar botón
+      document.getElementById('completeModule2').disabled = true;
+      document.getElementById('completeModule2').innerHTML = '<i class="fas fa-check-circle"></i> Módulo Completado';
+      
+      showNotification('¡Felicidades! Has completado el Módulo 2', 'success');
+      
+      // Redirigir al siguiente módulo después de un tiempo
+      setTimeout(() => {
+        window.location.href = '../modulo3/index.html';
+      }, 3000);
+    }
+    
+    // Verificar si el usuario tiene acceso al curso y si completó el módulo 1
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      const modulo1Completado = localStorage.getItem('modulo1Completado');
+      
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir al inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Configurar cierre de modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+          modal.style.display = 'none';
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
+          }
+        });
+      } else if (modulo1Completado !== 'true') {
+        // Redirigir si no ha completado el módulo 1
+        alert('Debes completar el Módulo 1 antes de acceder al Módulo 2');
+        window.location.href = '../modulo1/index.html';
+      } else {
+        // Si tiene acceso y completó el módulo 1, inicializar el módulo
+        inicializarModulo();
+      }
+    });
+    
+    // Función para inicializar el módulo
+    function inicializarModulo() {
+      // Configurar botones de edad
+      const ageButtons = document.querySelectorAll('.age-btn');
+      ageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remover clase activa de todos los botones
+          ageButtons.forEach(btn => btn.classList.remove('active'));
+          // Agregar clase activa al botón seleccionado
+          this.classList.add('active');
+          
+          // Guardar edad seleccionada
+          edadSeleccionada = parseInt(this.getAttribute('data-age'));
+          
+          // Actualizar contenido según la edad
+          actualizarContenidoEdad(edadSeleccionada);
+          
+          // Mostrar mensaje de confirmación
+          const ageInfo = document.getElementById('ageInfo');
+          ageInfo.textContent = `Has seleccionado ${edadSeleccionada} años. Todo el contenido está adaptado para esta edad.`;
+          ageInfo.style.display = 'block';
+          
+          // Actualizar actividades del banco según la edad
+          actualizarActividadesBanco(edadSeleccionada);
+        });
+      });
+      
+      // Configurar pestañas del banco de actividades
+      const ageTabs = document.querySelectorAll('.age-tab');
+      ageTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remover clase activa de todas las pestañas
+          ageTabs.forEach(t => t.classList.remove('active'));
+          // Remover clase activa de todos los contenedores
+          document.querySelectorAll('.activities-container').forEach(container => {
+            container.classList.remove('active');
+          });
+          
+          // Agregar clase activa a la pestaña actual
+          this.classList.add('active');
+          
+          // Mostrar contenido correspondiente
+          const age = this.getAttribute('data-age');
+          document.getElementById(`activities-${age}`).classList.add('active');
+        });
+      });
+      
+      // Configurar filtros del banco de actividades
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remover clase activa de todos los filtros
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Agregar clase activa al filtro actual
+          this.classList.add('active');
+          
+          // Filtrar actividades
+          const filter = this.getAttribute('data-filter');
+          const activities = document.querySelectorAll('.activity-card');
+          
+          activities.forEach(activity => {
+            if (filter === 'all') {
+              activity.style.display = 'block';
+            } else {
+              const difficulty = activity.getAttribute('data-difficulty');
+              if (difficulty === filter) {
+                activity.style.display = 'block';
+              } else {
+                activity.style.display = 'none';
+              }
+            }
+          });
+        });
+      });
+      
+      // Configurar acordeones interactivos
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+      
+      // FAQ interactiva
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          faqItem.classList.toggle('active');
+        });
+      });
+      
+      // Configurar selector de patrones del simulador de trazos
+      const patternBtns = document.querySelectorAll('.pattern-btn');
+      patternBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remover clase activa de todos los botones
+          patternBtns.forEach(b => b.classList.remove('active'));
+          // Agregar clase activa al botón actual
+          this.classList.add('active');
+          
+          // Actualizar patrón actual
+          currentPattern = this.getAttribute('data-pattern');
+          
+          // Inicializar canvas con el nuevo patrón
+          inicializarLienzoTrazos();
+        });
+      });
+      
+      // Configurar botones del simulador de trazos
+      document.getElementById('clearCanvas').addEventListener('click', function() {
+        inicializarLienzoTrazos();
+      });
+      
+      document.getElementById('newPattern').addEventListener('click', function() {
+        inicializarLienzoTrazos();
+      });
+      
+      document.getElementById('evaluateTracing').addEventListener('click', function() {
+        evaluarTrazo();
+      });
+      
+      // Configurar evaluación de motricidad fina
+      document.getElementById('startAssessment').addEventListener('click', function() {
+        // Mostrar contenido de la evaluación
+        document.getElementById('assessmentContent').style.display = 'block';
+        document.getElementById('assessmentContent').scrollIntoView({ behavior: 'smooth' });
+        
+        // Reiniciar respuestas
+        assessmentAnswers = new Array(10).fill(null);
+        
+        // Configurar opciones de la evaluación
+        const testOptions = document.querySelectorAll('.test-option');
+        testOptions.forEach(option => {
+          option.addEventListener('click', function() {
+            // Remover clase seleccionada de todas las opciones de la misma pregunta
+            const parent = this.parentElement;
+            parent.querySelectorAll('.test-option').forEach(opt => {
+              opt.classList.remove('selected');
+            });
+            
+            // Agregar clase seleccionada a la opción actual
+            this.classList.add('selected');
+            
+            // Guardar respuesta
+            const questionItem = parent.closest('.test-item');
+            const questionIndex = parseInt(questionItem.getAttribute('data-question'));
+            assessmentAnswers[questionIndex] = parseInt(this.getAttribute('data-value'));
+          });
+        });
+      });
+      
+      // Configurar envío de evaluación
+      document.getElementById('submitAssessment').addEventListener('click', function() {
+        // Verificar que se hayan respondido todas las preguntas
+        const unanswered = assessmentAnswers.filter(answer => answer === null).length;
+        if (unanswered > 0) {
+          showNotification(`Por favor, responde todas las preguntas (${unanswered} pendientes)`, 'warning');
+          return;
+        }
+        
+        // Calcular puntuación
+        const totalScore = assessmentAnswers.reduce((sum, answer) => sum + answer, 0);
+        const maxScore = 20; // 10 preguntas × 2 puntos máximo cada una
+        const percentage = Math.round((totalScore / maxScore) * 100);
+        
+        // Mostrar resultados
+        document.getElementById('assessmentResults').classList.add('show');
+        document.getElementById('assessmentResults').scrollIntoView({ behavior: 'smooth' });
+        
+        // Configurar puntuación
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        scoreDisplay.textContent = `${percentage}% (${totalScore}/${maxScore} puntos)`;
+        
+        // Configurar clase según puntuación
+        if (percentage >= 80) {
+          scoreDisplay.className = 'score-display score-excellent';
+        } else if (percentage >= 60) {
+          scoreDisplay.className = 'score-display score-good';
+        } else {
+          scoreDisplay.className = 'score-display score-needs-improvement';
+        }
+        
+        // Determinar fortalezas y debilidades
+        const strengthsList = document.getElementById('strengthsList');
+        const weaknessesList = document.getElementById('weaknessesList');
+        
+        strengthsList.innerHTML = '';
+        weaknessesList.innerHTML = '';
+        
+        // Análisis de respuestas para determinar fortalezas y debilidades
+        if (assessmentAnswers[0] >= 1) {
+          strengthsList.innerHTML += '<li>Habilidad para recortar líneas rectas</li>';
+        } else {
+          weaknessesList.innerHTML += '<li>Practicar recorte de líneas rectas</li>';
+        }
+        
+        if (assessmentAnswers[1] >= 1) {
+          strengthsList.innerHTML += '<li>Capacidad para abrochar botones pequeños</li>';
+        } else {
+          weaknessesList.innerHTML += '<li>Ejercitar abrochado de botones</li>';
+        }
+        
+        if (assessmentAnswers[2] >= 1) {
+          strengthsList.innerHTML += '<li>Correcto agarre del lápiz (pinza trípode)</li>';
+        } else {
+          weaknessesList.innerHTML += '<li>Mejorar la técnica de agarre del lápiz</li>';
+        }
+        
+        if (assessmentAnswers[3] >= 1) {
+          strengthsList.innerHTML += '<li>Habilidad para escribir letras reconocibles</li>';
+        } else {
+          weaknessesList.innerHTML += '<li>Practicar trazado de letras y números</li>';
+        }
+        
+        if (assessmentAnswers[4] >= 1) {
+          strengthsList.innerHTML += '<li>Precisión para ensartar cuentas pequeñas</li>';
+        } else {
+          weaknessesList.innerHTML += '<li>Ejercitar ensartado de cuentas pequeñas</li>';
+        }
+        
+        // Generar recomendaciones
+        const recommendationsText = document.getElementById('recommendationsText');
+        let recommendations = '';
+        
+        if (percentage >= 80) {
+          recommendations = '¡Excelente trabajo! Tu hijo/a muestra un desarrollo muy bueno de la motricidad fina. Continúa con las actividades que está realizando y puedes introducir desafíos más complejos.';
+        } else if (percentage >= 60) {
+          recommendations = 'Buen progreso. Enfócate en practicar las áreas identificadas como débiles. La práctica constante y diaria es clave para mejorar estas habilidades.';
+        } else {
+          recommendations = 'Se recomienda dedicar más tiempo a actividades de motricidad fina. Consulta con un especialista si tienes preocupaciones sobre el desarrollo de tu hijo/a.';
+        }
+        
+        recommendationsText.textContent = recommendations;
+      });
+      
+      // Configurar botón de completar módulo
+      document.getElementById('completeModule2').addEventListener('click', completarModulo2);
+      
+      // Configurar menú móvil
+      document.getElementById('navbar-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-menu').classList.toggle('active');
+      });
+      
+      // Inicializar componentes
+      inicializarLienzoTrazos();
+      
+      // Seleccionar edad por defecto (3 años)
+      document.querySelector('.age-btn[data-age="3"]').click();
+    }
+  </script>
+</body>
+</html>
